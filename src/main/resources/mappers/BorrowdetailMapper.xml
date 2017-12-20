@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.BorrowdetailMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.Borrowdetail" >
+    <id column="bdid" property="bdid" jdbcType="INTEGER" />
+    <result column="fpic" property="fpic" jdbcType="VARCHAR" />
+    <result column="ypic" property="ypic" jdbcType="VARCHAR" />
+    <result column="qpic" property="qpic" jdbcType="VARCHAR" />
+    <result column="tpic" property="tpic" jdbcType="VARCHAR" />
+    <result column="mpurpose" property="mpurpose" jdbcType="VARCHAR" />
+    <result column="hksource" property="hksource" jdbcType="VARCHAR" />
+    <result column="suggest" property="suggest" jdbcType="VARCHAR" />
+    <result column="xmdes" property="xmdes" jdbcType="VARCHAR" />
+    <result column="guarantee" property="guarantee" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="nprofit" property="nprofit" jdbcType="REAL" />
+    <result column="way" property="way" jdbcType="VARCHAR" />
+    <result column="cpname" property="cpname" jdbcType="VARCHAR" />
+    <result column="baid" property="baid" jdbcType="INTEGER" />
+    <result column="resint1" property="resint1" jdbcType="INTEGER" />
+    <result column="resint2" property="resint2" jdbcType="INTEGER" />
+    <result column="resstr1" property="resstr1" jdbcType="VARCHAR" />
+    <result column="resstr2" property="resstr2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bdid, fpic, ypic, qpic, tpic, mpurpose, hksource, suggest, xmdes, guarantee, money, 
+    nprofit, way, cpname, baid, resint1, resint2, resstr1, resstr2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrowdetail
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrowdetail
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.Borrowdetail" >
+    insert into borrowdetail (bdid, fpic, ypic, 
+      qpic, tpic, mpurpose, 
+      hksource, suggest, xmdes, 
+      guarantee, money, nprofit, 
+      way, cpname, baid, 
+      resint1, resint2, resstr1, 
+      resstr2)
+    values (#{bdid,jdbcType=INTEGER}, #{fpic,jdbcType=VARCHAR}, #{ypic,jdbcType=VARCHAR}, 
+      #{qpic,jdbcType=VARCHAR}, #{tpic,jdbcType=VARCHAR}, #{mpurpose,jdbcType=VARCHAR}, 
+      #{hksource,jdbcType=VARCHAR}, #{suggest,jdbcType=VARCHAR}, #{xmdes,jdbcType=VARCHAR}, 
+      #{guarantee,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{nprofit,jdbcType=REAL}, 
+      #{way,jdbcType=VARCHAR}, #{cpname,jdbcType=VARCHAR}, #{baid,jdbcType=INTEGER}, 
+      #{resint1,jdbcType=INTEGER}, #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=VARCHAR}, 
+      #{resstr2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.Borrowdetail" >
+    insert into borrowdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bdid != null" >
+        bdid,
+      </if>
+      <if test="fpic != null" >
+        fpic,
+      </if>
+      <if test="ypic != null" >
+        ypic,
+      </if>
+      <if test="qpic != null" >
+        qpic,
+      </if>
+      <if test="tpic != null" >
+        tpic,
+      </if>
+      <if test="mpurpose != null" >
+        mpurpose,
+      </if>
+      <if test="hksource != null" >
+        hksource,
+      </if>
+      <if test="suggest != null" >
+        suggest,
+      </if>
+      <if test="xmdes != null" >
+        xmdes,
+      </if>
+      <if test="guarantee != null" >
+        guarantee,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="nprofit != null" >
+        nprofit,
+      </if>
+      <if test="way != null" >
+        way,
+      </if>
+      <if test="cpname != null" >
+        cpname,
+      </if>
+      <if test="baid != null" >
+        baid,
+      </if>
+      <if test="resint1 != null" >
+        resint1,
+      </if>
+      <if test="resint2 != null" >
+        resint2,
+      </if>
+      <if test="resstr1 != null" >
+        resstr1,
+      </if>
+      <if test="resstr2 != null" >
+        resstr2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bdid != null" >
+        #{bdid,jdbcType=INTEGER},
+      </if>
+      <if test="fpic != null" >
+        #{fpic,jdbcType=VARCHAR},
+      </if>
+      <if test="ypic != null" >
+        #{ypic,jdbcType=VARCHAR},
+      </if>
+      <if test="qpic != null" >
+        #{qpic,jdbcType=VARCHAR},
+      </if>
+      <if test="tpic != null" >
+        #{tpic,jdbcType=VARCHAR},
+      </if>
+      <if test="mpurpose != null" >
+        #{mpurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="hksource != null" >
+        #{hksource,jdbcType=VARCHAR},
+      </if>
+      <if test="suggest != null" >
+        #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="xmdes != null" >
+        #{xmdes,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        #{guarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="nprofit != null" >
+        #{nprofit,jdbcType=REAL},
+      </if>
+      <if test="way != null" >
+        #{way,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="baid != null" >
+        #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="resint1 != null" >
+        #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Borrowdetail" >
+    update borrowdetail
+    <set >
+      <if test="fpic != null" >
+        fpic = #{fpic,jdbcType=VARCHAR},
+      </if>
+      <if test="ypic != null" >
+        ypic = #{ypic,jdbcType=VARCHAR},
+      </if>
+      <if test="qpic != null" >
+        qpic = #{qpic,jdbcType=VARCHAR},
+      </if>
+      <if test="tpic != null" >
+        tpic = #{tpic,jdbcType=VARCHAR},
+      </if>
+      <if test="mpurpose != null" >
+        mpurpose = #{mpurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="hksource != null" >
+        hksource = #{hksource,jdbcType=VARCHAR},
+      </if>
+      <if test="suggest != null" >
+        suggest = #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="xmdes != null" >
+        xmdes = #{xmdes,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        guarantee = #{guarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="nprofit != null" >
+        nprofit = #{nprofit,jdbcType=REAL},
+      </if>
+      <if test="way != null" >
+        way = #{way,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        cpname = #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="baid != null" >
+        baid = #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="resint1 != null" >
+        resint1 = #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        resint2 = #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        resstr1 = #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        resstr2 = #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Borrowdetail" >
+    update borrowdetail
+    set fpic = #{fpic,jdbcType=VARCHAR},
+      ypic = #{ypic,jdbcType=VARCHAR},
+      qpic = #{qpic,jdbcType=VARCHAR},
+      tpic = #{tpic,jdbcType=VARCHAR},
+      mpurpose = #{mpurpose,jdbcType=VARCHAR},
+      hksource = #{hksource,jdbcType=VARCHAR},
+      suggest = #{suggest,jdbcType=VARCHAR},
+      xmdes = #{xmdes,jdbcType=VARCHAR},
+      guarantee = #{guarantee,jdbcType=VARCHAR},
+      money = #{money,jdbcType=INTEGER},
+      nprofit = #{nprofit,jdbcType=REAL},
+      way = #{way,jdbcType=VARCHAR},
+      cpname = #{cpname,jdbcType=VARCHAR},
+      baid = #{baid,jdbcType=INTEGER},
+      resint1 = #{resint1,jdbcType=INTEGER},
+      resint2 = #{resint2,jdbcType=INTEGER},
+      resstr1 = #{resstr1,jdbcType=VARCHAR},
+      resstr2 = #{resstr2,jdbcType=VARCHAR}
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </update>
+</mapper>

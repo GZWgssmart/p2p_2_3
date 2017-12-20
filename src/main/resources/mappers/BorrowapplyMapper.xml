@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.BorrowapplyMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.Borrowapply" >
+    <id column="baid" property="baid" jdbcType="INTEGER" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="bzid" property="bzid" jdbcType="INTEGER" />
+    <result column="cktime" property="cktime" jdbcType="TIMESTAMP" />
+    <result column="ckstatus" property="ckstatus" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="term" property="term" jdbcType="INTEGER" />
+    <result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="resint1" property="resint1" jdbcType="INTEGER" />
+    <result column="resint2" property="resint2" jdbcType="INTEGER" />
+    <result column="resstr1" property="resstr1" jdbcType="VARCHAR" />
+    <result column="resstr2" property="resstr2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    baid, rname, money, uid, bzid, cktime, ckstatus, type, term, deadline, resint1, resint2, 
+    resstr1, resstr2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrowapply
+    where baid = #{baid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrowapply
+    where baid = #{baid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.Borrowapply" >
+    insert into borrowapply (baid, rname, money, 
+      uid, bzid, cktime, 
+      ckstatus, type, term, 
+      deadline, resint1, resint2, 
+      resstr1, resstr2)
+    values (#{baid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, 
+      #{uid,jdbcType=INTEGER}, #{bzid,jdbcType=INTEGER}, #{cktime,jdbcType=TIMESTAMP}, 
+      #{ckstatus,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{term,jdbcType=INTEGER}, 
+      #{deadline,jdbcType=TIMESTAMP}, #{resint1,jdbcType=INTEGER}, #{resint2,jdbcType=INTEGER}, 
+      #{resstr1,jdbcType=VARCHAR}, #{resstr2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.Borrowapply" >
+    insert into borrowapply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="baid != null" >
+        baid,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="bzid != null" >
+        bzid,
+      </if>
+      <if test="cktime != null" >
+        cktime,
+      </if>
+      <if test="ckstatus != null" >
+        ckstatus,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="term != null" >
+        term,
+      </if>
+      <if test="deadline != null" >
+        deadline,
+      </if>
+      <if test="resint1 != null" >
+        resint1,
+      </if>
+      <if test="resint2 != null" >
+        resint2,
+      </if>
+      <if test="resstr1 != null" >
+        resstr1,
+      </if>
+      <if test="resstr2 != null" >
+        resstr2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="baid != null" >
+        #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="bzid != null" >
+        #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="cktime != null" >
+        #{cktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ckstatus != null" >
+        #{ckstatus,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=INTEGER},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resint1 != null" >
+        #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Borrowapply" >
+    update borrowapply
+    <set >
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="bzid != null" >
+        bzid = #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="cktime != null" >
+        cktime = #{cktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ckstatus != null" >
+        ckstatus = #{ckstatus,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="term != null" >
+        term = #{term,jdbcType=INTEGER},
+      </if>
+      <if test="deadline != null" >
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resint1 != null" >
+        resint1 = #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        resint2 = #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        resstr1 = #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        resstr2 = #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where baid = #{baid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Borrowapply" >
+    update borrowapply
+    set rname = #{rname,jdbcType=VARCHAR},
+      money = #{money,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      bzid = #{bzid,jdbcType=INTEGER},
+      cktime = #{cktime,jdbcType=TIMESTAMP},
+      ckstatus = #{ckstatus,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      term = #{term,jdbcType=INTEGER},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      resint1 = #{resint1,jdbcType=INTEGER},
+      resint2 = #{resint2,jdbcType=INTEGER},
+      resstr1 = #{resstr1,jdbcType=VARCHAR},
+      resstr2 = #{resstr2,jdbcType=VARCHAR}
+    where baid = #{baid,jdbcType=INTEGER}
+  </update>
+</mapper>

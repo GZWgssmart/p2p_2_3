@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- mybatis缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- mybatis的日志输出 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <setting name="useGeneratedKeys" value="true" />
+        <!-- 数据表里的column，JavaBean中有属性，直接使用数据表里的column名称匹配javabean的属性名称 -->
+        <setting name="useColumnLabel" value="true" />
+        <!-- employee_salary    employeeSalary 自动把带有_的转成驼峰式规则 -->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <typeAliases>
+        <!--<typeAlias type="com.gs.pojo.Product" alias="product" />-->
+        <!-- 自动扫描指定的实体类包，由类的简单类名作为别名：com.gs.pojo.User     User/user -->
+        <package name="com.animo.pojo"/>
+    </typeAliases>
+
+</configuration>

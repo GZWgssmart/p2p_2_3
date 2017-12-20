@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.UsermoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.Usermoney" >
+    <id column="umid" property="umid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="zmoney" property="zmoney" jdbcType="DECIMAL" />
+    <result column="kymoney" property="kymoney" jdbcType="DECIMAL" />
+    <result column="symoney" property="symoney" jdbcType="DECIMAL" />
+    <result column="tzmoney" property="tzmoney" jdbcType="DECIMAL" />
+    <result column="djmoney" property="djmoney" jdbcType="DECIMAL" />
+    <result column="dsmoney" property="dsmoney" jdbcType="DECIMAL" />
+    <result column="jlmoney" property="jlmoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    umid, uid, zmoney, kymoney, symoney, tzmoney, djmoney, dsmoney, jlmoney
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from usermoney
+    where umid = #{umid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from usermoney
+    where umid = #{umid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.Usermoney" >
+    insert into usermoney (umid, uid, zmoney, 
+      kymoney, symoney, tzmoney, 
+      djmoney, dsmoney, jlmoney
+      )
+    values (#{umid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{zmoney,jdbcType=DECIMAL}, 
+      #{kymoney,jdbcType=DECIMAL}, #{symoney,jdbcType=DECIMAL}, #{tzmoney,jdbcType=DECIMAL}, 
+      #{djmoney,jdbcType=DECIMAL}, #{dsmoney,jdbcType=DECIMAL}, #{jlmoney,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.Usermoney" >
+    insert into usermoney
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="umid != null" >
+        umid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="zmoney != null" >
+        zmoney,
+      </if>
+      <if test="kymoney != null" >
+        kymoney,
+      </if>
+      <if test="symoney != null" >
+        symoney,
+      </if>
+      <if test="tzmoney != null" >
+        tzmoney,
+      </if>
+      <if test="djmoney != null" >
+        djmoney,
+      </if>
+      <if test="dsmoney != null" >
+        dsmoney,
+      </if>
+      <if test="jlmoney != null" >
+        jlmoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="umid != null" >
+        #{umid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="zmoney != null" >
+        #{zmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="kymoney != null" >
+        #{kymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="symoney != null" >
+        #{symoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tzmoney != null" >
+        #{tzmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="djmoney != null" >
+        #{djmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="dsmoney != null" >
+        #{dsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jlmoney != null" >
+        #{jlmoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Usermoney" >
+    update usermoney
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="zmoney != null" >
+        zmoney = #{zmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="kymoney != null" >
+        kymoney = #{kymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="symoney != null" >
+        symoney = #{symoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tzmoney != null" >
+        tzmoney = #{tzmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="djmoney != null" >
+        djmoney = #{djmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="dsmoney != null" >
+        dsmoney = #{dsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jlmoney != null" >
+        jlmoney = #{jlmoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where umid = #{umid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Usermoney" >
+    update usermoney
+    set uid = #{uid,jdbcType=INTEGER},
+      zmoney = #{zmoney,jdbcType=DECIMAL},
+      kymoney = #{kymoney,jdbcType=DECIMAL},
+      symoney = #{symoney,jdbcType=DECIMAL},
+      tzmoney = #{tzmoney,jdbcType=DECIMAL},
+      djmoney = #{djmoney,jdbcType=DECIMAL},
+      dsmoney = #{dsmoney,jdbcType=DECIMAL},
+      jlmoney = #{jlmoney,jdbcType=DECIMAL}
+    where umid = #{umid,jdbcType=INTEGER}
+  </update>
+</mapper>
