@@ -20,8 +20,8 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-//        User user  = (User)principalCollection.getPrimaryPrincipal();
-//        Long id  = user.getId();
+//        User User  = (User)principalCollection.getPrimaryPrincipal();
+//        Long id  = User.getId();
 //        List<String> permsList = null;
 //        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 //        //如果id等于总管理员的id  就赋予所有权限

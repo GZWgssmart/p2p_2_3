@@ -12,7 +12,7 @@ public class ValidationResult {
     private boolean hasErrors;
 
     //校验错误信息
-    private Map<String,String> errorMsg;
+    private String errorMsg;
 
     public boolean isHasErrors() {
         return hasErrors;
@@ -22,11 +22,11 @@ public class ValidationResult {
         this.hasErrors = hasErrors;
     }
 
-    public Map<String, String> getErrorMsg() {
+    public String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(Map<String, String> errorMsg) {
+    public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
 }

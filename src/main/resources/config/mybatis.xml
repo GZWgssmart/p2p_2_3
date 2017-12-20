@@ -15,7 +15,7 @@
 
     <typeAliases>
         <!--<typeAlias type="com.gs.pojo.Product" alias="product" />-->
-        <!-- 自动扫描指定的实体类包，由类的简单类名作为别名：com.gs.pojo.User     User/user -->
+        <!-- 自动扫描指定的实体类包，由类的简单类名作为别名：com.gs.pojo.User     User/User -->
         <package name="com.animo.pojo"/>
     </typeAliases>
 

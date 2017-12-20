@@ -1,6 +1,10 @@
 package com.animo.pojo;
 
-public class user {
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+
+public class User {
     private Integer uid;
 
     private String uname;
@@ -17,6 +21,7 @@ public class user {
 
     private String idno;
 
+    @Email(message = "邮箱格式不正确")
     private String email;
 
     private String rname;

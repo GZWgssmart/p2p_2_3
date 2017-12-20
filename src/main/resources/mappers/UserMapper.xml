@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.animo.dao.userMapper" >
-  <resultMap id="BaseResultMap" type="com.animo.pojo.user" >
+<mapper namespace="com.animo.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.User" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
     <result column="uname" property="uname" jdbcType="VARCHAR" />
     <result column="upwd" property="upwd" jdbcType="VARCHAR" />
@@ -35,7 +35,7 @@
     delete from t_user
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.animo.pojo.user" >
+  <insert id="insert" parameterType="com.animo.pojo.User" >
     insert into t_user (uid, uname, upwd, 
       phone, tzm, zpwd, idtype, 
       idno, email, rname, 
@@ -49,7 +49,7 @@
       #{resint1,jdbcType=INTEGER}, #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=VARCHAR}, 
       #{resstr2,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.animo.pojo.user" >
+  <insert id="insertSelective" parameterType="com.animo.pojo.User" >
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -164,7 +164,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.user" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.User" >
     update t_user
     <set >
       <if test="uname != null" >
@@ -221,7 +221,7 @@
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.user" >
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.User" >
     update t_user
     set uname = #{uname,jdbcType=VARCHAR},
       upwd = #{upwd,jdbcType=VARCHAR},

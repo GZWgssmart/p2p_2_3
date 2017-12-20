@@ -17,30 +17,17 @@ public class ValidationUtils {
 
     private static Validator validator =  Validation.buildDefaultValidatorFactory().getValidator();
 
-    public static <T> ValidationResult validateEntity(T obj){
-        ValidationResult result = new ValidationResult();
-        Set<ConstraintViolation<T>> set = validator.validate(obj,Default.class);
-        if(!set.isEmpty()){
-            result.setHasErrors(true);
-            Map<String,String> errorMsg = new HashMap<String,String>();
-            for(ConstraintViolation<T> cv : set){
-                errorMsg.put(cv.getPropertyPath().toString(), cv.getMessage());
-            }
-            result.setErrorMsg(errorMsg);
-        }
-        return result;
-    }
 
     public static <T> ValidationResult validateProperty(T obj,String propertyName){
         ValidationResult result = new ValidationResult();
         Set<ConstraintViolation<T>> set = validator.validateProperty(obj,propertyName,Default.class);
         if( !set.isEmpty()){
             result.setHasErrors(true);
-            Map<String,String> errorMsg = new HashMap<String,String>();
+            String message="";
             for(ConstraintViolation<T> cv : set){
-                errorMsg.put(propertyName, cv.getMessage());
+                message = cv.getMessage();
             }
-            result.setErrorMsg(errorMsg);
+            result.setErrorMsg(message);
         }
         return result;
     }
