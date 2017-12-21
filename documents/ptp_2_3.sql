@@ -441,8 +441,10 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of role
+-- Records of role  角色初始化
 -- ----------------------------
+INSERT INTO `role` VALUES ('1', '普通用户', '普通的平台用户');
+INSERT INTO `role` VALUES ('2', '管理员', '具有最高权限用户');
 
 -- ----------------------------
 -- Table structure for `rolejur`      角色权限
