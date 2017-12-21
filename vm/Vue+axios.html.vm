@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+<div id="app">
+
+    <input type="text" v-model="iid" />{{iid}}
+
+    <input type="text" v-model.lazy="nname">{{nname}}
+
+    <button @click="add"> 提交</button>
+
+    {{analysis}}
+
+    <ul>
+        <li v-for="(item,index) in list" class="ppp" :class="index==0?'acc':'aaa'" >
+            {{item.id}}:{{item.name}}<button @click="del(index)">-</button>
+        </li>
+    </ul>
+
+
+
+</div>
+
+</body>
+<script src="/Vue/js/axios.min.js"></script>
+<script src="/Vue/js/vue.min.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            sex:0,
+            iid:'',
+            nname:'',
+            att:false,
+            acitiv:false,
+            url:'http://pic.sogou.com/pics/recommend?category=%E5%A3%81%E7%BA%B8&imageid=11150776#%E5%8A%A8%E6%BC%AB%269',
+            list:[
+                {
+                    id:'1',
+                    name:'小明'
+                },
+                {
+                    id:'2',
+                    name:'小明'
+                },
+                {
+                    id:'3',
+                    name:'小明'
+                },
+                {
+                    id:'4',
+                    name:'小明'
+                },
+                {
+                    id:'5',
+                    name:'小明'
+                },
+            ]
+        },
+        created () {
+
+        },
+        computed: {
+            analysis () {
+                return this.sex==0?'男':'女';
+            }
+        },
+        methods:{
+            add () {
+                console.log('iid:'+this.iid);
+                console.log('nname:'+this.nname);
+                this.list.push({
+                    id:this.iid,
+                    name:this.nname
+                })
+            },
+            del (index) {
+                this.list.splice(index,1)
+            }
+        },
+        watch:{
+            nname (val,oldval){
+                console.log(val);
+                console.log(oldval);
+            }
+        }
+    })
+
+    //Post
+    //        var params = new URLSearchParams();
+    //        params.append('phone', this.phone);
+    //        params.append('password', this.password);
+    //        axios.post('/user/data/json/login',params).then((response)=>{
+    //            response.data.data
+    //        },(error)=>{
+    //
+    //        });
+
+
+    //    一次性请求多条数据
+    //        function getSexProduct() {
+    //            return axios.get('/product/data/json/sex');
+    //        }
+    //
+    //        function getUser() {
+    //            return axios.get('/user/data/json/sex');
+    //        }
+    //
+    //        axios.all([getSexProduct(),getUser()]).then(axios.spread((product,user)=>{
+    //            this.list = product.data.data;
+    //        }));
+    //    一次性请求多条数据
+
+    // Get请求
+    //        axios.get('/user', {
+    //            params: {
+    //                ID: 12345
+    //            }
+    //        }).then((response)=>{
+    //
+    //        },(error)=>{
+    //
+    //        });
+</script>
+</html>

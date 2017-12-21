@@ -13,11 +13,15 @@ To change this template use File | Settings | File Templates.
 </head>
 <body>
 <table class="layui-hide" id="test" lay-filter="demo"></table>
+
+
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
+
+
 </body>
 <script src="/static/layui/layui.all.js"></script>
 <script>
@@ -45,7 +49,7 @@ To change this template use File | Settings | File Templates.
             //表头
             ,cols: [[
                 {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-                ,{field: 'title', title: '标题', width:80}
+                ,{field: 'title', title: '标题', width:80,templet:'<div>{{methods(参数))}}</div>'}
                 ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
             //表头
