@@ -1,0 +1,30 @@
+package com.animo.config;
+
+import com.animo.pojo.User;
+import com.animo.realm.MyRealm;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.session.mgt.DefaultSessionManager;
+import org.apache.shiro.spring.LifecycleBeanPostProcessor;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.filter.mgt.FilterChainManager;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Repository;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * Created by Animo on 2017-12-07.
+ * @author Animo
+ */
+@Repository
+public class DAO extends BaseDAO{
+
+    方法该返回什么类型就返回什么类型
+
+}

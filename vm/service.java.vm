@@ -1,0 +1,16 @@
+
+Service
+方法返回值 ServerResponse<String>
+除了Pager分页对象
+
+
+public interface Service {
+
+    ServerResponse<String> register(User user);
+
+    ServerResponse<String> checkValid(String value,String type);
+
+    ServerResponse<User> login(String value,String password);
+
+    ServerResponse<User> userInfo(Long id);
+}

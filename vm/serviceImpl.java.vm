@@ -1,0 +1,19 @@
+import com.animo.common.ServerResponse;
+
+@Service
+public class ServiceImpl implements Service{
+
+    @Autowired
+    private DAO dao;
+
+    除了分页
+
+
+    @Override
+    public ServerResponse<String> checkValid(String phone, String type) {
+        //返回成功的信息 里面附带参数 code(一般不写有个默认值) message(成功的消息提示) data(需要返回的Object)
+        return ServerResponse.createBySuccess();
+        //返回错误的信息 里面附带参数 code(一般不写有个默认值)  message(错误的消息提示)
+        return ServerResponse.createByError();
+    }
+}

@@ -1,0 +1,17 @@
+package com.animo.dao;
+
+import com.animo.common.Pager;
+import com.animo.pojo.Product;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface DAO {
+
+    List<Object> listPager(Pager pager);
+
+    Long count();
+
+}

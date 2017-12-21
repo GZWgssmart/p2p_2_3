@@ -1,0 +1,11 @@
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public Class Controller{
+
+    @RequestMapping("pager")
+    public Pager listPager(int page, int limit) {
+        return productService.listPager(page, limit);
+    }
+
+}

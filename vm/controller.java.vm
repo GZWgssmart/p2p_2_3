@@ -1,0 +1,23 @@
+import com.animo.common.ServerResponse;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserController{
+
+    所有返回Json的controller  加上@RestController
+    所有只返回页面的controller 加上@Controller
+
+    private ServerResponse serverResponse;
+
+
+    @PostMapping("login")
+    public ServerResponse<User> login(String phone, String password, HttpSession session){
+        serverResponse = userService.login(phone,password);
+        if(serverResponse.isSuccess()){
+            session.setAttribute(Constant.SESSION_USER,serverResponse.getData());
+        }
+        return serverResponse;
+    }
+
+
+}

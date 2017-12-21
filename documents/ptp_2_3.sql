@@ -215,7 +215,7 @@ CREATE TABLE `huser` (
   `email` varchar(50) DEFAULT NULL,
   `resint1` int(11) DEFAULT NULL,
   `resint2` int(11) DEFAULT NULL,
-  `resstr1` varchar(50) DEFAULT NULL,
+  `pwd` varchar(50) DEFAULT NULL,
   `resstr2` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`huid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

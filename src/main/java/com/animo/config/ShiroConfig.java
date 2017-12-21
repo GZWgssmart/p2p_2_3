@@ -85,7 +85,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setLoginUrl("");
         shiroFilterFactoryBean.setUnauthorizedUrl("");
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/static/**", "");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

@@ -21,7 +21,7 @@ public class Huser {
 
     private Integer resint2;
 
-    private String resstr1;
+    private String pwd;
 
     private String resstr2;
 
@@ -105,12 +105,12 @@ public class Huser {
         this.resint2 = resint2;
     }
 
-    public String getResstr1() {
-        return resstr1;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setResstr1(String resstr1) {
-        this.resstr1 = resstr1 == null ? null : resstr1.trim();
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public String getResstr2() {

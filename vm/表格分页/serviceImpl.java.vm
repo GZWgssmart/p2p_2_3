@@ -1,0 +1,18 @@
+import org.omg.DynamicAny.DynAnyOperations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+public class ServiceImpl implements Service{
+
+    @Autowired
+    private DAO dao;
+
+    @Override
+    public Pager listPager(int pageNo, int pageSize) {
+        Pager pager = new Pager(pageNo, pageSize);
+        pager.setRows(dao.listPager(pager));
+        pager.setTotal(dao.count());
+        return pager;
+    }
+
+}
