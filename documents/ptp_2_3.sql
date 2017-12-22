@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `borrowapply`;
 CREATE TABLE `borrowapply` (
   `baid` int(11) NOT NULL AUTO_INCREMENT,
   `rname` varchar(50) NOT NULL COMMENT '真实姓名',
-  `money` int(11) NOT NULL COMMENT '申请金额',
+  `money` decimal(7,2) NOT NULL COMMENT '申请金额',
   `uid` int(11) NOT NULL COMMENT '借款人id',
   `bzid` int(11) NOT NULL COMMENT '标种id',
   `cktime` datetime DEFAULT NULL COMMENT '审核时间',
@@ -62,7 +62,7 @@ CREATE TABLE `borrowdetail` (
   `suggest` varchar(300) DEFAULT NULL COMMENT '借款人介绍',
   `xmdes` varchar(300) DEFAULT NULL COMMENT '项目描述',
   `guarantee` varchar(200) DEFAULT NULL COMMENT '保障措施',
-  `money` int(11) NOT NULL COMMENT '金额',
+  `money` decimal(7,2) NOT NULL COMMENT '金额',
   `nprofit` float(3,2) NOT NULL COMMENT '年化收益',
   `way` varchar(20) NOT NULL COMMENT '收益方式',
   `cpname` varchar(50) DEFAULT NULL COMMENT '产品名称',
@@ -185,14 +185,9 @@ DROP TABLE IF EXISTS `home`;
 CREATE TABLE `home` (
   `hid` int(11) NOT NULL AUTO_INCREMENT,
   `pic1` varchar(500) DEFAULT NULL,
-  `pic2` varchar(500) DEFAULT NULL,
-  `pic3` varchar(500) DEFAULT NULL,
-  `ewm` varchar(500) DEFAULT NULL COMMENT '二维码',
-  `phone` varchar(15) DEFAULT NULL,
   `url1` varchar(100) DEFAULT NULL,
-  `url2` varchar(100) DEFAULT NULL,
-  `url3` varchar(100) DEFAULT NULL,
-  `url4` varchar(100) DEFAULT NULL,
+  `created_time`  DATETIME DEFAULT NULL COMMENT '创建时间',
+  `update_time` DATETIME DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`hid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -210,12 +205,10 @@ CREATE TABLE `huser` (
   `sex` varchar(4) DEFAULT '',
   `phone` varchar(15) NOT NULL,
   `huname` varchar(50) DEFAULT NULL,
-  `oid` int(11) NOT NULL DEFAULT '0' COMMENT '所属组ID',
-  `oname` varchar(50) NOT NULL DEFAULT '默认分组' COMMENT '组名',
   `email` varchar(50) DEFAULT NULL,
   `resint1` int(11) DEFAULT NULL,
   `resint2` int(11) DEFAULT NULL,
-  `pwd` varchar(50) DEFAULT NULL,
+  `resstr1` varchar(50) DEFAULT NULL,
   `resstr2` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`huid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -352,7 +345,7 @@ DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
   `nid` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
-  `content` varchar(300) NOT NULL,
+  `content` TEXT NOT NULL,
   `created_time` datetime DEFAULT NULL,
   PRIMARY KEY (`nid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -441,10 +434,8 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of role  角色初始化
+-- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', '普通用户', '普通的平台用户');
-INSERT INTO `role` VALUES ('2', '管理员', '具有最高权限用户');
 
 -- ----------------------------
 -- Table structure for `rolejur`      角色权限
@@ -589,7 +580,7 @@ CREATE TABLE `ticket` (
   `kid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT '券名称',
   `type` int(11) NOT NULL,
-  `tkmoney` int(11) NOT NULL,
+  `tkmoney` decimal(7,2) NOT NULL,
   `tktime` datetime NOT NULL,
   PRIMARY KEY (`kid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -601,8 +592,8 @@ CREATE TABLE `ticket` (
 -- ----------------------------
 -- Table structure for `tx_ckeck`       提现审核
 -- ----------------------------
-DROP TABLE IF EXISTS `tx_ckeck`;
-CREATE TABLE `tx_ckeck` (
+DROP TABLE IF EXISTS `tx_check`;
+CREATE TABLE `tx_check` (
   `tcid` int(11) NOT NULL AUTO_INCREMENT,
   `txid` int(11) NOT NULL COMMENT '提现id',
   `huid` int(11) NOT NULL COMMENT '审核人id',
@@ -613,7 +604,7 @@ CREATE TABLE `tx_ckeck` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tx_ckeck
+-- Records of tx_check`
 -- ----------------------------
 
 -- ----------------------------

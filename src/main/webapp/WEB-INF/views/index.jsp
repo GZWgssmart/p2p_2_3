@@ -11,7 +11,7 @@
     }
 
     function getUser() {
-        return axios.get('/user/data/json/sex');
+        return axios.get('/User/data/json/sex');
     }
 
     axios.all([getSexProduct(),getUser()]).then(axios.spread((product,user)=>{
@@ -20,7 +20,7 @@
     //一次性请求多条数据
 
     // Get请求
-    axios.get('/user', {params: {ID: 12345}}).then((response)=>{
+    axios.get('/User', {params: {ID: 12345}}).then((response)=>{
 
     },(error)=>{
 
@@ -30,7 +30,7 @@
     var params = new URLSearchParams();
     params.append('phone', this.phone);
     params.append('password', this.password);
-    axios.post('/user/data/json/login',params).then((response)=>{
+    axios.post('/User/data/json/login',params).then((response)=>{
 
     },(error)=>{
 

@@ -1,12 +1,10 @@
 package com.animo.dao;
 
 import com.animo.pojo.Bankcard;
-import org.springframework.stereotype.Repository;
 
 /**
- * Created by Animo on 2017-12-21.
+ * Created by Animo on 2017-12-22.
  */
-@Repository
 public interface BaseMapper {
 
     int deleteByPrimaryKey(Integer id);

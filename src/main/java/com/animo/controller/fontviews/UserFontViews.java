@@ -13,12 +13,12 @@ public class UserFontViews {
 
     @GetMapping("login")
     public String login(){
-        return "user/login";
+        return "User/login";
     }
 
     @GetMapping("regist")
     public String regist(){
-        return "user/regist";
+        return "User/regist";
     }
 
 }
