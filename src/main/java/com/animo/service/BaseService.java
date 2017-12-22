@@ -12,7 +12,7 @@ public interface BaseService {
 
     ServerResponse getById(Integer id);
 
-    ServerResponse updateStatus(Integer id,Integer sataus);
+    ServerResponse updateStatus(Integer id,Integer status);
 
     ServerResponse update(Object object);
 

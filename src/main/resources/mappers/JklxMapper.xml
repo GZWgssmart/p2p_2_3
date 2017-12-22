@@ -63,15 +63,31 @@
     where lxid = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Jklx" >
+    <![CDATA[
     update jklx
     set lxname = #{lxname,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where lxid = #{lxid,jdbcType=INTEGER}
+    ]]>
   </update>
 
   <update id="updateStatus" parameterType="jklx">
+  <![CDATA[
     UPDATE jklx
     SET status = #{status}
-    where lxid = #{lxid}
+    where lxid = #{id}
+    ]]>
   </update>
+
+  <select id="count" resultType="Long">
+    <![CDATA[
+    SELECT count(lxid) FROM jklx WHERE status=0
+     ]]>
+  </select>
+
+  <select id="listPager" parameterType="com.animo.common.Pager" resultMap="BaseResultMap">
+    <![CDATA[
+      SELECT * FROM jklx  limit #{beginIndex}, #{pageSize}
+    ]]>
+  </select>
 </mapper>

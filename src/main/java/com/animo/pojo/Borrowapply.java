@@ -1,23 +1,33 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Borrowapply {
     private Integer baid;
 
+    @NotBlank(message = "姓名不能为空")
     private String rname;
 
+    @DecimalMin(value = "10000",message = "借款金额最少10000")
     private BigDecimal money;
 
     private Integer uid;
 
+    @NotNull(message = "请选择标种")
     private Integer bzid;
 
     private Date cktime;
 
     private Integer ckstatus;
 
+    @NotNull(message = "请选择借款类型")
     private Integer type;
 
     private Integer term;

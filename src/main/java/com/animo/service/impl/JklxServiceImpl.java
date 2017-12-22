@@ -1,6 +1,5 @@
 package com.animo.service.impl;
 
-import com.animo.common.ServerResponse;
 import com.animo.dao.JklxMapper;
 import com.animo.service.JklxService;
 import org.springframework.beans.factory.annotation.Autowired;
