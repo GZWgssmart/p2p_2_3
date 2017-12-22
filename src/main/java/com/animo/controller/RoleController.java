@@ -26,9 +26,9 @@ public class RoleController {
      */
     @RequestMapping("save")
     public ServerResponse saveRole(){
-//        role = new Role();
-//        role.setRname("财务经理");
-//        role.setContent("公司资金管理者");
+        role = new Role();
+        role.setRname("财务经理");
+        role.setContent("公司资金管理者");
         return roleService.save(role);
     }
 
@@ -60,11 +60,4 @@ public class RoleController {
      * 分页测试
      */
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }
