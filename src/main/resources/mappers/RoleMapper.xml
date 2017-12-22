@@ -69,9 +69,14 @@
     where rid = #{rid,jdbcType=INTEGER}
   </update>
 
-  <select id="listPager" resultType="com.animo.pojo.Role">
+  <select id="listPager" resultType="com.animo.pojo.Role" parameterType="com.animo.common.Pager">
     <![CDATA[
-            select r.rid, r.rname, r.content from role r limit #{pager.beginIndex}, #{pager.pageSize}
+            select r.rid, r.rname, r.content from role AS r limit #{beginIndex}, #{pageSize}
         ]]>
   </select>
-        </mapper>
+
+  <select id="count" resultType="long">
+    select count(rid) FROM role
+  </select>
+
+</mapper>

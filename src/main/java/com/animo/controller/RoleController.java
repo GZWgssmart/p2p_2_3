@@ -1,5 +1,6 @@
 package com.animo.controller;
 
+import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Role;
 import com.animo.service.RoleService;
@@ -19,6 +20,9 @@ public class RoleController {
     private RoleService roleService;
 
     private Role role;
+
+    private Integer pageNo;
+    private Integer pageSize;
 
     /**
      * 添加角色
@@ -59,5 +63,24 @@ public class RoleController {
     /**
      * 分页测试
      */
+    @RequestMapping
+    public Pager pagerRole(){
+        return roleService.listPager(pageNo,pageSize);
+    }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 }
