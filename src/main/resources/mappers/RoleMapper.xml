@@ -68,4 +68,10 @@
       content = #{content,jdbcType=VARCHAR}
     where rid = #{rid,jdbcType=INTEGER}
   </update>
-</mapper>
+
+  <select id="listPager" resultType="com.animo.pojo.Role">
+    <![CDATA[
+            select r.rid, r.rname, r.content from role r limit #{pager.beginIndex}, #{pager.pageSize}
+        ]]>
+  </select>
+        </mapper>
