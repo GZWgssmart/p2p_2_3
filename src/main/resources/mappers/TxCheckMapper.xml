@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.TxCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.TxCheck" >
+    <id column="tcid" property="tcid" jdbcType="INTEGER" />
+    <result column="txid" property="txid" jdbcType="INTEGER" />
+    <result column="huid" property="huid" jdbcType="INTEGER" />
+    <result column="isok" property="isok" jdbcType="INTEGER" />
+    <result column="excuse" property="excuse" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tcid, txid, huid, isok, excuse, created_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tx_check
+    where tcid = #{tcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tx_check
+    where tcid = #{tcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.TxCheck" >
+    insert into tx_check (tcid, txid, huid, 
+      isok, excuse, created_time
+      )
+    values (#{tcid,jdbcType=INTEGER}, #{txid,jdbcType=INTEGER}, #{huid,jdbcType=INTEGER}, 
+      #{isok,jdbcType=INTEGER}, #{excuse,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.TxCheck" >
+    insert into tx_check
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tcid != null" >
+        tcid,
+      </if>
+      <if test="txid != null" >
+        txid,
+      </if>
+      <if test="huid != null" >
+        huid,
+      </if>
+      <if test="isok != null" >
+        isok,
+      </if>
+      <if test="excuse != null" >
+        excuse,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tcid != null" >
+        #{tcid,jdbcType=INTEGER},
+      </if>
+      <if test="txid != null" >
+        #{txid,jdbcType=INTEGER},
+      </if>
+      <if test="huid != null" >
+        #{huid,jdbcType=INTEGER},
+      </if>
+      <if test="isok != null" >
+        #{isok,jdbcType=INTEGER},
+      </if>
+      <if test="excuse != null" >
+        #{excuse,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.TxCheck" >
+    update tx_check
+    <set >
+      <if test="txid != null" >
+        txid = #{txid,jdbcType=INTEGER},
+      </if>
+      <if test="huid != null" >
+        huid = #{huid,jdbcType=INTEGER},
+      </if>
+      <if test="isok != null" >
+        isok = #{isok,jdbcType=INTEGER},
+      </if>
+      <if test="excuse != null" >
+        excuse = #{excuse,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tcid = #{tcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.TxCheck" >
+    update tx_check
+    set txid = #{txid,jdbcType=INTEGER},
+      huid = #{huid,jdbcType=INTEGER},
+      isok = #{isok,jdbcType=INTEGER},
+      excuse = #{excuse,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP}
+    where tcid = #{tcid,jdbcType=INTEGER}
+  </update>
+</mapper>

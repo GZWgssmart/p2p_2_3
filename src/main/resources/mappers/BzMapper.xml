@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.BzMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.Bz" >
+    <id column="bzid" property="bzid" jdbcType="INTEGER" />
+    <result column="bzname" property="bzname" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bzid, bzname, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bz
+    where bzid = #{bzid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bz
+    where bzid = #{bzid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.Bz" >
+    insert into bz (bzid, bzname, status
+      )
+    values (#{bzid,jdbcType=INTEGER}, #{bzname,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.Bz" >
+    insert into bz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bzid != null" >
+        bzid,
+      </if>
+      <if test="bzname != null" >
+        bzname,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bzid != null" >
+        #{bzid,jdbcType=INTEGER},
+      </if>
+      <if test="bzname != null" >
+        #{bzname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Bz" >
+    update bz
+    <set >
+      <if test="bzname != null" >
+        bzname = #{bzname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bzid = #{bzid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Bz" >
+    update bz
+    set bzname = #{bzname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where bzid = #{bzid,jdbcType=INTEGER}
+  </update>
+</mapper>

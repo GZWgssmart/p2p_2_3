@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.ShborrowMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.Shborrow" >
+    <id column="shid" property="shid" jdbcType="INTEGER" />
+    <result column="huid" property="huid" jdbcType="INTEGER" />
+    <result column="isok" property="isok" jdbcType="INTEGER" />
+    <result column="excuse" property="excuse" jdbcType="VARCHAR" />
+    <result column="cktime" property="cktime" jdbcType="TIMESTAMP" />
+    <result column="baid" property="baid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shid, huid, isok, excuse, cktime, baid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shborrow
+    where shid = #{shid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shborrow
+    where shid = #{shid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.Shborrow" >
+    insert into shborrow (shid, huid, isok, 
+      excuse, cktime, baid
+      )
+    values (#{shid,jdbcType=INTEGER}, #{huid,jdbcType=INTEGER}, #{isok,jdbcType=INTEGER}, 
+      #{excuse,jdbcType=VARCHAR}, #{cktime,jdbcType=TIMESTAMP}, #{baid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.Shborrow" >
+    insert into shborrow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shid != null" >
+        shid,
+      </if>
+      <if test="huid != null" >
+        huid,
+      </if>
+      <if test="isok != null" >
+        isok,
+      </if>
+      <if test="excuse != null" >
+        excuse,
+      </if>
+      <if test="cktime != null" >
+        cktime,
+      </if>
+      <if test="baid != null" >
+        baid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shid != null" >
+        #{shid,jdbcType=INTEGER},
+      </if>
+      <if test="huid != null" >
+        #{huid,jdbcType=INTEGER},
+      </if>
+      <if test="isok != null" >
+        #{isok,jdbcType=INTEGER},
+      </if>
+      <if test="excuse != null" >
+        #{excuse,jdbcType=VARCHAR},
+      </if>
+      <if test="cktime != null" >
+        #{cktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="baid != null" >
+        #{baid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Shborrow" >
+    update shborrow
+    <set >
+      <if test="huid != null" >
+        huid = #{huid,jdbcType=INTEGER},
+      </if>
+      <if test="isok != null" >
+        isok = #{isok,jdbcType=INTEGER},
+      </if>
+      <if test="excuse != null" >
+        excuse = #{excuse,jdbcType=VARCHAR},
+      </if>
+      <if test="cktime != null" >
+        cktime = #{cktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="baid != null" >
+        baid = #{baid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shid = #{shid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Shborrow" >
+    update shborrow
+    set huid = #{huid,jdbcType=INTEGER},
+      isok = #{isok,jdbcType=INTEGER},
+      excuse = #{excuse,jdbcType=VARCHAR},
+      cktime = #{cktime,jdbcType=TIMESTAMP},
+      baid = #{baid,jdbcType=INTEGER}
+    where shid = #{shid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.animo.dao.RzvipMapper" >
+  <resultMap id="BaseResultMap" type="com.animo.pojo.Rzvip" >
+    <id column="rzid" property="rzid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="xl" property="xl" jdbcType="VARCHAR" />
+    <result column="ism" property="ism" jdbcType="VARCHAR" />
+    <result column="bschool" property="bschool" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="work" property="work" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="resint1" property="resint1" jdbcType="INTEGER" />
+    <result column="resint2" property="resint2" jdbcType="INTEGER" />
+    <result column="resstr1" property="resstr1" jdbcType="VARCHAR" />
+    <result column="resstr2" property="resstr2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rzid, uid, xl, ism, bschool, addr, work, age, resint1, resint2, resstr1, resstr2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rzvip
+    where rzid = #{rzid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rzvip
+    where rzid = #{rzid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.animo.pojo.Rzvip" >
+    insert into rzvip (rzid, uid, xl, 
+      ism, bschool, addr, 
+      work, age, resint1, 
+      resint2, resstr1, resstr2
+      )
+    values (#{rzid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{xl,jdbcType=VARCHAR}, 
+      #{ism,jdbcType=VARCHAR}, #{bschool,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{work,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{resint1,jdbcType=INTEGER}, 
+      #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=VARCHAR}, #{resstr2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.animo.pojo.Rzvip" >
+    insert into rzvip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rzid != null" >
+        rzid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="xl != null" >
+        xl,
+      </if>
+      <if test="ism != null" >
+        ism,
+      </if>
+      <if test="bschool != null" >
+        bschool,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="work != null" >
+        work,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="resint1 != null" >
+        resint1,
+      </if>
+      <if test="resint2 != null" >
+        resint2,
+      </if>
+      <if test="resstr1 != null" >
+        resstr1,
+      </if>
+      <if test="resstr2 != null" >
+        resstr2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rzid != null" >
+        #{rzid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="xl != null" >
+        #{xl,jdbcType=VARCHAR},
+      </if>
+      <if test="ism != null" >
+        #{ism,jdbcType=VARCHAR},
+      </if>
+      <if test="bschool != null" >
+        #{bschool,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="work != null" >
+        #{work,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="resint1 != null" >
+        #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Rzvip" >
+    update rzvip
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="xl != null" >
+        xl = #{xl,jdbcType=VARCHAR},
+      </if>
+      <if test="ism != null" >
+        ism = #{ism,jdbcType=VARCHAR},
+      </if>
+      <if test="bschool != null" >
+        bschool = #{bschool,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="work != null" >
+        work = #{work,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="resint1 != null" >
+        resint1 = #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        resint2 = #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        resstr1 = #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        resstr2 = #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rzid = #{rzid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Rzvip" >
+    update rzvip
+    set uid = #{uid,jdbcType=INTEGER},
+      xl = #{xl,jdbcType=VARCHAR},
+      ism = #{ism,jdbcType=VARCHAR},
+      bschool = #{bschool,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      work = #{work,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      resint1 = #{resint1,jdbcType=INTEGER},
+      resint2 = #{resint2,jdbcType=INTEGER},
+      resstr1 = #{resstr1,jdbcType=VARCHAR},
+      resstr2 = #{resstr2,jdbcType=VARCHAR}
+    where rzid = #{rzid,jdbcType=INTEGER}
+  </update>
+</mapper>
