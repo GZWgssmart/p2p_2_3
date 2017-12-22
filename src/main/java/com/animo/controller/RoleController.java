@@ -21,9 +21,6 @@ public class RoleController {
 
     private Role role;
 
-    private Integer pageNo;
-    private Integer pageSize;
-
     /**
      * 添加角色
      * @return
@@ -61,26 +58,12 @@ public class RoleController {
     }
 
     /**
-     * 分页测试
+     * 分页
+     * @return
      */
-    @RequestMapping
-    public Pager pagerRole(){
+    @RequestMapping("pager")
+    public Pager pagerRole(Integer pageNo, Integer pageSize){
         return roleService.listPager(pageNo,pageSize);
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public void setPageNo(Integer pageNo) {
-        this.pageNo = pageNo;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
 }
