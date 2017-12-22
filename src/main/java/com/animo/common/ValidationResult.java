@@ -1,7 +1,6 @@
 package com.animo.common;
 
 
-import java.util.Map;
 
 /**
  * Created by Animo on 2017-12-08.

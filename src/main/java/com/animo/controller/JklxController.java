@@ -22,8 +22,6 @@ public class JklxController {
 
     @PostMapping("save")
     public ServerResponse save(Jklx jklx){
-        serverResponse = jklxService.save(jklx);
-        return serverResponse;
+        return jklxService.save(jklx);
     }
-
 }

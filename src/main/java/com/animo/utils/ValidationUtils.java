@@ -17,6 +17,23 @@ public class ValidationUtils {
 
     private static Validator validator =  Validation.buildDefaultValidatorFactory().getValidator();
 
+    public static <T> ValidationResult validateEntity(T obj){
+        ValidationResult result = new ValidationResult();
+        Set<ConstraintViolation<T>> set = validator.validate(obj,Default.class);
+        if(!set.isEmpty()){
+            result.setHasErrors(true);
+            StringBuffer message= new StringBuffer("");
+            for(ConstraintViolation<T> cv : set){
+                if ("".equals(message.toString())) {
+                    message.append(cv.getMessage());
+                } else {
+                    message.append("/n").append(cv.getMessage());
+                }
+            }
+            result.setErrorMsg(message.toString());
+        }
+        return result;
+    }
 
     public static <T> ValidationResult validateProperty(T obj,String propertyName){
         ValidationResult result = new ValidationResult();

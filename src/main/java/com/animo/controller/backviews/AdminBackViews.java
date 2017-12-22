@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Animo on 2017-12-21.
  */
 @Controller
-@RequestMapping("/admin/back/")
+@RequestMapping("/back/admin")
 public class AdminBackViews {
 
 

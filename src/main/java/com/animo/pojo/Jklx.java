@@ -1,8 +1,13 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.validator.constraints.NotBlank;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Jklx {
     private Integer lxid;
 
+    @NotBlank(message = "类型名称不为空")
     private String lxname;
 
     private Integer status;
