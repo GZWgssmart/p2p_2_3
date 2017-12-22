@@ -58,7 +58,7 @@ public class RoleController {
     }
 
     /**
-     * 分页
+     * 角色分页
      * @return
      */
     @RequestMapping("pager")
