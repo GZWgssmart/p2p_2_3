@@ -1,6 +1,7 @@
 package com.animo.DxmodelService;
 
 import com.animo.BaseService.BaseServiceTest;
+import com.animo.common.Pager;
 import com.animo.pojo.Dxmodel;
 import com.animo.service.DxmodelService;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class DxmodelServiceTest extends BaseServiceTest {
     @Test
     public void DxmodelSave() {
         Dxmodel dxmodel = new Dxmodel();
-        dxmodel.setContent("我是第一个短信模板！！");
+        dxmodel.setContent("我是第二个短信模板！！");
         dxmodelService.save(dxmodel);
     }
     @Test
@@ -28,8 +29,17 @@ public class DxmodelServiceTest extends BaseServiceTest {
     public void DxmodelUpdateByPrimaryKey() {
 
         Dxmodel dxmodel = new Dxmodel();
-        dxmodel.setDxid(3);
-        dxmodel.setContent("我修改了短信模板");
+        dxmodel.setDxid(4);
+        dxmodel.setContent("我再次修改了短信模板");
         dxmodelService.update(dxmodel);
+    }
+
+    /**
+     * 分页查询
+     */
+    @Test
+    public void DxmodelListPager() {
+        Pager pager = dxmodelService.listPager(1, 2);
+        System.out.println(pager);
     }
 }
