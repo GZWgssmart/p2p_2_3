@@ -38,11 +38,11 @@ public class RoleController {
      * @return
      */
     @RequestMapping("update")
-    public ServerResponse updateRole(){
+    public ServerResponse updateRole(Integer id){
         role = new Role();
         role.setRname("CEO");
         role.setContent("我是CEO");
-        role.setRid(3);
+        role.setRid(id);
         return roleService.update(role);
     }
 
@@ -51,9 +51,9 @@ public class RoleController {
      * @return
      */
     @RequestMapping("delete")
-    public ServerResponse deleteRole(){
+    public ServerResponse deleteRole(Integer id){
         role = new Role();
-        role.setRid(3);
+        role.setRid(id);
         return roleService.removeById(role.getRid());
     }
 
