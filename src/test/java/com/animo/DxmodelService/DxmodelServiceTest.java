@@ -18,7 +18,7 @@ public class DxmodelServiceTest extends BaseServiceTest {
     @Test
     public void DxmodelSave() {
         Dxmodel dxmodel = new Dxmodel();
-        dxmodel.setContent("我是第二个短信模板！！");
+        dxmodel.setContent("我是第三个短信模板！！");
         dxmodelService.save(dxmodel);
     }
     @Test
