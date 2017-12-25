@@ -61,7 +61,7 @@
       SELECT  content FROM dxmodel limit #{beginIndex},#{pageSize}
     ]]>
 </select>
-  <select id="count" resultType="com.animo.pojo.Dxmodel" parameterType="com.animo.common.Pager">
+  <select id="count" resultType="long">
     <![CDATA[
       SELECT  count(dxid) FROM dxmodel
     ]]>

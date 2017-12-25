@@ -15,6 +15,18 @@
     from bz
     where bzid = #{bzid,jdbcType=INTEGER}
   </select>
+
+  <select id="listPager" parameterType="com.animo.common.Pager" resultType="bz">
+    <![CDATA[
+      SELECT bzname,status FROM bz limit #{beginIndex},#{pageSize}
+    ]]>
+  </select>
+
+ <select id="count" resultType="long" >
+    <![CDATA[
+      SELECT count(bzid) FROM bz
+    ]]>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from bz
     where bzid = #{bzid,jdbcType=INTEGER}
