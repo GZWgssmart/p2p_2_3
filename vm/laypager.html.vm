@@ -1,0 +1,36 @@
+<script>
+    layui.use(['laypage', 'layer'], function(){
+        var laypage = layui.laypage
+        $.getJSON('/activity/alljsonactivity', {pageNumber: 1,pageSize:8}, function(res){
+            laypage.render({
+                elem: 'demo3',
+                count: res.total, //数据总数，从服务端得到
+                limit :8,
+                jump: function(e, first){
+                    if (!first) {
+                        $("#activity_view").html("");
+                        $.getJSON('/activity/alljsonactivity', {
+                            pageNumber: e.curr,
+                            pageSize: e.limit
+                        }, function (res) {
+                            var t = $("#card-template").html();
+                            var f = Handlebars.compile(t);
+                            var h = f(res.activitys);
+                            $("#activity_view").html(h);
+                        });
+                    } else {
+                        var t = $("#card-template").html();
+                        var f = Handlebars.compile(t);
+                        var h = f(res.activitys);
+                        if(res.activitys==""){
+                            $("#activity_view").html("暂无活动");
+                        }else{
+                            $("#activity_view").html(h);
+                        }
+                    }
+                }
+            });
+        });
+
+    });
+</script>

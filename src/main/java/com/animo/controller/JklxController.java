@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Animo on 2017-12-22.
+ * 借款类型
  */
 @RestController
 @RequestMapping("jklx/data/json")
@@ -20,18 +21,34 @@ public class JklxController {
     @Autowired
     private JklxService jklxService;
 
-    private ServerResponse serverResponse;
 
+    /**
+     * 添加借款类型
+     * @param jklx
+     * @return
+     */
     @PostMapping("save")
     public ServerResponse save(Jklx jklx){
         return jklxService.save(jklx);
     }
 
+    /**
+     * 更新借款类型
+     * @param lxid
+     * @param status
+     * @return
+     */
     @GetMapping("updateStatus")
     public ServerResponse updateStatus(Integer lxid,Integer status){
         return jklxService.updateStatus(lxid,status);
     }
 
+    /**
+     * 借款类型分页
+     * @param page
+     * @param limit
+     * @return
+     */
     @GetMapping("pager")
     public Pager pager(int page, int limit){
         return jklxService.listPager(page,limit);

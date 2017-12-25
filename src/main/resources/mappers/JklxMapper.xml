@@ -81,7 +81,7 @@
 
   <select id="count" resultType="Long">
     <![CDATA[
-    SELECT count(lxid) FROM jklx WHERE status=0
+    SELECT count(lxid) FROM jklx
      ]]>
   </select>
 

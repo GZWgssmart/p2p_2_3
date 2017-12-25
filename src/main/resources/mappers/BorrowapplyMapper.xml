@@ -44,6 +44,9 @@
       #{resstr1,jdbcType=VARCHAR}, #{resstr2,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.Borrowapply" >
+    <selectKey keyProperty="baid" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID() AS ID
+    </selectKey>
     insert into borrowapply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="baid != null" >
@@ -195,5 +198,13 @@
       resstr1 = #{resstr1,jdbcType=VARCHAR},
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where baid = #{baid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateTime" parameterType="borrowapply">
+   <![CDATA[
+      UPDATE borrowapply
+      SET ckstatus=#{ckstatus},
+      cktime=#{cktime} where baid=#{baid}
+    ]]>
   </update>
 </mapper>
