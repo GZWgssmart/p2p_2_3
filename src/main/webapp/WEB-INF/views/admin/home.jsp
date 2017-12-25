@@ -39,7 +39,7 @@
                     <a href="javascript:;" class="wap">商城WAP</a>
                     <dl class="layui-nav-child">
                         <dd class="p10">
-                            <img src="img/pic.png" width="150px" height="150px" alt="">
+                            <%--<img src="img/pic.png" width="150px" height="150px" alt="">--%>
                             <p class="tac" style="color:#333;">扫一扫进入商城WAP</p>
                         </dd>
                     </dl>
