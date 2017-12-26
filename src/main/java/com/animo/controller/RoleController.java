@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author 叶小鹏
  * 测试角色的crud
@@ -64,6 +66,11 @@ public class RoleController {
     @RequestMapping("pager")
     public Pager pagerRole(Integer pageNo, Integer pageSize){
         return roleService.listPager(pageNo,pageSize);
+    }
+
+    @RequestMapping("all")
+    public List<Role> listAll(){
+        return roleService.listAll();
     }
 
 }

@@ -3,6 +3,8 @@ package com.animo.pojo;
 public class Role {
     private Integer rid;
 
+    private Integer pid;
+
     private String rname;
 
     private String content;
@@ -13,6 +15,14 @@ public class Role {
 
     public void setRid(Integer rid) {
         this.rid = rid;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
     public String getRname() {

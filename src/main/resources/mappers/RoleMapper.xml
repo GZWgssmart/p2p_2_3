@@ -79,4 +79,8 @@
     select count(rid) FROM role
   </select>
 
+  <select id="listAll" resultType="com.animo.pojo.Role">
+    SELECT * FROM role
+  </select>
+
 </mapper>
