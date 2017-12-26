@@ -5,6 +5,7 @@ import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.LogTx;
 import com.animo.pojo.User;
+import com.animo.pojo.Usermoney;
 import com.animo.service.LogTxService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class LogTxController {
     private HttpSession session;
 
     private LogTx logTx;
+    private Usermoney usermoney;
 
     /**
      * 申请提现
@@ -36,11 +38,17 @@ public class LogTxController {
      */
     @RequestMapping("withdraw")
     public ServerResponse<LogTx> withdraw(){
-        User user = (User) session.getAttribute(Constant.SESSION_USER);
-        logTx.setUid(user.getUid());
-        logTx.setStatus(0);
-        logTx.setCreatedTime(DateFormateUtils.Formate());
-        return logTxService.save(logTx);
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object != null ){
+            User user = (User) object;
+            logTx.setUid(user.getUid());
+            logTx.setStatus(0);
+            logTx.setMoney(usermoney.getKymoney());
+            logTx.setCreatedTime(DateFormateUtils.Formate());
+            return logTxService.save(logTx);
+        }else {
+            return ServerResponse.createByError("您的登录已经超时，申请提现失败！");
+        }
     }
 
     /**
@@ -49,7 +57,8 @@ public class LogTxController {
      * @param limit
      * @return
      */
-    public Pager pagerWithdrawRecord(Integer page,Integer limit){
+    @RequestMapping("listRecord")
+    public Pager listRecord(Integer page,Integer limit){
         return logTxService.listPager(page,limit);
     }
 }

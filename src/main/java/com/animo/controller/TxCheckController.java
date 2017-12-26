@@ -35,10 +35,15 @@ public class TxCheckController {
      */
     @RequestMapping("PassCheck")
     public ServerResponse passCheck(){
-        Huser huser = (Huser) session.getAttribute(Constant.SESSION_USER);
-        txCheck.setHuid(huser.getHuid());
-        txCheck.setIsok(1);
-        return txCheckService.update(txCheck);
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if (object !=null){
+            Huser huser = (Huser) object;
+            txCheck.setHuid(huser.getHuid());
+            txCheck.setIsok(1);
+            return txCheckService.update(txCheck);
+        }else {
+            return ServerResponse.createByError("您的登录已超时，审核失败!");
+        }
     }
 
     /**
@@ -47,8 +52,14 @@ public class TxCheckController {
      */
     @RequestMapping("refuseCheck")
     public ServerResponse refuseCheck(){
-        txCheck.setIsok(0);
-        return txCheckService.update(txCheck);
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if (object != null){
+            Huser huser = (Huser) object;
+            txCheck.setIsok(0);
+            return txCheckService.update(txCheck);
+        }else {
+            return ServerResponse.createByError("您的登录已经超时，拒绝审核失败！");
+        }
     }
 
     /**

@@ -34,17 +34,24 @@ public class LogCzController {
      */
     @RequestMapping("recharge")
     public ServerResponse<LogCz> save(){
-        User user = (User) session.getAttribute(Constant.SESSION_USER);
-        logCz.setUid(user.getUid());
-        logCz.setStatus(0);
-        logCz.setCreatedTime(DateFormateUtils.Formate());
-        return logCzService.save(logCz);
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object != null){
+            User user = (User) object;
+            logCz.setUid(user.getUid());
+            logCz.setStatus(0);
+            logCz.setCreatedTime(DateFormateUtils.Formate());
+            return logCzService.save(logCz);
+        }else {
+            return ServerResponse.createByError("您的登录已经超时，充值失败！");
+        }
+
     }
 
     /**
      * 分页查看充值记录
      * @return
      */
+    @RequestMapping("listRecord")
     public Pager listRecord(Integer page,Integer limit){
         return logCzService.listPager(page,limit);
     }
