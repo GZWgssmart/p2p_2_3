@@ -1,0 +1,415 @@
+@charset "utf-8";
+/*regist*/
+
+.nav-out p.index,
+.nav-out p.to-login {
+    width: 152px;
+    height: 50px;
+    margin-top: 40px;
+    float: right;
+}
+
+.nav-out p.to-login {
+    line-height: 38px;
+    text-align: right;
+}
+
+.AgreeMent{
+	width:800px;
+	height:500px;
+	margin:-250px 0 0 -400px;
+}
+.nav-out p.to-login a {
+    color: #319bff;
+}
+.nav-out p.to-login a:hover{
+	text-decoration: underline;
+}
+.regist-content {
+    width: 100%;
+    height: 660px;
+    background: url('../../images/login/regist.png') top center no-repeat;
+}
+
+.regist-exp {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #fff2d6;
+    color: #ffa13d;
+}
+
+.regist-box {
+    width: 372px;
+    margin: 0 auto;
+}
+
+.regist-box h3 {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 32px;
+    font-weight: normal;
+}
+
+.regist-box .agree {
+    line-height: 60px;
+}
+
+.regist-box .agree a{
+	color:#319bff;
+}
+
+.regist-box .agree input {
+    display: inline;
+    line-height: 60px;
+    margin-right: 3px;
+}
+
+.from-ext {
+    display: none;
+}
+
+
+/*login*/
+
+.nav-out {
+    width: 100%;
+    height: 120px;
+    background-color: #fff;
+}
+
+.nav-out p.index a {
+    display: block;
+    width: 110px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 40px;
+    border: 1px solid #d9d9d9;
+}
+
+.nav-out p.index a:hover {
+    border-color: #e62538;
+}
+
+.logo {
+    width: 520px;
+    padding-top: 30px;
+    float: left;
+}
+
+.login-content {
+    width: 100%;
+    height: 510px;
+    padding-top: 90px;
+    background: url(../../images/login/login.jpg) top center no-repeat;
+}
+
+.login-box {
+    width: 372px;
+    height: 390px;
+    background-color: #fff;
+    padding: 30px 34px 0;
+    float: right;
+}
+
+.login-top {
+    height: 20px;
+}
+
+.login-top>p {
+    float: right;
+    line-height: 20px;
+}
+
+.login-box .welcome {
+    font-size: 20px;
+    float: left;
+}
+
+.login-top>p a {
+    color: #319bff;
+}
+
+.from {
+    height: 46px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #cecece;
+}
+.from+.btn{
+	margin-top:10px;
+}
+.from.focus{
+	border-color:#6cb8ff;
+	box-shadow:0 0 2px #6cb8ff;
+}
+.loanhk{
+	float:left;
+}
+.from-msg {
+    position: relative;
+}
+
+.from label {
+    width: 45px;
+    height: 46px;
+    float: left;
+    border-right: 1px solid #cecece;
+}
+
+.from input {
+    width: 324px;
+    height: 46px;
+    text-indent: 14px;
+    line-height: 46px;
+}
+
+.from-text {
+    width: 100%;
+    height: 14px;
+    line-height: 14px;
+    margin-bottom: 20px;
+}
+
+.from-msg .msg-btn {
+    width: 140px;
+    height: 36px;
+    padding-top: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    background-color: #fff;
+}
+.from-msg .msg-btn button {
+    width: 139px;
+    height: 26px;
+    color: #319bff;
+    border-left: 1px solid #d9d9d9;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+.from-msg .hkmsg-btn {
+    width: 110px;
+    height: 36px;
+    padding-top: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    background-color: #fff;
+}
+.from-msg .hkmsg-btn button {
+    width: 110px;
+    height: 26px;
+    color: #319bff;
+    border-left: 1px solid #d9d9d9;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+.from-msg .msg-btn button.disabled {
+    cursor: default;
+    color: #999;
+}
+
+.from-text .code {
+    display: inline-block;
+    background-position: 84px -1233px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.forget {
+    height: 34px;
+    line-height: 34px;
+    text-align: right;
+}
+
+.forget a {
+    color: #888888;
+}
+
+.login-footer {
+    width: 100%;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    color: #999;
+    background-color:#fff;
+}
+
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/*pull*/
+
+.pull-box {
+    float: left;
+}
+
+.pull-box {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    background-color: #fff;
+}
+
+.pull-bg {
+    width: 0;
+    height: 46px;
+    line-height: 46px;
+    color: #fff;
+    text-align: center;
+    background-color: #72c713;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.pull-default {
+    width:307px;
+    height: 46px;
+    line-height: 46px;
+    padding-left:63px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 30%, #aff0ff 50%, rgba(0, 0, 0, 0.6) 70%);
+    background-blend-mode: hard-light;
+    background-size: 200%;
+    -webkit-animation: shine 4s infinite;
+}
+
+@-moz-document url-prefix() {
+    .pull-default {
+        background-color: transparent!important;
+    }
+}
+
+.pull-default-true {
+    width: 100%;
+    height: 46px;
+    color: #fff;
+    line-height: 46px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+@keyframes shine {
+    from {
+        background-position: 100%;
+    }
+    to {
+        background-position: 0;
+    }
+}
+
+@-webkit-keyframes shine {
+    from {
+        background-position: 100%;
+    }
+    to {
+        background-position: 0;
+    }
+}
+
+.pull-btn {
+    width: 46px;
+    height: 46px;
+    cursor: move;
+    border: 1px solid #d9d9d9;
+    background: url(../../images/login/icon.png) no-repeat left -1095px;
+    background-color: #fff;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    z-index: 4;
+}
+
+.pull-btn-true {
+    background-position: -45px -1095px;
+}
+
+.login-box .btn.disabled {
+    height: 46px;
+    border: 1px solid #e0e0e0;
+    background-color: #e6e6e6;
+    line-height: 46px;
+    color: #999;
+}
+
+
+/*registpay*/
+
+.registpay-content {
+    width: 1200px;
+    margin: 30px auto 0;
+    padding: 50px 0 100px 0;
+    background: url(../../images/login/product-loading.gif) no-repeat center center;
+    background-color: #fff;
+}
+
+.registpay-content .regist-box {
+    display: none;
+    background-color: #fff;
+}
+
+.registpay-content .regist-box h3 {
+    padding-top: 0;
+    font-size: 20px;
+}
+
+.registpay-content .hf-logo {
+    display: block;
+    margin: 0 auto;
+}
+
+
+/*recoverpwd*/
+
+.registpay-content .recover-box {
+    display: block;
+    background-color: #fff;
+}
+
+.recover-box .step {
+    display: none;
+}
+
+.recover-box .step-one {
+    display: block;
+}
+
+.from-result .success {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    padding-top: 150px;
+    background: url(../../images/login/success.png)center 35px no-repeat;
+    overflow: hidden;
+}
+
+.from-result p {
+    text-align: center;
+}

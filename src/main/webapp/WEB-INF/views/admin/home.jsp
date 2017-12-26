@@ -39,7 +39,7 @@
                     <a href="javascript:;" class="wap">商城WAP</a>
                     <dl class="layui-nav-child">
                         <dd class="p10">
-                            <img src="img/pic.png" width="150px" height="150px" alt="">
+                            <%--<img src="img/pic.png" width="150px" height="150px" alt="">--%>
                             <p class="tac" style="color:#333;">扫一扫进入商城WAP</p>
                         </dd>
                     </dl>
@@ -64,7 +64,7 @@
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree left-menu" lay-filter="left-menu">
                 <li class="layui-nav-item layui-this">
-                    <a href="javascript:;" data-url="<%=path%>/admin/index" data-id="1">后台首页</a>
+                    <a href="javascript:;" data-url="" data-id="1">后台首页</a>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">商品管理</a>
@@ -120,6 +120,14 @@
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="" data-id="24">操作日志</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">角色管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/role/pagerRole" data-id="25">所有角色</a>
                         </dd>
                     </dl>
                 </li>

@@ -242,4 +242,24 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+
+  <insert id="saveUser">
+    insert into t_user(phone, upwd)
+      values( #{phone}, #{upwd})
+
+  </insert>
+
+  <select id="getByTzm" resultType="user">
+    select * from t_user where tzm = #{tzm};
+
+  </select>
+
+  <select id="getByPhone" resultType="Integer">
+    select count(uid) from t_user where phone = #{phone}
+  </select>
+
+  <select id="getByPhonePwd" resultType="user">
+    select * from t_user where phone = #{phone} and upwd = #{upwd}
+  </select>
+
 </mapper>

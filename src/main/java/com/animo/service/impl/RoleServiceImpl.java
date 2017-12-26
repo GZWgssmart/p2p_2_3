@@ -8,6 +8,8 @@ import com.animo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService{
 
@@ -55,5 +57,10 @@ public class RoleServiceImpl implements RoleService{
         pager.setRows(roleMapper.listPager(pager));
         pager.setTotal(roleMapper.count());
         return pager;
+    }
+
+    @Override
+    public List<Role> listAll() {
+        return roleMapper.listAll();
     }
 }

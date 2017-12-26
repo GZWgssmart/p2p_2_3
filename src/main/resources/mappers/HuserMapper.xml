@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.animo.dao.HuserMapper" >
-  <resultMap id="BaseResultMap" type="com.animo.pojo.Huser" >
+<resultMap id="BaseResultMap" type="com.animo.pojo.Huser" >
     <id column="huid" property="huid" jdbcType="INTEGER" />
     <result column="rname" property="rname" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
@@ -149,4 +149,9 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where huid = #{huid,jdbcType=INTEGER}
   </update>
+
+  <select id="getByPhonePwd" resultType="huser">
+      select * from huser where phone = #{phone} and resstr1 = #{pwd}
+  </select>
+
 </mapper>

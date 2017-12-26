@@ -1,0 +1,58 @@
+package com.animo.controller;
+
+import com.animo.common.Pager;
+import com.animo.common.ServerResponse;
+import com.animo.pojo.Sway;
+import com.animo.service.SwayService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Created by CHEN JX on 2017/12/25.
+ */
+@RestController("/sway/data/json")
+public class SwayController {
+
+    @Autowired
+    private SwayService swayService;
+
+    /**
+     * 还款方式添加
+     * @param sway
+     * @return
+     */
+    @RequestMapping("save")
+    public ServerResponse<Sway> save(Sway sway) {
+        return swayService.save(sway);
+    }
+
+    /**
+     * 还款方式删除
+     * @param sid
+     * @return
+     */
+    @RequestMapping("remove")
+    public ServerResponse<Sway> removeById(Integer sid){
+     return swayService.removeById(sid);
+    }
+
+
+    /**
+     * 还款方式修改
+     * @return
+     */
+    @RequestMapping("update")
+    public ServerResponse<Sway> update(Sway sway) {
+        return swayService.update(sway);
+    }
+
+    /**
+     * 分页查询还款方式
+     * @return
+     */
+    @RequestMapping("pager")
+    public Pager pager(int pageNo,int pageSize) {
+        return swayService.listPager(pageNo,pageSize);
+    }
+}
