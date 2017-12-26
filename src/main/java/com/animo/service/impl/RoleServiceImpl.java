@@ -11,44 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
 
-    @Autowired
+
     private RoleMapper roleMapper;
 
-    @Override
-    public ServerResponse save(Object object) {
-        if (object != null){
-            Integer integer = roleMapper.insertSelective(object);
-            if (integer == 1){
-                return ServerResponse.createBySuccess("添加成功");
-            }else {
-                return ServerResponse.createByError("添加失败");
-            }
-        }
-        return ServerResponse.createByError("请输入内容");
-    }
-
-    @Override
-    public ServerResponse getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public ServerResponse updateStatus(Integer id, Integer sataus) {
-        return null;
-    }
-
-    @Override
-    public ServerResponse update(Object object) {
-        roleMapper.updateByPrimaryKey(object);
-        return ServerResponse.createBySuccess("更新成功");
-    }
-
-    @Override
-    public ServerResponse removeById(Integer id) {
-        roleMapper.deleteByPrimaryKey(id);
-        return ServerResponse.createBySuccess("删除成功");
+    @Autowired
+    public void setRoleMapper(RoleMapper roleMapper) {
+        super.setBaseMapper(roleMapper);
+        this.roleMapper = roleMapper;
     }
 
     @Override

@@ -154,7 +154,7 @@
                         </dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item">x
+                <li class="layui-nav-item">
                     <a href="javascript:;">角色管理</a>
                     <dl class="layui-nav-child">
                         <dd>

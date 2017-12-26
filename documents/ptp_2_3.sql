@@ -428,10 +428,11 @@ CREATE TABLE `reward_setting` (
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `rid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) DEFAULT NULL,
   `rname` varchar(50) NOT NULL,
   `content` varchar(100) NOT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role

@@ -7,7 +7,7 @@
     <result column="content" property="content" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    rid, rname, content
+    rid, pid, rname, content
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,9 +20,9 @@
     where rid = #{rid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.animo.pojo.Role" >
-    insert into role (rid, rname, content
+    insert into role (rid, rname, pid, content
       )
-    values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
+    values (#{rid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.Role" >
@@ -30,6 +30,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
         rid,
+      </if>
+      <if test="pid != null" >
+        pid,
       </if>
       <if test="rname != null" >
         rname,
@@ -41,6 +44,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
         #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid,
       </if>
       <if test="rname != null" >
         #{rname,jdbcType=VARCHAR},
@@ -59,19 +65,15 @@
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
       </if>
+      <if test="pid!=null">
+          pid = #{pid,jdbcType=INTEGER}
+      </if>
     </set>
     where rid = #{rid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Role" >
-    update role
-    set rname = #{rname,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR}
-    where rid = #{rid,jdbcType=INTEGER}
-  </update>
-
   <select id="listPager" resultType="com.animo.pojo.Role" parameterType="com.animo.common.Pager">
     <![CDATA[
-            select r.rid, r.rname, r.content from role AS r limit #{beginIndex}, #{pageSize}
+            select r.rid, r.pid, r.rname, r.content from role AS r limit #{beginIndex}, #{pageSize}
         ]]>
   </select>
 
