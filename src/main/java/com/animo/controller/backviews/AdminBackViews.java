@@ -22,4 +22,15 @@ public class AdminBackViews {
         return "admin/index";
     }
 
+    @GetMapping("list")
+    public String list() {
+        return "admin/list";
+    }
+
+    @GetMapping("add")
+    public String add() {
+        return "admin/add";
+    }
+
+
 }

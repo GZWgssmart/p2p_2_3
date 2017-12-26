@@ -89,7 +89,6 @@
             $("#adminLogin").serialize(),
             function (data) {
                 if (data.message === 'success') {
-                    alert("success");
                     window.location.href = "/back/admin/home";
                 } else {
                     alert(data.message);

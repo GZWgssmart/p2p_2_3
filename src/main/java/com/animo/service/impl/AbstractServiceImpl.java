@@ -6,6 +6,7 @@ import com.animo.common.ValidationResult;
 import com.animo.dao.BaseMapper;
 import com.animo.service.BaseService;
 import com.animo.utils.ValidationUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,6 +18,7 @@ public class AbstractServiceImpl implements BaseService{
 
     private ValidationResult validationResult;
 
+    @Autowired
     public void setBaseMapper(BaseMapper baseMapper) {
         this.baseMapper = baseMapper;
     }

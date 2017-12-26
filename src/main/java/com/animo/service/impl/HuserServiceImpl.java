@@ -10,13 +10,28 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 2017/12/25.
  */
 @Service
-public class HuserServiceImpl implements HuserService {
+public class HuserServiceImpl extends AbstractServiceImpl implements HuserService {
+
+    private HuserMapper huserMapper;
 
     @Autowired
-    private HuserMapper huserMapper;
+   public void setHuserMapper(HuserMapper huserMapper) {
+        super.setBaseMapper(huserMapper);
+        this.huserMapper = huserMapper;
+    }
 
     @Override
     public Huser getByPhonePwd(String phone, String pwd) {
         return huserMapper.getByPhonePwd(phone, pwd);
+    }
+
+    @Override
+    public int getByPhone(String phone) {
+        return huserMapper.getByPhone(phone);
+    }
+
+    @Override
+    public int saveHuser(Huser huser) {
+        return huserMapper.saveHuser(huser);
     }
 }
