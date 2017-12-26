@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by CHEN JX on 2017/12/25.
  */
-@RestController("/sway/data/json")
+@RestController
+@RequestMapping("/sway/data/json")
 public class SwayController {
 
     @Autowired
@@ -49,10 +50,12 @@ public class SwayController {
 
     /**
      * 分页查询还款方式
+     * @param page
+     * @param limit
      * @return
      */
     @RequestMapping("pager")
-    public Pager pager(int pageNo,int pageSize) {
-        return swayService.listPager(pageNo,pageSize);
+    public Pager pager(int page,int limit) {
+        return swayService.listPager(page,limit);
     }
 }

@@ -134,7 +134,27 @@
                         </dd>
                     </dl>
                 </li>
+
                 <li class="layui-nav-item">
+                    <a href="javascript:;">宣传管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/letter/pagerLetter" data-id="25">站内信添加</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">所有站内信</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">借款管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="25">所有标种</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">x
                     <a href="javascript:;">角色管理</a>
                     <dl class="layui-nav-child">
                         <dd>
@@ -142,6 +162,7 @@
                         </dd>
                     </dl>
                 </li>
+
             </ul>
         </div>
     </div>

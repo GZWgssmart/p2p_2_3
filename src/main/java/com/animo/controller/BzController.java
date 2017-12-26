@@ -49,12 +49,12 @@ public class BzController {
 
     /**
      * 标种分页
-     * @param pageNo
-     * @param pageSize
+     * @param
+     * @param
      * @return
      */
     @RequestMapping("pager")
-    public Pager pager(int pageNo, int pageSize) {
-        return bzService.listPager(pageNo,pageSize);
+    public Pager pager(int page, int limit) {
+        return bzService.listPager(page,limit);
     }
 }

@@ -56,12 +56,12 @@ public class DxmodelController {
 
     /**
      * 短信模板分页
-     * @param pageNo
-     * @param pageSize
+     * @param page
+     * @param limit
      * @return
      */
     @RequestMapping("pager")
-    public Pager pager(int pageNo,int pageSize) {
-        return dxmodelService.listPager(pageNo,pageSize);
+    public Pager pager(int page,int limit) {
+        return dxmodelService.listPager(page,limit);
     }
 }

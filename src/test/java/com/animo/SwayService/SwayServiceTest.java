@@ -22,10 +22,13 @@ public class SwayServiceTest extends BaseServiceTest{
         sway.setFw("前三期不用钱");
         swayService.save(sway);
     }
+
+
     @Test
     public void SwayDeleteByPrimaryKey() {
          swayService.removeById(1);
     }
+
     @Test
     public void SwayUpdateByPrimaryKey() {
         Sway sway = new Sway();
@@ -43,4 +46,5 @@ public class SwayServiceTest extends BaseServiceTest{
         Pager pager = swayService.listPager(1, 2);
         System.out.println(pager);
     }
+
 }
