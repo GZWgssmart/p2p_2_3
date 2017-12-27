@@ -18,7 +18,7 @@
   </select>
   <select id="listPager" parameterType="com.animo.common.Pager" resultType="sway">
     <![CDATA[
-      SELECT fw,way,status FROM sway limit #{beginIndex},#{pageSize}
+      SELECT * FROM sway limit #{beginIndex},#{pageSize}
     ]]>
   </select>
 

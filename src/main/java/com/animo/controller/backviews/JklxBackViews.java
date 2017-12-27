@@ -26,4 +26,8 @@ public class JklxBackViews {
         return null;
     }
 
+    @GetMapping("pagerJklx")
+    public String jklx(){
+        return "jklx/allJklx";
+    }
 }

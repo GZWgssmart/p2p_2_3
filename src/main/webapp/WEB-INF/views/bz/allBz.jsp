@@ -12,45 +12,138 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="<%=path%>/static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/common.css" media="all">
 </head>
-<body>
-<%--<table class="layui-hide" id="test" lay-filter="demo"></table>--%>
 
-AAA
+<body>
+<div id="app">
+<section class="larry-grid">
+    <div class="larry-personal">
+        <div class="layui-tab">
+
+            <div class="larry-separate"></div>
+            <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
+                <!-- 操作日志 -->
+                <div class="layui-tab-item layui-field-box layui-show">
+                    <table class="layui-hide" id="test" lay-filter="demo">
+                        <ul class="layui-tab-title">
+                               <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
+                            <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
+                            <a class="layui-btn layui-btn-small larry-log-del">
+                                <i class="iconfont icon-huishouzhan1">
+                                    </i>
+                                清空日志
+                            </a>
+                        </ul>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    <div id="testbz" style="display: none">
+        <input v-model="bz.bzname" /><button @click="update">更新</button>
+    </div>
+</div>
+<%--<script id="testbz" type="template">
+<div class="layui-form-item">
+
+    <div class="layui-input-block">
+        &lt;%&ndash;<input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">&ndash;%&gt;
+        <input type="text" placeholder="请输入" v-model="bz.bzname" />&lt;%&ndash;<button @click="update">更新</button>&ndash;%&gt;
+        <label class="layui-form-label">修改</label>
+    </div>
+</div>
+</script>--%>
+<script type="text/html" id="barDemo">
+    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+
+</script>
+
+
 </body>
-<script src="/static/layui/layui.all.js"></script>
-<%--<script>
-    layui.use([ 'laypage', 'layer', 'table', 'element'], function(){
+<script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script>
+
+    var vue = new Vue({
+        el:'#app',
+        data:{
+            bz:[]
+        },
+        methods:{
+            update(){
+                console.log(this.bz);
+            }
+        }
+    });
+
+    layui.use(['laypage', 'layer', 'table', 'element'], function () {
         var laypage = layui.laypage //分页
         layer = layui.layer //弹层
-            ,table = layui.table //表格
-            ,element = layui.element; //元素操作
+            , table = layui.table //表格
+            , element = layui.element; //元素操作
         //执行一个 table 实例
         table.render({
             elem: '#test'
-            ,height: 332
-            ,url: '/bz/data/json/pager' //数据接口
-            ,page: true //开启分页
-            ,limit:5//每页显示多少个
-            //后台Pager响应对象 不要动
-            ,response: {
+            , height: 332
+            , url: '/bz/data/json/pager' //数据接口
+            , page: true //开启分页
+            , limit: 5//每页显示多少个
+            , response: {
                 statusName: 'status'
-                ,statusCode: 0
-                ,msgName: 'message'
-                ,countName: 'total'
-                ,dataName: 'rows'
+                , statusCode: 0
+                , msgName: 'message'
+                , countName: 'total'
+                , dataName: 'rows'
             }
-            //后台Pager响应对象 不要动
-            //表头
-            ,cols: [[
-                {field: 'bzid', title: 'ID', width:80, sort:true},
-                {field: 'bzname', title: '标种名称', width:80},
-                {field: 'status', title: '状态', width:100},
+            , cols: [[ //表头
+                {field: 'bzid', title: 'ID', width: 80, sort: true, fixed: 'left'}
+                , {field: 'bzname', title: '标种名称', width: 120}
+                , {field: 'status', title: '状态', width: 120}
+                , {fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
-            //表头
+
+        });
+        //监听工具条
+        table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'detail'){
+                layer.msg('查看操作');
+            } else if(layEvent === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if(layEvent === 'edit'){
+                layer.open({
+                    type: 1,
+                    area: ['600px', '360px'],
+                    shadeClose: true, //点击遮罩关闭
+                    content: $("#testbz"),
+                    maxmin: true
+                    
+                });
+                vue.bz=data;
+            }
         });
 
     });
-</script>--%>
+
+    /**
+     * 监听点击工具
+     */
+
+
+
+</script>
 </html>

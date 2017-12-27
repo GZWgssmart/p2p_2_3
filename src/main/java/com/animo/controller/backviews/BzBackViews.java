@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("back/bz")
-public class BzBackController {
+public class BzBackViews {
 
     @RequestMapping("pagerBz")
     public String pagerBz() {

@@ -150,10 +150,25 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
+                    <a href="javascript:;">定时任务</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="25">短信模板</a>
+                        </dd>
+
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
                     <a href="javascript:;">借款管理</a>
                     <dl class="layui-nav-child">
                         <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="25">所有借款类型</a>
+                        </dd>
+                        <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="25">所有标种</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="25">所有还款方式</a>
                         </dd>
                     </dl>
                 </li>

@@ -58,7 +58,7 @@
   </update>
   <select id="listPager" resultType="com.animo.pojo.Dxmodel" parameterType="com.animo.common.Pager">
   <![CDATA[
-      SELECT  content FROM dxmodel limit #{beginIndex},#{pageSize}
+      SELECT  * FROM dxmodel limit #{beginIndex},#{pageSize}
     ]]>
 </select>
   <select id="count" resultType="long">

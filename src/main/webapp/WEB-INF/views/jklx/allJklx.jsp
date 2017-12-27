@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: CHEN JX
-  Date: 2017/12/26
-  Time: 15:33
+  Date: 2017/12/27
+  Time: 9:53
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,15 +16,9 @@
 </head>
 <body>
 <table class="layui-hide" id="test" lay-filter="demo"></table>
-
-<script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-
-</script>
 </body>
 <script src="<%=path%>/static/layui/layui.all.js"></script>
-<script src="<%=path%>/static/js/layer.js"></script>
+<%--<script src="<%=path%>/static/layui/layui.js"></script>--%>
 <script>
     layui.use([ 'laypage', 'layer', 'table', 'element'], function(){
         var laypage = layui.laypage //分页
@@ -35,7 +29,7 @@
         table.render({
             elem: '#test'
             ,height: 332
-            ,url: '/letter/data/json/pager' //数据接口
+            ,url: '/jklx/data/json/pager' //数据接口
             ,page: true //开启分页
             ,limit:5//每页显示多少个
             ,response: {
@@ -46,12 +40,9 @@
                 ,dataName: 'rows'
             }
             ,cols: [[ //表头
-                {field: 'lid', title: 'ID', width:80, sort: true, fixed: 'left'}
-                ,{field: 'title', title: '标题', width:120}
-                ,{field: 'content', title: '内容', width:120}
-                ,{field: 'createdTime', title: '添加时间', width:100}
-                ,{field: 'status', title: '状态', width:100}
-                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                {field: 'lxid', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'lxname', title: '借款名称', width:120}
+                ,{field: 'status', title: '状态', width:120}
 
             ]]
         });
@@ -68,9 +59,13 @@
                     //向服务端发送删除指令
                 });
             } else if(layEvent === 'edit'){
-               alert(data.title);
+                layer.msg('编辑操作');
             }
         });
     });
+
+
+
+
 </script>
 </html>
