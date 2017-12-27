@@ -7,7 +7,7 @@
 <body >
 <div id="app">
 
-    <input type="text" v-model="iid" />{{iid}}
+    <input type="text" v-model="iid" />{{userInfo.iid}}
 
     <input type="text" v-model.lazy="nname">{{nname}}
 
@@ -33,6 +33,12 @@
     new Vue({
         el:"#app",
         data:{
+
+            userInfo:{
+                sex: 0,
+                iid: '',
+            },
+
             sex:0,
             iid:'',
             nname:'',
@@ -91,15 +97,15 @@
         }
     })
 
-    //Post
-    //        var params = new URLSearchParams();
-    //        params.append('phone', this.phone);
-    //        params.append('password', this.password);
-    //        axios.post('/User/data/json/login',params).then((response)=>{
-    //            response.data.data
-    //        },(error)=>{
-    //
-    //        });
+
+            var params = new URLSearchParams();
+            params.append('phone', this.phone);
+            params.append('password', this.password);
+            axios.post('/User/data/json/login',params).then((response)=>{
+                response.data.data
+            },(error)=>{
+
+            });
 
 
     //    一次性请求多条数据

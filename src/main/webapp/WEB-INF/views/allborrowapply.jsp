@@ -67,7 +67,7 @@
             <ul class="invest-row listData creditor-row" >
 
                 <li v-for="item in rows">
-                    <div class="invest-title cl"><p>{{item.bzname}}</p><h3><a @click="detail(item.baid,item.bdid)">{{item.cpname}}</a></h3></div>
+                    <div class="invest-title cl"><p>{{item.bzname}}</p><h3><a @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></h3></div>
                     <div class="invest-content cl">
                         <ul>
                             <li class="row1"><p class="row-top">预期年化收益率</p><p class="row-bottom color">{{item.nprofit}}<span>%</span></p></li>
@@ -153,7 +153,7 @@
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script src="<%=path%>/static/js/axios.min.js/"></script>
 <script src="<%=path%>/static/js/vue.min.js/"></script>
-<script src="<%=path%>/static/layui/layui.all.js"></script>
+<script src="<%=path%>/static/layui/layui.js"></script>
 <script>
 
     var laypage;
@@ -237,8 +237,8 @@
                     vue.rows = res.rows;
                 });
             },
-            detail (baid,bdid) {
-                alert(baid+"*******"+bdid);
+            detail (baid,bdid,bzname) {
+                window.location.href='/borrowapply/info/'+baid+'/'+bdid+'/'+bzname
             }
         },
         watch:{

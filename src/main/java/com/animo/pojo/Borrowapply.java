@@ -1,5 +1,6 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -23,6 +24,7 @@ public class Borrowapply {
     @NotNull(message = "请选择标种")
     private Integer bzid;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date cktime;
 
     private Integer ckstatus;
@@ -32,6 +34,7 @@ public class Borrowapply {
 
     private Integer term;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date deadline;
 
     private Integer resint1;

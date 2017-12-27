@@ -21,7 +21,7 @@
     baid, rname, money, uid, bzid, cktime, ckstatus, type, term, deadline, resint1, resint2, 
     resstr1, resstr2
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultType="borrowapply" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from borrowapply

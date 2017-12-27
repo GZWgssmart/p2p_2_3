@@ -26,7 +26,7 @@
     bdid, fpic, ypic, qpic, tpic, mpurpose, hksource, suggest, xmdes, guarantee, money, 
     nprofit, way, cpname, baid, resint1, resint2, resstr1, resstr2
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultType="com.animo.pojo.Borrowdetail" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from borrowdetail
