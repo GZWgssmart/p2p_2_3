@@ -23,15 +23,12 @@ public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
     }
 
     @Override
-    public Pager listPager(int pageNo, int pageSize) {
-        Pager pager = new Pager(pageNo, pageSize);
-        pager.setRows(roleMapper.listPager(pager));
-        pager.setTotal(roleMapper.count());
-        return pager;
+    public List<Role> listAll() {
+        return roleMapper.listAll();
     }
 
     @Override
-    public List<Role> listAll() {
-        return roleMapper.listAll();
+    public List<Role> listByPid(Integer pid) {
+        return roleMapper.listByPid(pid);
     }
 }

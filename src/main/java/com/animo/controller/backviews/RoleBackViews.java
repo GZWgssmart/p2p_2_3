@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/back/role")
 public class RoleBackViews {
 
-
     @GetMapping("pagerRole")
    public String listRoles(){
        return "role/roles";

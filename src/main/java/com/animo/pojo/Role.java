@@ -1,10 +1,15 @@
 package com.animo.pojo;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Role {
+
     private Integer rid;
 
+//    @NotBlank(message = "部门不能为空")
     private Integer pid;
 
+//    @NotBlank(message = "不能为空")
     private String rname;
 
     private String content;

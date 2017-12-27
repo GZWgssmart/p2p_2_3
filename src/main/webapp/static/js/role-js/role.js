@@ -5,15 +5,16 @@
 
 var roleObj = {"rid":"", "pid":"", "rname":"", "nodeNum":"", "content":""};
 
-function editRole() {
-    // var node = roleObj.nodeNum;
-    // if (node == 0 || node >1){
-    //     alert("请选择一个角色！");
-    // }else {
-    //
-    // }
-    // console.log(roleObj);
-}
+
+// function editRole() {
+//     // var node = roleObj.nodeNum;
+//     // if (node == 0 || node >1){
+//     //     alert("请选择一个角色！");
+//     // }else {
+//     //
+//     // }
+//     // console.log(roleObj);
+// }
 
 /**
  * 节点名称修改回调函数
@@ -33,11 +34,6 @@ function zTreeOnRename(event, treeId, treeNode, isCancel) {
         params.append('content', treeId.content);
         axios.post(' /role/data/json/update', params)
             .then((response)=>{
-            // alert(response.data.message);
-            //     layui.use(['layer'], function(){
-            //         var layer = layui.layer;
-            //         layer.msg(response.data.message);
-            //     });
                 layer.msg(response.data.message);
         },(error)=>{
                 layer.msg("请求失败");
@@ -49,23 +45,22 @@ function zTreeOnRename(event, treeId, treeNode, isCancel) {
     }
 }
 /**
- * 添加节点按钮
+ * 添加自定义节点按钮
  * @param treeId
  * @param treeNode
  */
 function addHoverDom(treeId, treeNode) {
-    // var aObj = $("#" + treeNode.tId + "_a");
-    // if ($("#diyBtn_"+treeNode.id).length>0) return;
-    // var editStr = "<span id='diyBtn_space_" +treeNode.id+ "' > </span>"
-    //     + "<button type='button' class='diyBtn1' id='diyBtn_" + treeNode.id
-    //     + "' title='"+treeNode.name+"' onfocus='this.blur();'></button>";
-    // aObj.append(editStr);
-    var btn = $("#diyBtn_"+treeNode.id);
-    if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
 };
+
+/**
+ * 鼠标移开，隐藏按钮
+ * @param treeId
+ * @param treeNode
+ */
 function removeHoverDom(treeId, treeNode) {
     $("#diyBtn_"+treeNode.id).unbind().remove();
     $("#diyBtn_space_" +treeNode.id).unbind().remove();
+    // $("#addBtn_"+treeNode.id).unbind().remove();
 };
 /**
  * 是否可以编辑
@@ -104,14 +99,14 @@ function zTreeBeforeRemove(treeId, treeNode) {
 /**
  * 显示选中的个数
  */
-function getNodes(checked) {
-    new Vue({
-        el:'#nodeTip',
-        data:{
-            checked:checked,
-        }
-    })
-}
+// function getNodes(checked) {
+//     new Vue({
+//         el:'#nodeTip',
+//         data:{
+//             checked:checked,
+//         }
+//     })
+// }
 /**
  * commbox状态改变回调函数
  * @param event

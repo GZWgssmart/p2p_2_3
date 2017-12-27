@@ -5,6 +5,7 @@ import com.animo.common.ServerResponse;
 import com.animo.pojo.Role;
 import com.animo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,11 +28,8 @@ public class RoleController {
      * 添加角色
      * @return
      */
-    @RequestMapping("save")
-    public ServerResponse saveRole(){
-        role = new Role();
-        role.setRname("财务经理");
-        role.setContent("公司资金管理者");
+    @PostMapping("save")
+    public ServerResponse saveRole(Role role){
         return roleService.save(role);
     }
 
@@ -67,4 +65,14 @@ public class RoleController {
         return roleService.listAll();
     }
 
+
+    /**
+     * 所有部门
+     * @param role
+     * @return
+     */
+    @RequestMapping("dep")
+    public List<Role> listByPid(Role role) {
+        return roleService.listByPid(role.getPid());
+    }
 }
