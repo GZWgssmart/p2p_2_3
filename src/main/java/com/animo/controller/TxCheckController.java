@@ -26,11 +26,10 @@ public class TxCheckController {
 
     @Autowired
     private TxCheckService txCheckService;
-    private HttpSession session;
-    private TxCheck txCheck;
+
 
     /**
-     * 通过审核
+     * 管理员对提现申请进行审核
      * @return
      */
     @RequestMapping("PassCheck")
@@ -47,7 +46,7 @@ public class TxCheckController {
     }
 
     /**
-     * 拒绝审核
+     * 管理员拒绝用户提现申请
      * @return
      */
     @RequestMapping("refuseCheck")
@@ -63,7 +62,7 @@ public class TxCheckController {
     }
 
     /**
-     * 分页查看提现需要审核记录
+     * 管理员查看审核记录，分页显示
      * @param page
      * @param limit
      * @return

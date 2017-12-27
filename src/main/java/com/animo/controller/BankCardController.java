@@ -26,6 +26,12 @@ public class BankCardController {
     @Autowired
     private BankCardService bankCardService;
 
+    /**
+     * 用户绑定银行卡
+     * @param session
+     * @param bankcard
+     * @return
+     */
     @RequestMapping("save")
     public ServerResponse<Bankcard> bindBankCard(HttpSession session,Bankcard bankcard){
         Object object = session.getAttribute(Constant.SESSION_USER);
@@ -37,5 +43,37 @@ public class BankCardController {
             return bankCardService.save(bankcard);
         }
         return ServerResponse.createByError("您的登录已经超时,绑定失败！");
+    }
+
+    /**
+     * 查询出用户绑定的所有的银行卡
+     * @param session
+     * @param bankcard
+     * @return
+     */
+    public ServerResponse<Bankcard> listBankCards(HttpSession session,Bankcard bankcard){
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object != null){
+            User user = (User) object;
+            return bankCardService.getById(user.getUid());
+        }else {
+            return ServerResponse.createByError("您的登录已经超时，请重新登录！");
+        }
+    }
+
+    /**
+     * 用户对银行卡解除绑定
+     * @param session
+     * @param bankcard
+     * @return
+     */
+    public ServerResponse<Bankcard> deleteBankCards(HttpSession session,Bankcard bankcard){
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object != null){
+            User user = (User) object;
+            return bankCardService.removeById(user.getUid());
+        }else {
+            return ServerResponse.createByError("您的登录已经超时，请重新登录！");
+        }
     }
 }

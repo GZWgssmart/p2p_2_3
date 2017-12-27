@@ -27,7 +27,7 @@ public class LogCzController {
     private LogCzService logCzService;
 
     /**
-     * 充值
+     * 用户充值
      * @return
      */
     @RequestMapping("recharge")
@@ -46,7 +46,7 @@ public class LogCzController {
     }
 
     /**
-     * 分页查看充值记录
+     * 用户查看充值记录，分页显示
      * @return
      */
     @RequestMapping("listRecord")

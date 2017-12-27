@@ -31,7 +31,7 @@ public class LogTxController {
     private Usermoney usermoney;
 
     /**
-     * 申请提现
+     * 用户申请提现
      * @return
      */
     @RequestMapping("withdraw")
@@ -50,7 +50,7 @@ public class LogTxController {
     }
 
     /**
-     * 分页显示提现记录
+     * 用户查看提现记录，分页显示
      * @param page
      * @param limit
      * @return
