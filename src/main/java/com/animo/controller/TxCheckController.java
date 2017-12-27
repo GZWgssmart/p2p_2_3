@@ -34,7 +34,7 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("PassCheck")
-    public ServerResponse passCheck(){
+    public ServerResponse passCheck(HttpSession session,TxCheck txCheck){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if (object !=null){
             Huser huser = (Huser) object;
@@ -51,7 +51,7 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("refuseCheck")
-    public ServerResponse refuseCheck(){
+    public ServerResponse refuseCheck(HttpSession session,TxCheck txCheck){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if (object != null){
             Huser huser = (Huser) object;

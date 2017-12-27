@@ -25,15 +25,13 @@ public class LogCzController {
 
     @Autowired
     private LogCzService logCzService;
-    private HttpSession session;
-    private LogCz logCz;
 
     /**
      * 充值
      * @return
      */
     @RequestMapping("recharge")
-    public ServerResponse<LogCz> save(){
+    public ServerResponse<LogCz> save(HttpSession session,LogCz logCz){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;

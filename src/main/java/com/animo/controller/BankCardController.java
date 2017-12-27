@@ -25,12 +25,9 @@ public class BankCardController {
 
     @Autowired
     private BankCardService bankCardService;
-    private HttpSession session;
-    private ServerResponse serverResponse;
-    private Bankcard bankcard;
 
     @RequestMapping("save")
-    public ServerResponse<Bankcard> bindBankCard(Bankcard bankcard){
+    public ServerResponse<Bankcard> bindBankCard(HttpSession session,Bankcard bankcard){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;

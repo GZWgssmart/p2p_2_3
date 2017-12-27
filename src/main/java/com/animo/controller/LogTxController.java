@@ -27,9 +27,7 @@ public class LogTxController {
 
     @Autowired
     private LogTxService logTxService;
-    private HttpSession session;
 
-    private LogTx logTx;
     private Usermoney usermoney;
 
     /**
@@ -37,7 +35,7 @@ public class LogTxController {
      * @return
      */
     @RequestMapping("withdraw")
-    public ServerResponse<LogTx> withdraw(){
+    public ServerResponse<LogTx> withdraw(HttpSession session,LogTx logTx){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null ){
             User user = (User) object;
