@@ -5,7 +5,7 @@ import com.animo.pojo.User;
 /**
  * Created by Administrator on 2017/12/25.
  */
-public interface UserService {
+public interface UserService extends BaseService {
 
     User getByTzm(Integer tzm);
     int saveUser(String phone, String upwd);

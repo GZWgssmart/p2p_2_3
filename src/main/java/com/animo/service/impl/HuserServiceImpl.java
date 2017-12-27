@@ -34,4 +34,9 @@ public class HuserServiceImpl extends AbstractServiceImpl implements HuserServic
     public int saveHuser(Huser huser) {
         return huserMapper.saveHuser(huser);
     }
+
+    @Override
+    public void updatePwd(String pwd, Integer huid) {
+        huserMapper.updatePwd(pwd, huid);
+    }
 }

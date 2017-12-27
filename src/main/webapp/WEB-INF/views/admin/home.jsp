@@ -47,11 +47,11 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">137****6116</a>
                     <dl class="layui-nav-child">
-                        <dd>
+                       <%-- <dd>
                             <a href="javascript:;" class="edit-password">修改密码</a>
-                        </dd>
+                        </dd>--%>
                         <dd>
-                            <a href="登录.html">退出登录</a>
+                            <a href="<%=path%>/admin/data/json/logout" >退出登录</a>
                         </dd>
                     </dl>
                 </li>
@@ -70,7 +70,7 @@
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/" data-id="2">用户列表</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="2">用户列表</a>
                         </dd>
                     </dl>
                 </li>
@@ -78,10 +78,13 @@
                     <a href="javascript:;">管理员管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/add" data-id="3">添加</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/add" data-id="3">添加管理员</a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="4">管理员列表</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="6">修改密码</a>
                         </dd>
                     </dl>
                 </li>

@@ -1,6 +1,7 @@
 package com.animo.controller;
 
 import com.animo.common.EncryptUtils;
+import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.User;
@@ -53,4 +54,18 @@ public class UserController {
         }
         return ServerResponse.createByError("error");
     }
+
+    @GetMapping(value="list")
+    public Pager list(int page, int limit) {
+        return userService.listPager(page-0, limit-1);
+    }
+
+    //退出
+    @RequestMapping("logout")
+    public String logout(HttpSession session) {
+        User user = (User)session.getAttribute(Constant.SESSION_USER);
+        session.invalidate();
+        return "index";
+    }
+
 }

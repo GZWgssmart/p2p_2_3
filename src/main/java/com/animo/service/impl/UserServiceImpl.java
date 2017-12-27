@@ -10,10 +10,16 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 2017/12/25.
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends AbstractServiceImpl implements UserService {
+
+
+    private UserMapper userMapper;
 
     @Autowired
-    private UserMapper userMapper;
+    public void setUserMapper(UserMapper userMapper) {
+        super.setBaseMapper(userMapper);
+        this.userMapper = userMapper;
+    }
 
     @Override
     public User getByTzm(Integer tzm) {

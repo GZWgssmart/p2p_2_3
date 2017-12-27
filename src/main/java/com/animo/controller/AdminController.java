@@ -72,4 +72,30 @@ public class AdminController {
         return huserService.listPager(page-0, limit-1);
     }
 
+    //退出
+    @GetMapping("logout")
+    public String logout(HttpSession session) {
+        Huser huser = (Huser)session.getAttribute(Constant.SESSION_ADMIN);
+        session.invalidate();
+        return "/index";
+    }
+
+    @PostMapping("updatePwd")
+    public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
+        Huser huser = (Huser) session.getAttribute(Constant.SESSION_ADMIN);
+        System.out.println(huser.getResstr1());
+        System.out.println(EncryptUtils.md5(pwd));
+        if(EncryptUtils.md5(pwd) == huser.getResstr1()) {
+            if(EncryptUtils.md5(nowPwd) == EncryptUtils.md5(rePwd)) {
+                huserService.updatePwd(EncryptUtils.md5(nowPwd), huser.getHuid());
+                return ServerResponse.createBySuccess("success");
+            }else{
+                System.out.println(EncryptUtils.md5(nowPwd));
+                return ServerResponse.createByError("两次密码不一致");
+            }
+        }else {
+            return ServerResponse.createByError("原密码不正确");
+        }
+    }
+
 }

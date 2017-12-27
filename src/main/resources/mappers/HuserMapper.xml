@@ -166,7 +166,7 @@
   <!--BaseMapper中的分页-->
   <select id="listPager" parameterType="com.animo.common.Pager" resultType="com.animo.pojo.Huser">
     <![CDATA[
-			select h.huid, h.huname, h.rname, h.sex, h.phone, h.email, h.resstr2
+			select h.huid, h.huname, h.rname, h.sex, h.phone, h.email, h.resstr2, h.resint1
 			from huser h
 			limit #{beginIndex}, #{pageSize}
 		]]>
@@ -176,5 +176,11 @@
   <select id="count" resultType="long">
     select count(huid) from huser;
   </select>
+
+  <update id="updatePwd">
+    <![CDATA[
+      update huser set resstr1 = #{pwd} where huid = #{huid};
+    ]]>
+  </update>
 
 </mapper>

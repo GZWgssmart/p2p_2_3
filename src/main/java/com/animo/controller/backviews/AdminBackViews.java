@@ -32,5 +32,10 @@ public class AdminBackViews {
         return "admin/add";
     }
 
+    @GetMapping("password")
+    public String password() {
+        return "admin/password";
+    }
+
 
 }

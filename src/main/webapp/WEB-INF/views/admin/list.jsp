@@ -53,7 +53,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#admin'
-            ,height: 480
+            ,height: 465
             ,url: '<%=path%>/admin/data/json/list' //数据接口接口地址。默认会自动传递两个参数：?page=1&limit=30（该参数可通过 request 自定义）page 代表当前页码、limit 代表每页数据量
             ,page: true//开启分页
             ,limit:10
