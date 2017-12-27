@@ -80,4 +80,10 @@
       status = #{status,jdbcType=INTEGER}
     where bzid = #{bzid,jdbcType=INTEGER}
   </update>
+
+  <select id="list" resultType="bz">
+    <![CDATA[
+      SELECT b.bzid,b.bzname FROM bz AS b WHERE status = 0
+    ]]>
+  </select>
 </mapper>

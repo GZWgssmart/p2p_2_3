@@ -207,4 +207,48 @@
       cktime=#{cktime} where baid=#{baid}
     ]]>
   </update>
+
+  <select id="three" resultType="com.animo.vo.BorrowapplyVo">
+    <![CDATA[
+      SELECT b.bzid,bo.baid,b.bzname,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
+       FROM borrowapply AS bo,borrowdetail AS bd,bz AS b WHERE bo.baid=bd.baid AND bo.bzid=b.bzid AND bo.bzid=#{bzid}
+      ORDER BY RAND() LIMIT 3
+    ]]>
+  </select>
+
+  <sql id="form">
+    FROM borrowapply AS bo,borrowdetail AS bd,bz AS b
+    WHERE bo.baid=bd.baid AND bo.bzid=b.bzid
+  </sql>
+
+  <sql id="if">
+    <if test="query!=null and query.bzid!=null and query.bzid!= ''">
+      AND b.bzid=#{query.bzid}
+    </if>
+    <if test="query!=null and query.qprofit!=null or query.hprofit!=null ">
+      AND bd.nprofit between #{query.qprofit} AND #{query.hprofit}
+    </if>
+    <if test="query!=null and query.qterm!=null or query.hterm!=null">
+      AND bo.term between #{query.qterm} AND #{query.hterm}
+    </if>
+    <if test="query!=null and query.cpname!=null and query.cpname!='' ">
+      AND bd.cpname like concat('%', #{query.cpname}, '%')
+    </if>
+  </sql>
+
+  <select id="listPagerCriteria" resultType="com.animo.vo.BorrowapplyVo">
+    <![CDATA[
+        SELECT b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
+    ]]>
+    <include refid="form"></include>
+    <include refid="if"></include>
+    limit #{pager.beginIndex}, #{pager.pageSize}
+  </select>
+
+  <select id="countCriteria" resultType="long" parameterType="com.animo.query.BorrowapplyQuery">
+    select count(bo.baid)
+    <include refid="form" />
+    <include refid="if" />
+  </select>
+
 </mapper>

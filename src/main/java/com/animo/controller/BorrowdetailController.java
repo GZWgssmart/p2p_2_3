@@ -23,7 +23,7 @@ public class BorrowdetailController {
      * @param bdid
      * @return
      */
-    @GetMapping("info")
+    @GetMapping("info/{bdid}")
     public ServerResponse info(Integer bdid){
         return borrowdetailService.getById(bdid);
     }
