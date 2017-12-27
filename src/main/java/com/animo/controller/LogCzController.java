@@ -8,6 +8,7 @@ import com.animo.pojo.User;
 import com.animo.service.LogCzService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,8 +50,8 @@ public class LogCzController {
      * 用户查看充值记录，分页显示
      * @return
      */
-    @RequestMapping("listRecord")
-    public Pager listRecord(Integer page,Integer limit){
+    @RequestMapping("listRecord/{page}/{limit}")
+    public Pager listRecord(@PathVariable("page") int page, @PathVariable("limit") int limit){
         return logCzService.listPager(page,limit);
     }
 }
