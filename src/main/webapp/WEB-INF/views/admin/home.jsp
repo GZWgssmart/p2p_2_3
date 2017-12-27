@@ -102,6 +102,9 @@
                         <dd>
                             <a href="javascript:;" data-url="" data-id="8">首页轮播图</a>
                         </dd>
+                        <dd>
+                        <a href="javascript:;" data-url="/back/dyna/pager" data-id="8">公司动态</a>
+                    </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">

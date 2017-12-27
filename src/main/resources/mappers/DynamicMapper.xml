@@ -90,4 +90,17 @@
       created_time = #{createdTime,jdbcType=TIMESTAMP}
     where dyid = #{dyid,jdbcType=INTEGER}
   </update>
+
+
+
+  <select id="listPager" resultType="com.animo.pojo.Dynamic" parameterType="com.animo.common.Pager">
+    <![CDATA[
+            select d.dyid, d.title,d.content, d.created_time,d.pic from dynamic AS d limit #{beginIndex}, #{pageSize}
+        ]]>
+  </select>
+
+  <select id="count" resultType="long">
+    select count(dyid) FROM dynamic
+  </select>
+
 </mapper>

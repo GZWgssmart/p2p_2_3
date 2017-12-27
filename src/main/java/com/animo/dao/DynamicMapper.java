@@ -1,5 +1,8 @@
 package com.animo.dao;
 
-public interface DynamicMapper extends BaseMapper{
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DynamicMapper extends BaseMapper {
 
 }
