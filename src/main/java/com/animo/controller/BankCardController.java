@@ -31,10 +31,14 @@ public class BankCardController {
 
     @RequestMapping("save")
     public ServerResponse<Bankcard> bindBankCard(Bankcard bankcard){
-        User user = (User) session.getAttribute(Constant.SESSION_USER);
-        bankcard.setUid(user.getUid());
-        bankcard.setStatus(0);
-        bankcard.setBktime(DateFormateUtils.Formate());
-        return bankCardService.save(bankcard);
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object != null){
+            User user = (User) object;
+            bankcard.setUid(user.getUid());
+            bankcard.setStatus(0);
+            bankcard.setBktime(DateFormateUtils.Formate());
+            return bankCardService.save(bankcard);
+        }
+        return ServerResponse.createByError("您的登录已经超时,绑定失败！");
     }
 }

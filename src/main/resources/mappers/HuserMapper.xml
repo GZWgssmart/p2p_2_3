@@ -154,4 +154,27 @@
       select * from huser where phone = #{phone} and resstr1 = #{pwd}
   </select>
 
+  <select id="getByPhone" resultType="Integer">
+    select count(huid) from huser where phone = #{phone}
+  </select>
+
+  <insert id="saveHuser">
+      insert into huser(huid, rname, sex, phone, huname, email, resint1, resint2, resstr1, resstr2)
+      values(#{huid}, #{rname},#{sex}, #{phone}, #{huname}, #{email}, #{resint1}, #{resint2}, #{resstr1}, #{resstr2});
+  </insert>
+
+  <!--BaseMapper中的分页-->
+  <select id="listPager" parameterType="com.animo.common.Pager" resultType="com.animo.pojo.Huser">
+    <![CDATA[
+			select h.huid, h.huname, h.rname, h.sex, h.phone, h.email, h.resstr2
+			from huser h
+			limit #{beginIndex}, #{pageSize}
+		]]>
+  </select>
+
+  <!--BaseMapper中的计数-->
+  <select id="count" resultType="long">
+    select count(huid) from huser;
+  </select>
+
 </mapper>

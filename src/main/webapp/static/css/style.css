@@ -128,6 +128,7 @@ textarea{
 	display: block;
 }
 .login-list .btn:hover{
+	cursor:pointer;
 	background:#1db7a8;
 }
 .login-list .yzm{

@@ -17,6 +17,18 @@
     from letter
     where lid = #{lid,jdbcType=INTEGER}
   </select>
+
+  <select id="listPager" resultType="com.animo.pojo.Letter" parameterType="com.animo.common.Pager">
+    <![CDATA[
+      SELECT *  FROM letter limit #{beginIndex},#{pageSize}
+    ]]>
+  </select>
+  <select id="count" resultType="long">
+    <![CDATA[
+      SELECT count(lid) FROM letter
+    ]]>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from letter
     where lid = #{lid,jdbcType=INTEGER}

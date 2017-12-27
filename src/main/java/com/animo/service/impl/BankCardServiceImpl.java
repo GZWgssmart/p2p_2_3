@@ -22,6 +22,7 @@ public class BankCardServiceImpl extends AbstractServiceImpl implements BankCard
 
     private BankcardMapper bankcardMapper;
 
+
     public void setBankcardMapper(BankcardMapper bankcardMapper){
         super.setBaseMapper(bankcardMapper);
         this.bankcardMapper = bankcardMapper;

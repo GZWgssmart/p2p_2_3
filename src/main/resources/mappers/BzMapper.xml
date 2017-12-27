@@ -18,7 +18,7 @@
 
   <select id="listPager" parameterType="com.animo.common.Pager" resultType="bz">
     <![CDATA[
-      SELECT bzname,status FROM bz limit #{beginIndex},#{pageSize}
+      SELECT * FROM bz limit #{beginIndex},#{pageSize}
     ]]>
   </select>
 

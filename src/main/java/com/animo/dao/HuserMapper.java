@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HuserMapper extends BaseMapper{
 
-    Huser getByPhonePwd(@Param("phone") String phone,@Param("pwd") String pwd);
-
+    Huser getByPhonePwd(@Param("phone") String phone, @Param("pwd") String pwd);
+    int getByPhone(String phone);
+    int saveHuser(Huser huser);
 
 }

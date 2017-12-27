@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>后台管理——p2p</title>
-    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="<%=path%>/static/layui1/css/layui.css"/>
     <link rel="stylesheet" href="<%=path%>/static/css/admin.css"/>
 </head>
 <body>
@@ -67,10 +67,21 @@
                     <a href="javascript:;" data-url="" data-id="1">后台首页</a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">商品管理</a>
+                    <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="" data-id="2">平台商品</a>
+                            <a href="javascript:;" data-url="<%=path%>/" data-id="2">用户列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">管理员管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/add" data-id="3">添加</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="4">管理员列表</a>
                         </dd>
                     </dl>
                 </li>
@@ -78,7 +89,7 @@
                     <a href="javascript:;">订单管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="" data-id="4">待发货</a>
+                            <a href="javascript:;" data-url="" data-id="5">待发货</a>
                         </dd>
                     </dl>
                 </li>
@@ -123,6 +134,26 @@
                         </dd>
                     </dl>
                 </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">宣传管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/letter/pagerLetter" data-id="25">站内信添加</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">所有站内信</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">借款管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="25">所有标种</a>
+                        </dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">角色管理</a>
                     <dl class="layui-nav-child">
@@ -131,6 +162,7 @@
                         </dd>
                     </dl>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -153,7 +185,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/layui1/layui.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/admin.js"></script>
 <script>
     layui.use(['jquery','form','layer'], function(){
