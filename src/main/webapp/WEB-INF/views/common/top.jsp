@@ -40,9 +40,9 @@
 
 </div>
 <!-- nav -->
-<div class="nav">
+<div class="nav" style="height: 140px;">
     <div class="wrap cl">
-        <div class="logo"><img src="resources/front/v01/src/images/logo.png" alt="普金资本"></div>
+        <div class="logo"><img src="http://pujinziben.com/resources/front/v01/src/images/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
             <ul>
                 <li class="icon icon-acc"><a href="https://www.pujinziben.com/login.html">我的账户</a></li>

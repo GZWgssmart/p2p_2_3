@@ -29,12 +29,9 @@ public class TzbController {
     public ServerResponse save(Tzb tzb, HttpSession session){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object!=null){
-            User user = (User)object;
-            tzb.setUid(user.getUid());
-            tzb.setTztime(DateFormateUtils.Formate());
-            return tzbService.save(tzb);
+
         }
-        return ServerResponse.createByError("登录超时");
+      return ServerResponse.createByError("登录超时");
     }
 
     @GetMapping("pager/{page}/{limit}")

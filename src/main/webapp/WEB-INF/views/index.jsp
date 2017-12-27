@@ -31,36 +31,24 @@
     <!-- top -->
 <!-- banner -->
 <div class="banner">
-    <div class="banner-box">
-        <a href="" alt="网站备案获准"><img src="picture/banner_010.jpg"></a>
-        <a href="" alt="债权转让" target="_blank"><img src="picture/banner_009.jpg"></a>
-        <a href="" alt="供应链金融" target="_blank"><img src="picture/banner_001.jpg"></a>
-        <a href="" alt="5大安全措施" target="_blank"><img src="picture/banner_002.jpg"></a>
+    <div class="layui-carousel" id="test1">
+        <div carousel-item>
+            <div><img style="width: 100%;height: 100%" src="http://b.zol-img.com.cn/desk/bizhi/start/1/1388973662507.jpg"></div>
+            <div><img style="width: 100%;height: 100%" src="http://b.zol-img.com.cn/desk/bizhi/start/1/1388973662507.jpg"></div>
+        </div>
     </div>
-    <!-- <div class="banner-pointer">
-        <ul>
-            <li class="active"><a href="javascript:void(0);"></a></li>
-            <li><a href="javascript:void(0);"></a></li>
-            <li><a href="javascript:void(0);"></a></li>
-            <li><a href="javascript:void(0);"></a></li>
-            <li><a href="javascript:void(0);"></a></li>
-        </ul>
-    </div> -->
 </div>
 <!-- news -->
 <div class="news">
     <div class="wrap">
         <div class="news-list icon icon-news">
             <ul id="news-list" style="height: 192px; top: -48px;">
-                <li><span>新标预告&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="" target="_blank">2017年12月24日新标预告</a></li>
-                <li><span>新标预告&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="" target="_blank">2017年12月24日新标预告</a></li>
-                <li><span>平台公告&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="" target="_blank">关于多金宝项目正常还款的公告</a></li>
-                <li><span>平台公告&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="" target="_blank">关于新手标项目正常还款的公告</a></li>
+                <li><span>最新动态&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="" target="_blank">2017年12月24日新标预告</a></li>
             </ul>
         </div>
-        <div class="bang-list">
-            <a href="" target="_blank" class="icon icon-bang">投资、推荐排行榜</a>
-        </div>
+        <%--<div class="bang-list">--%>
+            <%--<a href="" target="_blank" class="icon icon-bang">投资、推荐排行榜</a>--%>
+        <%--</div>--%>
     </div>
 </div>
 <!-- statis -->
@@ -440,14 +428,22 @@
     </div>
 </div>
 </div>
+</div>
 </body>
 <script src="<%=path%>/static/js/vue.min.js/"></script>
 <script src="<%=path%>/static/js/axios.min.js/"></script>
 <script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/layui/lay/modules/element.js"></script>
 <script>
-
-    layui.use('element', function(){
-        var element = layui.element;
+    layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            ,width: '100%' //设置容器宽度
+            ,arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
     });
 
     //标种三

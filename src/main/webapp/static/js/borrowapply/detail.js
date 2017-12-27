@@ -18,38 +18,6 @@ function getFile(obj){
     $(obj).addClass('active').siblings().removeClass('active');
     $('#files').show();
 }
-//大图预览
-function showBigImg(flag,index){
-    var list = [];
-    if(flag==0){
-        list = fileList;
-        var path = list[index-1].imgPath
-    }else{
-        list = imgList;
-        var path = list[index-1].imagePath
-    };
-    var name = list[index-1].name;
-    var overlay = $('<div class="overlay-img"></div>').appendTo($('body'));
-    var imgBox = $('<img class="bigImg" src="'+path+'" />').appendTo($('body'));
-    imgBox.load(function(){
-
-        imgW = imgBox[0].offsetWidth;
-        imgH = imgBox[0].offsetHeight;
-
-        var clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
-        var oHeight = imgH>clientHeight?clientHeight:imgH;
-        var oWidth = clientHeight<imgH?(clientHeight/imgH) * imgW:imgW;
-        imgBox.css({
-            'height':oHeight+'px',
-            'margin-left':-oWidth/2+'px',
-            'margin-top':-oHeight/2+'px'
-        });
-    });
-    overlay.bind('click',function(){
-        overlay.remove();
-        imgBox.remove();
-    })
-}
 //还款计划
 function getPlan(obj){
     if($(obj).hasClass('active')){

@@ -128,11 +128,11 @@
         <p class="icon icon-danger files-title">互联金融将以客观、公正的原则，最大程度地核实借入者信息的真实性，但不保证审核信息100%真实。如果借入者长期逾期，其提供的信息将被公布。</p>
         <ul class="files-box">
             <li class="">
-                <img alt="" width="320" height="200" src="http://pic.sogou.com/d?query=%B6%AF%C2%FE%CD%BC%C6%AC&st=255&mode=255&did=18#did17">
+                <img alt="" width="320" height="200" src="http://pic.3h3.com/up/2015-9/201599991030063384.jpg">
                 <p>
                     <span class="icon icon-true">法人身份认证</span>
                 </p>
-                <a href="javascript:;" onclick="showBigImg(0,1)" style="display: inline;">点击查看大图</a>
+                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
             </li>
         </ul>
     </div>
