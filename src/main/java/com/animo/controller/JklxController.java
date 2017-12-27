@@ -38,7 +38,7 @@ public class JklxController {
      * @param status
      * @return
      */
-    @GetMapping("updateStatus")
+    @GetMapping("updateStatus/{lxid}/{status}")
     public ServerResponse updateStatus(Integer lxid,Integer status){
         return jklxService.updateStatus(lxid,status);
     }
@@ -49,7 +49,7 @@ public class JklxController {
      * @param limit
      * @return
      */
-    @GetMapping("pager")
+    @GetMapping("pager/{page}/{limit}")
     public Pager pager(int page, int limit){
         return jklxService.listPager(page,limit);
     }
