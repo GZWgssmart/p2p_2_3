@@ -49,7 +49,7 @@ public class JklxController {
      * @param limit
      * @return
      */
-    @GetMapping("pager/{page}/{limit}")
+    @GetMapping("pager")
     public Pager pager(int page, int limit){
         return jklxService.listPager(page,limit);
     }

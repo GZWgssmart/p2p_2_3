@@ -19,48 +19,71 @@
 
 <body>
 <div id="app">
-<section class="larry-grid">
-    <div class="larry-personal">
-        <div class="layui-tab">
+    <section class="larry-grid">
+        <div class="larry-personal">
+            <div class="layui-tab">
 
-            <div class="larry-separate"></div>
-            <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
-                <!-- 操作日志 -->
-                <div class="layui-tab-item layui-field-box layui-show">
-                    <table class="layui-hide" id="test" lay-filter="demo">
-                        <ul class="layui-tab-title">
-                               <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
-                            <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
-                            <a class="layui-btn layui-btn-small larry-log-del">
-                                <i class="iconfont icon-huishouzhan1">
+                <div class="larry-separate"></div>
+                <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
+                    <!-- 操作日志 -->
+                    <div class="layui-tab-item layui-field-box layui-show">
+                        <table class="layui-hide" id="test" lay-filter="demo">
+                            <ul class="layui-tab-title">
+                                <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
+                                <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
+                                <a class="layui-btn layui-btn-small larry-log-del">
+                                    <i class="iconfont icon-huishouzhan1">
                                     </i>
-                                清空日志
-                            </a>
-                        </ul>
+                                    清空日志
+                                </a>
+                            </ul>
 
-                    </table>
+                        </table>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <%-- <div id="testbz" style="display: none">
+         <input v-model="bz.bzname" /><button @click="update">更新</button>
+     </div>--%>
+
+    <div id="testbz" style="display: none">
+        <div class="layui-form-item">
+            </br></br>
+            <label class="layui-form-label">输入框</label>
+            <div class="layui-input-block">
+                <input type="text" v-model="bz.bzname" autocomplete="on" class="layui-input"/>
+                <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
+                </br></br></br> </br></br></br></br>
+
+
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        <div class="layui-col-sm6">
+                            <div class="grid-demo grid-demo-bg1">
+                                <div class="layui-btn-group">
+                                    <button class="layui-btn"@click="update">增加</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-sm6">
+                            <div class="grid-demo">
+                                <div class="layui-btn-group">
+                                    <button class="layui-btn"@click="update">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-</section>
-
-    <div id="testbz" style="display: none">
-        <input v-model="bz.bzname" /><button @click="update">更新</button>
-    </div>
 </div>
-<%--<script id="testbz" type="template">
-<div class="layui-form-item">
 
-    <div class="layui-input-block">
-        &lt;%&ndash;<input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">&ndash;%&gt;
-        <input type="text" placeholder="请输入" v-model="bz.bzname" />&lt;%&ndash;<button @click="update">更新</button>&ndash;%&gt;
-        <label class="layui-form-label">修改</label>
-    </div>
-</div>
-</script>--%>
 <script type="text/html" id="barDemo">
     <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 
@@ -74,11 +97,11 @@
 <script>
 
     var vue = new Vue({
-        el:'#app',
-        data:{
-            bz:[]
+        el: '#app',
+        data: {
+            bz: []
         },
-        methods:{
+        methods: {
             update(){
                 console.log(this.bz);
             }
@@ -108,32 +131,32 @@
                 {field: 'bzid', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'bzname', title: '标种名称', width: 120}
                 , {field: 'status', title: '状态', width: 120}
-                , {fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
         });
         //监听工具条
-        table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        table.on('tool(demo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
-                ,layEvent = obj.event; //获得 lay-event 对应的值
-            if(layEvent === 'detail'){
+                , layEvent = obj.event; //获得 lay-event 对应的值
+            if (layEvent === 'detail') {
                 layer.msg('查看操作');
-            } else if(layEvent === 'del'){
-                layer.confirm('真的删除行么', function(index){
+            } else if (layEvent === 'del') {
+                layer.confirm('真的删除行么', function (index) {
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
                     //向服务端发送删除指令
                 });
-            } else if(layEvent === 'edit'){
+            } else if (layEvent === 'edit') {
                 layer.open({
                     type: 1,
                     area: ['600px', '360px'],
                     shadeClose: true, //点击遮罩关闭
                     content: $("#testbz"),
                     maxmin: true
-                    
+
                 });
-                vue.bz=data;
+                vue.bz = data;
             }
         });
 
@@ -142,7 +165,6 @@
     /**
      * 监听点击工具
      */
-
 
 
 </script>
