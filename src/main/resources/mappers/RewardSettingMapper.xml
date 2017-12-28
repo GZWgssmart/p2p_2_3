@@ -79,4 +79,12 @@
       percent = #{percent,jdbcType=DOUBLE}
     where rwsid = #{rwsid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectpercent" parameterType="decimal" resultType="double">
+    <![CDATA[
+      SELECT r.percent FROM reward_setting AS r
+      WHERE ${money} between r.minmoney AND r.maxmoney
+    ]]>
+  </select>
+
 </mapper>

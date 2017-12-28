@@ -27,10 +27,16 @@ public class TzbController {
 
     @PostMapping("save")
     public ServerResponse save(Tzb tzb, HttpSession session){
-        Object object = session.getAttribute(Constant.SESSION_USER);
-        if(object!=null){
-
-        }
+//        Object object = session.getAttribute(Constant.SESSION_USER);
+//        if(object!=null){
+//            User user=(User)object;
+            //投资人id  即用户id
+//        user.getUid()
+            tzb.setUid(1);
+            //投资时间
+            tzb.setTztime(DateFormateUtils.Formate());
+            tzbService.save(tzb);
+//        }
       return ServerResponse.createByError("登录超时");
     }
 

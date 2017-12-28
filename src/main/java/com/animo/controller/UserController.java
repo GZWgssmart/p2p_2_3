@@ -8,6 +8,7 @@ import com.animo.pojo.Rzvip;
 import com.animo.pojo.User;
 import com.animo.pojo.Usermoney;
 import com.animo.service.RzvipService;
+import com.animo.service.UserMoneyService;
 import com.animo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class UserController {
     @Autowired
     private RzvipService rzvipService;
 
+    @Autowired
+    private UserMoneyService userMoneyService;
+
 
     @RequestMapping(value="register", method = RequestMethod.POST)
     public ServerResponse register(User user, HttpSession session){
@@ -35,9 +39,9 @@ public class UserController {
            Rzvip revip = new Rzvip();
            revip.setUid(user.getUid());
            rzvipService.save(revip);
-          /* Usermoney usermoney = new Usermoney();
+           Usermoney usermoney = new Usermoney();
            usermoney.setUid(user.getUid());
-           usermoneyService.save(usermoney);*/
+           userMoneyService.save(usermoney);
            return ServerResponse.createBySuccess("success");
        }
         return ServerResponse.createByError("error");

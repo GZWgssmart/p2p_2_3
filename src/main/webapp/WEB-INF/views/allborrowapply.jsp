@@ -154,12 +154,13 @@
 <script src="<%=path%>/static/js/axios.min.js/"></script>
 <script src="<%=path%>/static/js/vue.min.js/"></script>
 <script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/layui/lay/modules/laypage.js"></script>
 <script>
-
     var laypage;
-    layui.use(['laypage', 'layer','element'], function(){
-        laypage= layui.laypage
-          layer = element = layui.element
+    layui.use(['laypage','layer','element'], function(){
+          var element = layui.element;
+        laypage = layui.laypage
+            vue.getJsonShang(laypage);
     });
 
 
@@ -175,7 +176,6 @@
             cpname:''
         },
         created () {
-            this.getJsonShang();
         },
         computed: {
 
@@ -184,21 +184,21 @@
             month (qterm,hterm) {
                 this.qterm=qterm;
                 this.hterm=hterm;
-                this.getJsonShang();
+                this.getJsonShang(laypage);
             },
             earnings (qprofit,hprofit) {
                 this.qprofit = qprofit;
                 this.hprofit = hprofit;
-                this.getJsonShang();
+                this.getJsonShang(laypage);
             },
             bz (bzid) {
                 this.bzid=bzid;
-                this.getJsonShang();
+                this.getJsonShang(laypage);
             },
             search () {
-                this.getJsonShang();
+                this.getJsonShang(laypage);
             },
-            getJsonShang(){
+            getJsonShang(laypage){
                 $.getJSON('/borrowapply/data/json/PagerCriteria', {
                     pageNumber: 1,
                     pageSize: 5,
@@ -212,7 +212,7 @@
                     laypage.render({
                         elem: 'demo3',
                         count: res.total,
-                        limit :1,
+                        limit :5,
                         jump: function(e, first){
                             if (!first) {
                                 vue.getJsonXia(e);
