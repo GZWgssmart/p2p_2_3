@@ -63,4 +63,5 @@ public class Reward {
     public void setRewardTime(Date rewardTime) {
         this.rewardTime = rewardTime;
     }
+
 }

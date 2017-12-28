@@ -255,4 +255,20 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where bdid = #{bdid,jdbcType=INTEGER}
   </update>
+
+  <update id="updateMoney">
+    <![CDATA[
+      UPDATE borrowdetail
+      SET money=#{money}
+      WHERE baid=#{baid}
+    ]]>
+  </update>
+
+  <select id="selectMoney" resultType="decimal" parameterType="integer">
+    <![CDATA[
+      SELECT b.money FROM borrowdetail AS  b
+      WHERE b.baid=#{baid}
+    ]]>
+  </select>
+
 </mapper>

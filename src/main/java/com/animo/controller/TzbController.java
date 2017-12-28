@@ -33,11 +33,12 @@ public class TzbController {
             //投资人id  即用户id
 //        user.getUid()
             tzb.setUid(1);
+            tzb.setBaid(2);
             //投资时间
             tzb.setTztime(DateFormateUtils.Formate());
-            tzbService.save(tzb);
+            return tzbService.save(tzb);
 //        }
-      return ServerResponse.createByError("登录超时");
+     // return ServerResponse.createByError("登录超时");
     }
 
     @GetMapping("pager/{page}/{limit}")

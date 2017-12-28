@@ -103,4 +103,12 @@
       reward_time = #{rewardTime,jdbcType=TIMESTAMP}
     where rwid = #{rwid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from reward
+    where uid = #{uid}
+  </select>
+
 </mapper>
