@@ -37,10 +37,6 @@ public class AdminBackViews {
         return "admin/password";
     }
 
-    @GetMapping("upInfo")
-    public String upInfo() {
-        return "admin/upInfo";
-    }
 
 
 }

@@ -2,6 +2,7 @@ package com.animo.service.impl;
 
 import com.animo.dao.UsermoneyMapper;
 import com.animo.service.UserMoneyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +13,7 @@ public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMon
 
     private UsermoneyMapper usermoneyMapper;
 
+    @Autowired
     public void setUsermoneyMapper(UsermoneyMapper usermoneyMapper) {
         super.setBaseMapper(usermoneyMapper);
         this.usermoneyMapper = usermoneyMapper;

@@ -86,9 +86,6 @@
                         <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="6">修改信息</a>
                         </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="6">修改密码</a>
-                        </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">

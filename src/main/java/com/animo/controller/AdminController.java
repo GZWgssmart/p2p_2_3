@@ -100,9 +100,5 @@ public class AdminController {
         return huserService.update(huser);
     }
 
-    @PostMapping("upInfo")
-    public ServerResponse upInfo(Huser huser) {
-        return huserService.update(huser);
-    }
 
 }
