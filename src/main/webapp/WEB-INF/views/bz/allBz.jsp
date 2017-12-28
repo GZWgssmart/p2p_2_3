@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: CHEN JX
-  Date: 2017/12/26
-  Time: 14:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -47,16 +40,13 @@
 
     </section>
 
-    <%-- <div id="testbz" style="display: none">
-         <input v-model="bz.bzname" /><button @click="update">更新</button>
-     </div>--%>
 
     <div id="testbz" style="display: none">
         <div class="layui-form-item">
             </br></br>
             <label class="layui-form-label">输入框</label>
             <div class="layui-input-block">
-                <input type="text" v-model="bz.bzname" autocomplete="on" class="layui-input"/>
+                <input type="text" v-model="bz.lxname" autocomplete="on" class="layui-input"/>
                 <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
                 </br></br></br> </br></br></br></br>
 
@@ -88,7 +78,13 @@
     <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 
 </script>
-
+<script type="text/html" id="aa">
+    {{# if(d.status==0){ }}
+    <span>可用</span>
+    {{#   }else{ }}
+    <span>不可用</span>
+    {{#  } }}
+</script>
 
 </body>
 <script src="<%=path%>/static/layui/layui.js"></script>
@@ -130,7 +126,7 @@
             , cols: [[ //表头
                 {field: 'bzid', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'bzname', title: '标种名称', width: 120}
-                , {field: 'status', title: '状态', width: 120}
+                , {field: 'status', title: '状态', width: 120, templet: "#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 

@@ -91,7 +91,13 @@
     <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 
 </script>
-
+<script type="text/html" id="aa">
+    {{# if(d.status==0){ }}
+    <span>可用</span>
+    {{#   }else{ }}
+    <span>不可用</span>
+    {{#  } }}
+</script>
 
 </body>
 <script src="<%=path%>/static/layui/layui.js"></script>
@@ -135,7 +141,7 @@
                 , {field: 'title', title: '标题', width: 120}
                 , {field: 'content', title: '内容', width: 120}
                 , {field: 'createdTime', title: '日期', width: 120}
-                , {field: 'status', title: '状态', width: 120}
+                , {field: 'status', title: '状态', width: 120,templet: "#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 

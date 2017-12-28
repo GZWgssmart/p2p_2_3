@@ -78,7 +78,13 @@
     <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 
 </script>
-
+<script type="text/html" id="aa">
+{{# if(d.status==0){ }}
+<span>可用</span>
+{{#   }else{ }}
+<span>不可用</span>
+{{#  } }}
+</script>
 
 </body>
 <script src="<%=path%>/static/layui/layui.js"></script>
@@ -120,7 +126,7 @@
             , cols: [[ //表头
                 {field: 'lxid', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'lxname', title: '名称', width: 120}
-                , {field: 'status', title: '状态', width: 120}
+                , {field: 'status', title: '状态', width: 120, templet: "#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 

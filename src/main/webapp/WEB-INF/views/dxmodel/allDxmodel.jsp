@@ -1,68 +1,3 @@
-<%--
-&lt;%&ndash;
-  Created by IntelliJ IDEA.
-  User: CHEN JX
-  Date: 2017/12/27
-  Time: 9:36
-  To change this template use File | Settings | File Templates.
-&ndash;%&gt;
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-%>
-<html>
-<head>
-    <title>Title</title>
-    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
-</head>
-<body>
-<table class="layui-hide" id="test" lay-filter="demo"></table>
-</body>
-&lt;%&ndash;<script src="<%=path%>/static/layui/layui.all.js"></script>&ndash;%&gt;
-<script src="<%=path%>/static/layui/layui.js"></script>
-<script>
-    layui.use([ 'laypage', 'layer', 'table', 'element'], function(){
-        var laypage = layui.laypage //分页
-        layer = layui.layer //弹层
-            ,table = layui.table //表格
-            ,element = layui.element; //元素操作
-        //执行一个 table 实例
-        table.render({
-            elem: '#test'
-            ,height: 332
-            ,url: '/dxmodel/data/json/pager' //数据接口
-            ,page: true //开启分页
-            ,limit:5//每页显示多少个
-            ,response: {
-                statusName: 'status'
-                ,statusCode: 0
-                ,msgName: 'message'
-                ,countName: 'total'
-                ,dataName: 'rows'
-            }
-            ,cols: [[ //表头
-                {field: 'dxid', title: 'ID', width:80, sort: true, fixed: 'left'}
-                ,{field: 'content', title: '内容', width:120}
-
-            ]]
-        });
-        //监听工具条
-
-    });
-
-
-
-
-</script>
-</html>
---%>
-<%--
-  Created by IntelliJ IDEA.
-  User: CHEN JX
-  Date: 2017/12/26
-  Time: 14:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -105,7 +40,6 @@
 
     </section>
 
-
     <div id="testbz" style="display: none">
         <div class="layui-form-item">
             </br></br>
@@ -121,14 +55,14 @@
                         <div class="layui-col-sm6">
                             <div class="grid-demo grid-demo-bg1">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">增加</button>
+                                    <button class="layui-btn" @click="update">增加</button>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-col-sm6">
                             <div class="grid-demo">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">关闭</button>
+                                    <button class="layui-btn" @click="update">关闭</button>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +77,6 @@
     <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 
 </script>
-
 
 </body>
 <script src="<%=path%>/static/layui/layui.js"></script>

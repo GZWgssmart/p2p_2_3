@@ -91,6 +91,13 @@
 
 </script>
 
+<script type="text/html" id="aa">
+    {{# if(d.status==0){ }}
+    <span>可用</span>
+    {{#   }else{ }}
+    <span>不可用</span>
+    {{#  } }}
+</script>
 
 </body>
 <script src="<%=path%>/static/layui/layui.js"></script>
@@ -133,7 +140,7 @@
                 {field: 'sid', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'way', title: '还款方式', width: 120}
                 , {field: 'fw', title: '算法', width: 120}
-                , {field: 'status', title: '状态', width: 120}
+                , {field: 'status', title: '状态', width: 120,templet:"#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
