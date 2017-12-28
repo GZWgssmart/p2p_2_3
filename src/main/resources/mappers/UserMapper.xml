@@ -50,6 +50,9 @@
       #{resstr2,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.User" >
+    <selectKey keyProperty="uid" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID() AS ID
+    </selectKey>
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -242,12 +245,6 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-
-  <insert id="saveUser">
-    insert into t_user(phone, upwd)
-      values( #{phone}, #{upwd})
-
-  </insert>
 
   <select id="getByTzm" resultType="user">
     select * from t_user where tzm = #{tzm};

@@ -7,10 +7,7 @@ import com.animo.constant.Constant;
 import com.animo.pojo.Huser;
 import com.animo.service.HuserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -83,10 +80,10 @@ public class AdminController {
     @PostMapping("updatePwd")
     public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
         Huser huser = (Huser) session.getAttribute(Constant.SESSION_ADMIN);
-        System.out.println(huser.getResstr1());
-        System.out.println(EncryptUtils.md5(pwd));
-        if(EncryptUtils.md5(pwd) == huser.getResstr1()) {
-            if(EncryptUtils.md5(nowPwd) == EncryptUtils.md5(rePwd)) {
+        System.out.println("原密码："+huser.getResstr1());
+        System.out.println("输入的原密码"+EncryptUtils.md5(pwd));
+        if(EncryptUtils.md5(pwd).equals(huser.getResstr1())) {
+            if(EncryptUtils.md5(nowPwd).equals(EncryptUtils.md5(rePwd))) {
                 huserService.updatePwd(EncryptUtils.md5(nowPwd), huser.getHuid());
                 return ServerResponse.createBySuccess("success");
             }else{
@@ -96,6 +93,16 @@ public class AdminController {
         }else {
             return ServerResponse.createByError("原密码不正确");
         }
+    }
+
+    @PostMapping("update")
+    public ServerResponse update(Huser huser) {
+        return huserService.update(huser);
+    }
+
+    @PostMapping("upInfo")
+    public ServerResponse upInfo(Huser huser) {
+        return huserService.update(huser);
     }
 
 }

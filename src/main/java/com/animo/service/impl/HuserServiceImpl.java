@@ -14,6 +14,7 @@ public class HuserServiceImpl extends AbstractServiceImpl implements HuserServic
 
     private HuserMapper huserMapper;
 
+
     @Autowired
    public void setHuserMapper(HuserMapper huserMapper) {
         super.setBaseMapper(huserMapper);

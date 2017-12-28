@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper extends BaseMapper{
 
     User getByTzm(Integer tzm);
-    int saveUser(@Param("phone") String phone, @Param("upwd") String upwd);
     int getByPhone(String phone);
     User getByPhonePwd(@Param("phone") String phone, @Param("upwd") String upwd);
 

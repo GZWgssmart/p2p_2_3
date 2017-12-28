@@ -4,7 +4,10 @@ import com.animo.common.EncryptUtils;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
+import com.animo.pojo.Rzvip;
 import com.animo.pojo.User;
+import com.animo.pojo.Usermoney;
+import com.animo.service.RzvipService;
 import com.animo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +24,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-   // @PostMapping("register")
+    @Autowired
+    private RzvipService rzvipService;
+
+
     @RequestMapping(value="register", method = RequestMethod.POST)
-    //@ResponseBody
-    public ServerResponse register(String phone, String upwd, HttpSession session){
-       int num = userService.saveUser(phone, EncryptUtils.md5(upwd));
-        if(num == 1) {
-            return ServerResponse.createBySuccess("success");
-        }
+    public ServerResponse register(User user, HttpSession session){
+       ServerResponse serverResponse = userService.save(user);
+       if (serverResponse.isSuccess()) {
+           Rzvip revip = new Rzvip();
+           revip.setUid(user.getUid());
+           rzvipService.save(revip);
+          /* Usermoney usermoney = new Usermoney();
+           usermoney.setUid(user.getUid());
+           usermoneyService.save(usermoney);*/
+           return ServerResponse.createBySuccess("success");
+       }
         return ServerResponse.createByError("error");
     }
 
-    //@PostMapping("getByPhone/{phone}")
     @RequestMapping(value="getByPhone/{phone}", method = RequestMethod.POST)
-    //@ResponseBody
     public ServerResponse getByPhone(@PathVariable("phone") String phone) {
         int user = userService.getByPhone(phone);
         if(user == 0) {
@@ -44,7 +53,6 @@ public class UserController {
         }
     }
 
-    //@PostMapping("login")
     @RequestMapping(value="login", method = RequestMethod.POST)
     public ServerResponse login(String phone, String upwd, HttpSession session) {
         User user = userService.getByPhonePwd(phone, EncryptUtils.md5(upwd));

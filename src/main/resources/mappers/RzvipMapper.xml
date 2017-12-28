@@ -173,4 +173,9 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where rzid = #{rzid,jdbcType=INTEGER}
   </update>
+
+  <insert id="saveUid" parameterType="Integer">
+      insert into rzvip(uid) values(#{uid})
+  </insert>
+
 </mapper>

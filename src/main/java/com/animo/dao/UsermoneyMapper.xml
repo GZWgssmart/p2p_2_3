@@ -138,6 +138,4 @@
       jlmoney = #{jlmoney,jdbcType=DECIMAL}
     where umid = #{umid,jdbcType=INTEGER}
   </update>
-
-
 </mapper>

@@ -18,20 +18,81 @@
     <style>
         body{margin: 10px;}
         .demo-carousel{height: 200px; line-height: 200px; text-align: center;}
+        .up-btn{
+            border-color: #1E9FFF;
+            background-color: #1E9FFF;
+            color: #fff;
+            height: 28px;
+            margin: 5px 5px 0;
+            padding: 0 15px;
+            font-weight: 400;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .con{
+            margin:10px 0 10px 20px;
+            font:400 14px/40px microsoft yahei;
+        }
+        .con[input] {
+            width:30px;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
+<div id="upAdmin">
+    <table class="layui-hide" id="admin" lay-filter="demo"></table>
 
-<table class="layui-hide" id="admin" lay-filter="demo"></table>
+    <div id="test" style="display: none">
+        <div class="con">
+        昵称：<input v-model="adminupdate.rname"/><br/>
+        姓名：<input v-model="adminupdate.huname"/><br/>
+        性别：<input name="adminupdate.rname" v-model="adminupdate.sex" type="radio" value="男" />男
+                <input type="radio" v-model="adminupdate.sex" name="adminupdate.rname" value="女" />女<br/></li>
+        号码：<input  v-model="adminupdate.phone"><br/>
+        邮箱：<input  v-model="adminupdate.email"><br/>
+        状态：<select v-model="adminupdate.resstr2">
+                    <option>可用</option>
+                    <option>不可用</option>
+                </select><br/>
+        <button @click="update" class="up-btn">修改</button>
+        </div>
+    </div>
+</div>
 
 <script type="text/html" id="barDemo">
 <%--    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>--%>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/vue.min.js"></script>
+<script type="text/javascript" src="/static/js/axios.min.js"></script>
+<script type="text/javascript" src="/static/js/qs.js"></script>
 <script>
+
+    var vue = new Vue({
+        el:'#upAdmin',//元素
+        data:{
+            adminupdate:[]//json格式
+        },
+        methods : {
+            update :function(){
+                axios.post('<%=path%>/admin/data/json/update',Qs.stringify(this.adminupdate)).then((response)=>{
+                    if(response.data.code == 0) {
+                        alert("更新成功");
+                        layer.closeAll();
+                    }else {
+                        alert("更新失败");
+                    }
+                },(error)=>{
+                    alert("服务器错误");
+                });
+            }
+        }
+    });
+
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function(){
         var laydate = layui.laydate //日期
             ,laypage = layui.laypage //分页
@@ -41,15 +102,6 @@
             ,upload = layui.upload //上传
             ,element = layui.element; //元素操作
 
-       /* //向世界问个好
-         layer.msg('Hello World');*/
-
-   /*     //监听Tab切换
-        element.on('tab(demo)', function(data){
-            layer.msg('切换了：'+ this.innerHTML);
-            console.log(data);
-        });
-*/
         //执行一个 table 实例
         table.render({
             elem: '#admin'
@@ -81,15 +133,26 @@
         table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
-           if(layEvent === 'del'){
+           /*if(layEvent === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
                     //向服务端发送删除指令
 
                 });
-            } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+            } else */if(layEvent === 'edit'){
+               layer.open({
+                   type: 1
+                   ,content: $("#test")
+                   ,btn: '关闭'
+                   ,area: ['400px', '450px'] //自定义文本域宽高
+                   ,btnAlign: 'r' //按钮居中
+                   ,shade: 0 //不显示遮罩
+                   ,yes: function(){
+                       layer.closeAll();
+                   }
+               });
+               vue.adminupdate = data;
             }
         });
     });

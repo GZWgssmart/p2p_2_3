@@ -8,7 +8,6 @@ import com.animo.pojo.User;
 public interface UserService extends BaseService {
 
     User getByTzm(Integer tzm);
-    int saveUser(String phone, String upwd);
     int getByPhone(String phone);
     User getByPhonePwd(String phone, String upwd);
 

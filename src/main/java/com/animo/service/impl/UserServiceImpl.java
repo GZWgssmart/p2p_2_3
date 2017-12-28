@@ -27,11 +27,6 @@ public class UserServiceImpl extends AbstractServiceImpl implements UserService 
     }
 
     @Override
-    public int saveUser(String phone, String upwd) {
-        return userMapper.saveUser(phone, upwd);
-    }
-
-    @Override
     public int getByPhone(String phone) {
         return userMapper.getByPhone(phone);
     }

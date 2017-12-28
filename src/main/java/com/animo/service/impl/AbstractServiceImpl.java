@@ -7,7 +7,6 @@ import com.animo.dao.BaseMapper;
 import com.animo.service.BaseService;
 import com.animo.utils.ValidationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by Animo on 2017-12-22.
