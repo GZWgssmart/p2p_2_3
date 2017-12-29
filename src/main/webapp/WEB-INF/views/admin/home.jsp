@@ -183,7 +183,14 @@
                         </dd>
                     </dl>
                 </li>
-
+                <li class="layui-nav-item">
+                    <a href="javascript:;">权限管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/jur/pagerJur" data-id="25">所有权限</a>
+                        </dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>

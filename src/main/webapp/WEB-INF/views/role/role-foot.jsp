@@ -14,7 +14,7 @@
 <script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
 <!--自定义js文件-->
 <script type="text/javascript" src="<%=path%>/static/js/role-js/role.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/role-js/role-add.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>

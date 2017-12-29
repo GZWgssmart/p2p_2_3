@@ -13,18 +13,20 @@
 <head>
     <title>所有角色</title>
     <!--引入css文件-->
-    <%@include file="head.jsp"%>
+    <%@include file="role-head.jsp"%>
 </head>
 <body>
+<div id="app">
 <div>
-    <button class="layui-btn" onclick="showAddRole()">添加角色</button>
+    <button class="layui-btn" v-on:click="showAddRole">添加角色</button>
 </div>
 
 <!--角色zTree的显示容器-->
 <ul id="roleTree" class="ztree" style="width:auto; overflow:auto;"></ul>
 
-<div id="app" style="display: none">
-    <form class="layui-form" action="">
+    <!--添加窗口-->
+<div id="addWin" style="display: none">
+    <form class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">角色名称</label>
             <div class="layui-input-block">
@@ -35,7 +37,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">角色描述</label>
             <div class="layui-input-block">
-                <input type="text" v-model="role.content" required  lay-verify="required" placeholder="请输入角色描述" autocomplete="off" class="layui-input">
+                <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入角色描述" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -54,9 +56,10 @@
 
     </form>
 </div>
+</div>
 </body>
 <!--引入js文件-->
-<%@include file="foot.jsp"%>
+<%@include file="role-foot.jsp"%>
 <script type="text/javascript">
     var vue = new Vue({
         el:"#app",
@@ -83,6 +86,9 @@
                 }else {
                     layer.msg("请选择部门");
                 }
+            },
+            showAddRole:function () {
+                showAddRole();
             }
         }
     })

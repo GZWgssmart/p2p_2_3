@@ -1,12 +1,10 @@
-package com.animo.dao;
+package com.animo.service;
 
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Rolejur;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface RolejurMapper extends BaseMapper{
+public interface RoleJurService extends BaseService{
     int saveRolejur(List<Rolejur> rolejurList);
 }

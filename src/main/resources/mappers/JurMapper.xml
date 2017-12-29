@@ -68,4 +68,12 @@
       content = #{content,jdbcType=VARCHAR}
     where jid = #{jid,jdbcType=INTEGER}
   </update>
+
+  <select id="listPager" resultType="com.animo.pojo.Jur" parameterType="com.animo.common.Pager">
+    SELECT j.jid, j.jurl, j.content FROM jur as j limit #{beginIndex}, #{pageSize}
+  </select>
+
+  <select id="count" resultType="long">
+    SELECT count(jid) FROM jur
+  </select>
 </mapper>

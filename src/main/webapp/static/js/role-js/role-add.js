@@ -18,7 +18,7 @@ function showAddRole() {
         maxmin: true,
         closeBtn: 1,
         skin: '',
-        content: $("#app")
+        content: $("#addWin")
     });
     //初始化树
     initRoleDepTree();
