@@ -1,9 +1,7 @@
 package com.animo.controller;
 
-import com.animo.common.ServerResponse;
 import com.animo.pojo.Rolejur;
 import com.animo.service.RoleJurService;
-import com.animo.vo.RoleJurVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,15 +17,17 @@ public class RoleJurController {
     private RoleJurService roleJurService;
 
     @RequestMapping("saveRoleJur")
-    public int saveRoleJur(){
-        RoleJurVO roleJurVO = new RoleJurVO();
-        Rolejur rolejur = new Rolejur();
-        rolejur.setRid(2);
-        rolejur.setJid(2);
+    public int saveRoleJur(String nodeList){
         List<Rolejur> rolejurList = new ArrayList<>();
-        rolejurList.add(rolejur);
-        roleJurVO.setRolejurList(rolejurList);
-        return roleJurService.saveRolejur(roleJurVO.getRolejurList());
+        String [] nodeString = nodeList.split(",");
+        Rolejur rolejur;
+        for (int i = 1; i <nodeString.length; i++){
+            rolejur = new Rolejur();
+            rolejur.setJid(Integer.valueOf(nodeString[0]));
+            rolejur.setRid(Integer.valueOf(nodeString[i]));
+            rolejurList.add(rolejur);
+        }
+        return roleJurService.saveRolejur(rolejurList);
     }
 
 }

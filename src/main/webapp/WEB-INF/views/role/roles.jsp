@@ -67,7 +67,8 @@
             role:{
                 rname:'',
                 content:'',
-                pid:''
+                pid:'',
+                select:''
             }
         },
         created () {
@@ -80,6 +81,7 @@
                 if (this.role.pid.length != 0){
                     axios.post(' /role/data/json/save',Qs.stringify(this.role)).then((response)=>{
                         layer.msg(response.data.message);
+                        console.log(this.role);
                     },(error)=>{
                         layer.alert("请求失败");
                     });

@@ -4,7 +4,7 @@
  */
 //初始化layui,Vue
 var nodesObj = {"rjid":"", "rid":"", "jid":""};
-var nodesList = [];
+var nodesList;
 $(function () {
     var vue = new Vue({
         el:"#appJur",
@@ -28,14 +28,15 @@ $(function () {
                 // for (var x = 0; x < nodeOnCheck().length; x++){
                 //     nodeOnCheck()[x].jid = this.jur.jid;
                 // }
-                console.log(nodeOnCheck());
-                // axios.post('/roleJur/data/json/saveRoleJur',Qs.stringify(nodeOnCheck()))
-                //     .then((response)=>{
-                //         layer.msg(response.data.message);
-                //         layer.closeAll();
-                //     },(error)=>{
-                //         layer.alert("请求失败");
-                //     });
+                var list = this.jur.jid+","+nodeOnCheck();
+                var params = new URLSearchParams();
+                params.append('nodeList', list);
+                axios.post('/roleJur/data/json/saveRoleJur',params).then((response)=>{
+                        layer.msg(response.data.message);
+                        layer.closeAll();
+                    },(error)=>{
+                        layer.alert("请求失败");
+                    });
             }
         }
     });
@@ -165,14 +166,18 @@ $(function () {
  * @param treeNode
  */
 function nodeOnCheck(event, treeId, treeNode) {
+    nodesList="";
     var treeObj = $.fn.zTree.getZTreeObj("roleTree");
     var nodes = treeObj.getCheckedNodes(true);//获取选中的个数
-    for (var i = 0; i < nodes.length; i++){
-        if (!nodes[i].pid == ""){
-            nodesObj.rid = nodes[i].rid;
-            nodesList.push(nodesObj);
-        }
+    console.log(nodes.length);
+    for (var i =1; i <nodes.length; i++){
+            if(nodesList==null){
+                nodesList+=nodes[i].rid+',';
+            }else{
+                nodesList+=nodes[i].rid+",";
+            }
     }
+    console.log(nodesList);
     return nodesList;
 };
 
