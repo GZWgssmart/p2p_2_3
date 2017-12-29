@@ -26,6 +26,8 @@ public class BorrowapplyVo {
 
     private Integer bdid;
 
+    private Integer uid;
+
     public Integer getBzid() {
         return bzid;
     }
@@ -96,5 +98,13 @@ public class BorrowapplyVo {
 
     public void setBdid(Integer bdid) {
         this.bdid = bdid;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 }

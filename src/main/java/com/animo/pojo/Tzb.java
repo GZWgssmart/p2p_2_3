@@ -1,5 +1,7 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,6 +14,7 @@ public class Tzb {
 
     private BigDecimal money;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date tztime;
 
     private Float nprofit;

@@ -40,6 +40,7 @@ function getInvest(obj){
     }
     $('.sub-a-box').hide();
     $(obj).addClass('active').siblings().removeClass('active');
+    vue.getJsonShang(laypage);
     $('#invest').show();
 };
 

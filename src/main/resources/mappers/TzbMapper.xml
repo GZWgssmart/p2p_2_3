@@ -174,4 +174,16 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where tzid = #{tzid,jdbcType=INTEGER}
   </update>
+  <select id="listPagerByBaid" resultType="com.animo.vo.TzbVo">
+    <![CDATA[
+     SELECT u.rname,t.money,t.tztime  FROM tzb AS t,t_user AS u WHERE t.uid=u.uid
+         AND t.baid=#{baid} limit #{pager.beginIndex}, #{pager.pageSize}
+    ]]>
+  </select>
+  <select id="countByBaid" resultType="long">
+    <![CDATA[
+      SELECT count(t.tzid) FROM tzb AS t
+      WHERE t.baid=#{baid}
+    ]]>
+  </select>
 </mapper>

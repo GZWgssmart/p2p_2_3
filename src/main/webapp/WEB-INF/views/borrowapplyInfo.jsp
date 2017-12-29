@@ -69,7 +69,7 @@
             </div>
             <div class="input">
                 <input type="text" placeholder="请输入投资金额" v-model="ktmoney">
-                <button type="button" id="pushAll">全投</button>
+                <button type="button" @click="touzi">全投</button>
             </div>
             <div class="quan">
                 <select id="selectQuan">
@@ -145,7 +145,12 @@
     </div>
     <div class="sub-a-box invest" id="invest">
         <ul class="">
-            <li class="title"><div class="children0">投资人</div><div class="children1">金额</div><div class="children2">投资时间</div><div class="children3">投资方式</div></li>
+            <li class="title"><div class="children0">投资人</div><div class="children1">金额</div><div class="children2">投资时间</div></li>
+            <li v-for="item in tzbRow" class="title">
+                <div class="children0">{{item.rname}}</div>
+                <div class="children1">{{item.money}}</div>
+                <div class="children2">{{item.tztime}}</div>
+            </li>
         </ul>
         <ul class="listData">
         </ul>
@@ -208,6 +213,7 @@
             <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
             <li><a href="javascript:;" class="sidebar-top"></a></li>
         </ul>
+        <div id="demo3"></div>
     </div>
     <div class="index-concat">
         <div class="wrap cl">
@@ -270,30 +276,79 @@
 <script src="/static/js/vue.min.js"></script>
 <script src="/static/js/axios.min.js"></script>
 <script src="/static/layui/layui.js"></script>
+<script src="/static/js/qs.js"></script>
 <script>
-    new Vue({
+
+    var laypage;
+    layui.use(['laypage','layer','element'], function(){
+        var element = layui.element;
+        laypage = layui.laypage
+    });
+
+    var vue = new Vue({
         el:'#app',
         data:{
             borrowapply:[],
             borrowdetail:[],
-            baid:${requestScope.get("baid")},
+            tzbRow:[],
             bdid:${requestScope.get("bdid")},
             bzname:'${requestScope.get("bzname")}',
-            hktmoney:0
+            tzb:{
+                juid:'',
+                money:0,
+                nprofit:'',
+                cpname:'',
+                baid:${requestScope.get("baid")}
+            }
         },
         created (){
-            axios.all([getinfo(this.baid,this.bdid)]).then(axios.spread((borrowapplyDetail)=>{
+            axios.all([getinfo(this.tzb.baid,this.bdid)]).then(axios.spread((borrowapplyDetail)=>{
                  this.borrowapply = borrowapplyDetail.data.data.borrowapply;
                  this.borrowdetail = borrowapplyDetail.data.data.borrowdetail;
             }));
         },
         methods:{
+            touzi () {
+                axios.post('/tzb/data/json/save',Qs.stringify(this.tzb)).then((response)=>{
+                    alert(response.data.message);
+                },(error)=>{
 
+                });
+            },
+            getJsonShang(laypage){
+                $.getJSON('/tzb/data/json/tzpager', {
+                    pageNumber: 1,
+                    pageSize: 2,
+                    baid:this.tzb.baid
+                }, function(res){
+                    laypage.render({
+                        elem: 'demo3',
+                        count: res.total,
+                        limit :2,
+                        jump: function(e, first){
+                            if (!first) {
+                                vue.getJsonXia(e);
+                            } else {
+                                vue.getJsonXia(e);
+                            }
+                        }
+                    });
+                });
+            },
+            getJsonXia (e) {
+                $.getJSON('/tzb/data/json/tzpager', {
+                    pageNumber: e.curr,
+                    pageSize: e.limit,
+                    baid:this.tzb.baid
+                }, function (res) {
+                    vue.tzbRow = res.rows;
+                });
+            },
         },
         computed: {
             ktmoney: function () {
-                this.hktmoney = this.borrowapply.money - this.borrowdetail.money;
-                return this.hktmoney;
+                this.tzb.money = this.borrowapply.money - this.borrowdetail.money;
+                return this.tzb.money;
             }
         }
     })

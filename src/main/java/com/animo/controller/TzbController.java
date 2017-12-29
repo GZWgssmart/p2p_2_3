@@ -46,4 +46,9 @@ public class TzbController {
         return tzbService.listPager(page,limit);
     }
 
+    @GetMapping("tzpager")
+    public Pager listPagerByBaid(Integer pageNumber, Integer pageSize,Integer baid){
+        return tzbService.listPagerByBaid(pageNumber,pageSize,baid);
+    }
+
 }

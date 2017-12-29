@@ -1,5 +1,6 @@
 package com.animo.service.impl;
 
+import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.dao.*;
 import com.animo.pojo.*;
@@ -88,6 +89,14 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
         }
         borrowdetailMapper.updateMoney(borrowdetailMapper.selectMoney(tzb.getBaid()).add(money),tzb.getBaid());
         return ServerResponse.createBySuccess("投资成功");
+    }
+
+    @Override
+    public Pager listPagerByBaid(Integer pageNumber, Integer pageSize, Integer baid) {
+        Pager pager = new Pager(pageNumber, pageSize);
+        pager.setRows(tzbMapper.listPagerByBaid(pager,baid));
+        pager.setTotal(tzbMapper.countByBaid(baid));
+        return pager;
     }
 
     @Autowired

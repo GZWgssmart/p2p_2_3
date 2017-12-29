@@ -210,7 +210,7 @@
 
   <select id="three" resultType="com.animo.vo.BorrowapplyVo">
     <![CDATA[
-      SELECT b.bzid,bo.baid,b.bzname,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
+      SELECT bd.bdid,bo.uid,b.bzid,bo.baid,b.bzname,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
        FROM borrowapply AS bo,borrowdetail AS bd,bz AS b WHERE bo.baid=bd.baid AND bo.bzid=b.bzid AND bo.bzid=#{bzid}
       ORDER BY RAND() LIMIT 3
     ]]>
@@ -238,7 +238,7 @@
 
   <select id="listPagerCriteria" resultType="com.animo.vo.BorrowapplyVo">
     <![CDATA[
-        SELECT b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
+        SELECT bo.uid,b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
     ]]>
     <include refid="form"></include>
     <include refid="if"></include>

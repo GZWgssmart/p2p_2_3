@@ -154,7 +154,6 @@
 <script src="<%=path%>/static/js/axios.min.js/"></script>
 <script src="<%=path%>/static/js/vue.min.js/"></script>
 <script src="<%=path%>/static/layui/layui.js"></script>
-<script src="/static/layui/lay/modules/laypage.js"></script>
 <script>
     var laypage;
     layui.use(['laypage','layer','element'], function(){

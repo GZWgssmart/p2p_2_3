@@ -94,35 +94,6 @@
 </div>
 <!-- product -->
 <div class="product wrap">
-    <div class="product-n" id="newUser">
-
-
-        <div class="product-new">
-            <div class="title cl"><img alt="" src=""></div>
-            <ul class="product-new-main cl">
-                <li class="rate cl">
-                    <p><span id="ty-rate">12</span>%</p>
-                    <span>预期年化收益率</span>
-                </li>
-                <li class="date">
-                    <div class="date-item">
-                        <div class="line icon icon-progress">
-                            <p>募集进度：</p>
-                            <p class="progress"><em></em></p>
-                            <p class="progress-text"><span id="xs-schedules">80</span>%</p>
-                        </div>
-                        <p class="icon icon-doll">项目金额：<span id="xs-doll">1000.00万</span></p>
-                        <p class="icon icon-time">投资期限：<span id="ty-date">1个月</span></p>
-                    </div>
-                </li>
-                <li>
-                    <div class="button">
-                        <button type="button" id="ty-btn">立即投资</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
     <!-- 恒金保 -->
     <div class="product-h" id="pj_hengjin">
         <div class="product-h-l">
@@ -135,7 +106,7 @@
                 <li v-for="item in hjb">
                     <div class="product-content">
                         <div class="top">
-                            <p class="product-title"><a href="">{{item.cpname}}</a></p>
+                            <p class="product-title"><a href="javascript:;" @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></p>
                             <p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>
                             <span class="p-rate-text">预期年化收益率</span>
                         </div>
@@ -173,7 +144,7 @@
                 <li v-for="item in pjb">
                     <div class="product-content">
                         <div class="top">
-                            <p class="product-title"><a href="">{{item.cpname}}</a></p>
+                            <p class="product-title"><a href="javascript:;" @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></p>
                             <p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>
                             <span class="p-rate-text">预期年化收益率</span>
                         </div>
@@ -214,7 +185,7 @@
                 <li v-for="item in djb">
                     <div class="product-content">
                         <div class="top">
-                            <p class="product-title"><a href="">{{item.cpname}}</a></p>
+                            <p class="product-title"><a href="javascript:;" @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></p>
                             <p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>
                             <span class="p-rate-text">预期年化收益率</span>
                         </div>
@@ -246,27 +217,14 @@
             <p class="more icon icon-more"><a href="">更多</a></p>
         </div>
         <div class="news-main-content" id="dynamic">
-            <ul class="news-main-list">
-                <li><a href="" target="_blank" class="news-main-content-left"><img src="" alt="年底投资有风险 选择普金资本安全可靠！"
-                                                                                   width="210" height="140"></a><a
-                        href="" target="_blank" class="list-title">年底投资有风险 选择普金资本安全可靠！</a><a href="" target="_blank"
-                                                                                             class="list-main">
-                    随着近年来中国经济的快速发展，社会财富不断增长，个人金融资产也不断增加，理财的必要性也逐渐体现出来了。同时，年关将至，...</a></li>
-                <li><a href="" target="_blank"
+            <ul v-for="item in media" class="news-main-list">
+                <li ><a :href="" target="_blank"
                        class="news-main-content-left"><img
-                        src="" alt="这个双十一，你准备好了没有？"
-                        width="210" height="140"></a><a href="" target="_blank" class="list-title">这个双十一，你准备好了没有？</a><a
+                        src="item.url"
+                        href="" target="_blank" class="list-title">{{item.title}}</a><a
                         href="" target="_blank" class="list-main">
-
-
-                    随着双十一的临近，国内的金融投资市场也呈现出一派繁荣景象。不过，时值年底，对于普通的投资者来说，如果没有选择...</a></li>
-                <li><a href="" target="_blank"
-                       class="news-main-content-left"><img
-                        src=""
-                        alt="【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！" width="210" height="140"></a><a
-                        href="" target="_blank" class="list-title">【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！</a><a
-                        href="" target="_blank" class="list-main">
-                    2017年10月13日，江西省互联网金融协会第二届第一次会员代表大会在南昌前湖迎宾馆隆重召开。本次会议，通过了第一届理...</a></li>
+                    {{item.content}}</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -277,14 +235,10 @@
         </div>
         <div class="news-main-content">
             <ul class="news-main-list" id="newsContent">
-                <li><a href="" target="_blank">2017年12月24日新标预告</a><span>2017-12-23</span>
+                <li v-for="item in notice">
+                    <a href="" target="_blank">{{item.title}}</a>
+                    <span>{{item.createdTime}}</span>
                 </li>
-                <li><a href="" target="_blank">2017年12月24日新标预告</a><span>2017-12-23</span>
-                </li>
-                <li><a href=""
-                       target="_blank">关于多金宝项目正常还款的公告</a><span>2017-12-23</span></li>
-                <li><a href=
-                       target="_blank">关于新手标项目正常还款的公告</a><span>2017-12-23</span></li>
             </ul>
         </div>
         <div class="news-main-top ptop">
@@ -293,14 +247,10 @@
         </div>
         <div class="news-main-content">
             <ul class="news-main-list" id="news-part">
-                <li><a href="" target="_blank">【普金资本】校企联手 探寻合作新契机！</a><span>2017-10-19</span>
+                <li v-for="item in dynamic">
+                    <a href="" target="_blank">{{item.title}}</a>
+                    <span>{{item.createdTime}}</span>
                 </li>
-                <li><a href="" target="_blank">【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！</a><span>2017-10-16</span>
-                </li>
-                <li><a href="" target="_blank">普金资本与汇付天下、益金所洽谈战略合作</a><span>2017-07-28</span>
-                </li>
-                <li><a href=""
-                       target="_blank">热烈祝贺普金资本荣膺普惠金融协会常务副会长单位</a><span>2017-07-18</span></li>
             </ul>
         </div>
     </div>
@@ -451,24 +401,44 @@
         return axios.get('/borrowapply/data/json/three');
     }
 
+    function Media() {
+        return axios.get('url');
+    }
+
+    function notice() {
+        return axios.get('url');
+    }
+
+    function dynamic() {
+        return axios.get('url');
+    }
+
     new Vue({
         el:'#app',
         data:{
             djb:[],
             xsb:[],
             pjb:[],
-            hjb:[]
+            hjb:[],
+            media:[],
+            notice:[],
+            dynamic:[]
         },
         created () {
-            axios.all([three()]).then(axios.spread((threes)=>{
+            axios.all([three(),Media(),notice(),dynamic()]).then(axios.spread((threes,media,notice,dynamic)=>{
                this.djb = threes.data.data['多金宝'].data;
                this.xsb = threes.data.data['新手标'].data;
                this.pjb = threes.data.data['普金保'].data;
                this.hjb = threes.data.data['恒金保'].data;
+               //this.media = media.data.data;
+                //this.notice = notice.data.data;
+                //this.dynamic = dynamic.data.data
             }));
         },
         methods: {
-
+            detail (baid,bdid,bzname) {
+                window.location.href='/borrowapply/info/'+baid+'/'+bdid+'/'+bzname
+            }
         },
         computed: {
 
