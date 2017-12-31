@@ -48,7 +48,7 @@ public class RoleController {
      */
     @RequestMapping("delete")
     public ServerResponse deleteRole(Role role){
-        return roleService.removeById(role.getRid());
+        return roleService.deleteByRoleKey(role.getRid());
     }
 
     /**

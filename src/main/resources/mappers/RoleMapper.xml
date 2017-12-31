@@ -17,8 +17,7 @@
     where rid = #{rid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from role
-    where rid = #{rid,jdbcType=INTEGER}
+    DELETE FROM role WHERE rid = #{rid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.animo.pojo.Role" >
     insert into role (rid, rname, pid, content
@@ -90,5 +89,12 @@
   <select id="listByPid" resultType="com.animo.pojo.Role">
     SELECT r.rid, r.pid, r.rname, r.content FROM role as r where pid = 0;
   </select>
+
+ <delete id="deleteByRoleKey" parameterType="java.lang.Integer">
+    DELETE r,rj,ru FROM role as r,rolejur as rj,roleuser as ru where
+      r.rid = #{rid,jdbcType=INTEGER}
+      and rj.rid = #{rid,jdbcType=INTEGER}
+      and ru.rid = #{rid,jdbcType=INTEGER}
+ </delete>
 
 </mapper>

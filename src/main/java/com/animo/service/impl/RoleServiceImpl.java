@@ -31,4 +31,10 @@ public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
     public List<Role> listByPid(Integer pid) {
         return roleMapper.listByPid(pid);
     }
+
+    @Override
+    public ServerResponse deleteByRoleKey(Integer id) {
+        Integer integer =  roleMapper.deleteByRoleKey(id);
+        return integer==1?ServerResponse.createBySuccess("删除成功"):ServerResponse.createByError("删除失败");
+    }
 }
