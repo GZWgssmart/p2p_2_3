@@ -57,10 +57,10 @@ public class DynamicController {
 * 查询分页
 * */
     @RequestMapping("pager")
-    public Pager pagerRole(Integer pageNo, Integer pageSize){
-        System.out.print(pageNo);System.out.print(pageSize);
+    public Pager pagerRole(Integer page, Integer limit){
+        System.out.print(page);System.out.print(limit);
 
-        return dynamicService.listPager(pageNo,pageSize);
+        return dynamicService.listPager(page,limit);
     }
 
 
