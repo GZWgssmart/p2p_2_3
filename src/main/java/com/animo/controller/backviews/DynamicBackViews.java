@@ -14,7 +14,7 @@ public class DynamicBackViews {
 
     @GetMapping("save")
     public String save(){
-        return "dynamic/adddyna";
+        return "dynamic/addDynamic";
     }
 
     @GetMapping("savepic")

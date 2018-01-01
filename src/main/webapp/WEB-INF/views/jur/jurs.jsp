@@ -16,6 +16,7 @@
 </head>
 <body>
 <div id="appJur">
+
     <!--layui表格-->
     <table class="layui-hide" id="jurs" lay-filter="jur"></table>
 

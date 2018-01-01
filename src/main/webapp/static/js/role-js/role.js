@@ -5,17 +5,6 @@
 
 var roleObj = {"rid":"", "pid":"", "rname":"", "nodeNum":"", "content":""};
 
-
-// function editRole() {
-//     // var node = roleObj.nodeNum;
-//     // if (node == 0 || node >1){
-//     //     alert("请选择一个角色！");
-//     // }else {
-//     //
-//     // }
-//     // console.log(roleObj);
-// }
-
 /**
  * 节点名称修改回调函数
  * @param event
@@ -26,7 +15,7 @@ var roleObj = {"rid":"", "pid":"", "rname":"", "nodeNum":"", "content":""};
 function zTreeOnRename(event, treeId, treeNode, isCancel) {
     var rname = treeNode;
     if (!rname.length==0){
-        //发送请求
+        //若修改后的名称不为空，则发送请求
         var params = new URLSearchParams();
         params.append('rid', treeId.rid);
         params.append('pid', treeId.pid);
@@ -41,7 +30,6 @@ function zTreeOnRename(event, treeId, treeNode, isCancel) {
     }else {
         //修改失败
         layer.msg("修改失败");
-        window.location.reload();
     }
 }
 /**
@@ -70,7 +58,6 @@ function removeHoverDom(treeId, treeNode) {
  */
 function zTreeBeforeEditName(treeId, treeNode) {
     return true;//设置为true,可编辑
-    // return confirm("确认要重命名部门 -- " + treeNode.rname + " 吗？");
 }
 
 /**
@@ -80,33 +67,28 @@ function zTreeBeforeEditName(treeId, treeNode) {
  * @returns {boolean}
  */
 function zTreeBeforeRemove(treeId, treeNode) {
-    var isDel = confirm("确认要删除 -- " + treeNode.rname + " 吗？");
-    if (isDel){
-        var params = new URLSearchParams();
-        params.append('rid', treeNode.rid);
-        axios.post(' /role/data/json/delete',params)
-            .then((response)=>{
-                alert(response.data.message);
-            },(error)=>{
-                alert("请求失败");
-            });
-        return isDel;
-    }else {
-        isDel = false;
-        return isDel;
-    }
+    layer.msg('你确定要删除角色：'+'“'+treeNode.rname+'”'+' 吗？删除后拥有该角色的用户将失去该身份及相关权限！', {
+        time: 0 //不自动关闭
+        ,btn: ['是的', '取消']
+        ,yes: function(index){
+                var params = new URLSearchParams();
+                params.append('rid', treeNode.rid);
+                axios.post(' /role/data/json/delete',params)
+                    .then((response)=>{
+                        layer.msg(response.data.message);
+                        initTreeRole();
+                    },(error)=>{
+                        layer.msg("请求失败");
+                    });
+            layer.closeAll();
+            return true;
+        },btn2: function () {
+            layer.msg('已取消');
+        }
+    });
+    return false;
 }
-/**
- * 显示选中的个数
- */
-// function getNodes(checked) {
-//     new Vue({
-//         el:'#nodeTip',
-//         data:{
-//             checked:checked,
-//         }
-//     })
-// }
+
 /**
  * commbox状态改变回调函数
  * @param event
@@ -116,11 +98,6 @@ function zTreeBeforeRemove(treeId, treeNode) {
 function nodeOnCheck(event, treeId, roleNodes) {
     var treeObj = $.fn.zTree.getZTreeObj("roleTree");
     var checked = treeObj.getCheckedNodes(true);//获取选中的个数
-    // console.log(checked[0].content);
-    // var Unchecked = treeObj.getCheckedNodes(false);//获取未选中的个数
-    // getNodes(checked.length);
-    // alert(roleNodes.con);
-    // var roleObj = {"rid":roleNodes.rid, "pid":roleNodes.pid, "rname":roleNodes.rname, "nodeNum":checked.length};
     if (checked.length > 0){
         roleObj.rid = checked[0].rid;
         roleObj.pid = checked[0].pid;
@@ -133,6 +110,17 @@ function nodeOnCheck(event, treeId, roleNodes) {
     return roleObj;
 }
 
+/**
+ * 节点触发事件
+ * @param event
+ * @param treeId    id
+ * @param treeNode jsonObj
+ */
+function zTreeOnClick(event, treeId, treeNode) {
+    vue.roleDel.rname = treeNode.rname;
+    vue.roleDel.content = treeNode.content;
+    alert( treeNode.content+ ", " + treeNode.rname);
+};
 
 /**
  * 初始化树，动态加载数据
@@ -156,7 +144,7 @@ function initTreeRole() {
         data: {
             key: {
                 name : "rname",
-                content:"con"
+                content:"content"
             },
             simpleData: {
                 enable:true,
@@ -167,7 +155,7 @@ function initTreeRole() {
         },
         callback: {
             //点击节点触发事件
-            // onClick: zTreeOnClick,
+            onClick: zTreeOnClick,
             //勾选框状态改变事件
             onCheck:nodeOnCheck,
             //节点名称修改回调函数

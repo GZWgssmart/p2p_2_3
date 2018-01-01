@@ -4,12 +4,16 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Dynamic;
 import com.animo.service.DynamicService;
+import com.animo.utils.ImageUtils;
+import com.animo.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/25.
@@ -19,11 +23,14 @@ import java.util.Date;
 public class DynamicController {
     @Autowired
     private DynamicService dynamicService;
+
     @RequestMapping("save")
     public ServerResponse save (Dynamic dynamic)throws Exception{
+        List<String> stringList = ImageUtils.getImageSrc(dynamic.getContent());
+        String imgSrc = StringUtils.listToString(stringList,',');
+        dynamic.setPic(imgSrc);
         dynamic.setCreatedTime(new Date());
         return dynamicService.save(dynamic);
-
     }
 /*
 * 修改

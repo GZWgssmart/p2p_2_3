@@ -3,8 +3,7 @@
  * 权限js文件
  */
 //初始化layui,Vue
-var nodesObj = {"rjid":"", "rid":"", "jid":""};
-var nodesList = [];
+var nodesList;
 $(function () {
     var vue = new Vue({
         el:"#appJur",
@@ -25,17 +24,19 @@ $(function () {
                     });
             },
             saveRoleJur:function () {
-                // for (var x = 0; x < nodeOnCheck().length; x++){
-                //     nodeOnCheck()[x].jid = this.jur.jid;
-                // }
-                console.log(nodeOnCheck());
-                // axios.post('/roleJur/data/json/saveRoleJur',Qs.stringify(nodeOnCheck()))
-                //     .then((response)=>{
-                //         layer.msg(response.data.message);
-                //         layer.closeAll();
-                //     },(error)=>{
-                //         layer.alert("请求失败");
-                //     });
+                if (nodeOnCheck().length == 0){
+                    layer.msg('请选择权限');
+                }else {
+                    var list = this.jur.jid+","+nodeOnCheck();
+                    var params = new URLSearchParams();
+                    params.append('nodeList', list);
+                    axios.post('/roleJur/data/json/saveRoleJur',params).then((response)=>{
+                        layer.msg(response.data.message);
+                        layer.closeAll();
+                    },(error)=>{
+                        layer.alert("请求失败");
+                    });
+                }
             }
         }
     });
@@ -60,7 +61,7 @@ $(function () {
                 ,dataName: 'rows'
             }
             ,cols: [[ //表头
-                {field: 'jid', title: 'ID', width:80, sort: true, fixed: 'left'}
+                {field: 'jid', title: 'ID', width:80, sort: true}
                 ,{field: 'jurl', title: '权限url', width:150}
                 ,{field: 'content', title: '描述', width:150}
                 ,{title:'操作', fixed: 'right', width: 165, align:'center', toolbar: '#barJur'}
@@ -165,13 +166,15 @@ $(function () {
  * @param treeNode
  */
 function nodeOnCheck(event, treeId, treeNode) {
+    nodesList="";
     var treeObj = $.fn.zTree.getZTreeObj("roleTree");
     var nodes = treeObj.getCheckedNodes(true);//获取选中的个数
-    for (var i = 0; i < nodes.length; i++){
-        if (!nodes[i].pid == ""){
-            nodesObj.rid = nodes[i].rid;
-            nodesList.push(nodesObj);
-        }
+    for (var i =1; i <nodes.length; i++){
+            if(nodesList==null){
+                nodesList+=nodes[i].rid+',';
+            }else{
+                nodesList+=nodes[i].rid+",";
+            }
     }
     return nodesList;
 };

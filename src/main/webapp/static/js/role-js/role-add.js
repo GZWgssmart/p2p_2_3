@@ -31,11 +31,14 @@ function depOnCheck(event, treeId, roleNodes) {
     if (roleNodes.rid !=  null){
         vue.role.pid = roleNodes.rid
     }else {
-        alert("请选择部门");
+        layer.msg("请选择部门");
     }
     return roleObj;
 }
 
+/**
+ * 初始化树
+ */
 function initRoleDepTree() {
     var roleNodes =[];
     var setting = {
@@ -89,3 +92,4 @@ function initRoleDepTree() {
         });
     });
 }
+

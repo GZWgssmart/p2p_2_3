@@ -102,9 +102,16 @@
                         <dd>
                             <a href="javascript:;" data-url="" data-id="8">首页轮播图</a>
                         </dd>
+                    </dl>
+                    <dl class="layui-nav-child">
                         <dd>
-                        <a href="javascript:;" data-url="/back/dyna/pager" data-id="8">公司动态</a>
-                    </dd>
+                            <a href="javascript:;" data-url="/back/dyna/pager" data-id="9">公司动态</a>
+                        </dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="/back/dyna/save" data-id="10">添加动态</a>
+                        </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -179,7 +186,7 @@
                     <a href="javascript:;">角色管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/role/pagerRole" data-id="25">所有角色</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/role/pagerRole" data-id="26">所有角色</a>
                         </dd>
                     </dl>
                 </li>
@@ -187,7 +194,7 @@
                     <a href="javascript:;">权限管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/jur/pagerJur" data-id="25">所有权限</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/jur/pagerJur" data-id="27">所有权限</a>
                         </dd>
                     </dl>
                 </li>

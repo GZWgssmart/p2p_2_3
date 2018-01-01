@@ -56,6 +56,10 @@
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.0.0" />
           <element id="library" level="project" name="Maven: javax.el:javax.el-api:2.2.4" />
           <element id="library" level="project" name="Maven: org.glassfish.web:javax.el:2.2.4" />
+          <element id="library" level="project" name="Maven: com.baidu:ueditor:1.1.2" />
+          <element id="library" level="project" name="ueditor-1.1.2" />
+          <element id="library" level="module" name="Maven: com.alibaba:jconsole:1.8.0" module-name="p2p_2_3" />
+          <element id="library" level="module" name="Maven: com.alibaba:tools:1.8.0" module-name="p2p_2_3" />
         </element>
       </element>
       <element id="directory" name="META-INF">
