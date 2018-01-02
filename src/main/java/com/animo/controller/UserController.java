@@ -34,6 +34,7 @@ public class UserController {
 
     @RequestMapping(value="register", method = RequestMethod.POST)
     public ServerResponse register(User user, HttpSession session){
+        user.setUpwd(EncryptUtils.md5(user.getUpwd()));
        ServerResponse serverResponse = userService.save(user);
        if (serverResponse.isSuccess()) {
            Rzvip revip = new Rzvip();
@@ -78,6 +79,28 @@ public class UserController {
         User user = (User)session.getAttribute(Constant.SESSION_USER);
         session.invalidate();
         return "index";
+    }
+
+    @PostMapping("updatePwd")
+    public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
+        User user = (User) session.getAttribute(Constant.SESSION_ADMIN);
+        if(EncryptUtils.md5(pwd).equals(user.getUpwd())) {
+            if(EncryptUtils.md5(nowPwd).equals(EncryptUtils.md5(rePwd))) {
+                user.setUpwd(EncryptUtils.md5(nowPwd));
+                userService.update(user);
+                return ServerResponse.createBySuccess("success");
+            }else{
+                System.out.println(EncryptUtils.md5(nowPwd));
+                return ServerResponse.createByError("两次密码不一致");
+            }
+        }else {
+            return ServerResponse.createByError("原密码不正确");
+        }
+    }
+
+    @PostMapping("saveEmail")
+    public ServerResponse saveEmail(User user) {
+        return userService.update(user);
     }
 
 }

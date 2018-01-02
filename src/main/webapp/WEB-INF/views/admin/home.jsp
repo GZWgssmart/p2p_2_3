@@ -89,6 +89,17 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
+                    <a href="javascript:;">投资管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/add" data-id="7">投资奖励设置</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/list" data-id="11">投资奖励列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
                     <a href="javascript:;">订单管理</a>
                     <dl class="layui-nav-child">
                         <dd>

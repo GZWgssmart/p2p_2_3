@@ -87,4 +87,19 @@
     ]]>
   </select>
 
+
+  <!--BaseMapper中的分页-->
+  <select id="listPager" parameterType="com.animo.common.Pager" resultType="com.animo.pojo.RewardSetting">
+    <![CDATA[
+			select rs.rwsid , rs.minmoney, rs.maxmoney, rs.percent
+			from reward_setting rs
+			limit #{beginIndex}, #{pageSize}
+		]]>
+  </select>
+
+  <!--BaseMapper中的计数-->
+  <select id="count" resultType="long">
+    select count(rwsid) from reward_setting;
+  </select>
+
 </mapper>

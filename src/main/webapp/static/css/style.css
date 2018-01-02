@@ -76,7 +76,7 @@ textarea{
 }
 
 .tar{
-	text-align: right;
+	margin-right:-250px;
 }
 
 
@@ -89,6 +89,7 @@ textarea{
 	left: 50%;
 	top: 50%;
 	margin:-225px 0 0 -200px;
+	text-align:center;
 }
 
 .logo{
@@ -119,9 +120,9 @@ textarea{
 	font-size: 14px;
 }
 .login-list .btn{
-	width: 100%;
+	width: 316px;
 	height: 40px;
-	line-height: 27px;
+	line-height: 20px;
 	text-align: center;
 	background:#17b5a6;
 	font-size: 20px;
@@ -151,7 +152,7 @@ textarea{
 }
 .login-list .yzm2{
 	position: absolute;
-	right: 3px;
+	right: 1px;
 	top: 1px;
 	cursor: pointer;
 
