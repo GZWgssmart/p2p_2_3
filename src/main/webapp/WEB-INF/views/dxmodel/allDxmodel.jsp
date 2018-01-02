@@ -21,7 +21,7 @@
                     <!-- 操作日志 -->
                     <div class="layui-tab-item layui-field-box layui-show">
                         <table class="layui-hide" id="test" lay-filter="demo">
-                            <ul class="layui-tab-title">
+                            <%--<ul class="layui-tab-title">
                                 <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
                                 <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
                                 <a class="layui-btn layui-btn-small larry-log-del">
@@ -29,7 +29,7 @@
                                     </i>
                                     清空日志
                                 </a>
-                            </ul>
+                            </ul>--%>
 
                         </table>
 
@@ -40,41 +40,25 @@
 
     </section>
 
-    <div id="testbz" style="display: none">
-        <div class="layui-form-item">
-            </br></br>
-            <label class="layui-form-label">输入框</label>
+
+    <div id="testDxmodel" style="display: none">
+        </BR>
+
+        <div class="layui-form-item layui-form-text" style="width: 500px;height: 150px;">
+            <label class="layui-form-label">内容</label>
             <div class="layui-input-block">
-                <input type="text" v-model="bz.content" autocomplete="on" class="layui-input"/>
-                <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
-                </br></br></br> </br></br></br></br>
-
-
-                <div class="layui-fluid">
-                    <div class="layui-row">
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo grid-demo-bg1">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn" @click="update">增加</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn" @click="update">关闭</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <textarea name="desc" v-model="dxmodel.content" class="layui-textarea"></textarea>
             </div>
+        </div>
+
+        <div>
+            <button class="layui-btn layui-col-md-offset5" @click="close">关闭</button>
         </div>
     </div>
 </div>
 
 <script type="text/html" id="barDemo">
-    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">查看详情</a>
 
 </script>
 
@@ -87,11 +71,11 @@
     var vue = new Vue({
         el: '#app',
         data: {
-            bz: []
+            dxmodel: []
         },
         methods: {
-            update(){
-                console.log(this.bz);
+            close(){
+                layer.closeAll();
             }
         }
     });
@@ -139,11 +123,11 @@
                     type: 1,
                     area: ['600px', '360px'],
                     shadeClose: true, //点击遮罩关闭
-                    content: $("#testbz"),
+                    content: $("#testDxmodel"),
                     maxmin: true
 
                 });
-                vue.bz = data;
+                vue.dxmodel = data;
             }
         });
 

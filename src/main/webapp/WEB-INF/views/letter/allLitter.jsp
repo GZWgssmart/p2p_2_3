@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: CHEN JX
-  Date: 2017/12/26
-  Time: 14:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -18,24 +11,18 @@
 </head>
 
 <body>
-<<<<<<< .mine
 <div id="app">
+
     <section class="larry-grid">
         <div class="larry-personal">
             <div class="layui-tab">
-=======
-<table class="layui-hide" id="test" lay-filter="demo">
-    ·
-</table>
-
->>>>>>> .theirs
 
                 <div class="larry-separate"></div>
                 <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
                     <!-- 操作日志 -->
                     <div class="layui-tab-item layui-field-box layui-show">
                         <table class="layui-hide" id="test" lay-filter="demo">
-                            <ul class="layui-tab-title">
+                           <%-- <ul class="layui-tab-title">
                                 <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
                                 <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
                                 <a class="layui-btn layui-btn-small larry-log-del">
@@ -43,7 +30,7 @@
                                     </i>
                                     清空日志
                                 </a>
-                            </ul>
+                            </ul>--%>
 
                         </table>
 
@@ -54,51 +41,33 @@
 
     </section>
 
-    <%-- <div id="testbz" style="display: none">
-         <input v-model="bz.bzname" /><button @click="update">更新</button>
-     </div>--%>
-
-    <div id="testbz" style="display: none">
-        <div class="layui-form-item">
-            </br></br>
-            <label class="layui-form-label">输入框</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="bz.title" autocomplete="on" class="layui-input"/>
-                <input type="text" v-model="bz.content" autocomplete="on" class="layui-input"/>
-                <input type="text" v-model="bz.createdTime" autocomplete="on" class="layui-input"/>
-                <input type="text" v-model="bz.status" autocomplete="on" class="layui-input"/>
-                <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
-                </br></br></br> </br></br></br></br>
-
-
-                <div class="layui-fluid">
-                    <div class="layui-row">
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo grid-demo-bg1">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">增加</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">关闭</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div id="testLetter" style="display: none">
+        </BR>
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input style="width: 200px;" type="text" v-model="letter.title" autocomplete="on" class="layui-input">
                 </div>
             </div>
-        </div>
+            <div class="layui-form-item layui-form-text" style="width: 500px;height: 150px;">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea name="desc" v-model="letter.content" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+           <div>
+               <button class="layui-btn layui-col-md-offset5" @click="close">关闭</button>
+           </div>
     </div>
+
 </div>
 
 <script type="text/html" id="barDemo">
-    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
 
 </script>
-<script type="text/html" id="aa">
+<script type="text/html" id="status">
     {{# if(d.status==0){ }}
     <span>可用</span>
     {{#   }else{ }}
@@ -107,19 +76,38 @@
 </script>
 
 </body>
-<script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/layui/layui.js"></script>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
+
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/qs.js"></script>
 <script>
 
+    /*$(function () {
+        layui.use(['layer'], function(){
+            var layer = layui.layer;
+        });
+    })*/
     var vue = new Vue({
         el: '#app',
         data: {
-            bz: []
+            letter: []
         },
-        methods: {
-            update(){
-                console.log(this.bz);
+        methods:{
+            /*update:function () {
+                axios.post('/letter/data/json/update', Qs.stringify(this.letter))
+                    .then((response)=>{
+                        layer.msg(response.data.message);
+                        window.location.reload();
+                        /!*layer.closeAll();*!/
+                    },(error)=>{
+                        layer.alert("请求失败");
+                    });
+            },
+*/
+            close: function () {
+                layer.closeAll();
             }
         }
     });
@@ -145,10 +133,10 @@
             }
             , cols: [[ //表头
                 {field: 'lid', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'title', title: '标题', width: 120}
+                , {field: 'title', title: '名称', width: 120}
                 , {field: 'content', title: '内容', width: 120}
-                , {field: 'createdTime', title: '日期', width: 120}
-                , {field: 'status', title: '状态', width: 120,templet: "#aa"}
+                , {field: 'createdTime', title: '创建时间', width: 120}
+                , {field: 'status', title: '状态', width: 120, templet: "#status"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
@@ -159,15 +147,8 @@
                 , layEvent = obj.event; //获得 lay-event 对应的值
             if (layEvent === 'detail') {
                 layer.msg('查看操作');
-<<<<<<< .mine
             } else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
-
-=======
-
-            } else if(layEvent === 'del'){
-                layer.confirm('真的删除行么', function(index){
->>>>>>> .theirs
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
                     //向服务端发送删除指令
@@ -177,19 +158,16 @@
                     type: 1,
                     area: ['600px', '360px'],
                     shadeClose: true, //点击遮罩关闭
-                    content: $("#testbz"),
+                    content: $("#testLetter"),
                     maxmin: true
 
                 });
-                vue.bz = data;
+                vue.letter = data;
             }
         });
 
     });
 
-    /**
-     * 监听点击工具
-     */
 
 
 </script>

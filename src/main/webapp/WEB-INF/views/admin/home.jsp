@@ -152,9 +152,6 @@
                     <a href="javascript:;">宣传管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/letter/pagerLetter" data-id="25">站内信添加</a>
-                        </dd>
-                        <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">所有站内信</a>
                         </dd>
                     </dl>
@@ -163,7 +160,7 @@
                     <a href="javascript:;">定时任务</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="25">短信模板</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="26">短信模板</a>
                         </dd>
 
                     </dl>
@@ -172,13 +169,13 @@
                     <a href="javascript:;">借款管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="25">所有借款类型</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="27">所有借款类型</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="25">所有标种</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="28">所有标种</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="25">所有还款方式</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="29">所有还款方式</a>
                         </dd>
                     </dl>
                 </li>

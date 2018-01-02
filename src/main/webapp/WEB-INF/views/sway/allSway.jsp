@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: CHEN JX
-  Date: 2017/12/26
-  Time: 14:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -28,7 +21,7 @@
                     <!-- 操作日志 -->
                     <div class="layui-tab-item layui-field-box layui-show">
                         <table class="layui-hide" id="test" lay-filter="demo">
-                            <ul class="layui-tab-title">
+                            <%--<ul class="layui-tab-title">
                                 <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
                                 <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
                                 <a class="layui-btn layui-btn-small larry-log-del">
@@ -36,7 +29,7 @@
                                     </i>
                                     清空日志
                                 </a>
-                            </ul>
+                            </ul>--%>
 
                         </table>
 
@@ -47,51 +40,34 @@
 
     </section>
 
-    <%-- <div id="testbz" style="display: none">
-         <input v-model="bz.bzname" /><button @click="update">更新</button>
-     </div>--%>
 
-    <div id="testbz" style="display: none">
+    <div id="testSway" style="display: none">
+        </BR>
         <div class="layui-form-item">
-            </br></br>
-            <label class="layui-form-label">输入框</label>
+            <label class="layui-form-label">还款方式</label>
             <div class="layui-input-block">
-                <input type="text" v-model="bz.way" autocomplete="on" class="layui-input"/>
-                <input type="text" v-model="bz.fw" autocomplete="on" class="layui-input"/>
-                <input type="text" v-model="bz.status" autocomplete="on" class="layui-input"/>
-                <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
-                </br></br></br> </br></br></br></br>
-
-
-                <div class="layui-fluid">
-                    <div class="layui-row">
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo grid-demo-bg1">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">增加</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">关闭</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <input style="width: 200px;" type="text" v-model="sway.way" autocomplete="on" class="layui-input">
             </div>
         </div>
+        <div class="layui-form-item layui-form-text" style="width: 500px;height: 150px;">
+            <label class="layui-form-label">计算</label>
+            <div class="layui-input-block">
+                <textarea name="desc" v-model="sway.fw" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div>
+            <button class="layui-btn layui-col-md-offset5" @click="close">关闭</button>
+        </div>
     </div>
+
 </div>
 
 <script type="text/html" id="barDemo">
-    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
 
 </script>
-
-<script type="text/html" id="aa">
+<script type="text/html" id="status">
     {{# if(d.status==0){ }}
     <span>可用</span>
     {{#   }else{ }}
@@ -100,19 +76,38 @@
 </script>
 
 </body>
-<script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/layui/layui.js"></script>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
+
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/qs.js"></script>
 <script>
 
+    /*$(function () {
+     layui.use(['layer'], function(){
+     var layer = layui.layer;
+     });
+     })*/
     var vue = new Vue({
         el: '#app',
         data: {
-            bz: []
+            sway: []
         },
-        methods: {
-            update(){
-                console.log(this.bz);
+        methods:{
+            /*update:function () {
+             axios.post('/letter/data/json/update', Qs.stringify(this.letter))
+             .then((response)=>{
+             layer.msg(response.data.message);
+             window.location.reload();
+             /!*layer.closeAll();*!/
+             },(error)=>{
+             layer.alert("请求失败");
+             });
+             },
+             */
+            close: function () {
+                layer.closeAll();
             }
         }
     });
@@ -139,8 +134,8 @@
             , cols: [[ //表头
                 {field: 'sid', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'way', title: '还款方式', width: 120}
-                , {field: 'fw', title: '算法', width: 120}
-                , {field: 'status', title: '状态', width: 120,templet:"#aa"}
+                , {field: 'fw', title: '计算', width: 120}
+                , {field: 'status', title: '状态', width: 120, templet: "#status"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
@@ -162,19 +157,16 @@
                     type: 1,
                     area: ['600px', '360px'],
                     shadeClose: true, //点击遮罩关闭
-                    content: $("#testbz"),
+                    content: $("#testSway"),
                     maxmin: true
 
                 });
-                vue.bz = data;
+                vue.sway = data;
             }
         });
 
     });
 
-    /**
-     * 监听点击工具
-     */
 
 
 </script>

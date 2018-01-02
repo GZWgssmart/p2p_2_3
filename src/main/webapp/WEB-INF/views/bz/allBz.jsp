@@ -21,7 +21,7 @@
                     <!-- 操作日志 -->
                     <div class="layui-tab-item layui-field-box layui-show">
                         <table class="layui-hide" id="test" lay-filter="demo">
-                            <ul class="layui-tab-title">
+                            <%--<ul class="layui-tab-title">
                                 <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
                                 <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
                                 <a class="layui-btn layui-btn-small larry-log-del">
@@ -29,7 +29,7 @@
                                     </i>
                                     清空日志
                                 </a>
-                            </ul>
+                            </ul>--%>
 
                         </table>
 
@@ -46,7 +46,7 @@
             </br></br>
             <label class="layui-form-label">输入框</label>
             <div class="layui-input-block">
-                <input type="text" v-model="bz.lxname" autocomplete="on" class="layui-input"/>
+                <input type="text" v-model="bz.bzname" autocomplete="on" class="layui-input"/>
                 <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
                 </br></br></br> </br></br></br></br>
 
@@ -56,14 +56,14 @@
                         <div class="layui-col-sm6">
                             <div class="grid-demo grid-demo-bg1">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">增加</button>
+                                    <button class="layui-btn"@click="update">修改</button>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-col-sm6">
                             <div class="grid-demo">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">关闭</button>
+                                    <button class="layui-btn"@click="close">关闭</button>
                                 </div>
                             </div>
                         </div>
@@ -87,19 +87,38 @@
 </script>
 
 </body>
-<script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/layui/layui.js"></script>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/js/axios.min.js"></script>
 <script>
 
+
+    $(function () {
+        layui.use(['layer'], function(){
+            var layer = layui.layer;
+        });
+    })
     var vue = new Vue({
         el: '#app',
         data: {
             bz: []
         },
-        methods: {
-            update(){
-                console.log(this.bz);
+        methods:{
+            update:function () {
+                axios.post('/bz/data/json/update', Qs.stringify(this.bz))
+                    .then((response)=>{
+                        layer.msg(response.data.message);
+                        window.location.reload();
+                        /*layer.closeAll();*/
+                    },(error)=>{
+                        layer.alert("请求失败");
+                    });
+            },
+
+            close: function () {
+                layer.closeAll();
             }
         }
     });
