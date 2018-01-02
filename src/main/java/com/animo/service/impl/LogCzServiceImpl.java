@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class LogCzServiceImpl extends AbstractServiceImpl implements LogCzService {
 
     private LogCzMapper logCzMapper;
-
+    @Autowired
     public void setLogCzMapper(LogCzMapper logCzMapper){
         super.setBaseMapper(logCzMapper);
         this.logCzMapper = logCzMapper;

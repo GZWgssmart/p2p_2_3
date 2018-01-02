@@ -108,7 +108,7 @@
                 </div>
                 <div class="bank-center">
                     <div class="bank-cardNumber">6212 **** **** 4699</div>
-                    <div class="bank-userName">*广胜</div>
+                    <div class="bank-userName">${sessionScope.User.rname}</div>
                 </div>
             </div>
             <div id="card3" class="bank-card_3" v-on:click="addCard" style="cursor:pointer;">
@@ -205,11 +205,12 @@
             },
             methods:{
                 addCard:function () {
-                    axios.get('bankCard/add').then((response)=>{
-                        layer.msg(response.data.message);
-                    },(error)=>{
-                        alert("请求失败");
-                    });
+                    window.location.href="/bankCard/add";
+//                    axios.get(' /bankCard/add').then((response)=>{
+//                        layer.msg(response.data.message);
+//                    },(error)=>{
+//                        layer.msg("请求失败");
+//                    });
                 }
             }
         })

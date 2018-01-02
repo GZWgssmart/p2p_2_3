@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  * @date 2017-12-25 10:55
  */
 @RestController
-@RequestMapping("TxCheck")
+@RequestMapping("/txCheck/data/json/")
 public class TxCheckController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class TxCheckController {
      * 管理员对提现申请进行审核
      * @return
      */
-    @RequestMapping("PassCheck")
+    @RequestMapping("passCheck")
     public ServerResponse passCheck(HttpSession session,TxCheck txCheck){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if (object !=null){
@@ -69,7 +69,7 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("listRecord/{page}/{limit}")
-    public Pager listRecord(@PathVariable("page") int page, @PathVariable("limit") int limit){
+    public Pager listRecord(@PathVariable("page") Integer page, @PathVariable("limit") Integer limit){
         return txCheckService.listPager(page,limit);
     }
 }

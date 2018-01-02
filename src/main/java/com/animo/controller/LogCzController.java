@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @date 2017-12-22 15:56
  */
 @RestController
-@RequestMapping("logCz")
+@RequestMapping("/logCz/data/json/")
 public class LogCzController {
 
     @Autowired

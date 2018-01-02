@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class TxCheckServiceImpl extends AbstractServiceImpl implements TxCheckService {
 
     private TxCheckMapper txCheckMapper;
-
+    @Autowired
     public void setTxCheckMapper(TxCheckMapper txCheckMapper) {
         super.setBaseMapper(txCheckMapper);
         this.txCheckMapper = txCheckMapper;
