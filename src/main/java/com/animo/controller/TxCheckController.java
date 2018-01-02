@@ -4,9 +4,12 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.Huser;
+import com.animo.pojo.LogTx;
 import com.animo.pojo.TxCheck;
 import com.animo.pojo.User;
+import com.animo.service.LogTxService;
 import com.animo.service.TxCheckService;
+import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,8 @@ public class TxCheckController {
 
     @Autowired
     private TxCheckService txCheckService;
+    @Autowired
+    private LogTxService logTxService;
 
 
     /**
@@ -34,13 +39,13 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("passCheck")
-    public ServerResponse passCheck(HttpSession session,TxCheck txCheck){
+    public ServerResponse passCheck(HttpSession session,LogTx logTx){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if (object !=null){
             Huser huser = (Huser) object;
-            txCheck.setHuid(huser.getHuid());
-            txCheck.setIsok(1);
-            return txCheckService.update(txCheck);
+            logTx.setStatus(1);
+            logTx.setCreatedTime(DateFormateUtils.Formate());
+            return txCheckService.update(logTx);
         }else {
             return ServerResponse.createByError("您的登录已超时，审核失败!");
         }
@@ -68,8 +73,8 @@ public class TxCheckController {
      * @param limit
      * @return
      */
-    @RequestMapping("listRecord/{page}/{limit}")
-    public Pager listRecord(@PathVariable("page") Integer page, @PathVariable("limit") Integer limit){
+    @RequestMapping("listRecord")
+    public Pager listRecord(Integer page,Integer limit){
         return txCheckService.listPager(page,limit);
     }
 }

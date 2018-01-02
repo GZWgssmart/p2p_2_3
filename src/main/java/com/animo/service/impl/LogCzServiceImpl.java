@@ -29,10 +29,10 @@ public class LogCzServiceImpl extends AbstractServiceImpl implements LogCzServic
      * @return
      */
     @Override
-    public Pager listPager(int pageNo, int pageSize) {
+    public Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj) {
         Pager pager = new Pager(pageNo, pageSize);
-        pager.setRows(logCzMapper.listPager(pager));
-        pager.setTotal(logCzMapper.count());
+        pager.setRows(logCzMapper.listPagerCriteria(pager, obj));
+        pager.setTotal(logCzMapper.countCriteria(obj));
         return pager;
     }
 }

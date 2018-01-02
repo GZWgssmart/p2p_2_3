@@ -59,13 +59,13 @@
                                                     <div class="layui-form-item">
                                                         <label class="layui-form-label">所属银行</label>
                                                         <div class="layui-input-block" style="width: 300px;">
-                                                            <select name="interest" id="type" v-model="type">
-                                                                <option value="0">中国银行</option>
-                                                                <option value="1">中国农业银行</option>
-                                                                <option value="2">中国建设银行</option>
-                                                                <option value="3">中国工商银行</option>
-                                                                <option value="4">招商银行</option>
-                                                                <option value="5">招商银行</option>
+                                                            <select name="interest" id="type">
+                                                                <option value="中国银行">中国银行</option>
+                                                                <option value="中国农业银行">中国农业银行</option>
+                                                                <option value="中国建设银行">中国建设银行</option>
+                                                                <option value="中国工商银行">中国工商银行</option>
+                                                                <option value="招商银行">招商银行</option>
+                                                                <option value="招商银行">招商银行</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -74,7 +74,7 @@
                                                     <div class="layui-inline">
                                                         <label class="layui-form-label">银行卡号</label>
                                                         <div class="layui-input-inline" style="width: 300px;">
-                                                            <input type="tel" v-model="bankcard.cardno" required
+                                                            <input id="cardno" type="tel" v-model="bankcard.cardno" required
                                                                    lay-verify="required" autocomplete="off"
                                                                    class="layui-input">
                                                         </div>
@@ -136,9 +136,7 @@
     var vue = new Vue({
         el: "#bankCard",
         data: {
-
             bankcard: {
-                idno: '',
                 type: '',
                 cardno: ''
             },
@@ -149,14 +147,15 @@
         methods: {
             save: function () {
                 var options=$("#type option:selected"); //获取选中的项
-                alert(options.val()); //拿到选中项的值
                 this.bankcard.type = options.val();
-//                axios.post('/bankcard/data/json/save', Qs.stringify(this.bankcard))
-//                    .then((response) => {
-//                        layer.msg(response.data.message);
-//                    }, (error) => {
-//                        layer.msg("请求失败");
-//                    });
+                console.log(this.bankcard);
+//                this.bankcard.cardno =$("#cardno").val();
+                axios.post('/bankcard/data/json/save', Qs.stringify(this.bankcard))
+                    .then((response) => {
+                        layer.msg(response.data.message);
+                    }, (error) => {
+                        layer.msg("请求失败");
+                    });
             }
         }
     })

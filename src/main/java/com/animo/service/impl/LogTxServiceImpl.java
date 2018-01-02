@@ -6,6 +6,8 @@ import com.animo.service.LogTxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by qm on 2017/12/25.
  *
@@ -23,17 +25,12 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
         this.logTxMapper = logTxMapper;
     }
 
-    /**
-     * 分页显示提现记录
-     * @param pageNo
-     * @param pageSize
-     * @return
-     */
     @Override
-    public Pager listPager(int pageNo, int pageSize) {
+    public Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj) {
         Pager pager = new Pager(pageNo, pageSize);
-        pager.setRows(logTxMapper.listPager(pager));
-        pager.setTotal(logTxMapper.count());
+        pager.setRows(logTxMapper.listPagerCriteria(pager, obj));
+        pager.setTotal(logTxMapper.countCriteria(obj));
         return pager;
     }
+
 }

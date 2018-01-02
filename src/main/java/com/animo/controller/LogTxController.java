@@ -6,6 +6,7 @@ import com.animo.constant.Constant;
 import com.animo.pojo.LogTx;
 import com.animo.pojo.User;
 import com.animo.pojo.Usermoney;
+import com.animo.query.TxRecordQuery;
 import com.animo.service.LogTxService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +57,8 @@ public class LogTxController {
      * @param limit
      * @return
      */
-    @RequestMapping("listRecord/{page}/{limit}")
-    public Pager listRecord(@PathVariable("page") Integer page, @PathVariable("limit") Integer limit){
-        return logTxService.listPager(page,limit);
+    @RequestMapping("pager_criteria")
+    public Pager pager(Integer page, Integer limit, TxRecordQuery txRecordQuery) {
+        return logTxService.listPagerCriteria(page, limit, txRecordQuery);
     }
 }

@@ -100,23 +100,27 @@
             <em></em>
         </div>
 
-        <div id="myDebitCard" class="account-content">
-            <div id="card1" class="bank-card_1">
-                <div class="bank-top">
-                    <div class="bank-cardTitle">建设银行</div>
-                    <div class="bank-cardType">储蓄卡</div>
+        <div id="myCard">
+            <div class="account-content">
+                <div id="card1" class="bank-card_1">
+                    <div class="bank-top">
+                        <div class="bank-cardTitle">{{bankcards.type}}</div>
+                    </div>
+                    <div class="bank-center">
+                        <div class="bank-cardNumber">{{bankcards.cardno}}</div>
+                        <div class="bank-userName">${sessionScope.User.rname}</div>
+                    </div>
                 </div>
-                <div class="bank-center">
-                    <div class="bank-cardNumber">6212 **** **** 4699</div>
-                    <div class="bank-userName">${sessionScope.User.rname}</div>
+                <div v-if="ss"  id="card3" class="bank-card_3" v-on:click="addCard" style="cursor:pointer;">
+                    <div class="bank-addCard"><a href="javascript:;">添加银行卡</a></div>
                 </div>
-            </div>
-            <div id="card3" class="bank-card_3" v-on:click="addCard" style="cursor:pointer;">
-                <div class="bank-addCard"><a href="javascript:;">添加银行卡</a></div>
             </div>
         </div>
-    </div>
 
+
+
+
+    </div>
 </div>
 
 
@@ -195,13 +199,25 @@
                 var layer = layui.layer;
             });
         });
-        var vue = new Vue({
-            el:"#card3",
-            data:{
 
+        //银行卡
+        function getcards() {
+            return axios.get('/bankcard/data/json/list');
+        }
+
+        var vue = new Vue({
+            el:"#myCard",
+            data:{
+                ss:true,
+                bankcards:[]
             },
             created () {
-
+                axios.all([getcards()]).then(axios.spread((cards)=>{
+                    this.bankcards = cards.data.data;
+                    if(cards.data.code==0){
+                        this.ss=false;
+                    }
+                }));
             },
             methods:{
                 addCard:function () {
