@@ -1,5 +1,7 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Notice {
@@ -7,6 +9,7 @@ public class Notice {
 
     private String title;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createdTime;
 
     private String content;

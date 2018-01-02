@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Administrator on 2017/12/25.
  */
 @RestController
-@RequestMapping("dyna/data/json")
+@RequestMapping("/dyna/data/json")
 public class DynamicController {
     @Autowired
     private DynamicService dynamicService;
@@ -30,20 +30,28 @@ public class DynamicController {
      * @return
      * 说明：动态中可能包含多张图片，选择一张图片作为封面
      */
-    @RequestMapping("saveDynamic")
+    @RequestMapping("save")
     public ServerResponse save (Dynamic dynamic){
         List<String> stringList = ImageUtils.getImageSrc(dynamic.getContent());
-        String imgSrc = stringList.get(0);//选择第一张作为封面
+        if(stringList.size()!=0) {
+            String imgSrc = stringList.get(0);//选择第一张作为封面
 //        String imgSrc = StringUtils.listToString(stringList,',');//不需要分开存多张图（若需要可使用该方法）
-        dynamic.setPic(imgSrc);
+            dynamic.setPic(imgSrc);
+        }
         dynamic.setCreatedTime(new Date());
         return dynamicService.save(dynamic);
     }
 /*
 * 修改
 * */
-    @RequestMapping("updateDynamic")
+    @RequestMapping("updatedync")
     public ServerResponse updatedync (Dynamic dynamic)throws  Exception{
+        List<String> stringList = ImageUtils.getImageSrc(dynamic.getContent());
+        if(stringList.size()!=0) {
+            String imgSrc = stringList.get(0);//选择第一张作为封面
+//        String imgSrc = StringUtils.listToString(stringList,',');//不需要分开存多张图（若需要可使用该方法）
+            dynamic.setPic(imgSrc);
+        }
         dynamic.setCreatedTime(new Date());
         return dynamicService.update(dynamic);
     }

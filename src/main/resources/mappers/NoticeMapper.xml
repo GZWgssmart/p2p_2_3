@@ -92,4 +92,18 @@
       created_time = #{createdTime,jdbcType=TIMESTAMP}
     where nid = #{nid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="listPager" resultType="com.animo.pojo.Notice" parameterType="com.animo.common.Pager">
+    <![CDATA[
+            select n.nid, n.title,n.content, n.created_time from notice AS n limit #{beginIndex}, #{pageSize}
+        ]]>
+  </select>
+
+  <select id="count" resultType="long">
+    select count(nid) FROM notice
+  </select>
+
+
+
 </mapper>

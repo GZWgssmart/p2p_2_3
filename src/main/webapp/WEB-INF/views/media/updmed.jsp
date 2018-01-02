@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <script src="/static/ueditor/ueditor.config.js"></script>
 <script src="/static/ueditor/ueditor.all.js"></script>
 <script src="/static/js/vue.min.js"></script>
@@ -20,25 +21,34 @@
 <script type="text/javascript" src="/static/ueditor/ueditor.all.js"></script>
 <html>
 <head>
-    <title>Title</title>
+    <title>公司媒体修改</title>
+    <style>
+        body{ text-align:center}
+        .center{ margin:0 auto;}
+        .right{float:right;}
+
+        }
+        /* css注释：为了观察效果设置宽度 边框 高度等样式 */
+    </style>
 </head>
 <body>
 <input id="id" type="hidden" value="${requestScope.id}">
 <div id="app">
-    <button onclick="myCheck();">提交</button>
-   <input type="hidden" v-model="lists.dyid" id="dyid">
-    <input type="text"  v-model="lists.title" id="title"></input>
+    <button class="layui-btn right" onclick="myCheck();">提交</button>
+    <input type="hidden"  v-model="lists.mid" id="mid" >
+    <input type="text" v-model="lists.title" id="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"></input>
 
     <%--<input type="text"  v-model="lists.crea"></input>--%>
     <%--<input  type="hidden" v-model="lists.content" ></input>--%>
 
     <%--  <td><span @click="tofindone(apps.dyid);">查看</span></td>--%>
     <%--{{code}}--%>
+    <div class="center" style="width: 1300px;" >
     <script id="container" name="content" type="text/plain">
           {{lists.content}}
       </script>
-
- </div>
+    </div>
+</div>
 
 
 
@@ -50,7 +60,7 @@
             lists: {
                 content: '',
                 createdTime: '',
-                dyid:'',
+                mid:'',
                 pic:'',
                 title:''
             },
@@ -63,7 +73,7 @@
                 var params = new URLSearchParams();
                 params.append('id', id);
 
-                axios.post('/dyna/data/json/byiddync', params).then((response) => {
+                axios.post('/media/data/json/byiddync', params).then((response) => {
                     this.code = response.data.data.content;
                     this.lists = response.data.data;
 
@@ -99,19 +109,19 @@
     function myCheck(){
 
         var contextPath = "";
-        var dyid=$('#dyid').val();
+        var mid=$('#mid').val();
         var title=$('#title').val();
         var content=$('#content').val();
         var pic=$('#pic').val();
-        $.post(contextPath+"/dyna/data/json/updatedync", {
-            'dyid':dyid,
+        $.post(contextPath+"/media/data/json/updatemedia", {
+            'mid':mid,
             'title':title,
             'pic' :pic,
             'content':getContent()
 
         },function(data) {
             $("#success").html(data);
-            window.location.href="/back/dyna/pager";
+            window.location.href="/back/med/pager";
         });
     }
 </script>

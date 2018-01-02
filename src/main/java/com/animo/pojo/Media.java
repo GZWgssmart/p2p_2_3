@@ -1,5 +1,7 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Media {
@@ -13,6 +15,7 @@ public class Media {
 
     private String url;
 
+    @JsonFormat(pattern="yyyy-MM-dd ",timezone = "GMT+8")
     private Date createdTime;
 
     public Integer getMid() {

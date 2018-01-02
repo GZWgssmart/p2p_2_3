@@ -103,4 +103,24 @@
       created_time = #{createdTime,jdbcType=TIMESTAMP}
     where mid = #{mid,jdbcType=INTEGER}
   </update>
+
+
+
+
+
+
+  <select id="listPager" resultType="com.animo.pojo.Media" parameterType="com.animo.common.Pager">
+    <![CDATA[
+            select m.mid, m.title,m.content, m.created_time,m.pic,m.url from media AS m limit #{beginIndex}, #{pageSize}
+        ]]>
+  </select>
+
+  <select id="count" resultType="long">
+    select count(mid) FROM media
+  </select>
+
+
+
+
+
 </mapper>

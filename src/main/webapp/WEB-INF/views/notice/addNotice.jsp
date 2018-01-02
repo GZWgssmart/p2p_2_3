@@ -11,15 +11,15 @@
 %>
 <html>
 <head>
-    <title>添加动态</title>
+    <title>添加公告</title>
     <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
 </head>
 <body>
 <div id="app">
-    <button class="layui-btn" @click="saveDynamic">保存</button>
-    <input type="text"  v-model="dynamic.title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+    <button class="layui-btn" @click="saveNotice">保存</button>
+    <input type="text"  v-model="notice.title" required  lay-verify="required" placeholder="请输入公司公告" autocomplete="off" class="layui-input">
     <!-- 加载编辑器的容器 -->
-    <script id="container" name="content" type="text/plain">
+    <script id="container" name="content"  type="text/plain">
 
       </script>
 </div>
@@ -41,18 +41,17 @@
         var vue = new Vue({
             el:'#app',
             data:{
-                dynamic:{
+                notice:{
                     title:'',
                     content:''
-
                 }
             },
             methods:{
-                saveDynamic:function () {
-                    vue.dynamic.content = getContent();
-                    axios.post('/dyna/data/json/save', Qs.stringify(this.dynamic)).then((response) => {
+                saveNotice:function () {
+                    vue.notice.content = getContent();
+                    axios.post('/notice/data/json/save', Qs.stringify(this.notice)).then((response) => {
                         layer.msg(response.data.message);
-                        window.location.href="/back/dyna/pager";
+                        window.location.href="/back/not/pager";
                     }, (error) => {
                         layer.alert("请求失败");
                     });

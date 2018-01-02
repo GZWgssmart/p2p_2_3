@@ -1,0 +1,21 @@
+﻿@charset "utf-8";
+.line-limit-length {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.product-buyer-name {
+	max-width: none;
+	max-height: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.text_overflow{
+	width:320px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	overflow:hidden;
+}
+.wth{width:150px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;course:hand;}
