@@ -76,4 +76,8 @@
   <select id="count" resultType="long">
     SELECT count(jid) FROM jur
   </select>
+
+  <select id="listAll" resultType="com.animo.pojo.Jur">
+    SELECT * FROM jur
+  </select>
 </mapper>

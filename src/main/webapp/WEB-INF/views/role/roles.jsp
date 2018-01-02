@@ -36,24 +36,22 @@
                 <form class="layui-form">
                     <div class="layui-form-item">
                         <label class="layui-form-label">角色名称：</label>
-                        <label class="layui-form-label" v-model="roleDel">{{roleDel.rname}}</label>
+                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.rname}}</label>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">角色描述：</label>
-                        <label class="layui-form-label" v-model="roleDel">{{roleDel.content}}</label>
+                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.content}}</label>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">所属部门：</label>
-                        <!--角色zTree的显示容器-->
-                        <ul id="1" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.dep}}</label>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">权限配置：</label>
-                        <!--权限树的显示容器-->
-                        <ul id="2" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.jur}}</label>
                     </div>
 
                     <div>
@@ -100,7 +98,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo" v-on:click="save">保存</button>
+                    <button class="layui-btn" lay-submit lay-filter="formDemo" @click="save">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -137,7 +135,10 @@
         },
         methods: {
             save: function () {
-                console.log(this.role.pid.length);
+                var jurString = nodeJurOnCheck();
+                var  params = new URLSearchParams();
+                params.append('jurString',jurString);
+                console.log(jurString);
                 if (this.role.pid.length != 0) {
                     axios.post(' /role/data/json/save', Qs.stringify(this.role)).then((response) => {
                         layer.msg(response.data.message);

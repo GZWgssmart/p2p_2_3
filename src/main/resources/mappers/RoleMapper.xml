@@ -26,6 +26,9 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.Role" >
+    <selectKey keyColumn="rid" keyProperty="rid" resultType="integer" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
@@ -91,10 +94,8 @@
   </select>
 
  <delete id="deleteByRoleKey" parameterType="java.lang.Integer">
-    DELETE r,rj,ru FROM role as r,rolejur as rj,roleuser as ru where
-      r.rid = #{rid,jdbcType=INTEGER}
-      and rj.rid = #{rid,jdbcType=INTEGER}
-      and ru.rid = #{rid,jdbcType=INTEGER}
+    delete r.*,rj.*,ru.* from role r left join rolejur rj on r.rid = rj.rid left join
+    roleuser ru on r.rid = ru.rid WHERE r.rid = #{rid,jdbcType=INTEGER};
  </delete>
 
 </mapper>

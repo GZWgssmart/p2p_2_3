@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
- * @author 叶小鹏
+ * @author ye
  * 描述：权限的crud
  */
 
@@ -20,6 +22,15 @@ public class JurController {
 
     @Autowired
     private JurService jurService;
+
+    /**
+     * 添加角色时，分配权限
+     * @return
+     */
+    @RequestMapping("all")
+    public List<Jur> listAll(){
+        return jurService.listAll();
+    }
 
     /**
      * 权限分页

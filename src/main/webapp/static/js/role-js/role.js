@@ -117,13 +117,22 @@ function nodeOnCheck(event, treeId, roleNodes) {
  * @param treeNode jsonObj
  */
 function zTreeOnClick(event, treeId, treeNode) {
+    var treeObj = $.fn.zTree.getZTreeObj(treeId);
+    var sNodes = treeObj.getSelectedNodes();
+    if (sNodes.length > 0) {
+        //获取当前被选中的节点的父节点
+        var parentNode = sNodes[0].getParentNode();
+    }
+    // 获取当前被选中的父节点名称
+    var parentNodeName=parentNode.rname;
+    vue.roleDel.dep = parentNodeName;
     vue.roleDel.rname = treeNode.rname;
     vue.roleDel.content = treeNode.content;
-    alert( treeNode.content+ ", " + treeNode.rname);
 };
 
 /**
  * 初始化树，动态加载数据
+ * 角色
  */
 function initTreeRole() {
     var roleNodes =[];

@@ -14,4 +14,6 @@ public interface RoleMapper extends BaseMapper{
     List<Role> listByPid(Integer pid);
     //删除角色，及与该角色有关联的数据
     int deleteByRoleKey(Integer id);
+    //重写save方法，添加角色时需要分配权限，需要提供角色id
+    ServerResponse save(Object object, String jurList);
 }

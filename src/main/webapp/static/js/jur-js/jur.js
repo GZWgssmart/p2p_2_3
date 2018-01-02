@@ -103,6 +103,7 @@ $(function () {
 
     /**
      * 初始化树，动态加载数据
+     * 角色
      */
     function initDisTreeRole() {
         var roleNodes =[];

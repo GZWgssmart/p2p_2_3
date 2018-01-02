@@ -3,6 +3,7 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Role;
+import com.animo.pojo.Rolejur;
 import com.animo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author 叶小鹏
+ * @author ye
  * 角色的crud
  */
 @RestController
@@ -29,8 +30,9 @@ public class RoleController {
      * @return
      */
     @PostMapping("save")
-    public ServerResponse saveRole(Role role){
-        return roleService.save(role);
+    public ServerResponse saveRole(Role role, String jurString){
+        System.out.println(jurString);
+        return roleService.save(role, jurString);
     }
 
     /**
@@ -67,6 +69,7 @@ public class RoleController {
 
 
     /**
+     * 添加角色时指定属于某个部门
      * 所有部门
      * @param role
      * @return

@@ -85,7 +85,7 @@
 
                 var params = new URLSearchParams();
                 params.append('id', id);
-                window.location.href = "/back/dyna/upddync?id=" + id
+                window.location.href = "/back/dyna/updateDynamic?id=" + id
 
                 /*  axios.post('/dyna/data/json/byiddync', params).then((response) => {
                  this.code=response.data.data.content;
