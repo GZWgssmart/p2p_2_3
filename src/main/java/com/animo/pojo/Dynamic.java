@@ -1,5 +1,7 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Dynamic {
@@ -11,6 +13,7 @@ public class Dynamic {
 
     private String pic;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createdTime;
 
     public Integer getDyid() {

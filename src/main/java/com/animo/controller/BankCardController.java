@@ -20,7 +20,7 @@ import java.util.Date;
  * @date 2017-12-22 9:01
  */
 @RestController
-@RequestMapping("bankCard")
+@RequestMapping("/bankcard/data/json/")
 public class BankCardController {
 
     @Autowired
@@ -38,6 +38,8 @@ public class BankCardController {
         if(object != null){
             User user = (User) object;
             bankcard.setUid(user.getUid());
+            bankcard.setRname(user.getRname());
+            bankcard.setIdno(user.getIdno());
             bankcard.setStatus(0);
             bankcard.setBktime(DateFormateUtils.Formate());
             return bankCardService.save(bankcard);
@@ -51,6 +53,7 @@ public class BankCardController {
      * @param bankcard
      * @return
      */
+    @RequestMapping("list")
     public ServerResponse<Bankcard> listBankCards(HttpSession session,Bankcard bankcard){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
@@ -67,13 +70,15 @@ public class BankCardController {
      * @param bankcard
      * @return
      */
+    @RequestMapping("delete")
     public ServerResponse<Bankcard> deleteBankCards(HttpSession session,Bankcard bankcard){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;
-            return bankCardService.removeById(user.getUid());
+            return bankCardService.removeById(bankcard.getBcid());
         }else {
             return ServerResponse.createByError("您的登录已经超时，请重新登录！");
         }
     }
+
 }

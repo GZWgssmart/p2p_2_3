@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @date 2017-12-25 8:55
  */
 @RestController
-@RequestMapping("LogTx")
+@RequestMapping("/LogTx/data/json/")
 public class LogTxController {
 
     @Autowired
@@ -57,7 +57,7 @@ public class LogTxController {
      * @return
      */
     @RequestMapping("listRecord/{page}/{limit}")
-    public Pager listRecord(@PathVariable("page") int page, @PathVariable("limit") int limit){
+    public Pager listRecord(@PathVariable("page") Integer page, @PathVariable("limit") Integer limit){
         return logTxService.listPager(page,limit);
     }
 }

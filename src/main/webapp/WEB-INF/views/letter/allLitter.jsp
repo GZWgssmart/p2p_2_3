@@ -18,10 +18,17 @@
 </head>
 
 <body>
+<<<<<<< .mine
 <div id="app">
     <section class="larry-grid">
         <div class="larry-personal">
             <div class="layui-tab">
+=======
+<table class="layui-hide" id="test" lay-filter="demo">
+    ·
+</table>
+
+>>>>>>> .theirs
 
                 <div class="larry-separate"></div>
                 <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
@@ -152,8 +159,15 @@
                 , layEvent = obj.event; //获得 lay-event 对应的值
             if (layEvent === 'detail') {
                 layer.msg('查看操作');
+<<<<<<< .mine
             } else if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
+
+=======
+
+            } else if(layEvent === 'del'){
+                layer.confirm('真的删除行么', function(index){
+>>>>>>> .theirs
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
                     //向服务端发送删除指令

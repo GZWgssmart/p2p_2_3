@@ -10,20 +10,22 @@
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
 <script src="/static/js/axios.min.js"></script>
+<script src="/static/layui/layui.all.js"></script>
 <link rel="stylesheet" href="/static/layui/css/layui.css"/>
 <link rel="stylesheet" href="/static/css/admin.css"/>
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
 </head>
 <body>
 
 <div id="app">
-    <table>
+   <%-- <table >
 
         <tr v-for="apps in list ">
             <td>{{apps.title}}</td>
-            <%-- <td>{{apps.content}}</td>--%>
+            &lt;%&ndash; <td>{{apps.content}}</td>&ndash;%&gt;
             <td>{{apps.pic}}</td>
             <td>{{apps.created_time}}</td>
             <td><span @click="tofindone(apps.dyid);">查看</span></td>
@@ -32,7 +34,11 @@
             <td>  <a href="/back/dyna/save" data-url="/back/dyna/save" data-id="8">添加</a></td>
         </tr>
 
-    </table>
+    </table>--%>
+    <button  class="layui-btn" v-on:click="save">添加</button>
+       <table class="layui-hide" id="test" lay-filter="demo"></table>
+
+
     <div id="code"></div>
 </div>
 
@@ -47,7 +53,7 @@
             code: "",
         },
         methods: {
-            listdyna: function () {
+           /* listdyna: function () {
                 var params = new URLSearchParams();
                 params.append('pageNo', this.pageNo);
                 params.append('pageSize', this.pageSize);
@@ -57,6 +63,10 @@
                 }, (error) => {
                     alert(error);
                 });
+            },*/
+            save: function () {
+                window.location.href = " /back/dyna/save";
+
             },
             tofindone: function (id) {
 
@@ -105,8 +115,76 @@
             },
         },
     });
-    list.listdyna();
+//    list.listdyna();
 </script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="listdyna">查看</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="upddyna">编辑</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="deldyna">删除</a>
+</script>
+<script>
+    layui.use([ 'laypage', 'layer', 'table', 'element'], function(){
+        var laypage = layui.laypage //分页
+        layer = layui.layer //弹层
+            ,table = layui.table //表格
+            ,element = layui.element; //元素操作
+        //执行一个 table 实例
+        table.render({
+            elem: '#test'
+            ,height: 332
+            ,url: '/dyna/data/json/pager' //数据接口
+            ,page: true //开启分页
+            ,limit:10//每页显示多少个
+            //后台Pager响应对象 不要动
+            ,response: {
+                statusName: 'status'
+                ,statusCode: 0
+                ,msgName: 'message'
+                ,countName: 'total'
+                ,dataName: 'rows'
+            }
+            //后台Pager响应对象 不要动
+            //表头
+            ,cols: [[
+                {field: 'dyid', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'title', title: '标题', width:680}
+                ,{field: 'createdTime', title: '添加时间', width:189}
+                ,{fixed: 'right',title: '操作', width: 171, align:'center', toolbar: '#barDemo'}
+            ]]
+            //表头
+        });
 
+        //监听工具条
+        table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'listdyna'){
+                layer.msg('查看操作');
+                console.log(data.dyid);
+                window.location.href = "/back/dyna/byiddync?id=" + data.dyid;
+            }
+            if(layEvent === 'upddyna'){
+                layer.msg('修改');
+//                console.log(data.dyid);
+                window.location.href = "/back/dyna/upddync?id=" + data.dyid;
+            }
+            else if(layEvent === 'deldyna'){
+                var params = new URLSearchParams();
+                params.append('id', data.dyid);
+                layer.confirm('真的删除行么', function(index){
+                    axios.post('/dyna/data/json/removedyna', params).then((response) => {
+                        layer.msg(response.data.message);
+                    }, (error) => {
+                        alert(error);
+                    });
+                    console.log(data.dyid)
+                    obj.del(data.dyid); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

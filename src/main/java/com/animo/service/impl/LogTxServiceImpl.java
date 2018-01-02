@@ -3,6 +3,7 @@ package com.animo.service.impl;
 import com.animo.common.Pager;
 import com.animo.dao.LogTxMapper;
 import com.animo.service.LogTxService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +17,7 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
 
     private LogTxMapper logTxMapper;
 
+    @Autowired
     public void setLogTxMapper(LogTxMapper logTxMapper) {
         super.setBaseMapper(logTxMapper);
         this.logTxMapper = logTxMapper;
