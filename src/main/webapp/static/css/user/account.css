@@ -94,7 +94,7 @@
     min-height: 864px;
     padding: 27px 40px 100px;
     display: table-cell;
-    background: url(../images/product-loading.gif)center center no-repeat;
+    background: url(../../images/account/product-loading.gif)center center no-repeat;
     background-color: #fff;
     vertical-align: top;
 }
@@ -253,7 +253,7 @@
     line-height: 38px;
     padding-left: 20px;
     border: 1px solid #d9d9d9;
-    background-image: url(../images/icon.png);
+    background-image: url(../../images/account/icon.png);
     background-repeat: no-repeat;
     background-position: 10px -2215px;
     background-color: #fff;
@@ -300,7 +300,7 @@ li.interval {
 p.tips-title {
     padding: 10px 0 10px 50px;
     line-height: 26px;
-    background: url(../images/tips.png) 24px 15px no-repeat;
+    background: url(../../images/account/tips.png) 24px 15px no-repeat;
     background-color: #fff5db;
     border: 1px solid #f5c77f;
     color:#777;
@@ -383,12 +383,13 @@ p.tips-title b{
 .center-profit .luckynum{
 	margin: 10px 8px 0 0;
 }
+
 .center-profit .luckynum #DetailsIcon{
 	display:block;
 	width:17px;
 	height: 25px;
 	float:left;
-	background: url(../images/icon-wen.png)0 13px no-repeat;
+	background: url(/static/images/account/icon-wen.png)0 13px no-repeat;
 	cursor: pointer;
 }
 .center-profit .luckynum .luckyLink>b{
@@ -698,7 +699,7 @@ p.tips-title b{
     line-height: 32px;
     padding-left: 20px;
     border: 1px solid #d9d9d9;
-    background-image: url(../images/icon.png);
+    background-image: url(../../images/account/icon.png);
     background-repeat: no-repeat;
     background-position: 7px -2218px;
     background-color: #fff;
@@ -1260,13 +1261,13 @@ p.tips-title b{
 
 .taste-list .bg-nouse ,
 .taste-list .xj-nouse {
-    background: url(../images/quan_once.png) bottom center no-repeat;
+    background: url(../../images/account/quan_once.png) bottom center no-repeat;
 }
 .taste-list .bg-use,
 .taste-list .bg-date,
 .taste-list .xj-date,
 .taste-list .xj-use{
-    background: url(../images/quan_oneuse.png) bottom center no-repeat;
+    background: url(../../images/account/quan_oneuse.png) bottom center no-repeat;
 }
 .taste-list .bg-nouse .taste-bg-l ,
 .taste-list .bg-use .taste-bg-l,
@@ -1385,14 +1386,14 @@ p.tips-title b{
 	width:100%;
 	height:100%;
     display: block;
-    background: url(../images/quan_date2.png) top center no-repeat;
+    background: url(../../images/account/quan_date2.png) top center no-repeat;
 }
 .taste-list .bg-date .taste-bg-r a,
 .taste-list .xj-date .taste-bg-r a {
 	width:100%;
 	height:100%;
     display: block;
-    background: url(../images/quan_data.png) top center no-repeat;
+    background: url(../../images/account/quan_data.png) top center no-repeat;
 }
 .taste-list .bg-nouse .taste-bg-r a,
 .taste-list .xj-nouse .taste-bg-r>button{

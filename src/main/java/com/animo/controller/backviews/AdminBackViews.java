@@ -36,7 +36,4 @@ public class AdminBackViews {
     public String password() {
         return "admin/password";
     }
-
-
-
 }
