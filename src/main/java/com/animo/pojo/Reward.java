@@ -48,13 +48,6 @@ public class Reward {
         this.money = money;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
-    }
 
     public Date getRewardTime() {
         return rewardTime;
@@ -64,4 +57,11 @@ public class Reward {
         this.rewardTime = rewardTime;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

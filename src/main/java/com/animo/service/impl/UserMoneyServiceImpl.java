@@ -1,6 +1,7 @@
 package com.animo.service.impl;
 
 import com.animo.dao.UsermoneyMapper;
+import com.animo.pojo.Usermoney;
 import com.animo.service.UserMoneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,10 @@ public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMon
     public void setUsermoneyMapper(UsermoneyMapper usermoneyMapper) {
         super.setBaseMapper(usermoneyMapper);
         this.usermoneyMapper = usermoneyMapper;
+    }
+
+    @Override
+    public Usermoney selectByUid(Integer uid) {
+        return usermoneyMapper.selectByUid(uid);
     }
 }

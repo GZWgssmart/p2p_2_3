@@ -140,4 +140,10 @@
   </update>
 
 
+  <select id="selectByUid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <![CDATA[
+      select * from usermoney where uid = #{uid};
+    ]]>
+  </select>
+
 </mapper>

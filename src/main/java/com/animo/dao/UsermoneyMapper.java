@@ -1,5 +1,6 @@
 package com.animo.dao;
 
+import com.animo.pojo.Usermoney;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,4 +8,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UsermoneyMapper extends BaseMapper{
+
+    Usermoney selectByUid(Integer uid);
+
 }

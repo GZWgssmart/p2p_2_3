@@ -111,4 +111,13 @@
     where uid = #{uid}
   </select>
 
+  <select id="selectByStatus" resultMap="BaseResultMap">
+
+  <![CDATA[
+      select * from reward where status = #{status}
+   ]]>
+
+
+  </select>
+
 </mapper>
