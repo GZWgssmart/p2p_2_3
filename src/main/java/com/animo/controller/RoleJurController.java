@@ -1,5 +1,6 @@
 package com.animo.controller;
 
+import com.animo.common.ServerResponse;
 import com.animo.pojo.Rolejur;
 import com.animo.service.RoleJurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,8 @@ public class RoleJurController {
         return roleJurService.saveRolejur(rolejurList);
     }
 
+    @RequestMapping("delete")
+    public ServerResponse removeRolejur(Integer rjid){
+        return roleJurService.removeById(rjid);
+    }
 }

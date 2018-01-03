@@ -21,7 +21,7 @@ function zTreeOnRename(event, treeId, treeNode, isCancel) {
         params.append('pid', treeId.pid);
         params.append('rname', treeNode);
         params.append('content', treeId.content);
-        axios.post(' /role/data/json/update', params)
+        axios.post('/role/data/json/update', params)
             .then((response)=>{
                 layer.msg(response.data.message);
         },(error)=>{
@@ -98,16 +98,18 @@ function zTreeBeforeRemove(treeId, treeNode) {
 function nodeOnCheck(event, treeId, roleNodes) {
     var treeObj = $.fn.zTree.getZTreeObj("roleTree");
     var checked = treeObj.getCheckedNodes(true);//获取选中的个数
-    if (checked.length > 0){
-        roleObj.rid = checked[0].rid;
-        roleObj.pid = checked[0].pid;
-        roleObj.rname = checked[0].rname;
-        roleObj.content = checked[0].content;
-        roleObj.nodeNum = checked.length;
-    }else {
-        roleObj = {"rid":"", "pid":"", "rname":"", "nodeNum":"", "content":""};
-    }
-    return roleObj;
+    // if (checked.length > 0){
+    //     roleObj.rid = checked[0].rid;
+    //     roleObj.pid = checked[0].pid;
+    //     roleObj.rname = checked[0].rname;
+    //     roleObj.content = checked[0].content;
+    //     roleObj.nodeNum = checked.length;
+    // }else {
+    //     roleObj = {"rid":"", "pid":"", "rname":"", "nodeNum":"", "content":""};
+    // }
+    // return roleObj;
+    // console.log(checked);
+    return checked;
 }
 
 /**
@@ -128,6 +130,11 @@ function zTreeOnClick(event, treeId, treeNode) {
     vue.roleDel.dep = parentNodeName;
     vue.roleDel.rname = treeNode.rname;
     vue.roleDel.content = treeNode.content;
+    vue.role.rname = treeNode.rname;
+    vue.role.content = treeNode.content;
+    vue.role.rid = treeNode.rid;
+    //初始化树,角色权限
+    editRoleJurTree('roleDelJurTree', vue.role.rid);
 };
 
 /**
@@ -177,9 +184,9 @@ function initTreeRole() {
         check: {
             enable: true,
             chkStyle: "checkbox",
-            chkboxType: { "Y" : "s", "N" : "s" },
-            chkStyle: "radio",  //单选框
-            radioType: "all"   //对所有节点设置单选
+            chkboxType: { "Y" : "ps", "N" : "ps" }
+            // chkStyle: "radio",  //单选框
+            // radioType: "all"   //对所有节点设置单选
         }
     };
     // roleNodes = [{"rid":1,"pid":0,"rname":"角色","content":"aa"},{"rid":2,"pid":1,"rname":"角色0","content":"aa"}]

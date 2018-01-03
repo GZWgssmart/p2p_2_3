@@ -9,23 +9,65 @@ import java.util.List;
  */
 
 public class RoleJurVO {
-    private List<Object> objectList;
 
-    private List<Rolejur> rolejurList;
+    private String jurString;
 
-    public List<Object> getObjectList() {
-        return objectList;
+    private Integer rid;
+
+    private Integer pid;
+
+    private Integer rjid;
+
+    private String rname;
+
+    private String content;
+
+
+    public String getJurString() {
+        return jurString;
     }
 
-    public void setObjectList(List<Object> objectList) {
-        this.objectList = objectList;
+    public void setJurString(String jurString) {
+        this.jurString = jurString;
     }
 
-    public List<Rolejur> getRolejurList() {
-        return rolejurList;
+    public Integer getRid() {
+        return rid;
     }
 
-    public void setRolejurList(List<Rolejur> rolejurList) {
-        this.rolejurList = rolejurList;
+    public void setRid(Integer rid) {
+        this.rid = rid;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public Integer getRjid() {
+        return rjid;
+    }
+
+    public void setRjid(Integer rjid) {
+        this.rjid = rjid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public String getRname() {
+        return rname;
+    }
+
+    public void setRname(String rname) {
+        this.rname = rname == null ? null : rname.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

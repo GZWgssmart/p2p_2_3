@@ -1,6 +1,5 @@
 package com.animo.dao;
 
-import com.animo.common.ServerResponse;
 import com.animo.pojo.Rolejur;
 import org.springframework.stereotype.Repository;
 

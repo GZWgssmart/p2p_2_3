@@ -68,4 +68,11 @@
       huid = #{huid,jdbcType=INTEGER}
     where ruid = #{ruid,jdbcType=INTEGER}
   </update>
+
+  <insert id="saveRoleuser">
+    INSERT INTO roleuser(rid,huid) VALUES
+    <foreach collection="list" item="item" separator=",">
+      (#{item.rid}, #{item.huid})
+    </foreach>
+  </insert>
 </mapper>

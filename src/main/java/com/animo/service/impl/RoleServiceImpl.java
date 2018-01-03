@@ -19,6 +19,7 @@ import java.util.List;
 public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
 
     private RoleMapper roleMapper;
+    @Autowired
     private RoleJurService roleJurService;
     private ValidationResult validationResult;
 
@@ -51,18 +52,20 @@ public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
             return ServerResponse.createByError(validationResult.getErrorMsg());
         }
         Integer integer = roleMapper.insertSelective(role);
-        //获取rid
-        String [] jurList = jurString.split(",");
-        List<Rolejur> rolejurList = new ArrayList<>();
-        Rolejur rolejur;
-        for (int i = 0; i < rolejurList.size(); i++){
-            rolejur = new Rolejur();
-            rolejur.setRid(role.getRid());
-            rolejur.setJid(Integer.valueOf(jurList[i]));
-            rolejurList.add(rolejur);
+        if (!jurString.isEmpty()){
+            //获取rid
+            String [] jurList = jurString.split(",");
+            List<Rolejur> rolejurList = new ArrayList<>();
+            Rolejur rolejur;
+            for (int i = 0; i < jurList.length; i++){
+                rolejur = new Rolejur();
+                rolejur.setRid(role.getRid());
+                rolejur.setJid(Integer.valueOf(jurList[i]));
+                rolejurList.add(rolejur);
+            }
+            Integer x = roleJurService.saveRolejur(rolejurList);
         }
-        Integer x = roleJurService.saveRolejur(rolejurList);
-        if(integer==1 && x==1){
+        if(integer==1){
             return ServerResponse.createBySuccess("添加成功");
         }
         return ServerResponse.createByError("添加失败");

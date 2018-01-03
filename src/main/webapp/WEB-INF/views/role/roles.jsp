@@ -22,7 +22,8 @@
         <div class="layui-col-xs6">
             <div>
                 <button class="layui-btn" @click="showAddRole">添加角色</button>
-                <button class="layui-btn" @click="showAddRole">角色分配</button>
+                <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
+                <button class="layui-btn" @click="showRoleJur">用户角色分配</button>
             </div>
             <!--角色zTree的显示容器-->
             <div>
@@ -30,7 +31,7 @@
             </div>
         </div>
         <div class="layui-col-xs6">
-            <!--详情和编辑-->
+            <!--详情-->
             <div style="width: 90%;">
                 <div style="text-align: center;"><h3>角色详情</h3></div>
                 <form class="layui-form">
@@ -51,13 +52,13 @@
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">权限配置：</label>
-                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.jur}}</label>
-                    </div>
-
-                    <div>
-                        <button class="layui-btn" @click="showAddRole">修改详情</button>
+                        <!--权限树的显示容器-->
+                        <ul id="roleDelJurTree" disabled="true" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
                     </div>
                 </form>
+                <div>
+                    <button class="layui-btn" @click="showEditRole">修改详情</button>
+                </div>
             </div>
         </div>
     </div>
@@ -65,7 +66,7 @@
 
 
 
-    <!--添加窗口-->
+    <!--添加角色窗口-->
     <div id="addWin" style="display: none">
         <form class="layui-form">
             <div class="layui-form-item">
@@ -86,7 +87,7 @@
 
             <div class="layui-form-item">
                 <label class="layui-form-label">所属部门</label>
-                <!--角色zTree的显示容器-->
+                <!--角色部门的显示容器-->
                 <ul id="roleDepTree" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
             </div>
 
@@ -98,7 +99,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo" @click="save">保存</button>
+                    <button class="layui-btn" lay-filter="formDemo" @click="save">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -106,6 +107,114 @@
         </form>
     </div>
 
+
+    <!--添加部门窗口-->
+    <div id="addDepWin" style="display: none">
+        <form class="layui-form">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门名称</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="role.rname" required lay-verify="required" placeholder="请输入角色名称"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门描述</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入角色描述"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-filter="formDemo" @click="saveDep">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!--用户角色分配窗口-->
+    <div id="roleJurWin" style="display: none">
+        <form class="layui-form">
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" v-model="roleUserVO.roleString" required lay-verify="required" placeholder="请输入角色名称"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">请勾选用户</label>
+                <!--角色树的显示容器-->
+                <ul id="roleUserTree" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-filter="formDemo" @click="saveRoleUser">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!--编辑角色窗口-->
+    <div id="editWin" style="display: none">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="role.rname" required lay-verify="required" placeholder="请输入角色名称"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入角色描述"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">当前所属部门：</label>
+                <div class="layui-input-block">
+                    <input type="text" disabled v-model="roleDel.dep" required lay-verify="required" placeholder=""
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">更改部门：</label>
+                <div class="layui-input-block">
+                    <!--角色部门的显示容器-->
+                    <ul id="updateRoleDepTree" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限配置</label>
+                <!--权限树的显示容器-->
+                <ul id="editRoleJurTree" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-filter="formDemo" @click="updateRole">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
 
 </div>
 </body>
@@ -127,6 +236,17 @@
                 content: '',
                 dep:'',
                 jur:''
+            },
+            roleJurVO:{
+                rid: '',
+                rname: '',
+                content: '',
+                pid: '',
+                jurString:''
+            },
+            roleUserVO:{
+                roleString:'',
+                userString:''
             }
         },
         created() {
@@ -135,23 +255,82 @@
         },
         methods: {
             save: function () {
-                var jurString = nodeJurOnCheck();
-                var  params = new URLSearchParams();
-                params.append('jurString',jurString);
-                console.log(jurString);
+                this.roleJurVO.pid = this.role.pid;
+                this.roleJurVO.content = this.role.content;
+                this.roleJurVO.rname = this.role.rname;
+                this.roleJurVO.jurString = nodeJurOnCheck();
                 if (this.role.pid.length != 0) {
-                    axios.post(' /role/data/json/save', Qs.stringify(this.role)).then((response) => {
+                    axios.post('/role/data/json/save', Qs.stringify(this.roleJurVO)).then((response) => {
                         layer.msg(response.data.message);
-                        console.log(this.role);
+//                        console.log(this.role);
                     }, (error) => {
                         layer.alert("请求失败");
                     });
                 } else {
-                    layer.msg("请选择部门");
+                    layer.alert("请选择部门");
                 }
             },
             showAddRole: function () {
                 showAddRole();
+            },
+            showAddRoleDep:function() {
+                showAddDep();
+            },
+            saveDep:function () {
+                this.role.rid = 0;
+                axios.post('/role/data/json/save', Qs.stringify(this.role)).then((response) => {
+                    layer.msg(response.data.message);
+                }, (error) => {
+                    layer.alert("请求失败");
+                });
+            },
+            showRoleJur:function () {
+                var nodesRole = nodeOnCheck();
+                var roleString = '';
+                console.log(nodesRole);
+                if ( nodesRole.length> 0){
+                    for (var i = 0; i < nodesRole.length; i++){
+                        if (nodesRole[i].pid != ''){
+                            roleString+= nodesRole[i].rid + ',';
+                        }
+                    }
+                    this.roleUserVO.roleString = roleString;
+                    showRoleUser();
+                }else {
+                    layer.alert('请选择一个或多个角色');
+                }
+            },
+            saveRoleUser:function () {
+                var userString = '';
+                var nodesUser = userOnCheck();
+                if ( nodesUser.length> 0){
+                    for (var i = 0; i < nodesUser.length; i++){
+                        userString+= nodesUser[i].huid + ',';
+                    }
+                    this.roleUserVO.userString = userString;
+                    axios.post('/roleUser/data/json/saveRoleUser', Qs.stringify(this.roleUserVO)).then((response) => {
+                        layer.msg("添加成功");
+                    }, (error) => {
+                        layer.alert("请求失败");
+                    });
+                }else {
+                   layer.alert('请选择一个或多个用户');
+                }
+            },
+            showEditRole:function () {
+                if (this.role.rid == ''){
+                    layer.alert("请点击某个角色");
+                }else {
+                    showEditRole();
+                }
+            },
+            updateRole:function () {
+                axios.post('/role/data/json/update', Qs.stringify(this.role))
+                    .then((response)=>{
+                        layer.msg(response.data.message);
+                    },(error)=>{
+                        layer.alert("请求失败");
+                    });
             }
         }
     })

@@ -5,6 +5,7 @@ import com.animo.common.ServerResponse;
 import com.animo.pojo.Role;
 import com.animo.pojo.Rolejur;
 import com.animo.service.RoleService;
+import com.animo.vo.RoleJurVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +31,13 @@ public class RoleController {
      * @return
      */
     @PostMapping("save")
-    public ServerResponse saveRole(Role role, String jurString){
-        System.out.println(jurString);
-        return roleService.save(role, jurString);
+    public ServerResponse saveRole(RoleJurVO roleJurVO){
+        System.out.println(roleJurVO.getJurString());
+        Role role = new Role();
+        role.setPid(roleJurVO.getPid());
+        role.setRname(roleJurVO.getRname());
+        role.setContent(roleJurVO.getContent());
+        return roleService.save(role, roleJurVO.getJurString());
     }
 
     /**

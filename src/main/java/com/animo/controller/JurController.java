@@ -4,6 +4,7 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Jur;
 import com.animo.service.JurService;
+import com.animo.vo.RoleJurVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,11 @@ public class JurController {
 
     @Autowired
     private JurService jurService;
+
+    @RequestMapping("listJurByRid")
+    public List<RoleJurVO> listByRid(Integer rid){
+        return jurService.listByRid(rid);
+    }
 
     /**
      * 添加角色时，分配权限
