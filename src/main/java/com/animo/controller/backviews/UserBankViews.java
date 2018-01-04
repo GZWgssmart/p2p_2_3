@@ -16,4 +16,9 @@ public class UserBankViews {
         return "user/list";
     }
 
+    @GetMapping("upPwd")
+    public String upPwd() {
+        return "user/password";
+    }
+
 }

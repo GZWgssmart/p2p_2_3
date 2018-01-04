@@ -1,6 +1,5 @@
 package com.animo.service.impl;
 
-import com.animo.common.ServerResponse;
 import com.animo.dao.UsermoneyMapper;
 import com.animo.pojo.Usermoney;
 import com.animo.service.UserMoneyService;
@@ -20,17 +19,16 @@ public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMon
         super.setBaseMapper(usermoneyMapper);
         this.usermoneyMapper = usermoneyMapper;
     }
-<<<<<<< .mine
 
     @Override
     public Usermoney selectByUid(Integer uid) {
         return usermoneyMapper.selectByUid(uid);
     }
-=======
+
 
     @Override
     public Usermoney selectAvailableMoney(Integer id) {
         return  usermoneyMapper.selectAvailableMoney(id);
     }
->>>>>>> .theirs
+
 }

@@ -11,6 +11,7 @@
 <head>
     <link rel="stylesheet" href="<%=path%>/static/css/user/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/user/account.css">
+    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
     <style>
         .account .account-right{
             width:900px;
@@ -41,69 +42,14 @@
         }
 
     </style>
+
 </head>
 <link rel="icon" href="<%=path%>/static/images/index/logo_title.jpg" type="image/x-icon"/>
+
 <body onhashchange="hashChange()">
-<!--[if lt IE 8]>
-<div class="show-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
-<![endif]-->
-<!-- top -->
-<div class="top" id="top">
-    <div class="wrap">
-        <div class="top-left icon icon-phone">
-            <span>客服热线：</span>400-606-2079 <span>（8:30～17:30）</span>
-        </div>
-        <div class="top-right cl">
-            <ul class="top-list">
-                <li class="first"><a href="" class="icon icon-person">注册领红包</a></li>
-                <li><a href="" class="icon icon-inv">邀请有礼</a></li>
-                <li><a href="">关于我们</a></li>
-                <li><a href="">帮助中心</a></li>
-                <li></li>
-                <li id="userName"><a href="">登录</a></li>
-                <li><a href="javascript:;" class="icon icon-app" id="app">APP下载</a></li>
-            </ul>
-            <div id="qrCodeDiv" style="display: none;">
-                <div class="CodeDiv">
-                    <img src="">
-<p>IOS下载</p>
-</div>
-<div class="CodeDiv">
-    <img src="">
-    <p>Android下载</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- nav -->
-<div class="nav">
-    <div class="wrap cl">-
-        <div class="logo"><a href=""><img src="<%=path%>/static/images/account/logo.png" alt="普金资本"></a></div>
-        <div class="nav-bar">
-            <ul>
-                <li class="icon icon-acc"><a href="javascript:void(0);">我的账户</a></li>
-                <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="about.html">信息披露</a></li>
-                <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li><a href="safety.html">安全保障</a></li>
-                <li>
-                    <a href="investlist.html">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
-                        <a href="investlist.html#005">新手标</a>
-                        <a href="creditorlist.html">债权转让</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
-                    </div>
-                </li>
-                <li><a href="">首页</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<%@include file="../common/top.jsp"%>
+<div id="app">
+<!--account-->
 <div class="account cl">
     <div class="account-left">
         <div class="account-left-nav">
@@ -136,6 +82,7 @@
 
     <div class="account-right">
         <div class="box1">
+            <!--账户总览开始-->
             <div class="account2" id="account2">
                 <div class="bo1">
                     <div class="zongl " id="zongl">
@@ -158,7 +105,7 @@
                                         <p id="reset"></p>
                                     </div>
                                     <div class="center-user">
-                                        <p class="amt color"><span id="usableSum">9000000.00</span>元</p>
+                                        <p class="amt color"><span id="usableSum">{{usermoney.kymoney}}</span>元</p>
                                         <p class="text"><i></i>可用余额</p>
                                         <p class="link">
                                             <a href="#ipay" class="active">充值</a>
@@ -166,10 +113,10 @@
                                         </p>
                                     </div>
                                     <div class="center-profit">
-                                        <p class="amt"><span id="earnSum">50000.00</span>元</p>
+                                        <p class="amt"><span id="earnSum">{{usermoney.symoney}}</span>元</p>
                                         <p class="text">收益总额</p>
-                                        <p class="luckynum"><i id="DetailsIcon"></i><a class="luckyLink" href="" target="_blank">抽奖次数<b id="luckynum">6</b>次</a></p>
-                                        <p class="icon icon-quan">代金券 <b id="voucher">5</b> 张，现金券 <b id="cashMap">8</b> 张</p>
+                                        <p class="luckynum">
+                                        <p class="icon icon-quan">代金券 <b id="voucher">0</b> 张</p>
                                         <div class="luckyDetails" style="display: none;">
                                             <h1>如何获得抽奖机会</h1>
                                             <p>活动期间：单笔投资满1000元，可获得1次抽奖机会，单笔投资满2000元，可获得2次抽奖机会;以此类推(债权转让标除外)。</p>
@@ -180,18 +127,18 @@
                                     <div class="canvas">
 
                                         <div class="center-total">
-                                            <p id="allTotal">100000000.00</p>
+                                            <p id="allTotal">{{usermoney.zmoney}}</p>
                                             <p class="text">总资产</p>
                                         </div>
                                     </div>
                                     <div class="center-data">
-                                        <p><i class="color color1"></i>投资总额：<span id="investSum">600000.00</span></p>
+                                        <p><i class="color color1"></i>投资总额：<span id="investSum">{{usermoney.tzmoney}}</span></p>
 
-                                        <p><i class="color color2"></i>冻结金额：<span id="freezeAmount">0.00</span></p>
+                                        <%--<p><i class="color color2"></i>冻结金额：<span id="freezeAmount">0.00</span></p>
 
-                                        <p><i class="color color3"></i>待收总额：<span id="forPaySum">50000.00</span></p>
+                                        <p><i class="color color3"></i>待收总额：<span id="forPaySum">50000.00</span></p>--%>
 
-                                        <p><i class="color color4"></i>奖励金额：<span id="otherEarnAmount">80000.00</span></p>
+                                        <p><i class="color color4"></i>奖励金额：<span id="otherEarnAmount">{{usermoney.jlmoney}}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +158,7 @@
                             <div class="slb-view" style="display: block;">
                                 <div class="slb-all">
                                     <div class="slb-left">
-                                        <p><span id="slbSum">10000000.00</span>元</p>
+                                        <p><span id="slbSum">{{usermoney.zmoney}}</span>元</p>
                                         <h1>总金额</h1>
                                         <a href="javascript:slbaoTrading();">转入/转出</a>
                                     </div>
@@ -275,7 +222,9 @@
                     </div>
                 </div>
             </div>
+            <!--账户总览结束-->
 
+            <!--充值开始-->
             <div class="ipay" id="ipay">
                 <div class="bo1">
                     <div class="chongz " id="chongz">
@@ -340,7 +289,10 @@
 
                 </div>
             </div>
+            <!--充值结束-->
 
+
+            <!--提现开始-->
             <div class="cash" id="cash">
                 <div class="bo1">
                     <div class="tix " id="tix">
@@ -439,7 +391,10 @@
 
                 </div>
             </div>
+            <!--提现结束-->
 
+
+            <!--我的赠券开始-->
             <div class="taste" id="taste">
 
                 <div class="bo1">
@@ -574,7 +529,10 @@
                 <!-- </div> -->
                 <!-- </div> -->
             </div>
+            <!--我的赠券结束-->
 
+
+            <!--资金记录开始-->
             <div class="fund" id="fund">
                 <div class="account-right-nav">
                     <div class="sub-a-nav">
@@ -617,7 +575,10 @@
                     </div>
                 </div>
             </div>
+            <!--资金记录结束-->
 
+
+            <!--投资管理开始-->
             <div class="invest" id="invest">
 
                 <div class="bo1">
@@ -717,7 +678,10 @@
 
                 </div>
             </div>
+            <!--投资管理结束-->
 
+
+            <!--债权管理开始-->
             <div class="claimm" id="claimm">
 
                 <div class="bo1">
@@ -878,7 +842,10 @@
                     </div>
                 </div>
             </div>
+            <!--债权管理结束-->
 
+
+            <!--债权购买开始-->
             <div class="claimb" id="claimb">
 
                 <div class="bo1">
@@ -954,7 +921,10 @@
                 </div>
 
             </div>
+            <!--债权购买结束-->
 
+
+            <!---充值开始-->
             <div class="loan" id="loan">
 
                 <div class="bo1">
@@ -1079,7 +1049,10 @@
                     </div>
                 </div>
             </div>
+            <!--账户总览结束-->
 
+
+            <!--我的银行卡->
             <div class="bank" id="bank">
                 <div class="account-right-nav">
                     <div class="sub-a-nav">
@@ -1105,6 +1078,7 @@
                 </div>
             </div>
 
+            <!--安全设置开始-->
             <div class="safe" id="safe">
                 <div class="account-right-nav">
                     <div class="sub-a-nav">
@@ -1114,11 +1088,11 @@
                 </div>
                 <div class="account-content" style="display: block;">
                     <div class="safe">
-                        <div class="safe-top">
+                        <%--<div class="safe-top">
                             <p class="safe-t-text">您的资料完善度</p>
                             <p class="safe-t-line"><em style="width: 50%;"></em></p>
                             <p class="safe-t-r">中</p>
-                        </div>
+                        </div>--%>
                         <div class="safe-content">
                             <ul class="safe-list">
                                 <li>
@@ -1157,7 +1131,10 @@
                                         ******
                                     </div>
                                     <div class="safe-list-3">
-                                        <a href="javascript:;" id="password-btn">修改</a>
+                                        <%--<a href="javascript:void(0);" lay-even="updatePwd">修改</a>--%>
+                                        <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                                            <button data-method="updatePwd" data-type="c" class="layui-btn layui-btn-normal">修改</button>
+                                        </div>
                                     </div>
                                 </li>
                                 <li>
@@ -1169,7 +1146,8 @@
                                     </div>
                                     <div class="safe-list-3">
                                         <a href="javascript:;"  id="dealpwd"></a>
-                                        <a href="recoverpwd.html#deal"  id="forgetpwd">忘记密码</a>
+                                        <a href="#deal"  id="forgetpwd">忘记密码</a>
+
                                     </div>
                                 </li>
                             </ul>
@@ -1177,7 +1155,10 @@
                     </div>
                 </div>
             </div>
+            <!--安全设置结束-->
 
+
+            <!--消息中心开始-->
             <div class="msg" id="msg">
                 <div class="account-right-nav">
                     <div class="sub-a-nav">
@@ -1208,7 +1189,9 @@
                     </div>
                 </div>
             </div>
+            <!--消息中心结束-->
 
+            <!--推荐管理开始-->
             <div class="tuijian" id="tuijian">
 
                 <div class="bo1">
@@ -1323,18 +1306,12 @@
                 <!-- </ul> -->
                 <!-- </div> -->
             </div>
+            <!--推荐管理结束-->
         </div>
     </div>
 </div>
 
-
-
-
-
-
-
-
-
+<!--footer部，到时可以同意include-->
 <div id="ajaxFooter">
     <div class="mod-sidebar">
         <ul>
@@ -1397,10 +1374,73 @@
 
         </div>
     </div>
-    <script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
-    <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
-    <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+</div>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
+
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            usermoney:[]
+        },
+        created () {
+            this.getUserMoney();
+        },
+        methods:{
+            getUserMoney() {
+                axios.get('/user/data/json/money', {
+                    params: {
+                        uid: ${sessionScope.get("user").getUid()}
+                    }
+                }).then((response)=>{
+                    this.usermoney = response.data.data;
+                },(error)=>{
+
+                });
+            }
+        }
+    });
+
+    layui.use('layer', function(){ //独立版的layer无需执行这一句
+        var $ = layui.jquery,
+            layer = layui.layer; //独立版的layer无需执行这一句
+
+        var active = {
+            updatePwd: function(othis){
+                var type = othis.data('type'),
+                    text = othis.text();
+                layer.open({
+                    type: 2
+                    ,offset:type
+                    ,content:'<%=path%>/back/user/upPwd'
+                    ,area: ['430px', '300px'] //自定义文本域宽高
+                    ,title:'修改密码'
+                  /*  ,btn: '确定修改'
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0.3 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }*/
+                });
+            }
+        };
+
+        $('#layerDemo .layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+    });
+
+
+</script>
+
+

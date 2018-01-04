@@ -5,7 +5,7 @@ package com.animo.constant;
  */
 public class Constant {
 
-    public static final  String SESSION_USER="User";
+    public static final  String SESSION_USER="user";
 
     public static final String SESSION_ADMIN="admin";
 

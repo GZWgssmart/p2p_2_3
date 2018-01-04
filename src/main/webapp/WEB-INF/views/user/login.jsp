@@ -101,7 +101,7 @@
             $("#login").serialize(),
             function (data) {
                 if (data.message === 'success') {
-                    window.location.href = "/user/important";
+                    window.location.href = "/user/accountOverride";
                 } else {
                     alert("登录失败");
                 }

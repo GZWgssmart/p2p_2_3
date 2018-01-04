@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -22,7 +23,15 @@
             <li><a href="">关于我们</a></li>
             <li><a href="">帮助中心</a></li>
             <li></li>
-            <li id="userName"><a href="">登录</a></li>
+            <li id="userName">
+                <c:if test="${sessionScope.user == null}">
+                    <a href="/user/login">登录</a>
+                </c:if>
+                <c:if test="${sessionScope.user != null}">
+                    <a href="#" style="color:red">${sessionScope.user.phone }</a>
+                </c:if>
+                    <%--<a href="user/login">登录</a>--%>
+            </li>
             <li><a href="javascript:;" class="icon icon-app" id="">APP下载</a></li>
         </ul>
         <div id="qrCodeDiv" style="display: none;">
@@ -45,7 +54,12 @@
         <div class="logo"><img src="http://pujinziben.com/resources/front/v01/src/images/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
             <ul>
-                <li class="icon icon-acc"><a href="https://www.pujinziben.com/login.html">我的账户</a></li>
+                <c:if test="${sessionScope.user == null}">
+                    <li class="icon icon-acc"><a href="/user/login">我的账户</a></li>
+                </c:if>
+                <c:if test="${sessionScope.user != null}">
+                <li class="icon icon-acc"><a href="/user/accountOverride">我的账户</a></li
+                </c:if>
                 <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
                 <li><a href="about.html">信息披露 </a></li>
                 <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
