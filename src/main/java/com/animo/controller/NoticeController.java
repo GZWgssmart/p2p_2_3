@@ -9,6 +9,7 @@ import com.animo.service.NoticeService;
 import com.animo.utils.ImageUtils;
 import com.animo.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,6 +70,9 @@ public class NoticeController {
         return noticeService.getById(id);
 
     }
-
+    @GetMapping("PagerCriteria")
+    public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
+        return noticeService.listPagers(pageNumber,pageSize);
+    }
 
 }

@@ -121,6 +121,18 @@
 
 
 
+  <select id="listPagers" resultType="com.animo.pojo.Dynamic">
+    <![CDATA[
+        select m.mid, m.title,m.content, m.created_time,m.pic,m.url from media AS m
+    ]]>
+    limit #{pager.beginIndex}, #{pager.pageSize}
+  </select>
+
+  <select id="counts" resultType="long">
+    select count(mid) FROM media
+  </select>
+
+
 
 
 </mapper>

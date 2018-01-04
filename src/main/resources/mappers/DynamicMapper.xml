@@ -7,9 +7,10 @@
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    dyid, title, content, pic, created_time
+    dyid, title, content, pic, created_time, url
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +24,9 @@
   </delete>
   <insert id="insert" parameterType="com.animo.pojo.Dynamic" >
     insert into dynamic (dyid, title, content, 
-      pic, created_time)
+      pic, created_time, url)
     values (#{dyid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{pic,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP})
+      #{pic,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{url,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.Dynamic" >
     insert into dynamic
@@ -45,6 +46,9 @@
       <if test="createdTime != null" >
         created_time,
       </if>
+      <if test="url != null" >
+        url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="dyid != null" >
@@ -61,6 +65,9 @@
       </if>
       <if test="createdTime != null" >
         #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -79,6 +86,9 @@
       <if test="createdTime != null" >
         created_time = #{createdTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where dyid = #{dyid,jdbcType=INTEGER}
   </update>
@@ -87,7 +97,8 @@
     set title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
-      created_time = #{createdTime,jdbcType=TIMESTAMP}
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+       url = #{url,jdbcType=TIMESTAMP}
     where dyid = #{dyid,jdbcType=INTEGER}
   </update>
 
@@ -95,12 +106,26 @@
 
   <select id="listPager" resultType="com.animo.pojo.Dynamic" parameterType="com.animo.common.Pager">
     <![CDATA[
-            select d.dyid, d.title,d.content, d.created_time,d.pic from dynamic AS d limit #{beginIndex}, #{pageSize}
+            select d.dyid, d.title,d.content, d.created_time,d.pic,d.url from dynamic AS d limit #{beginIndex}, #{pageSize}
         ]]>
   </select>
 
   <select id="count" resultType="long">
     select count(dyid) FROM dynamic
   </select>
+
+
+  <select id="listPagers" resultType="com.animo.pojo.Dynamic">
+    <![CDATA[
+        SELECT d.dyid, d.title,d.content, d.created_time,d.pic,d.url from dynamic AS d
+    ]]>
+    limit #{pager.beginIndex}, #{pager.pageSize}
+  </select>
+
+  <select id="counts" resultType="long">
+    select count(dyid) FROM dynamic
+  </select>
+
+
 
 </mapper>

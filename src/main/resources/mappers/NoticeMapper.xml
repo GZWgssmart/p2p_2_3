@@ -106,4 +106,17 @@
 
 
 
+  <select id="listPagers" resultType="com.animo.pojo.Notice">
+    <![CDATA[
+         select n.nid, n.title,n.content, n.created_time from notice AS n
+    ]]>
+    limit #{pager.beginIndex}, #{pager.pageSize}
+  </select>
+
+  <select id="counts" resultType="long">
+    select count(nid) FROM notice
+  </select>
+
+
+
 </mapper>

@@ -80,4 +80,12 @@ public class DynamicServiceImpl implements DynamicService {
         }
         return ServerResponse.createByError("请输入内容");
     }
+
+    @Override
+    public Pager listPagers(Integer pageNumber, Integer pageSize) {
+        Pager pager = new Pager(pageNumber, pageSize);
+        pager.setRows(dynamicMapper.listPager(pager));
+        pager.setTotal(dynamicMapper.count());
+        return pager;
+    }
 }

@@ -43,13 +43,15 @@
             data:{
                 dynamic:{
                     title:'',
-                    content:''
+                    content:'',
+                    url:''
 
                 }
             },
             methods:{
                 saveDynamic:function () {
                     vue.dynamic.content = getContent();
+                    vue.dynamic.url = getContentTxt();
                     axios.post('/dyna/data/json/save', Qs.stringify(this.dynamic)).then((response) => {
                         layer.msg(response.data.message);
                         window.location.href="/back/dyna/pager";
@@ -64,6 +66,9 @@
     //获取文本
     function getContent() {
         return ue.getContent();
+    }
+    function getContentTxt() {
+        return ue.getContentTxt()
     }
 </script>
 </body>

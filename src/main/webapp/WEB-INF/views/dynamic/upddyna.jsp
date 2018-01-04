@@ -25,9 +25,9 @@
 <body>
 <input id="id" type="hidden" value="${requestScope.id}">
 <div id="app">
-    <button onclick="myCheck();">提交</button>
+    <button  class="layui-btn" onclick="myCheck();">提交</button>
    <input type="hidden" v-model="lists.dyid" id="dyid">
-    <input type="text"  v-model="lists.title" id="title"></input>
+    <input type="text"  v-model="lists.title" id="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"></input>
 
     <%--<input type="text"  v-model="lists.crea"></input>--%>
     <%--<input  type="hidden" v-model="lists.content" ></input>--%>
@@ -59,7 +59,7 @@
         methods: {
             tofindone: function () {
                 var id = $("#id").val();
-                alert(id);
+
                 var params = new URLSearchParams();
                 params.append('id', id);
 

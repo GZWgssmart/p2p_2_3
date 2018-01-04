@@ -7,9 +7,11 @@ import com.animo.service.DynamicService;
 import com.animo.utils.ImageUtils;
 import com.animo.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,7 +77,7 @@ public class DynamicController {
 
 
 /*
-* 查询分页
+* 表格查询分页
 * */
     @RequestMapping("pager")
     public Pager pagerRole(Integer page, Integer limit){
@@ -93,6 +95,11 @@ public class DynamicController {
         System.out.println(id);
         return  dynamicService.getById(id);
 
+    }
+
+    @GetMapping("PagerCriteria")
+    public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
+        return dynamicService.listPagers(pageNumber,pageSize);
     }
 
 

@@ -80,5 +80,15 @@ private MediaMapper mediaMapper;
         }
         return ServerResponse.createByError("请输入内容");
     }
+
+
+    @Override
+    public Pager listPagers(Integer pageNumber, Integer pageSize) {
+        Pager pager = new Pager(pageNumber, pageSize);
+        pager.setRows(mediaMapper.listPager(pager));
+        pager.setTotal(mediaMapper.count());
+        return pager;
+    }
+
     }
 

@@ -66,5 +66,14 @@ private NoticeMapper noticeMapper;
         pager.setTotal(noticeMapper.count());
         return pager;
     }
+
+    @Override
+    public Pager listPagers(Integer pageNumber, Integer pageSize) {
+        Pager pager = new Pager(pageNumber, pageSize);
+        pager.setRows(noticeMapper.listPager(pager));
+        pager.setTotal(noticeMapper.count());
+        return pager;
+    }
+
 }
 

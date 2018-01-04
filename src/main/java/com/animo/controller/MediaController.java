@@ -9,6 +9,7 @@ import com.animo.service.MediaService;
 import com.animo.utils.ImageUtils;
 import com.animo.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -89,6 +90,11 @@ public class MediaController {
         System.out.println(id);
         return mediaService.getById(id);
 
+    }
+
+    @GetMapping("PagerCriteria")
+    public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
+        return mediaService.listPagers(pageNumber,pageSize);
     }
 
 

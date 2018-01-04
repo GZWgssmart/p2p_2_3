@@ -31,21 +31,15 @@
 <body>
 <input id="id" type="hidden" value="${requestScope.id}">
 <div id="app"  >
-<div style="width: 1200px" class="center" style="background: white" >
+<div style="width: 1120px" class="center" >
     <div id="title" class="center" ></div>
-    <div id="crea" class="right" ></div>
-    <div >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-    <div  class="right" ><a href="/back/dyna/pager">返回列表</a></div>
-
-    <div id="content" class="center" ></div>
+    <div id="crea" class="right" > <a href="/back/dyna/pager">返回列表</a></div>
+    <div><br/><br/> </div>
+    <div style="width: 1020px" id="content" class="center" ></div>
     <%--  <td><span @click="tofindone(apps.dyid);">查看</span></td>--%>
-
-
-    <%--    {{code}}--%>
-
-
+    <%--{{code}}--%>
 </div>
-
+</div>
 <script>
     $(function () {
         var id = $("#id").val();
@@ -82,7 +76,7 @@
                 this.code = response.data.data.content;
                 $("#code").append(this.code)
             }, (error) => {
-                alert(error);
+
             });
     }
     function messageT(msg) {

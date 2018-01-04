@@ -33,4 +33,21 @@ public class DynamicFontViews {
         return mav;
     }
 
+    @GetMapping("xxpl")
+    public String xxpl(){
+        return "xxpl";
+    }
+
+    @GetMapping("xxplxq")
+    public String xxplxq(){
+        return "xxpl";
+    }
+
+    @GetMapping("dynaxq")
+    public ModelAndView dynaxq(Integer id){
+        ModelAndView mav = new ModelAndView("dynamic/uplistdynamicxq");
+        mav.addObject("id",id);
+        return mav;
+    }
+
 }
