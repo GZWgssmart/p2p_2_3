@@ -11,4 +11,5 @@ public interface UserMapper extends BaseMapper{
     int getByPhone(String phone);
     User getByPhonePwd(@Param("phone") String phone, @Param("upwd") String upwd);
 
+
 }

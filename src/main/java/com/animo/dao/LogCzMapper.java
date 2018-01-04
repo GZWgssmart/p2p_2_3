@@ -12,4 +12,5 @@ public interface LogCzMapper extends BaseMapper{
     List<Object> listPagerCriteria(@Param("pager") Pager pager, @Param("query") Object obj);
 
     Long countCriteria(@Param("query") Object obj);
+
 }

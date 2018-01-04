@@ -126,7 +126,7 @@
         </div>
     </div>
 </div>
-<script src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>

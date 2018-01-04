@@ -2,6 +2,7 @@ package com.animo.service.impl;
 
 import com.animo.common.Pager;
 import com.animo.dao.LogTxMapper;
+import com.animo.pojo.Usermoney;
 import com.animo.service.LogTxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,7 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
         pager.setTotal(logTxMapper.countCriteria(obj));
         return pager;
     }
+
+
 
 }

@@ -1,6 +1,5 @@
 package com.animo.service;
 
-import com.animo.common.ServerResponse;
 import com.animo.pojo.Bankcard;
 
 /**
@@ -11,6 +10,6 @@ import com.animo.pojo.Bankcard;
  */
 public interface BankCardService extends BaseService{
 
-    ServerResponse<Bankcard> getByUid(Integer id);
+    Bankcard getByUid(Integer id);
 
 }

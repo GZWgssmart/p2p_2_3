@@ -1,6 +1,7 @@
 package com.animo.service;
 
 import com.animo.common.Pager;
+import com.animo.pojo.Usermoney;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ import java.util.List;
 public interface LogTxService extends BaseService{
 
     Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj);
+
+
 }

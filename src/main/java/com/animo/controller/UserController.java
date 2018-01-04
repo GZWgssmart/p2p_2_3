@@ -103,4 +103,23 @@ public class UserController {
         return userService.update(user);
     }
 
+    /**
+     * 用户身份认证
+     * @param user
+     * @return
+     */
+    public ServerResponse check(User user,HttpSession session){
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object != null){
+            user = (User) object;
+            if(user.getIdno()!=null && !("").equals(user.getRname())){
+                userService.update(user);
+                return ServerResponse.createBySuccess("认证信息成功！");
+            }else {
+                return ServerResponse.createByError("认证失败，填写的认证信息有误！");
+            }
+        }
+        return ServerResponse.createByError("认证失败，登录超时！");
+    }
+
 }

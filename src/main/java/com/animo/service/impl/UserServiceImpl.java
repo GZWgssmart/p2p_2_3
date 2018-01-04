@@ -35,4 +35,5 @@ public class UserServiceImpl extends AbstractServiceImpl implements UserService 
     public User getByPhonePwd(String phone, String upwd) {
         return userMapper.getByPhonePwd(phone, upwd);
     }
+
 }

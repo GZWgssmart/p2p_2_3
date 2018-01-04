@@ -58,7 +58,7 @@ public class BankCardController {
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;
-            return bankCardService.getByUid(user.getUid());
+            return bankCardService.getById(user.getUid());
         }else {
             return ServerResponse.createByError("您的登录已经超时，请重新登录！");
         }

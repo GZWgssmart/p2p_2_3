@@ -1,6 +1,5 @@
 package com.animo.service.impl;
 
-import com.animo.common.ServerResponse;
 import com.animo.dao.BankcardMapper;
 import com.animo.pojo.Bankcard;
 import com.animo.service.BankCardService;
@@ -25,8 +24,7 @@ public class BankCardServiceImpl extends AbstractServiceImpl implements BankCard
     }
 
     @Override
-    public ServerResponse<Bankcard> getByUid(Integer id) {
-        Bankcard bankcard = bankcardMapper.getByUid(id);
-        return ServerResponse.createBySuccess(bankcard);
+    public Bankcard getByUid(Integer id) {
+        return bankcardMapper.getByUid(id);
     }
 }
