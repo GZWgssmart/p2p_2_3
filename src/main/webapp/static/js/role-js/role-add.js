@@ -29,7 +29,7 @@ function showAddRole() {
 //弹出页面：添加部门
 function showAddDep() {
     vue.role.rname = "";
-    vue.role.content = "";
+    vue.role.content = ""
     layer.open({
         type: 1,
         title:'添加角色',
@@ -113,7 +113,6 @@ function userOnCheck(event, treeId, roleNodes) {
  * @returns {boolean}
  */
 function jurBeforeRemove(treeId, treeNode) {
-    console.log(treeNode.rjid);
     layer.msg('你确定要删除权限：'+'“'+treeNode.content+'”'+' 吗？删除后拥有该角色用户的将失去相关权限！', {
         time: 0 //不自动关闭
         ,btn: ['是的', '取消']
@@ -124,7 +123,7 @@ function jurBeforeRemove(treeId, treeNode) {
                 .then((response)=>{
                     layer.msg(response.data.message);
                     //初始化树,角色权限
-                    editRoleJurTree(vue.role.rid);
+                    editRoleJurTree(treeId,vue.role.rid);
                 },(error)=>{
                     layer.alert("请求失败");
                 });
@@ -244,7 +243,7 @@ function initRoleUserTree() {
     };
     $(document).ready(function () {
         var tree = $("#roleUserTree");
-        axios.get('/admin/data/json/list?page=1&limit=100', {
+        axios.get('/admin/data/json/list?page=1&limit=1000', {
         }).then((response)=>{
             roleNodes = response.data.rows;
             console.log(roleNodes);
