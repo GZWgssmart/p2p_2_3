@@ -350,16 +350,7 @@ function initJurTree() {
             }
         },
         callback: {
-            //点击节点触发事件
-            // onClick: zTreeOnClick,
-            //勾选框状态改变事件
             onCheck:nodeJurOnCheck
-            //节点名称修改回调函数
-            // beforeRename: zTreeOnRename,
-            // 用于捕获节点编辑按钮的 click 事件，并且根据返回值确定是否允许进入名称编辑状态
-            // beforeEditName: zTreeBeforeEditName,
-            //用于捕获节点被删除之前的事件回调函数，并且根据返回值确定是否允许删除操作
-            // beforeRemove: zTreeBeforeRemove
         },
         check: {
             enable: true,
