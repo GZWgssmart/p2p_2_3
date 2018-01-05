@@ -167,6 +167,13 @@
       </if>
     </trim>
   </insert>
+
+  <insert id="">
+
+
+
+  </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.User" >
     update t_user
     <set >

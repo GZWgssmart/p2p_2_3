@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/25.
@@ -35,8 +38,11 @@ public class UserController {
     @RequestMapping(value="register", method = RequestMethod.POST)
     public ServerResponse register(User user, HttpSession session){
         user.setUpwd(EncryptUtils.md5(user.getUpwd()));
+        user.setResstr1(getRandomFourNum());
        ServerResponse serverResponse = userService.save(user);
+
        if (serverResponse.isSuccess()) {
+
            Rzvip revip = new Rzvip();
            revip.setUid(user.getUid());
            rzvipService.save(revip);
@@ -124,4 +130,52 @@ public class UserController {
 
 
 
+
+/*
+* 六位推荐码
+* */
+    public static String getRandomFourNum() {
+        String[] beforeShuffle = new String[] {"1", "2", "3", "4", "5", "6", "7",
+                "8", "9" };
+        List list = Arrays.asList(beforeShuffle);
+        Collections.shuffle(list);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
+        }
+        String afterShuffle = sb.toString();
+        String result = afterShuffle.substring(2,8 );
+        return result;
+    }
+
+
+/*
+* 六位推荐码
+* */
+    public static String getRandomFourNum() {
+        String[] beforeShuffle = new String[] {"1", "2", "3", "4", "5", "6", "7",
+                "8", "9" };
+        List list = Arrays.asList(beforeShuffle);
+        Collections.shuffle(list);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
+        }
+        String afterShuffle = sb.toString();
+        String result = afterShuffle.substring(2,8 );
+        return result;
+    }
+
+    /*
+    * 根据id查推荐码
+    * */
+/*
+* 根据id查
+* */
+    @RequestMapping("byiddync")
+    public ServerResponse byIddync(Integer id)throws Exception{
+        System.out.println(id);
+        return  userService.getById(id);
+
+    }
 }

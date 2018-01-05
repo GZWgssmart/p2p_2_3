@@ -86,7 +86,6 @@ public class DynamicController {
         return dynamicService.listPager(page,limit);
     }
 
-
 /*
 * 根据id查
 * */
@@ -96,7 +95,9 @@ public class DynamicController {
         return  dynamicService.getById(id);
 
     }
-
+/*
+* 前台分页查询
+* */
     @GetMapping("PagerCriteria")
     public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
         return dynamicService.listPagers(pageNumber,pageSize);

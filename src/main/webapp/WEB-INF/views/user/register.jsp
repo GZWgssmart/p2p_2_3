@@ -46,7 +46,7 @@
             </div>
             <div class="from from-ext">
                 <label for="useCode" class="icon icon-ext"></label>
-                <input type="text" name="" id="useCode" placeholder="输入邀请码"/>
+                <input type="text" name="resstr2" id="useCode" placeholder="输入邀请码"/>
             </div>
             <button class="btn" type="button" onclick="register();">注册</button>
             <div class="agree"><input type="checkbox" id="agree">我已阅读并同意《<a href="javascript:AgreeMent(0);">普金资本服务协议</a>》和《<a href="javascript:AgreeMent(1);">风险提示书</a>》</div>
@@ -118,6 +118,7 @@
             'json'
         );
     };
+
     function register() {
         var phone = $("#phone").val();
         var upwd = $("#upwd").val();

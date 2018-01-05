@@ -53,6 +53,13 @@
 
 <body>
 <%@include file="../common/top.jsp" %>
+<input id="id" type="hidden" value="${requestScope.id}">
+<input id="id" type="hidden" value="${requestScope.id}">
+<input id="id" type="hidden" value="${requestScope.id}">
+<input id="id" type="hidden" value="${requestScope.id}">
+<input id="id" type="hidden" value="${requestScope.id}">
+<input id="id" type="hidden" value="${requestScope.id}">
+<input id="id" type="hidden" value="${requestScope.id}">
 <div id="app">
     <!--account-->
     <div class="account cl">
@@ -84,6 +91,8 @@
             </div>
             <a href="#tuijian" class="tuijian"><img src="<%=path%>/static/images/account/tuijian.png"/></a>
         </div>
+        <a href="#tuijian" onclick=""  class="tuijian"><img src="<%=path%>/static/images/account/tuijian.png"/></a>
+    </div>
 
         <div class="account-right">
             <div class="box1">
@@ -1290,23 +1299,21 @@
                                 </div>
                                 <em class="em-line"></em>
                             </div>
-                            <div class="account-content">
-                                <div class="tuiJianShow">
-                                    <img src="<%=path%>/static/images/account/banner_t.png" width="896" height="260">
-                                    <p class="tj-tips">尊敬的用户,您的推荐号为：<span id="uid">111193</span></p>
-                                    <p class="tj-text">活动时间：<span>2017年12月15日—2018年1月15日；</span></p>
-                                    <p class="tj-text">活动对象：活动期间新注册用户的推荐人；</p>
-                                    <p class="tj-text">活动说明：1. 活动期间邀请好友注册并累计投资满10000元，得50元现金券奖励；</p>
-                                    <p class="tj-text" style="padding-left: 70px;">2.
-                                        活动期间内成功邀请5位以上好友注册投资成功合计满100000，可额外获得500元现金券奖励，可在<span>【我的账户-我的赠券】</span>中查看。</p>
-                                    <p class="tj-text" style="padding-left: 70px;">
-                                        (满足活动条件的用户在活动结束后3个工作日内奖励将以现金券的形式发放至用户账户)</p>
-                                    <p class="tj-text"><span>注：</span>需将自己的邀请链接地址或推荐号发给您的好友，这样您才能成为他的邀请者。</p>
-                                    <div class="tj-clip" id="tj-clip">
-                                        <p class="tj-clip-text" id="tj-clip-text">
-                                            https://www.pujinziben.com/regist.html?useCode=111193</p>
-                                        <button type="button" class="tj-clip-btn" id="tj-clip-btn">复制链接</button>
-                                    </div>
+                            <em class="em-line"></em>
+                        </div>
+                        <div class="account-content">
+                            <div class="tuiJianShow">
+                                <img src="<%=path%>/static/images/account/banner_t.png" width="896" height="260">
+                                <p class="tj-tips">尊敬的用户,您的推荐号为：<span >${sessionScope.user.resstr1}</span></p>
+                                <p class="tj-text">活动时间：<span>2017年12月15日—2018年1月15日；</span></p>
+                                <p class="tj-text">活动对象：活动期间新注册用户的推荐人；</p>
+                                <p class="tj-text">活动说明：1.	活动期间邀请好友注册并累计投资满10000元，得50元现金券奖励；</p>
+                                <p class="tj-text" style="padding-left: 70px;">2.	活动期间内成功邀请5位以上好友注册投资成功合计满100000，可额外获得500元现金券奖励，可在<span>【我的账户-我的赠券】</span>中查看。</p>
+                                <p class="tj-text" style="padding-left: 70px;">(满足活动条件的用户在活动结束后3个工作日内奖励将以现金券的形式发放至用户账户)</p>
+                                <p class="tj-text"><span>注：</span>需将自己的邀请链接地址或推荐号发给您的好友，这样您才能成为他的邀请者。</p>
+                                <div class="tj-clip" id="tj-clip">
+                                    <p class="tj-clip-text" id="tj-clip-text">https://locahost:8080/regist?useCode=${sessionScope.user.resstr1}</p>
+                                    <button type="button" class="tj-clip-btn" id="tj-clip-btn">复制链接</button>
                                 </div>
                             </div>
                         </div>
@@ -1395,33 +1402,8 @@
                     , type: 'datetime'
                 });
 
-                laydate.render({
-                    elem: '#date2'
-                    , type: 'datetime'
-                });
 
-                laydate.render({
-                    elem: '#date3'
-                    , type: 'datetime'
-                });
-
-                laydate.render({
-                    elem: '#date4'
-                    , type: 'datetime'
-                });
-
-                laydate.render({
-                    elem: '#date5'
-                    , type: 'datetime'
-                });
-
-                laydate.render({
-                    elem: '#date6'
-                    , type: 'datetime'
-                });
-
-            });
-        </script>
+        </div>
     </div>
 </div>
 </body>
@@ -1441,19 +1423,19 @@
         created () {
             this.getUserMoney();
         },
-        methods: {
-            getUserMoney() {
-                axios.get('/user/data/json/money', {
-                    params: {
-                        uid: ${sessionScope.get("user").getUid()}
-                    }
-                }).then((response) => {
-                    this.usermoney = response.data.data;
-                }, (error) => {
+        methods:{
+        getUserMoney() {
+            axios.get('/user/data/json/money', {
+                params: {
+                    uid: ${sessionScope.get("user").getUid()}
+                }
+            }).then((response)=>{
+                this.usermoney = response.data.data;
+            },(error)=>{
 
-                });
-            }
+            });
         }
+    }
     });
 
     layui.use('layer', function () { //独立版的layer无需执行这一句
@@ -1490,6 +1472,7 @@
         });
 
     });
+
 
 
 </script>
