@@ -116,36 +116,23 @@
   </update>
 
     <sql id="recharge_query_common">
-    from  bankcard bk, log_cz lc,
-    where bk.uid = lc.uid
+    from  bankcard bk, log_cz lc where bk.uid = lc.uid
     </sql>
 
     <sql id="recharge_query_criteria">
-        <if test="query != null and query.cardno != null">
-            and bk.cardno = #{query.cardno}
-        </if>
-        <if test="query != null and query.type != null and query.type != ''">
-            and bk.type like concat('%', #{query.type}, '%')
-        </if>
-        <if test="query != null and query.money != null">
-            and lc.money <![CDATA[<=]]> #{query.money}
-        </if>
-        <if test="query != null and query.status != null">
-            and lc.status = #{query.status}
-        </if>
-        <if test="query != null and query.createdTime != null and query.createdTime != ''">
-            and lc.created_time <![CDATA[<=]]> #{query.createdTime}
+        <if test="query != null and query.startTime != null and query.startTime != ''and query.endTime != null and query.endTime != '' ">
+            where lt.created_time between #{query.startTime} and #{query.endTime}
         </if>
     </sql>
 
     <select id="listPagerCriteria" resultType="com.animo.vo.RechargeVO">
         <![CDATA[
-        select bk.cardno,bk.type,lc.money,lc.`status`,lc.created_time from log_cz lt,bankcard bk where lc.uid = bk.uid
+        select bk.cardno,bk.type,lc.money,lc.`status`,lc.created_time
         ]]>
         limit #{pager.beginIndex}, #{pager.pageSize}
   </select>
 
-    <select id="countCriteria" resultType="long" parameterType="com.animo.query.RechargeQuery">
+    <select id="countCriteria" resultType="long" parameterType="com.animo.query.DateQuery">
         select count(lc.id)
         <include refid="recharge_query_common"/>
         <include refid="recharge_query_criteria"/>

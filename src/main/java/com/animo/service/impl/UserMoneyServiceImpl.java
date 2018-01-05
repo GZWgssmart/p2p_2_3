@@ -20,6 +20,7 @@ public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMon
         this.usermoneyMapper = usermoneyMapper;
     }
 
+
     @Override
     public Usermoney selectByUid(Integer uid) {
         return usermoneyMapper.selectByUid(uid);

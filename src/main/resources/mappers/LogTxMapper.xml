@@ -121,26 +121,14 @@
     </sql>
 
     <sql id="loxTx_query_criteria">
-        <if test="query != null and query.cardno != null">
-            and bk.cardno = #{query.cardno}
-        </if>
-        <if test="query != null and query.type != null and query.type != ''">
-            and bk.type like concat('%', #{query.type}, '%')
-        </if>
-        <if test="query != null and query.money != null">
-            and lt.money <![CDATA[<=]]> #{query.money}
-        </if>
-        <if test="query != null and query.status != null">
-            and lt.status = #{query.status}
-        </if>
-        <if test="query != null and query.createdTime != null and query.createdTime != ''">
-            and lt.created_time <![CDATA[<=]]> #{query.createdTime}
+        <if test="query != null and query.startTime != null and query.startTime != ''and query.endTime != null and query.endTime != '' ">
+            where lt.created_time between #{query.startTime} and #{query.endTime}
         </if>
     </sql>
 
     <select id="listPagerCriteria" resultType="com.animo.vo.TxRecordVO">
         <![CDATA[
-			select bk.cardno,bk.type,lt.money,lt.`status`,lt.created_time from log_tx lt,bankcard bk where lt.uid = bk.uid
+			select bk.cardno,bk.type,lt.money,lt.`status`,lt.created_time
 			]]>
         <include refid="logTx_query_common"/>
         <include refid="loxTx_query_criteria"/>

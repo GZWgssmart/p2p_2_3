@@ -1,10 +1,10 @@
 package com.animo.query;
 
 /**
- * Created by qm on 2018/1/2.
+ * Created by qm on 2018/1/5.
  *
  * @author qm
- * @date 2018-01-02 15:41
+ * @date 2018-01-05 15:21
  */
 public class TxRecordQuery {
 }

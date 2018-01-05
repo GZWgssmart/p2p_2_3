@@ -7,11 +7,11 @@ import com.animo.pojo.LogCz;
 import com.animo.pojo.LogMoney;
 import com.animo.pojo.User;
 import com.animo.pojo.Usermoney;
+import com.animo.query.DateQuery;
 import com.animo.service.LogCzService;
 import com.animo.service.UserMoneyService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -71,8 +71,8 @@ public class LogCzController {
      * 用户查看充值记录，分页显示
      * @return
      */
-    @RequestMapping("listRecord")
-    public Pager listRecord( Integer page, Integer limit){
-        return logCzService.listPager(page,limit);
+    @RequestMapping("pager_criteria")
+    public Pager listRecord(Integer page, Integer limit, DateQuery dateQuery){
+        return logCzService.listPagerCriteria(page,limit,dateQuery);
     }
 }

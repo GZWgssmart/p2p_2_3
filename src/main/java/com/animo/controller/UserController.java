@@ -31,6 +31,7 @@ public class UserController {
     @Autowired
     private UserMoneyService userMoneyService;
 
+
     @RequestMapping(value="register", method = RequestMethod.POST)
     public ServerResponse register(User user, HttpSession session){
         user.setUpwd(EncryptUtils.md5(user.getUpwd()));
@@ -82,7 +83,7 @@ public class UserController {
 
     @PostMapping("updatePwd")
     public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
-        User user = (User) session.getAttribute(Constant.SESSION_USER);
+        User user = (User) session.getAttribute(Constant.SESSION_ADMIN);
         if(EncryptUtils.md5(pwd).equals(user.getUpwd())) {
             if(EncryptUtils.md5(nowPwd).equals(EncryptUtils.md5(rePwd))) {
                 user.setUpwd(EncryptUtils.md5(nowPwd));
@@ -121,9 +122,6 @@ public class UserController {
         return ServerResponse.createByError("认证失败，登录超时！");
     }
 
-    @GetMapping("money")
-    public ServerResponse userMoney(Integer uid){
-        return ServerResponse.createBySuccess(userMoneyService.selectByUid(uid));
-    }
+
 
 }

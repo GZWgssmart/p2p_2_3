@@ -3,16 +3,16 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
-import com.animo.pojo.*;
-import com.animo.query.TxRecordQuery;
-import com.animo.service.BankCardService;
+import com.animo.pojo.LogMoney;
+import com.animo.pojo.LogTx;
+import com.animo.pojo.User;
+import com.animo.pojo.Usermoney;
+import com.animo.query.DateQuery;
 import com.animo.service.LogMoneyService;
 import com.animo.service.LogTxService;
 import com.animo.service.UserMoneyService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -75,7 +75,7 @@ public class LogTxController {
      * @return
      */
     @RequestMapping("pager_criteria")
-    public Pager pager(Integer page, Integer limit, TxRecordQuery txRecordQuery) {
-        return logTxService.listPagerCriteria(page, limit, txRecordQuery);
+    public Pager pager(Integer page, Integer limit, DateQuery dateQuery) {
+        return logTxService.listPagerCriteria(page, limit, dateQuery);
     }
 }

@@ -1,6 +1,7 @@
 package com.animo.controller;
 
 import com.animo.common.Pager;
+import com.animo.query.DateQuery;
 import com.animo.service.LogMoneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +26,9 @@ public class LogMoneyController {
      * @param limit
      * @return
      */
-    @RequestMapping("listRecord")
-    public Pager listRecord( Integer page, Integer limit){
-        return logMoneyService.listPager(page,limit);
+    @RequestMapping("pager_criteria")
+    public Pager pager(Integer page, Integer limit, DateQuery dateQuery) {
+        return logMoneyService.listPagerCriteria(page, limit, dateQuery);
     }
 
 

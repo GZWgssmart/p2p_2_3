@@ -1,5 +1,6 @@
 package com.animo.service.impl;
 
+import com.animo.common.Pager;
 import com.animo.dao.BaseMapper;
 import com.animo.dao.LogMoneyMapper;
 import com.animo.service.LogMoneyService;
@@ -23,5 +24,13 @@ public class LogMoneyServiceImpl extends AbstractServiceImpl implements LogMoney
     public void setLogMoneyMapper(LogMoneyMapper logMoneyMapper) {
         super.setBaseMapper(logMoneyMapper);
         this.logMoneyMapper = logMoneyMapper;
+    }
+
+    @Override
+    public Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj) {
+        Pager pager = new Pager(pageNo, pageSize);
+        pager.setRows(logMoneyMapper.listPagerCriteria(pager, obj));
+        pager.setTotal(logMoneyMapper.countCriteria(obj));
+        return pager;
     }
 }

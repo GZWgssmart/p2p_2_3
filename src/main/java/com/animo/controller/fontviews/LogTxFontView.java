@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("logTx")
 public class LogTxFontView {
 
-    @RequestMapping("withdraw")
+    @RequestMapping("/withdraw")
     public String mybank() {
-        return "user/bankcard";
+        return "user/Recharge";
     }
 }

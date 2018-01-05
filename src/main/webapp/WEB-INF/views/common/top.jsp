@@ -51,7 +51,7 @@
 <!-- nav -->
 <div class="nav" style="height: 140px;">
     <div class="wrap cl">
-        <div class="logo"><img src="http://pujinziben.com/resources/front/v01/src/images/logo.png" alt="普金资本"></div>
+        <div class="logo"><img src="<%=path%>/static/images/index/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
             <ul>
                 <c:if test="${sessionScope.user == null}">
