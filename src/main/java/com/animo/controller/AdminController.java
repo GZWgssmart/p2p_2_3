@@ -26,6 +26,7 @@ public class AdminController {
     public ServerResponse login(HttpSession session, String phone, String pwd, String code) {
         ServerResponse serverResponse = null;
         Object checkObj = session.getAttribute("code");
+        System.out.println(checkObj);
         if (checkObj != null) {
             String checkCode = (String) checkObj;
             if (checkCode.equalsIgnoreCase(code)) {

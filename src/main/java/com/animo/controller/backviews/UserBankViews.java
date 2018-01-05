@@ -21,4 +21,9 @@ public class UserBankViews {
         return "user/password";
     }
 
+    @GetMapping("upEmail")
+    public String upEmail() {
+        return "user/email";
+    }
+
 }

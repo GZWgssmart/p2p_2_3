@@ -70,7 +70,7 @@
                     $(":text").val("");
                     $(":password").val("");
                 } else {
-                    alert(data.message);
+                    show(data.message, $(pwd));
                 }
             },
             'json'

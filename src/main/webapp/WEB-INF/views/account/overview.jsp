@@ -46,7 +46,7 @@
 </head>
 <link rel="icon" href="<%=path%>/static/images/index/logo_title.jpg" type="image/x-icon"/>
 
-<body onhashchange="hashChange()">
+<body <%--onhashchange="hashChange()"--%>>
 <%@include file="../common/top.jsp"%>
 <div id="app">
 <!--account-->
@@ -1088,11 +1088,11 @@
                 </div>
                 <div class="account-content" style="display: block;">
                     <div class="safe">
-                        <%--<div class="safe-top">
+                        <div class="safe-top">
                             <p class="safe-t-text">您的资料完善度</p>
                             <p class="safe-t-line"><em style="width: 50%;"></em></p>
                             <p class="safe-t-r">中</p>
-                        </div>--%>
+                        </div>
                         <div class="safe-content">
                             <ul class="safe-list">
                                 <li>
@@ -1107,11 +1107,14 @@
                                 </li>
                                 <li>
                                     <div class="safe-list-1">
-                                        <p class="icon icon-wrong" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
+                                        <p class="icon icon-true" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
                                     </div>
                                     <div class="safe-list-2" id="email-text">获取最新的投资讯息和账户信息变动通知</div>
                                     <div class="safe-list-3">
-                                        <a href="javascript:;" id="email">进行绑定</a>
+                                       <%-- <a href="javascript:;" id="email">进行绑定</a>--%>
+                                           <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                                               <button data-method="upEmail" data-type="c" class="layui-btn layui-btn-normal">修改</button>
+                                           </div>
                                     </div>
                                 </li>
                                 <li>
@@ -1415,23 +1418,27 @@
 
         var active = {
             updatePwd: function(othis){
-                var type = othis.data('type'),
-                    text = othis.text();
+                var type = othis.data('type');
                 layer.open({
                     type: 2
                     ,offset:type
                     ,content:'<%=path%>/back/user/upPwd'
                     ,area: ['430px', '300px'] //自定义文本域宽高
                     ,title:'修改密码'
-                  /*  ,btn: '确定修改'
-                    ,btnAlign: 'c' //按钮居中
-                    ,shade: 0.3 //不显示遮罩
-                    ,yes: function(){
-                        layer.closeAll();
-                    }*/
+                });
+            },
+
+            upEmail: function(othis){
+                var type = othis.data('type');
+                layer.open({
+                    type: 2
+                    ,offset:type
+                    ,content:'<%=path%>/back/user/upEmail'
+                    ,area: ['430px', '170px'] //自定义文本域宽高
+                    ,title:'修改邮箱'
                 });
             }
-        };
+    };
 
         $('#layerDemo .layui-btn').on('click', function(){
             var othis = $(this), method = othis.data('method');
