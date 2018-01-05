@@ -1434,7 +1434,7 @@
                     type: 2
                     ,offset:type
                     ,content:'<%=path%>/back/user/upEmail'
-                    ,area: ['430px', '170px'] //自定义文本域宽高
+                    ,area: ['430px', '200px'] //自定义文本域宽高
                     ,title:'修改邮箱'
                 });
             }
