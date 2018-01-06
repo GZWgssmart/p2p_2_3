@@ -337,4 +337,15 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where hkid = #{hkid,jdbcType=INTEGER}
   </update>
+  <insert id="saveList" parameterType="list">
+    <![CDATA[
+      INSERT INTO hkb(uid, rname, cpname, bzname,huid,
+      ybx, ylx, ybj, tnum, baid, ytime
+      )VALUES
+    ]]>
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.uid},#{item.rname},#{item.cpname},#{item.bzname},#{item.huid}
+      ,#{item.ybx},#{item.ylx},#{item.ybj},#{item.tnum},#{item.baid},#{item.ytime})
+    </foreach>
+  </insert>
 </mapper>

@@ -16,4 +16,9 @@ public interface BorrowapplyMapper extends BaseMapper{
 
     Long countCriteria(@Param("query") Object obj);
 
+    Object getById(Integer baid);
+
+
+   Object getByIdVo(Integer baid);
+
 }

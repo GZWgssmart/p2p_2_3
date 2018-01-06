@@ -72,7 +72,7 @@
                         <ul>
                             <li class="row1"><p class="row-top">预期年化收益率</p><p class="row-bottom color">{{item.nprofit}}<span>%</span></p></li>
                             <li class="row2"><p class="row-top">项目期限</p><p class="row-bottom">{{item.term}}个月</p></li>
-                            <li class="row3"><p class="row-top">还款方式</p><p class="row-bottom">按月付息，到期还本</p></li>
+                            <li class="row3"><p class="row-top">还款方式</p><p class="row-bottom">{{item.way | sway}}</p></li>
                             <li class="row4"><p class="row-top">可投金额 / 募集总额</p><p class="row-bottom">{{item.money-item.ymoney}}万元 / {{item.money}}万元</p></li>
                             <li class="row5">
                                 <div class="line">
@@ -154,6 +154,7 @@
 <script src="<%=path%>/static/js/axios.min.js/"></script>
 <script src="<%=path%>/static/js/vue.min.js/"></script>
 <script src="<%=path%>/static/layui/layui.js"></script>
+<script src=/static/js/common.js></script>
 <script>
     var laypage;
     layui.use(['laypage','layer','element'], function(){

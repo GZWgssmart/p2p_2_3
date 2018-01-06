@@ -33,8 +33,6 @@ public class TzbController {
             //投资人id  即用户id
 //        user.getUid()
             tzb.setUid(1);
-            tzb.setBaid(2);
-            //投资时间
             tzb.setTztime(DateFormateUtils.Formate());
             return tzbService.save(tzb);
 //        }

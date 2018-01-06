@@ -81,10 +81,8 @@
   </update>
 
   <select id="selectpercent" resultType="double">
-    <![CDATA[
       SELECT r.percent FROM reward_setting AS r
-      WHERE #{money} between r.minmoney AND r.maxmoney
-    ]]>
+      WHERE #{money} <![CDATA[>=]]> r.minmoney AND #{money} <![CDATA[<]]> r.maxmoney
   </select>
 
 

@@ -25,3 +25,15 @@ function padLeftZero(str) {
     return ('00' + str).substr(str.length);
 }
 
+function sway(value) {
+    if(value == 1){
+        return "等额本息";
+    }else if(value == 2){
+        return "等额本金"
+    }else if(value==3){
+        return "每月付息,到期还本";
+    }else if(value == 4){
+        return "一次性还本付息";
+    }
+}
+

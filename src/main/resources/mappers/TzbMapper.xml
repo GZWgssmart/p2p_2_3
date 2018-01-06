@@ -186,4 +186,10 @@
       WHERE t.baid=#{baid}
     ]]>
   </select>
+
+  <select id="listTzb" resultType="tzb">
+    <![CDATA[
+      SELECT * FROM tzb AS t WHERE uid=#{uid} and baid=#{baid}
+    ]]>
+  </select>
 </mapper>

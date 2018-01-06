@@ -173,6 +173,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Borrowdetail" >
     update borrowdetail
     <set >
@@ -215,9 +216,6 @@
       <if test="cpname != null" >
         cpname = #{cpname,jdbcType=VARCHAR},
       </if>
-      <if test="baid != null" >
-        baid = #{baid,jdbcType=INTEGER},
-      </if>
       <if test="resint1 != null" >
         resint1 = #{resint1,jdbcType=INTEGER},
       </if>
@@ -231,7 +229,7 @@
         resstr2 = #{resstr2,jdbcType=VARCHAR},
       </if>
     </set>
-    where bdid = #{bdid,jdbcType=INTEGER}
+    where baid = #{baid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Borrowdetail" >
     update borrowdetail

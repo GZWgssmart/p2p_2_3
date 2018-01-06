@@ -103,4 +103,11 @@
       baid = #{baid,jdbcType=INTEGER}
     where shid = #{shid,jdbcType=INTEGER}
   </update>
+
+  <select id="getIdByBaid" resultType="java.lang.Integer">
+    <![CDATA[
+      select huid from shborrow where baid = #{baid}
+    ]]>
+  </select>
+
 </mapper>

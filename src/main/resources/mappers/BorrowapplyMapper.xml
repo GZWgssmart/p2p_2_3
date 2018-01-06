@@ -210,7 +210,7 @@
 
   <select id="three" resultType="com.animo.vo.BorrowapplyVo">
     <![CDATA[
-      SELECT bd.bdid,bo.uid,b.bzid,bo.baid,b.bzname,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
+      SELECT bo.ckstatus,bd.bdid,bo.uid,b.bzid,bo.baid,b.bzname,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
        FROM borrowapply AS bo,borrowdetail AS bd,bz AS b WHERE bo.baid=bd.baid AND bo.bzid=b.bzid AND bo.bzid=#{bzid}
       ORDER BY RAND() LIMIT 3
     ]]>
@@ -238,7 +238,7 @@
 
   <select id="listPagerCriteria" resultType="com.animo.vo.BorrowapplyVo">
     <![CDATA[
-        SELECT bo.uid,b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
+        SELECT bo.uid,b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money,bd.way AS ymoney,bo.term,bd.nprofit
     ]]>
     <include refid="form"></include>
     <include refid="if"></include>
@@ -251,4 +251,23 @@
     <include refid="if" />
   </select>
 
+  <select id="getById" resultType="com.animo.vo.BorrowapplyMoneyVo">
+    <![CDATA[
+      SELECT b.money,bd.money AS mmoney FROM borrowapply AS b,borrowdetail AS bd
+      WHERE b.baid = bd.baid AND b.baid = #{baid}
+    ]]>
+  </select>
+
+
+  <sql id="Base_column_list">
+    ba.baid, ba.rname, ba.money, b.bzname, ba.uid, ba.ckstatus, ba.cktime, ba.type, ba.term,
+    ba.deadline, bd.cpname, bd.way, bd.nprofit, bd.money as moneyCount,
+    bd.fpic, bd.ypic, bd.qpic, bd.tpic, bd.mpurpose, bd.hksource, bd.suggest, bd.xmdes, bd.guarantee
+  </sql>
+  <select id="getByIdVo" parameterType="java.lang.Integer" resultType="com.animo.vo.BorrowApplyDetail">
+    select
+    <include refid="Base_column_list" />
+    from borrowapply ba, bz b, borrowdetail bd
+    where b.bzid = ba.bzid and bd.baid = ba.baid and ba.baid = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

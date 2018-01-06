@@ -11,6 +11,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="/static/css/index/public.css">
     <link rel="stylesheet" href="/static/css/index/index.css">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
 </head>
 <%@include file="common/top.jsp"%>
 <div id="app">
@@ -46,9 +47,12 @@
                 </div>
                 <div class="subject-submit-b-r">
                     <div class="line">
-                        <p>投资进度：</p><p class="progress"><em style="width: 100%;"></em></p><p class="progress-text">100.00%</p>
+                        <p>投资进度：</p>
+                        <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                            <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="borrowapply.money/borrowdetail.money*100 + '%'"></div>
+                        </div>
                     </div>
-                    <p>截止时间：<span id="publishTime">{{borrowapply.deadline}}</span></p>
+                    <p>截止时间：<span id="publishTime">{{borrowapply.deadline | formatDate}}</span></p>
                 </div>
             </div>
         </div>
@@ -68,8 +72,8 @@
                 <p class="rate active" id="increaseP">加息收益：<span class="color" id="increase">0.00</span></p>
             </div>
             <div class="input">
-                <input type="text" placeholder="请输入投资金额" v-model="ktmoney">
-                <button type="button" @click="touzi">全投</button>
+                <input type="text" placeholder="请输入投资金额" v-model="tzb.money">
+                <button type="button" @click="touzi">投资</button>
             </div>
             <div class="quan">
                 <select id="selectQuan">
@@ -77,7 +81,8 @@
                     <option value="0">当前没有可用的优惠券</option></select>
                 <a href="calculator.html?repayWay=3&amp;showRate=9+1&amp;time=6" class="icon icon-cal" id="calculator">详细收益明细</a>
             </div>
-            <button class="btn disabled" id="investBtn" type="button">还款中</button>
+            <button v-if="borrowapply.ckstatus==2" class="btn"  type="button">投标中</button>
+            <button v-else class="btn disabled"  type="button">还款中</button>
             <p class="agreement" style="height: 0;"></p>
             <div id="productJump"></div>
         </div>
@@ -152,9 +157,7 @@
                 <div class="children2">{{item.tztime}}</div>
             </li>
         </ul>
-        <ul class="listData">
-        </ul>
-        <ul class="paging"></ul>
+        <div id="demo3"></div>
     </div>
     <div class="sub-a-box dangger" id="tips">
         <p class="icon icon-danger tips-title"><b>普金资本郑重提示：</b>用户应自行对交易风险进行全面了解、充分认识、谨慎决策，用户应对其决策承担全部责任并承担全部风险。如用户通过普金资本平
@@ -213,7 +216,6 @@
             <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
             <li><a href="javascript:;" class="sidebar-top"></a></li>
         </ul>
-        <div id="demo3"></div>
     </div>
     <div class="index-concat">
         <div class="wrap cl">
@@ -277,6 +279,7 @@
 <script src="/static/js/axios.min.js"></script>
 <script src="/static/layui/layui.js"></script>
 <script src="/static/js/qs.js"></script>
+<script src="/static/js/common.js"></script>
 <script>
 
     var laypage;
@@ -294,11 +297,15 @@
             bdid:${requestScope.get("bdid")},
             bzname:'${requestScope.get("bzname")}',
             tzb:{
-                juid:'',
-                money:0,
-                nprofit:'',
-                cpname:'',
-                baid:${requestScope.get("baid")}
+                money:'',
+                baid:${requestScope.get("baid")},
+                resint1:''
+            }
+        },
+        filters: {
+            formatDate(time) {
+                var date = new Date(time);
+                return formatDate(date, 'yyyy-MM-dd');
             }
         },
         created (){
@@ -309,22 +316,33 @@
         },
         methods:{
             touzi () {
-                axios.post('/tzb/data/json/save',Qs.stringify(this.tzb)).then((response)=>{
-                    alert(response.data.message);
-                },(error)=>{
+                if(this.borrowapply.money ==this.borrowdetail.money){
+                    alert("已投满");
+                }else if(this.tzb.money<100){
+                    alert("最小投资100");
+                }else if(this.tzb.money>(this.borrowapply.money-this.borrowdetail.money)){
+                    alert("投资大于剩余投资");
+                }else if(this.tzb.money==0){
+                    alert("请输入投资金额");
+                }else{
+                    this.tzb.resint1 = this.borrowapply.term;
+                    axios.post('/tzb/data/json/save', Qs.stringify(this.tzb)).then((response) => {
+                        alert(response.data.message);
+                    }, (error) => {
 
-                });
+                    });
+                }
             },
             getJsonShang(laypage){
                 $.getJSON('/tzb/data/json/tzpager', {
                     pageNumber: 1,
-                    pageSize: 2,
+                    pageSize: 6,
                     baid:this.tzb.baid
                 }, function(res){
                     laypage.render({
                         elem: 'demo3',
                         count: res.total,
-                        limit :2,
+                        limit :6,
                         jump: function(e, first){
                             if (!first) {
                                 vue.getJsonXia(e);
@@ -344,12 +362,6 @@
                     vue.tzbRow = res.rows;
                 });
             },
-        },
-        computed: {
-            ktmoney: function () {
-                this.tzb.money = this.borrowapply.money - this.borrowdetail.money;
-                return this.tzb.money;
-            }
         }
     })
 </script>

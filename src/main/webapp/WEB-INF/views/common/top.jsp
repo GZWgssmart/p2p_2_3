@@ -30,7 +30,6 @@
                 <c:if test="${sessionScope.user != null}">
                     <a href="#" style="color:red">${sessionScope.user.phone }</a>
                 </c:if>
-                    <%--<a href="user/login">登录</a>--%>
             </li>
             <li><a href="javascript:;" class="icon icon-app" id="">APP下载</a></li>
         </ul>
@@ -51,7 +50,7 @@
 <!-- nav -->
 <div class="nav" style="height: 140px;">
     <div class="wrap cl">
-        <div class="logo"><img src="<%=path%>/static/images/index/logo.png" alt="普金资本"></div>
+        <div class="logo"><img src="/static/images/index/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
             <ul>
                 <c:if test="${sessionScope.user == null}">

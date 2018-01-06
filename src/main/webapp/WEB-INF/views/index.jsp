@@ -94,124 +94,124 @@
         </div>
     </div>
 </div>
-<%--<!-- product -->--%>
-<%--<div class="product wrap">--%>
-    <%--<!-- 恒金保 -->--%>
-    <%--<div class="product-h" id="pj_hengjin">--%>
-        <%--<div class="product-h-l">--%>
-            <%--<img src="<%=path%>/static/images/index/product_01.png" alt="恒金保">--%>
-            <%--<a href="" class="top"></a>--%>
-            <%--<a href="<%=path%>/borrowapply/all/1"  class="bottom"></a>--%>
-        <%--</div>--%>
-        <%--<div class="product-h-m">--%>
-            <%--<ul class="product-list" id="product-h">--%>
-                <%--<li v-for="item in hjb">--%>
-                    <%--<div class="product-content">--%>
-                        <%--<div class="top">--%>
-                            <%--<p class="product-title"><a href="javascript:;" @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></p>--%>
-                            <%--<p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>--%>
-                            <%--<span class="p-rate-text">预期年化收益率</span>--%>
-                        <%--</div>--%>
-                        <%--<div class="bottom">--%>
-                            <%--<div class="line icon icon-progress">--%>
-                                <%--<p style="float: left;">募集进度：</p>--%>
-                                <%--<div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">--%>
-                                    <%--<div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<p class="icon icon-doll">项目金额：{{item.money}}万元</p>--%>
-                            <%--<p class="icon icon-time">投资期限：{{item.term}}个月</p>--%>
-                        <%--</div>--%>
-                        <%--<div class="submit">--%>
-                            <%--<div class="submit">--%>
-                                <%--<button v-if="item.ymoney/item.money*100<100" type="button" class="submit" onclick="">立即投标</button>--%>
-                                <%--<button v-else type="button" class="submit disabled" onclick="">还款中</button>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</li>--%>
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<!-- 普金保 -->--%>
-    <%--<div class="product-h" id="pj_pujin" v-if="pjb">--%>
-        <%--<div class="product-h-l">--%>
-            <%--<img src="<%=path%>/static/images/index/product_02.png" alt="普金保">--%>
-            <%--<a href="" class="top"></a>--%>
-            <%--<a href="<%=path%>/borrowapply/all/4" class="bottom"></a>--%>
-        <%--</div>--%>
-        <%--<div class="product-h-m" >--%>
-            <%--<ul class="product-list" id="product-p">--%>
+<!-- product -->
+<div class="product wrap">
+    <!-- 恒金保 -->
+    <div class="product-h" id="pj_hengjin">
+        <div class="product-h-l">
+            <img src="<%=path%>/static/images/index/product_01.png" alt="恒金保">
+            <a href="" class="top"></a>
+            <a href="<%=path%>/borrowapply/all/1"  class="bottom"></a>
+        </div>
+        <div class="product-h-m">
+            <ul class="product-list" id="product-h">
+                <li v-for="item in hjb">
+                    <div class="product-content">
+                        <div class="top">
+                            <p class="product-title"><a :href="'/borrowapply/info/'+item.baid+'/'+item.bdid+'/'+item.bzname">{{item.cpname}}</a></p>
+                            <p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>
+                            <span class="p-rate-text">预期年化收益率</span>
+                        </div>
+                        <div class="bottom">
+                            <div class="line icon icon-progress">
+                                <p style="float: left;">募集进度：</p>
+                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                    <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
+                                </div>
+                            </div>
+                            <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
+                            <p class="icon icon-time">投资期限：{{item.term}}个月</p>
+                        </div>
+                        <div class="submit">
+                            <div class="submit">
+                                <button v-if="item.ckstatus==2" type="button" class="submit" @click="detail(item.baid,item.bdid,item.bzname)">立即投标</button>
+                                <button v-else type="button" class="submit disabled" onclick="">还款中</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 普金保 -->
+    <div class="product-h" id="pj_pujin" v-if="pjb">
+        <div class="product-h-l">
+            <img src="<%=path%>/static/images/index/product_02.png" alt="普金保">
+            <a href="" class="top"></a>
+            <a href="<%=path%>/borrowapply/all/4" class="bottom"></a>
+        </div>
+        <div class="product-h-m" >
+            <ul class="product-list" id="product-p">
 
-                <%--<li v-for="item in pjb">--%>
-                    <%--<div class="product-content">--%>
-                        <%--<div class="top">--%>
-                            <%--<p class="product-title"><a href="javascript:;" @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></p>--%>
-                            <%--<p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>--%>
-                            <%--<span class="p-rate-text">预期年化收益率</span>--%>
-                        <%--</div>--%>
-                        <%--<div class="bottom">--%>
-                            <%--<div class="line icon icon-progress">--%>
-                                <%--<p style="float: left;">募集进度：</p>--%>
-                                <%--<div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">--%>
-                                    <%--<div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<p class="icon icon-doll">项目金额：{{item.money}}万元</p>--%>
-                            <%--<p class="icon icon-time">投资期限：{{item.term}}个月</p>--%>
-                        <%--</div>--%>
-                        <%--<div class="submit">--%>
-                            <%--<div class="submit">--%>
-                                <%--<button v-if="item.ymoney/item.money*100<100" type="button" class="submit" onclick="">立即投标</button>--%>
-                                <%--<button v-else type="button" class="submit disabled" onclick="">还款中</button>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</li>--%>
-
-
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<!-- 多金宝 -->--%>
-    <%--<div class="product-h" id="pj_duojin" >--%>
-        <%--<div class="product-h-l">--%>
-            <%--<img src="<%=path%>/static/images/index/product_03.png" alt="多金宝">--%>
-            <%--<a href="" class="top"></a>--%>
-            <%--<a href="<%=path%>/borrowapply/all/2"  class="bottom"></a>--%>
-        <%--</div>--%>
-        <%--<div class="product-h-m" >--%>
-            <%--<ul class="product-list" id="product-d">--%>
+                <li v-for="item in pjb">
+                    <div class="product-content">
+                        <div class="top">
+                            <p class="product-title"><a :href="'/borrowapply/info/'+item.baid+'/'+item.bdid+'/'+item.bzname">{{item.cpname}}</a></p>
+                            <p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>
+                            <span class="p-rate-text">预期年化收益率</span>
+                        </div>
+                        <div class="bottom">
+                            <div class="line icon icon-progress">
+                                <p style="float: left;">募集进度：</p>
+                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                    <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
+                                </div>
+                            </div>
+                            <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
+                            <p class="icon icon-time">投资期限：{{item.term}}个月</p>
+                        </div>
+                        <div class="submit">
+                            <div class="submit">
+                                <button v-if="item.ckstatus==2" type="button" class="submit" @click="detail(item.baid,item.bdid,item.bzname)">立即投标</button>
+                                <button v-else type="button" class="submit disabled" onclick="">还款中</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
 
 
-                <%--<li v-for="item in djb">--%>
-                    <%--<div class="product-content">--%>
-                        <%--<div class="top">--%>
-                            <%--<p class="product-title"><a href="javascript:;" @click="detail(item.baid,item.bdid,item.bzname)">{{item.cpname}}</a></p>--%>
-                            <%--<p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>--%>
-                            <%--<span class="p-rate-text">预期年化收益率</span>--%>
-                        <%--</div>--%>
-                        <%--<div class="bottom">--%>
-                            <%--<div class="line icon icon-progress">--%>
-                                <%--<p style="float: left;">募集进度：</p>--%>
-                                <%--<div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">--%>
-                                    <%--<div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<p class="icon icon-doll">项目金额：{{item.money}}万元</p>--%>
-                            <%--<p class="icon icon-time">投资期限：{{item.term}}个月</p>--%>
-                        <%--</div>--%>
-                        <%--<div class="submit">--%>
-                                <%--<button v-if="item.ymoney/item.money*100<100" type="button" class="submit" onclick="">立即投标</button>--%>
-                                <%--<button v-else type="button" class="submit disabled" onclick="">还款中</button>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</li>--%>
+            </ul>
+        </div>
+    </div>
+    <!-- 多金宝 -->
+    <div class="product-h" id="pj_duojin" >
+        <div class="product-h-l">
+            <img src="<%=path%>/static/images/index/product_03.png" alt="多金宝">
+            <a href="" class="top"></a>
+            <a href="<%=path%>/borrowapply/all/2"  class="bottom"></a>
+        </div>
+        <div class="product-h-m" >
+            <ul class="product-list" id="product-d">
 
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+
+                <li v-for="item in djb">
+                    <div class="product-content">
+                        <div class="top">
+                            <p class="product-title"><a :href="'/borrowapply/info/'+item.baid+'/'+item.bdid+'/'+item.bzname">{{item.cpname}}</a></p>
+                            <p class="p-rate"><span>{{item.nprofit}}</span><span class="small">%</span></p>
+                            <span class="p-rate-text">预期年化收益率</span>
+                        </div>
+                        <div class="bottom">
+                            <div class="line icon icon-progress">
+                                <p style="float: left;">募集进度：</p>
+                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                    <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
+                                </div>
+                            </div>
+                            <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
+                            <p class="icon icon-time">投资期限：{{item.term}}个月</p>
+                        </div>
+                        <div class="submit">
+                                <button v-if="item.ckstatus==2" type="button" class="submit" @click="detail(item.baid,item.bdid,item.bzname)">立即投标</button>
+                                <button v-else type="button" class="submit disabled" onclick="">还款中</button>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="news-main wrap">
     <div class="news-main-left" style="display: block;">
         <div class="news-main-top">
@@ -402,10 +402,10 @@
         });
     });
 
-//    //标种三
-//    function three() {
-//        return axios.get('/borrowapply/data/json/three');
-//    }
+    //标种三
+    function three() {
+        return axios.get('/borrowapply/data/json/three');
+    }
 
     function Media() {
         return axios.get('/media/data/json/pager?page=1&limit=5');
@@ -422,10 +422,10 @@
     new Vue({
         el:'#app',
         data:{
-//            djb:[],
-//            xsb:[],
-//            pjb:[],
-//            hjb:[],
+            djb:[],
+            xsb:[],
+            pjb:[],
+            hjb:[],
             media:[],
             notice:[],
             dynamic:[]
@@ -437,12 +437,11 @@
             }
         },
         created () {
-//            threes,three()
-            axios.all([Media(),notice(),dynamic()]).then(axios.spread((media,notice,dynamic)=>{
-//                this.djb = threes.data.data['多金宝'].data;
-//                this.xsb = threes.data.data['新手标'].data;
-//                this.pjb = threes.data.data['普金保'].data;
-//                this.hjb = threes.data.data['恒金保'].data;
+            axios.all([three(),Media(),notice(),dynamic()]).then(axios.spread((threes,media,notice,dynamic)=>{
+                this.djb = threes.data.data['多金宝'].data;
+                this.xsb = threes.data.data['新手标'].data;
+                this.pjb = threes.data.data['普金保'].data;
+                this.hjb = threes.data.data['恒金保'].data;
                 this.media = media.data.rows;
                 this.notice = notice.data.rows;
                 this.dynamic = dynamic.data.rows;

@@ -231,4 +231,36 @@
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where skid = #{skid,jdbcType=INTEGER}
   </update>
+  <select id="list" resultType="skb" >
+    <![CDATA[
+      SELECT * FROM skb WHERE uid=#{uid} and baid = #{baid} limit #{pager.beginIndex}, #{pager.pageSize}
+    ]]>
+  </select>
+
+  <select id="countUid" resultType="long">
+    <![CDATA[
+        SELECT count(skid) FROM skb WHERE uid=#{uid} and baid = #{baid}
+    ]]>
+  </select>
+
+  <insert id="saveList" parameterType="list">
+    <![CDATA[
+      INSERT INTO skb(uid, juid,
+      ybx, rbx, ylx, rlx,
+      ybj, rbj, rnum, tnum,
+      baid
+      )VALUES
+    ]]>
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.uid},#{item.juid},#{item.ybx},#{item.rbx}
+      ,#{item.ylx},#{item.rlx},#{item.ybj},#{item.rbj}
+      ,#{item.rnum},#{item.tnum},#{item.baid})
+    </foreach>
+  </insert>
+
+  <select id="getByUidAndBaid" resultType="long">
+    <![CDATA[
+        SELECT COUNT(skid) FROM skb  WHERE uid=#{uid} and baid =#{baid}
+    ]]>
+  </select>
 </mapper>

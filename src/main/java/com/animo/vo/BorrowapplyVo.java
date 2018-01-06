@@ -11,6 +11,7 @@ public class BorrowapplyVo {
     private Integer bzid;
     //借款id
     private Integer baid;
+
     //标种名称
     private String bzname;
     //产品名称
@@ -23,6 +24,8 @@ public class BorrowapplyVo {
     private int term;
     //年化收益
     private float nprofit;
+
+    private Integer ckstatus;
 
     private Integer bdid;
 
@@ -106,5 +109,13 @@ public class BorrowapplyVo {
 
     public void setUid(Integer uid) {
         this.uid = uid;
+    }
+
+    public Integer getCkstatus() {
+        return ckstatus;
+    }
+
+    public void setCkstatus(Integer ckstatus) {
+        this.ckstatus = ckstatus;
     }
 }
