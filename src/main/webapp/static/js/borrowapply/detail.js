@@ -26,6 +26,7 @@ function getPlan(obj){
     $('.em-line').animate({'left':'280px'},500);
     $('.sub-a-box').hide();
     $(obj).addClass('active').siblings().removeClass('active');
+    vue.getJsonShang(laypage,'/hkb/data/json/pager','demo2');
     $('#plan').show();
 }
 //投资记录
@@ -40,7 +41,7 @@ function getInvest(obj){
     }
     $('.sub-a-box').hide();
     $(obj).addClass('active').siblings().removeClass('active');
-    vue.getJsonShang(laypage);
+    vue.getJsonShang(laypage,'/tzb/data/json/tzpager','demo3');
     $('#invest').show();
 };
 

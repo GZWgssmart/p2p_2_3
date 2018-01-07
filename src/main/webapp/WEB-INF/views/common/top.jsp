@@ -52,7 +52,7 @@
     <div class="wrap cl">
         <div class="logo"><img src="/static/images/index/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
-            <ul>
+            <ul id="ulli">
                 <c:if test="${sessionScope.user == null}">
                     <li class="icon icon-acc"><a href="/user/login">我的账户</a></li>
                 </c:if>
@@ -60,22 +60,21 @@
                 <li class="icon icon-acc"><a href="/user/accountOverride">我的账户</a></li
                 </c:if>
                 <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="about.html">信息披露 </a></li>
+                <li><a href="javascript:;">信息披露 </a></li>
                 <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li><a href="safety.html">安全保障</a></li>
-                <li>
-                    <a href="investlist.html">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
+                <li><a href="javascript:;">安全保障</a></li>
+                <li id="touzilicai">
+                    <a href="javascript:;">投资理财</a>
+                    <div id="list" class="sub-nav">
+                        <a href="/borrowapply/all/1">恒金保</a>
+                        <a href="/borrowapply/all/4">普金保</a>
+                        <a href="/borrowapply/all/2">多金宝</a>
                         <a href="investlist.html#005">新手标</a>
-                        <a href="creditorlist.html">债权转让</a>
                         <p class="left"></p>
                         <p class="right"></p>
                     </div>
                 </li>
-                <li><a href="/index">首页</a></li>
+                <li><a href="/">首页</a></li>
             </ul>
         </div>
     </div>

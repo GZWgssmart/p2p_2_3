@@ -31,6 +31,8 @@ public class BorrowapplyVo {
 
     private Integer uid;
 
+    private String way;
+
     public Integer getBzid() {
         return bzid;
     }
@@ -117,5 +119,13 @@ public class BorrowapplyVo {
 
     public void setCkstatus(Integer ckstatus) {
         this.ckstatus = ckstatus;
+    }
+
+    public String getWay() {
+        return way;
+    }
+
+    public void setWay(String way) {
+        this.way = way;
     }
 }

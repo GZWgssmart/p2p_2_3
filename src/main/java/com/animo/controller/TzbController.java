@@ -39,7 +39,7 @@ public class TzbController {
      // return ServerResponse.createByError("登录超时");
     }
 
-    @GetMapping("pager/{page}/{limit}")
+    @GetMapping("pager")
     public Pager pager(int page, int limit){
         return tzbService.listPager(page,limit);
     }

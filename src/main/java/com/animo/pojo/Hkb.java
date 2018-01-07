@@ -1,5 +1,7 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -104,6 +106,7 @@ public class Hkb {
         this.tnum = tnum;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getYtime() {
         return ytime;
     }
@@ -112,6 +115,7 @@ public class Hkb {
         this.ytime = ytime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getRtime() {
         return rtime;
     }

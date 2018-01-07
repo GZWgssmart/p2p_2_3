@@ -238,7 +238,7 @@
 
   <select id="listPagerCriteria" resultType="com.animo.vo.BorrowapplyVo">
     <![CDATA[
-        SELECT bo.uid,b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money,bd.way AS ymoney,bo.term,bd.nprofit
+        SELECT bo.ckstatus,bo.uid,b.bzid,bo.baid,b.bzname,bd.bdid,bd.cpname,bo.money,bd.money AS ymoney,bd.way,bo.term,bd.nprofit
     ]]>
     <include refid="form"></include>
     <include refid="if"></include>

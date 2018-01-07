@@ -38,7 +38,7 @@
             </div>
             <div class="subject-submit-bottom">
                 <div class="subject-submit-b-l">
-                    <p>还款方式：<span id="paymentMode">按月付息，到期还本</span></p>
+                    <p>还款方式：<span id="paymentMode">{{borrowdetail.way | wayFilter}}</span></p>
                     <p>最小投标金额：<span id="minTenderedSum">100.00元</span></p>
                 </div>
                 <div class="subject-submit-b-l">
@@ -114,7 +114,7 @@
             <p class="title">资金用途：</p><p class="content" id="moneyPurposes">{{borrowdetail.mpurpose}}</p>
         </div>
         <div class="detail cl">
-            <p class="title">收益方式：</p><p class="content" id="projectType">按月付息，到期还本</p>
+            <p class="title">收益方式：</p><p class="content" id="projectType">{{borrowdetail.way | wayFilter}}</p>
         </div>
         <div class="detail cl">
             <p class="title">还款来源：</p><p class="content" id="retsource">{{borrowdetail.hksource}}</p>
@@ -143,15 +143,35 @@
     </div>
     <div class="sub-a-box plan" id="plan">
         <ul class="">
-            <li class="title"><div class="children0">序号</div><div class="children1">计划还款日期</div><div class="children2">实际还款日期</div><div class="children3">已还本息</div><div class="children4">待还本息</div><div class="children5">已付罚息</div><div class="children6">待还罚息</div><div class="children7">状态</div></li>
+            <li class="title">
+                <div class="children0">序号</div>
+                <div class="children1">计划还款日期</div>
+                <div class="children2">实际还款日期</div>
+                <div class="children3">已还本息</div>
+                <div class="children4">待还本息</div>
+                <div class="children5">已付罚息</div>
+                <div class="children6">待还罚息</div>
+                <div class="children7">状态</div>
+            </li>
         </ul>
         <ul class="listData">
+            <li v-for="(item,index) in rows" :class="index%2==0?interval:''">
+                <div class="children0">{{index+1}}</div>
+                <div class="children1">{{item.ytime }}</div>
+                <div class="children2">{{item.rtime |StringAndNull}}</div>
+                <div class="children3">{{item.rbx |StringAndNull}}</div>
+                <div class="children4">{{item.ybx }}</div>
+                <div class="children5">{{item.rfx |StringAndNull}}</div>
+                <div class="children6">{{item.yfx |StringAndNull}}</div>
+                <div class="children7">{{item.status |State}}</div>
+            </li>
         </ul>
+        <div id="demo2"></div>
     </div>
     <div class="sub-a-box invest" id="invest">
         <ul class="">
             <li class="title"><div class="children0">投资人</div><div class="children1">金额</div><div class="children2">投资时间</div></li>
-            <li v-for="item in tzbRow" class="title">
+            <li v-for="item in rows" class="title">
                 <div class="children0">{{item.rname}}</div>
                 <div class="children1">{{item.money}}</div>
                 <div class="children2">{{item.tztime}}</div>
@@ -273,7 +293,7 @@
 
 </div>
 </body>
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/borrowapply/detail.js"></script>
 <script src="/static/js/vue.min.js"></script>
 <script src="/static/js/axios.min.js"></script>
@@ -291,9 +311,10 @@
     var vue = new Vue({
         el:'#app',
         data:{
+            interval:'interval',
             borrowapply:[],
             borrowdetail:[],
-            tzbRow:[],
+            rows:[],
             bdid:${requestScope.get("bdid")},
             bzname:'${requestScope.get("bzname")}',
             tzb:{
@@ -306,6 +327,23 @@
             formatDate(time) {
                 var date = new Date(time);
                 return formatDate(date, 'yyyy-MM-dd');
+            },
+            wayFilter(way){
+                return sway(way);
+            },
+            StringAndNull(value){
+                if(value==0|| value==null){
+                    return "无";
+                }
+            },
+            State(value){
+                if(value==0){
+                    return "未还款";
+                }else if(value==1){
+                    return "已还款";
+                }else if(value==2){
+                    return "已逾期";
+                }
             }
         },
         created (){
@@ -333,33 +371,33 @@
                     });
                 }
             },
-            getJsonShang(laypage){
-                $.getJSON('/tzb/data/json/tzpager', {
+            getJsonShang(laypage,url,demo){
+                $.getJSON(url, {
                     pageNumber: 1,
                     pageSize: 6,
                     baid:this.tzb.baid
                 }, function(res){
                     laypage.render({
-                        elem: 'demo3',
+                        elem: demo,
                         count: res.total,
                         limit :6,
                         jump: function(e, first){
                             if (!first) {
-                                vue.getJsonXia(e);
+                                vue.getJsonXia(e,url);
                             } else {
-                                vue.getJsonXia(e);
+                                vue.getJsonXia(e,url);
                             }
                         }
                     });
                 });
             },
-            getJsonXia (e) {
-                $.getJSON('/tzb/data/json/tzpager', {
+            getJsonXia (e,url) {
+                $.getJSON(url, {
                     pageNumber: e.curr,
                     pageSize: e.limit,
                     baid:this.tzb.baid
                 }, function (res) {
-                    vue.tzbRow = res.rows;
+                    vue.rows= res.rows;
                 });
             },
         }

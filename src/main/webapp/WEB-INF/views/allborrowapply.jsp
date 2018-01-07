@@ -72,19 +72,18 @@
                         <ul>
                             <li class="row1"><p class="row-top">预期年化收益率</p><p class="row-bottom color">{{item.nprofit}}<span>%</span></p></li>
                             <li class="row2"><p class="row-top">项目期限</p><p class="row-bottom">{{item.term}}个月</p></li>
-                            <li class="row3"><p class="row-top">还款方式</p><p class="row-bottom">{{item.way | sway}}</p></li>
+                            <li class="row3"><p class="row-top">还款方式</p><p class="row-bottom">{{item.way | wayFilter}}</p></li>
                             <li class="row4"><p class="row-top">可投金额 / 募集总额</p><p class="row-bottom">{{item.money-item.ymoney}}万元 / {{item.money}}万元</p></li>
                             <li class="row5">
-                                <div class="line">
-                                        <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
-                                            <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
-                                        </div>
+                                <p class="row-top">募集进度</p>
+                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                    <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
                                 </div>
-                                <p class="row-top">募集进度</p></li>
-                            <li class="row6">
-                                <button v-if="item.ymoney/item.money*100<100" type="button" class="btn" onclick="">立即投标</button>
-                                <button v-else type="button" class="btn disabled" onclick="">还款中</button>
                             </li>
+                            <li class="row6">
+                                <button v-if="item.ckstatus==2" type="button" class="btn" @click="detail(item.baid,item.bdid,item.bzname)">立即投标</button>
+                                <button v-else type="button" class="btn disabled">还款中</button>
+                            </li>`
                         </ul>
                     </div>
                 </li>
@@ -154,11 +153,11 @@
 <script src="<%=path%>/static/js/axios.min.js/"></script>
 <script src="<%=path%>/static/js/vue.min.js/"></script>
 <script src="<%=path%>/static/layui/layui.js"></script>
+<script src="/static/layui/lay/modules/element.js"></script>
 <script src=/static/js/common.js></script>
 <script>
     var laypage;
-    layui.use(['laypage','layer','element'], function(){
-          var element = layui.element;
+    layui.use(['laypage','layer'], function(){
         laypage = layui.laypage
             vue.getJsonShang(laypage);
     });
@@ -174,6 +173,11 @@
             qprofit:'',
             hprofit:'',
             cpname:''
+        },
+        filters: {
+            wayFilter(way){
+                return sway(way);
+            }
         },
         created () {
         },

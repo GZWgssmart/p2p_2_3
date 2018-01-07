@@ -348,4 +348,17 @@
       ,#{item.ybx},#{item.ylx},#{item.ybj},#{item.tnum},#{item.baid},#{item.ytime})
     </foreach>
   </insert>
+
+  <select id="listPagerByBaid" resultType="hkb">
+    <![CDATA[
+      SELECT * FROM hkb WHERE baid=#{baid} limit #{pager.beginIndex}, #{pager.pageSize}
+    ]]>
+  </select>
+
+  <select id="countByBaid" resultType="long">
+    <![CDATA[
+      SELECT COUNT(hkid) FROM hkb WHERE baid=#{baid}
+    ]]>
+  </select>
+
 </mapper>
