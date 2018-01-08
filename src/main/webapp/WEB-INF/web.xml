@@ -36,7 +36,21 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <!-- 过滤器代理，代理了shiro提供的过滤器 -->
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
 
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>

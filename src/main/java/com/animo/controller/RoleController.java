@@ -3,7 +3,6 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Role;
-import com.animo.pojo.Rolejur;
 import com.animo.service.RoleService;
 import com.animo.vo.RoleJurVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,6 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
-
-    private Role role;
 
     /**
      * 添加角色

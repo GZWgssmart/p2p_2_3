@@ -82,6 +82,6 @@
   </select>
 
   <select id="listByRid" resultType="com.animo.vo.RoleJurVO" parameterType="java.lang.Integer">
-    select r.rid,rj.jid,rj.rjid,j.content from role r join rolejur rj on r.rid = rj.rid JOIN jur j on rj.jid = j.jid where r.rid = #{rid, jdbcType=INTEGER};
+    select r.rid,rj.jid,rj.rjid,j.content,j.jurl from role r join rolejur rj on r.rid = rj.rid JOIN jur j on rj.jid = j.jid where r.rid = #{rid, jdbcType=INTEGER};
   </select>
 </mapper>

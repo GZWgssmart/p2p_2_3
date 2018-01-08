@@ -49,4 +49,9 @@ public class RoleuserServiceImpl extends AbstractServiceImpl implements Roleuser
         return integer==1?ServerResponse.createBySuccess("添加成功"):ServerResponse.createByError("添加失败");
     }
 
+    @Override
+    public List<Roleuser> listByHuid(Integer huid) {
+        return roleuserMapper.listByHuid(huid);
+    }
+
 }

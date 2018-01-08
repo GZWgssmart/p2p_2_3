@@ -2,6 +2,9 @@ package com.animo.controller;
 
 
 import com.animo.common.CheckCodeUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.web.servlet.ShiroHttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,9 +20,11 @@ import java.io.OutputStream;
 public class CheckCodeController {
 
     @RequestMapping("")
-    public void code(HttpSession session, HttpServletResponse response) {
+    public void code(HttpServletResponse response) {
         String code = CheckCodeUtils.randomCode();
         System.out.println(code);
+//        session.setAttribute("code", code);
+        Session session = SecurityUtils.getSubject().getSession();
         session.setAttribute("code", code);
         BufferedImage image = CheckCodeUtils.generateImage(code);
         try {

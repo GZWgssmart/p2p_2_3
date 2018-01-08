@@ -24,8 +24,27 @@
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven />
 
+    <!-- 启用shiro 注解 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"  depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
 
-
+    <!--shiro异常处理-->
+    <bean
+            class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!--没有权限-->
+                <prop key="org.apache.shiro.authz.UnauthorizedException">
+                    /shiro/Unauthorized
+                </prop>
+                <!--<prop key="org.apache.shiro.authz.UnauthenticatedException">-->
+                <!--/Unauthorized.jsp-->
+                <!--</prop>-->
+            </props>
+        </property>
+    </bean>
 
     <bean id="stringHttpMessageConverter"
           class="org.springframework.http.converter.StringHttpMessageConverter">

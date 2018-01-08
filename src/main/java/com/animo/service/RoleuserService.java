@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface RoleuserService extends BaseService{
     ServerResponse save(String ridString, String huidString);
+    List<Roleuser> listByHuid(Integer huid);
 }

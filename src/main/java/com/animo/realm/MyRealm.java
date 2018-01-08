@@ -1,39 +1,45 @@
 package com.animo.realm;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
+import com.animo.common.CustomToken;
+import com.animo.common.EncryptUtils;
+import com.animo.common.ServerResponse;
+import com.animo.pojo.Huser;
+import com.animo.pojo.Roleuser;
+import com.animo.service.HuserService;
+import com.animo.service.JurService;
+import com.animo.service.RoleuserService;
+import com.animo.vo.RoleJurVO;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Animo on 2017-12-07.
  * @author Animo
  */
+@Component
 public class MyRealm extends AuthorizingRealm {
 
-    /**
-     * 授权(验证权限时调用)
-     * @param principalCollection
-     * @return
-     */
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-//        User User  = (User)principalCollection.getPrimaryPrincipal();
-//        Long id  = User.getId();
-//        List<String> permsList = null;
-//        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-//        //如果id等于总管理员的id  就赋予所有权限
-//        if(id==1){
-//            //赋予所有权限
-//            authorizationInfo.addStringPermissions(permsList);
-//        }else{
-//            //查询当前用户的权限
-//            authorizationInfo.addStringPermissions(permsList);
-//        }
-        return null;
-    }
+    @Autowired
+    private HuserService huserService;
+
+    @Autowired
+    private RoleuserService roleuserService;
+
+    @Autowired
+    private JurService jurService;
+
 
     /**
      * 认证(登录时调用)
@@ -41,22 +47,66 @@ public class MyRealm extends AuthorizingRealm {
      * @return
      * @throws AuthenticationException
      */
-    @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        return null;
+        System.out.println("身份认证方法：MyRealm.doGetAuthenticationInfo()");
+        CustomToken token = (CustomToken)authenticationToken;
+        String code = token.getVerifyCode();
+        String codeInsession = token.getCodeInSession();
+        String username = (String) token.getPrincipal();
+        String password = String.valueOf((char[])token.getCredentials());
+        //验证码校验
+        if (!code.equalsIgnoreCase(codeInsession)){
+           throw new UnknownAccountException("验证码错误");
+        }
+        Session session = SecurityUtils.getSubject().getSession();
+        Huser huser = huserService.getByPhonePwd(username, EncryptUtils.md5(password));
+        //账号不存在
+        if(huser == null) {
+            throw new UnknownAccountException("账号或密码不正确");
+        }else {
+            session.setAttribute("huser",huser);
+            return new SimpleAuthenticationInfo(username,password,"myRealm");
+        }
     }
 
     /**
-     * 自动加密密码
-     * @param credentialsMatcher
+     * 授权(验证权限时调用)
+     * @param principalCollection
+     * @return
      */
-//    @Override
-//    public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher){
-//        HashedCredentialsMatcher shaCredentialsMatcher = new HashedCredentialsMatcher();
-//        shaCredentialsMatcher.setHashAlgorithmName(ShiroUtils.HASH_ALGORITHM_NAME);
-//        shaCredentialsMatcher.setHashIterations(ShiroUtils.HASHITERATIONS);
-//        super.setCredentialsMatcher(shaCredentialsMatcher);
-//    }
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        Session session = SecurityUtils.getSubject().getSession();
+        Huser huser = (Huser) session.getAttribute("huser");
+        //查询用户的角色
+//        Set<Integer> roleSet = new HashSet<Integer>();
+//        List<Rolejur> rolejurList = new ArrayList<>();
+        //查询用户角色对应的权限
+        Set<String> permsSet = new HashSet<>();
+        List<String> jurList = new ArrayList<>();
+        List<RoleJurVO> roleJurVOList;
+        //根据用户id查询角色，根据角色查询权限
+        List<Roleuser> roleuserList = roleuserService.listByHuid(huser.getHuid());
+        for(int i = 1; i<= roleuserList.size(); i++){
+            roleJurVOList = new ArrayList<>();
+            roleJurVOList = jurService.listByRid(roleuserList.get(i-1).getRid());
+            if (roleJurVOList.size()>0){
+                for (int x = 1; x <= roleJurVOList.size(); x++){
+                    jurList.add(roleJurVOList.get(x-1).getJurl());
+                }
+            }
+        }
+        for (String perms : jurList){
+            permsSet.add(perms);
+        }
+        authorizationInfo.setStringPermissions(permsSet);
+        return authorizationInfo;
+    }
 
+    // 清除缓存
+    public void clearCached() {
+        PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
+        super.clearCache(principals);
+    }
 
 }

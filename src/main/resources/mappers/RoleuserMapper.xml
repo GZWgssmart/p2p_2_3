@@ -75,4 +75,9 @@
       (#{item.rid}, #{item.huid})
     </foreach>
   </insert>
+
+  <select id="listByHuid" resultType="com.animo.pojo.Roleuser" parameterType="java.lang.Integer">
+    select * from roleuser where huid = #{huid}
+  </select>
+
 </mapper>

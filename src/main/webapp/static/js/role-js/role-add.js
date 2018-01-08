@@ -10,6 +10,8 @@ $(function () {
 
 //弹出页面：添加角色
 function showAddRole() {
+    vue.role.rname = "";
+    vue.role.content = ""
     layer.open({
         type: 1,
         title:'添加角色',
@@ -134,6 +136,16 @@ function jurBeforeRemove(treeId, treeNode) {
     });
     return false;
 }
+
+/**
+ * 是否可以编辑
+ * @param treeId
+ * @param treeNode
+ * @returns {boolean}
+ */
+function BeforeEditJurName(treeId, treeNode) {
+    return false;//设置为true,可编辑
+}
 /**
  * 鼠标移开，隐藏按钮
  * @param treeId
@@ -179,7 +191,8 @@ function editRoleJurTree(treeId, rid) {
             //勾选框状态改变事件
             // onCheck:userOnCheck
             //用于捕获节点被删除之前的事件回调函数，并且根据返回值确定是否允许删除操作
-            beforeRemove: jurBeforeRemove
+            beforeRemove: jurBeforeRemove,
+            beforeEditName: BeforeEditJurName
         },
         check: {
             enable: true,

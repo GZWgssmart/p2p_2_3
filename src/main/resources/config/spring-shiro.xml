@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 继承自AuthorizingRealm的自定义Realm -->
+    <bean id="myRealm" class="com.animo.realm.MyRealm"></bean>
+
+    <!-- 缓存管理器 -->
+    <!-- 缓存管理器 使用Ehcache实现 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:config/ehcache.xml"/>
+    </bean>
+
+    <!--会话管理器-->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- session的失效时长，单位毫秒 -->
+        <property name="globalSessionTimeout" value="600000"/>
+        <!-- 删除失效的session -->
+        <property name="deleteInvalidSessions" value="true"/>
+    </bean>
+
+    <!-- securityManager安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 自定义的realm -->
+        <property name="realm" ref="myRealm"/>
+        <!-- 缓存管理器 -->
+        <property name="cacheManager" ref="cacheManager"/>
+        <!-- 会话管理 -->
+        <property name="sessionManager" ref="sessionManager" />
+    </bean>
+
+    <!-- shiro过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 权限管理器 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 登录地址 -->
+        <property name="loginUrl" value="/admin/login"/>
+        <!-- 错误页面 ,没有权限时跳转到该页面(没有效果，在springmvc.xml另外配置)-->
+        <!--<property name="unauthorizedUrl" value="/shiro/Unauthorized"/>-->
+        <!-- 权限配置 authc：必须认证后才能访问，anon：不需要认证也能访问-->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--admin登录-->
+                /admin/login = anon
+                <!--admin退出-->
+                /admin/logout = logout
+                <!--所有静态资源可匿名访问-->
+                /static/** = anon
+                <!--所有后台页面必须登录-->
+                <!--/back/** = authc-->
+            </value>
+        </property>
+    </bean>
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+</beans>

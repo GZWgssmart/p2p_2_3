@@ -22,6 +22,15 @@ public class RoleJurVO {
 
     private String content;
 
+    private String jurl;
+
+    public String getJurl() {
+        return jurl;
+    }
+
+    public void setJurl(String jurl) {
+        this.jurl = jurl;
+    }
 
     public String getJurString() {
         return jurString;
