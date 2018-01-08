@@ -100,93 +100,39 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">订单管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="" data-id="5">待发货</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
                     <a href="javascript:;">运营管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="" data-id="8">首页轮播图</a>
                         </dd>
-                    </dl>
-                    <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="/back/dyna/pager" data-id="9">公司动态</a>
                         </dd>
-                    </dl>
-                    <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="/back/dyna/save" data-id="10">添加动态</a>
                         </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">账号管理</a>
-                    <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="" data-id="12">运营管理账号</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">站内信</a>
                         </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">财务管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="" data-id="15">财务统计</a>
-                        </dd>
-                    </dl>
-                </li>
-
-                <li class="layui-nav-item">
-                    <a href="javascript:;">统计查询</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="" data-id="20">会员统计</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">系统设置</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="" data-id="24">操作日志</a>
-                        </dd>
-                    </dl>
-                </li>
-
-                <li class="layui-nav-item">
-                    <a href="javascript:;">宣传管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">所有站内信</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">定时任务</a>
-                    <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="26">短信模板</a>
                         </dd>
-
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">借款管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="27">所有借款类型</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="27">借款类型</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="28">所有标种</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="28">标种</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="29">所有还款方式</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="29">还款方式</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="29">借款审核</a>
                         </dd>
                     </dl>
                 </li>

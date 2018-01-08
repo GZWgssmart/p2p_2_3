@@ -36,23 +36,22 @@ public class ShborrowController {
      * 借款审核保存
      * @param shborrow
      * @param session
-     * @param baid
+     * @param
      * @return
      */
     @PostMapping("save")
-    public ServerResponse save(Shborrow shborrow, HttpSession session,Integer baid){
-        Object object = session.getAttribute(Constant.SESSION_ADMIN);
-        if(object!=null){
-            Huser huser = (Huser)object;
-            //后台用户id
-            shborrow.setHuid(huser.getHuid());
+    public ServerResponse save(Shborrow shborrow, HttpSession session){
+       // Object object = session.getAttribute(Constant.SESSION_ADMIN);
+       // if(object!=null){
+            //Huser huser = (Huser)object;
+            //后台用户idhuser.getHuid()
+            shborrow.setHuid(1);
             //借款id
-            shborrow.setBaid(baid);
             //审核时间
             shborrow.setCktime(DateFormateUtils.Formate());
             return shborrowService.save(shborrow);
-        }
-       return ServerResponse.createByError("登录超时");
+        //}
+       //return ServerResponse.createByError("登录超时");
     }
 
     /**

@@ -21,4 +21,6 @@ public interface BorrowapplyMapper extends BaseMapper{
 
    Object getByIdVo(Integer baid);
 
+    int updateStatus(@Param("id") Integer id,@Param("status") Integer status);
+
 }

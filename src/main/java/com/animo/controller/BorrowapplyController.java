@@ -100,8 +100,8 @@ public class BorrowapplyController {
      * @param limit
      * @return
      */
-    @GetMapping("pager/{page}/{limit}")
-    public Pager pager(@PathVariable("page") int page, @PathVariable("limit") int limit){
+    @GetMapping("pager")
+    public Pager pager( int page,  int limit){
         return borrowapplyService.listPager(page,limit);
     }
 

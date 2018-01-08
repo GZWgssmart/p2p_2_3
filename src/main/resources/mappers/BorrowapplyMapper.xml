@@ -270,4 +270,27 @@
     from borrowapply ba, bz b, borrowdetail bd
     where b.bzid = ba.bzid and bd.baid = ba.baid and ba.baid = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="listPager" resultType="com.animo.pojo.Borrowapply">
+    <![CDATA[
+      SELECT * FROM borrowapply WHERE ckstatus='0' limit #{beginIndex}, #{pageSize}
+    ]]>
+  </select>
+
+  
+  <select id="count" resultType="long">
+    <![CDATA[
+      SELECT count(baid) FROM borrowapply WHERE ckstatus='0'
+    ]]>
+  </select>
+
+  <update id="updateStatus">
+
+    <![CDATA[
+      UPDATE borrowapply SET ckstatus=#{status}
+      where baid=#{id}
+    ]]>
+
+  </update>
+  
 </mapper>
