@@ -22,7 +22,9 @@
 </head>
 <body>
 
-<table class="layui-hide" id="user" lay-filter="demo"></table>
+<table class="layui-hide" id="user" lay-filter="demo">
+
+</table>
 
 <script type="text/html" id="barDemo">
     <%--    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>--%>

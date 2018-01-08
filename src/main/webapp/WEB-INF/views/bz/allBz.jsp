@@ -21,15 +21,6 @@
                     <!-- 操作日志 -->
                     <div class="layui-tab-item layui-field-box layui-show">
                         <table class="layui-hide" id="test" lay-filter="demo">
-                            <%--<ul class="layui-tab-title">
-                                <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
-                                <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
-                                <a class="layui-btn layui-btn-small larry-log-del">
-                                    <i class="iconfont icon-huishouzhan1">
-                                    </i>
-                                    清空日志
-                                </a>
-                            </ul>--%>
 
                         </table>
 

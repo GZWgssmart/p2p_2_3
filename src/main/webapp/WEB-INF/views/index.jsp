@@ -290,8 +290,8 @@
                 <div class="link-list">
                     <marquee id="affiche" align="left" behavior="alternate" direction="left" loop="-1" hspace="0" vspace="10"
                              scrollamount="2" onMouseOut="this.start()" onMouseOver="this.stop()">
-                        <div class="link-list-box" style="width: 5840px;">
-                            <ul class="cl" id="linkList" style="width: 2900px;">
+                        <div class="link-list-box" style="width: 20000px;">
+                            <ul class="cl" id="linkList" style="width: 6000px;">
                                 <li><a target="view_frame" href="http://www.gzctgroup.cn" title="赣州城投集团"><img
                                         src="/static/images/index/gzct.jpg" alt="赣州城投集团"></a></li>
                                 <li><a target="view_frame" href="http://www.heimadc.com/" title="黑马地产"><img
@@ -313,6 +313,27 @@
                                 <li><a target="view_frame" href="http://www.wdzj.com/" title="网贷之家"><img
                                         src="/static/images/index/wdzj.png" alt="网贷之家"></a></li>
 
+
+                                <li><a target="view_frame" href="http://www.gzctgroup.cn" title="赣州城投集团"><img
+                                        src="/static/images/index/gzct.jpg" alt="赣州城投集团"></a></li>
+                                <li><a target="view_frame" href="http://www.heimadc.com/" title="黑马地产"><img
+                                        src="/static/images/index/hmdc.jpg" alt="黑马地产"></a></li>
+                                <li><a target="view_frame" href="http://www.chinapnr.com/" title="汇付天下"><img
+                                        src="/static/images/index/hftx.jpg" alt="汇付天下"></a></li>
+                                <li><a target="view_frame" href="https://www.fadada.com/" title="法大大"><img
+                                        src="/static/images/index/fdd.jpg" alt="法大大"></a></li>
+                                <li><a target="view_frame" href="http://www.evergrande.com/" title="恒大集团"><img
+                                        src="/static/images/index/hdtcjt.jpg" alt="恒大集团"></a></li>
+                                <li><a target="view_frame" href="http://www.erongtu.com/" title="融途网"><img
+                                        src="/static/images/index/rtw.jpg" alt="融途网"></a></li>
+                                <li><a target="view_frame" href="http://www.jxifa.org.cn/" title="江西省互联网金融协会"><img
+                                        src="/static/images/index/jxshlwjrxh.png" alt="江西省互联网金融协会"></a></li>
+                                <li><a target="view_frame" href="http://www.cgfae.cn/" title="江西赣南金融资产交易中心"><img
+                                        src="/static/images/index/jxsgyjrd.png" alt="江西赣南金融资产交易中心"></a></li>
+                                <li><a target="view_frame" href="http://www.chinacsfl.cn/" title="中国供应链金融服务联盟"><img
+                                        src="/static/images/index/zggyl.png" alt="中国供应链金融服务联盟"></a></li>
+                                <li><a target="view_frame" href="http://www.wdzj.com/" title="网贷之家"><img
+                                        src="/static/images/index/wdzj.png" alt="网贷之家"></a></li>
                             </ul>
                         </div>
                     </marquee>
@@ -334,7 +355,7 @@
             <div class="index-concat">
                 <div class="wrap cl">
                     <div class="index-concat-left">
-
+                        <img src="/static/images/index/index_erweima.png" alt="扫码关注普金资本">
                     </div>
                     <div class="index-concat-phone">
                         <p>财富热线</p>
@@ -342,8 +363,11 @@
                     </div>
                     <div class="index-concat-channel">
                         <p class="about_cel_text">
-                            <a target="_blank" href="" class="about_wb"></a>
+                            <a target="_blank" href="http://weibo.com/pujinziben" class="about_wb">
+                                <img src="/static/images/index/wb.png">
+                            </a>
                             <a href="javascript:void(0);" class="about_wx line_02">
+                                <img src="/static/images/index/wx.png">
 						<span class="line_l_h">
 							<span class="line_l_sj"></span>
 							<span class="line_l_text">关注普金资本公众号</span>
@@ -351,8 +375,11 @@
 						</span>
                             </a>
                             <a target="_blank" href=""
-                               class="about_qq"></a>
+                               class="about_qq">
+                                <img src="/static/images/index/qq.png">
+                            </a>
                             <a href="javascript:void(0);" class="about_wx about_rr">
+                                <img src="/static/images/index/phone.png">
 						<span class="line_l_j">
 							<span class="line_l_sj"></span>
 							<span class="line_l_texts">400-606-2079</span>
@@ -362,26 +389,44 @@
                         <p class="about_cel_no">admin@pujinziben.com</p>
                     </div>
                     <div class="index-concat-link cl"><a href="javascript:;" class="title">友情链接</a><a target="_blank"
-                                                                                                      href="">网贷天眼</a><a
-                            target="_blank" href="">网贷天下</a><a target="_blank" href="">中国平安银行</a><a
-                            target="_blank" href="">中国建设银行</a><a target="_blank"
-                                                                 href="">网贷东方</a><a
-                            target="_blank" href="">第一网贷</a></div>
+                                                                                                      href="http://www.p2peye.com/">网贷天眼</a><a
+                            target="_blank" href="http://www.wdtianxia.com/">网贷天下</a><a target="_blank" href="http://bank.pingan.com/">中国平安银行</a><a
+                            target="_blank" href="http://www.ccb.com/cn/home/indexv3.html">中国建设银行</a><a target="_blank"
+                                                                 href="http://www.wangdaidongfang.com/">网贷东方</a><a
+                            target="_blank" href="http://www.p2p001.com/">第一网贷</a></div>
                 </div>
             </div>
             <div class="footer">
                 <div class="wrap">
                     <p class="text">
                         版权所有 © 普金资本运营（赣州）有限公司 All rights reserved <br>
-                        备案确认书：<a href="" target="_blank"
-                                 class="beian">赣ICP备16004010号</a><a href=""
-                                                                    target="_blank"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a>
-                        target="_blank" href=""
+                        备案确认书：<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank"
+                                 class="beian">赣ICP备16004010号
+                                <img src="/static/images/index/CNZZ.png">
+                                </a>
+                        <a href="" target="_blank"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+
+                        target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36070202000195"
+
                         style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"
-                        class="beian">赣公网安备
+
+                        class="beian">
+                        <img src="/static/images/index/beian.png">
+                        赣公网安备
                         36070202000195号</a>
 
                     </p>
+                    <div class="footer-list" style="width:650px;text-align:center">
+                        <a id="___szfw_logo___" href="https://credit.szfw.org/CX05252017016185201512.html" target="_blank"><img src="/static/images/index/foot2.png" border="0"></a>
+                        <!-- <a href="https://credit.cecdc.com/CX20160720023638001698.html"><img src="resources/front/v01/src/images/ft_link_01.png" alt=""></a> -->
+                        <a href="https://www.yunaq.com/analytics/login/?site=pujinziben.com" target="_blank"><img src="resources/front/v01/src/images/ft_link_02.png" alt=""></a>
+                        <a href="http://si.trustutn.org/info?sn=685170725000594426611&amp;certType=4" target="_blank"><img width="110px" height="40px" src="http://v.trustutn.org/images/cert/p2p_bottom_large_img.jpg" alt=""></a>
+                        <!-- 				<a href="http://webscan.360.cn/index/checkwebsite/url/www.pujinziben.com"><img width="110px" height="40px" border="0" src="http://img.webscan.360.cn/status/pai/hash/745ef449cbf0f6a74791f73d57aa7ac2"/></a> -->
+                        <a href="https://v.pinpaibao.com.cn/authenticate/cert/?site=www.pujinziben.com&amp;at=business" target="_blank">
+                            <img src="/static/images/index/ft_link_02.png" alt="安全网站">
+                        </a>
+                        <a target="_blank" href="http://ec.eqixin.com/?sn=QX3712005910061483682343"><img width="112px" height="34px" src="/static/images/index/foot1.png" alt="企信验证"></a>
+                    </div>
 
                 </div>
             </div>
