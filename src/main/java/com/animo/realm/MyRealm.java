@@ -47,6 +47,7 @@ public class MyRealm extends AuthorizingRealm {
      * @return
      * @throws AuthenticationException
      */
+    @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         System.out.println("身份认证方法：MyRealm.doGetAuthenticationInfo()");
         CustomToken token = (CustomToken)authenticationToken;
@@ -74,6 +75,7 @@ public class MyRealm extends AuthorizingRealm {
      * @param principalCollection
      * @return
      */
+    @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         Session session = SecurityUtils.getSubject().getSession();

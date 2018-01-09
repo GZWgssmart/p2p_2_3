@@ -68,4 +68,12 @@
       fpic = #{fpic,jdbcType=VARCHAR}
     where fid = #{fid,jdbcType=INTEGER}
   </update>
+
+  <select id="listPager" resultType="com.animo.pojo.Friend" parameterType="com.animo.common.Pager">
+    select  f.fid, f.furl, f.fpic from friend f limit #{beginIndex}, #{pageSize}
+  </select>
+
+  <select id="count" resultType="long">
+    select count(fid) from friend
+  </select>
 </mapper>

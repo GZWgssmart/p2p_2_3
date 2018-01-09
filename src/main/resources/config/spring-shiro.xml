@@ -45,11 +45,11 @@
         <property name="filterChainDefinitions">
             <value>
                 <!--admin登录-->
-                /admin/login = anon
+                <!--/admin/login = anon-->
                 <!--admin退出-->
-                /admin/logout = logout
+                <!--/admin/logout = logout-->
                 <!--所有静态资源可匿名访问-->
-                /static/** = anon
+                <!--/static/** = anon-->
                 <!--所有后台页面必须登录-->
                 <!--/back/** = authc-->
             </value>

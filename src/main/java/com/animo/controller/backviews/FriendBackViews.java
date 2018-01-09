@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author ye
- * 描述：后台角色页面跳转控制器
+ * 描述：后台合作伙伴管理
  */
 @Controller
-@RequestMapping("/back/role")
-public class RoleBackViews {
+@RequestMapping("/back/friends")
+public class FriendBackViews {
 
-    @GetMapping("pagerRole")
+    @GetMapping("pagerFriend")
    public String listRoles(){
-       return "role/roles";
+       return "friend/friends";
    }
 
 }

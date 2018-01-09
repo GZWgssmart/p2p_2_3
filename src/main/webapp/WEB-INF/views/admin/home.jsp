@@ -120,6 +120,14 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
+                    <a href="javascript:;">合作伙伴管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="11">合作伙伴</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
                     <a href="javascript:;">借款管理</a>
                     <dl class="layui-nav-child">
                         <dd>
