@@ -104,28 +104,23 @@
     where lmid = #{lmid,jdbcType=INTEGER}
   </update>
 
-  <sql id="logmoney_query_common">
-    from  log_money lm, usermoney um where lm.uid = um.uid
-  </sql>
 
-  <sql id="logmoney_query_criteria">
-    <if test="query != null and query.startTime != null and query.startTime != ''and query.endTime != null and query.endTime != '' ">
-      where lt.created_time between #{query.startTime} and #{query.endTime}
-    </if>
-  </sql>
-
-  <select id="listPagerCriteria" resultType="com.animo.vo.LogMoneyVO">
+  <select id="listPagerByTypeAndUid" resultType="com.animo.pojo.LogMoney">
     <![CDATA[
-        select um.kymoney,lm.type,lm.imcome,lm.outlay,lm.created_time
-        ]]>
-    <include refid="logmoney_query_common"/>
-    <include refid="logmoney_query_criteria"/>
+        select * FROM log_money WHERE
+    ]]>
+    <if test="type!=null">
+      type=#{type} and
+    </if>
+    uid=#{uid}
     limit #{pager.beginIndex}, #{pager.pageSize}
   </select>
 
-  <select id="countCriteria" resultType="long" parameterType="com.animo.query.DateQuery">
-    select count(lm.id)
-    <include refid="logmoney_query_common"/>
-    <include refid="logmoney_query_criteria"/>
+  <select id="countByTypeAndUid" resultType="long" >
+    select count(lmid) FROM log_money WHERE
+    <if test="type!=null">
+      type=#{type}  and
+    </if>
+   uid=#{uid}
   </select>
 </mapper>

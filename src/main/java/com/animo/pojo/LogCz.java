@@ -16,7 +16,6 @@ public class LogCz {
 
     private BigDecimal money;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createdTime;
 
     private Integer status;
@@ -61,6 +60,7 @@ public class LogCz {
         this.money = money;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getCreatedTime() {
         return createdTime;
     }

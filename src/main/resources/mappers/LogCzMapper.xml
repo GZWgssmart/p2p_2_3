@@ -115,26 +115,15 @@
         where czid = #{czid,jdbcType=INTEGER}
   </update>
 
-    <sql id="recharge_query_common">
-    from  bankcard bk, log_cz lc where bk.uid = lc.uid
-    </sql>
 
-    <sql id="recharge_query_criteria">
-        <if test="query != null and query.startTime != null and query.startTime != ''and query.endTime != null and query.endTime != '' ">
-            where lt.created_time between #{query.startTime} and #{query.endTime}
-        </if>
-    </sql>
-
-    <select id="listPagerCriteria" resultType="com.animo.vo.RechargeVO">
+    <select id="listPagerByUid" resultType="com.animo.pojo.LogCz">
         <![CDATA[
-        select bk.cardno,bk.type,lc.money,lc.`status`,lc.created_time
+          select * FROM log_cz WHERE  uid=#{uid}
         ]]>
         limit #{pager.beginIndex}, #{pager.pageSize}
   </select>
 
-    <select id="countCriteria" resultType="long" parameterType="com.animo.query.DateQuery">
-        select count(lc.id)
-        <include refid="recharge_query_common"/>
-        <include refid="recharge_query_criteria"/>
+    <select id="countByUid" resultType="long">
+        select count(czid) FROM log_cz WHERE uid=#{uid}
     </select>
 </mapper>

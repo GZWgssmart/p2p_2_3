@@ -3,11 +3,10 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
-import com.animo.pojo.LogMoney;
+import com.animo.pojo.Bankcard;
 import com.animo.pojo.LogTx;
 import com.animo.pojo.User;
-import com.animo.pojo.Usermoney;
-import com.animo.query.DateQuery;
+import com.animo.service.BankCardService;
 import com.animo.service.LogMoneyService;
 import com.animo.service.LogTxService;
 import com.animo.service.UserMoneyService;
@@ -36,36 +35,39 @@ public class LogTxController {
     @Autowired
     private LogMoneyService logMoneyService;
 
+    @Autowired
+    private BankCardService bankCardService;
+
+    private ServerResponse serverResponse;
+
     private BigDecimal balance;
     /**
-     * 用户申请提现
+     * 用户申请提现  1是受理中  0是提现成功
      * @return
      */
     @RequestMapping("withdraw")
-    public ServerResponse<LogTx> withdraw(Usermoney usermoney,LogMoney logMoney,HttpSession session,LogTx logTx){
+    public ServerResponse<LogTx> withdraw(HttpSession session, BigDecimal money){
         Object object = session.getAttribute(Constant.SESSION_USER);
-        if(object != null ){
-            User user = (User) object;
-            usermoney = userMoneyService.selectAvailableMoney(user.getUid());
-            if((usermoney.getKymoney().compareTo(logTx.getMoney()))==1){
-                balance = usermoney.getKymoney().subtract(logTx.getMoney());
-                usermoney.setKymoney(balance);
-                userMoneyService.update(usermoney);
+        if(object!=null){
+            User user = (User)object;
+            Bankcard bankcard= bankCardService.getByUid(user.getUid());
+            if(bankcard!=null){
+                LogTx logTx = new LogTx();
+                logTx.setMoney(money);
+                //用户id
                 logTx.setUid(user.getUid());
-                logTx.setStatus(0);
+                //银行卡号
+                logTx.setBankcard(bankcard.getCardno());
+                //银行卡类型
+                logTx.setBanktype(bankcard.getType());
+                logTx.setStatus(1);
                 logTx.setCreatedTime(DateFormateUtils.Formate());
-                logMoney.setUid(user.getUid());
-                logMoney.setType(1);
-                logMoney.setOutlay(logTx.getMoney());
-                logMoney.setCreatedTime(logTx.getCreatedTime());
-                logMoneyService.save(logMoney);
                 return logTxService.save(logTx);
             }else{
-                return ServerResponse.createByError("余额不足");
+                return ServerResponse.createByError("请绑卡");
             }
-        }else {
-            return ServerResponse.createByError("您的登录已经超时，申请提现失败！");
         }
+        return ServerResponse.createByError("登录超时,请重新登录");
     }
 
     /**
@@ -74,8 +76,9 @@ public class LogTxController {
      * @param limit
      * @return
      */
-    @RequestMapping("pager_criteria")
-    public Pager pager(Integer page, Integer limit, DateQuery dateQuery) {
-        return logTxService.listPagerCriteria(page, limit, dateQuery);
+    @RequestMapping("pager")
+    public Pager pager(int page, int limit, HttpSession session) {
+        User user = (User) session.getAttribute(Constant.SESSION_USER);
+        return logTxService.listPagerByUid(page, limit,user.getUid());
     }
 }

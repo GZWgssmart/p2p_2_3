@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LogTxMapper extends BaseMapper{
+public interface LogTxMapper extends BaseMapper {
 
 
-    List<Object> listPagerCriteria(@Param("pager") Pager pager, @Param("query") Object obj);
+    List<Object> listPagerByUid(@Param("pager") Pager pager, @Param("uid") Integer uid);
 
-    Long countCriteria(@Param("query") Object obj);
+    Long countByUid(@Param("uid") Integer uid);
 
     Usermoney selectAvailableMoney(Integer id);
 

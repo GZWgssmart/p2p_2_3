@@ -10,5 +10,5 @@ import com.animo.common.Pager;
  */
 public interface LogCzService extends BaseService {
 
-    Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj);
+    Pager listPagerByUid(Integer pageNo, Integer pageSize, Integer uid);
 }

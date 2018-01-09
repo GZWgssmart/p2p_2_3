@@ -1,7 +1,7 @@
 package com.animo.service.impl;
 
+import com.animo.common.ServerResponse;
 import com.animo.dao.UsermoneyMapper;
-import com.animo.pojo.Usermoney;
 import com.animo.service.UserMoneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * Created by Animo on 2017-12-28.
  */
 @Service
-public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMoneyService{
+public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMoneyService {
 
     private UsermoneyMapper usermoneyMapper;
 
@@ -22,14 +22,14 @@ public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMon
 
 
     @Override
-    public Usermoney selectByUid(Integer uid) {
-        return usermoneyMapper.selectByUid(uid);
+    public ServerResponse selectByUid(Integer uid) {
+        return ServerResponse.createBySuccess(usermoneyMapper.selectByUid(uid));
     }
 
 
     @Override
-    public Usermoney selectAvailableMoney(Integer id) {
-        return  usermoneyMapper.selectAvailableMoney(id);
+    public ServerResponse selectAvailableMoney(Integer id) {
+        return  ServerResponse.createBySuccess(usermoneyMapper.selectAvailableMoney(id));
     }
 
 }

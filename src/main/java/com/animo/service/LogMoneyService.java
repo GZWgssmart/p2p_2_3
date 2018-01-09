@@ -10,5 +10,5 @@ import com.animo.common.Pager;
  */
 public interface LogMoneyService extends BaseService {
 
-    Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj);
+    Pager listPagerByTypeAndUid(Integer pageNo, Integer pageSize, Integer type, Integer uid);
 }

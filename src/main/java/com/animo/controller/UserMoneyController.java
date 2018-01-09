@@ -34,9 +34,7 @@ public class UserMoneyController {
         if(object != null){
             user = (User) object;
             Integer uid = user.getUid();
-            if(uid != null){
-                userMoneyService.selectByUid(uid);
-            }
+            return userMoneyService.selectByUid(uid);
         }
         return ServerResponse.createByError("用户登录失效，请重新登录！");
     }

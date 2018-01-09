@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LogCzMapper extends BaseMapper{
+public interface LogCzMapper extends BaseMapper {
 
-    List<Object> listPagerCriteria(@Param("pager") Pager pager, @Param("query") Object obj);
+    List<Object> listPagerByUid(@Param("pager") Pager pager, @Param("uid") Integer uid);
 
-    Long countCriteria(@Param("query") Object obj);
+    Long countByUid(Integer uid);
 
 }

@@ -1,13 +1,10 @@
 package com.animo.service.impl;
 
 import com.animo.common.Pager;
-import com.animo.dao.BaseMapper;
 import com.animo.dao.LogMoneyMapper;
 import com.animo.service.LogMoneyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.logging.LogManager;
 
 /**
  * Created by qm on 2018/1/3.
@@ -27,10 +24,10 @@ public class LogMoneyServiceImpl extends AbstractServiceImpl implements LogMoney
     }
 
     @Override
-    public Pager listPagerCriteria(Integer pageNo, Integer pageSize, Object obj) {
+    public Pager listPagerByTypeAndUid(Integer pageNo, Integer pageSize, Integer type, Integer uid) {
         Pager pager = new Pager(pageNo, pageSize);
-        pager.setRows(logMoneyMapper.listPagerCriteria(pager, obj));
-        pager.setTotal(logMoneyMapper.countCriteria(obj));
+        pager.setRows(logMoneyMapper.listPagerByTypeAndUid(pager, type,uid));
+        pager.setTotal(logMoneyMapper.countByTypeAndUid(type,uid));
         return pager;
     }
 }

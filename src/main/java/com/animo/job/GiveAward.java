@@ -1,5 +1,6 @@
 package com.animo.job;
 
+import com.animo.common.ServerResponse;
 import com.animo.pojo.Reward;
 import com.animo.pojo.Usermoney;
 import com.animo.service.RewardService;
@@ -29,6 +30,8 @@ public class GiveAward {
    @Autowired
     private UserMoneyService userMoneyService;
 
+   private ServerResponse serverResponse;
+
     public void execute() {
         logger.info("give award...");
         try{
@@ -38,7 +41,8 @@ public class GiveAward {
                 r.setRewardTime((Date) Calendar.getInstance().getTime());
 
 
-                Usermoney usermoney = userMoneyService.selectByUid(r.getUid());//通过uid查出对应的用户资金表数据
+                serverResponse = userMoneyService.selectByUid(r.getUid());//通过uid查出对应的用户资金表数据
+                Usermoney usermoney = (Usermoney) serverResponse.getData();
                 BigDecimal jlmoney = usermoney.getJlmoney() == null ? BigDecimal.valueOf(0) : usermoney.getJlmoney();
                 usermoney.setJlmoney(jlmoney.add(r.getMoney()));//奖励
                 BigDecimal symoney = usermoney.getSymoney() == null ? BigDecimal.valueOf(0) : usermoney.getSymoney();

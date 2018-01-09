@@ -3,11 +3,10 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
+import com.animo.pojo.Bankcard;
 import com.animo.pojo.LogCz;
-import com.animo.pojo.LogMoney;
 import com.animo.pojo.User;
-import com.animo.pojo.Usermoney;
-import com.animo.query.DateQuery;
+import com.animo.service.BankCardService;
 import com.animo.service.LogCzService;
 import com.animo.service.UserMoneyService;
 import com.animo.utils.DateFormateUtils;
@@ -34,45 +33,47 @@ public class LogCzController {
     @Autowired
     private UserMoneyService userMoneyService;
 
+    @Autowired
+    private BankCardService bankCardService;
+
+    private ServerResponse serverResponse;
+
     private BigDecimal balance;
     /**
      * 用户充值
      * @return
      */
     @RequestMapping("recharge")
-    public ServerResponse<LogCz> save(Usermoney usermoney, LogMoney logMoney,HttpSession session, LogCz logCz){
+    public ServerResponse<LogCz> save(HttpSession session, BigDecimal money){
         Object object = session.getAttribute(Constant.SESSION_USER);
-        if(object != null){
-            User user = (User) object;
-            usermoney = userMoneyService.selectAvailableMoney(user.getUid());
-            if((usermoney.getKymoney().compareTo(logCz.getMoney()))==1){
-                balance = usermoney.getKymoney().subtract(logCz.getMoney());
-                usermoney.setKymoney(balance);
-                userMoneyService.update(usermoney);
+        if(object!=null){
+            User user = (User)object;
+            Bankcard bankcard  = bankCardService.getByUid(user.getUid());
+            if(bankcard!=null){
+                LogCz logCz = new LogCz();
+                logCz.setMoney(money);
+                //用户id
                 logCz.setUid(user.getUid());
-                logCz.setStatus(0);
+                //银行卡号
+                logCz.setBankcard(bankcard.getCardno());
+                //银行卡类型
+                logCz.setBanktype(bankcard.getType());
                 logCz.setCreatedTime(DateFormateUtils.Formate());
-                //更新资金流向记录
-                logMoney.setUid(user.getUid());
-                logMoney.setType(1);
-                logMoney.setOutlay(logCz.getMoney());
-                logMoney.setCreatedTime(logCz.getCreatedTime());
                 return logCzService.save(logCz);
-            }else {
-                return ServerResponse.createByError("您的余额不足，充值失败");
+            }else{
+               return ServerResponse.createByError("请绑卡");
             }
-        }else {
-            return ServerResponse.createByError("您的登录已经超时，充值失败！");
         }
-
+        return ServerResponse.createByError("登录超时,请重新登录");
     }
 
     /**
      * 用户查看充值记录，分页显示
      * @return
      */
-    @RequestMapping("pager_criteria")
-    public Pager listRecord(Integer page, Integer limit, DateQuery dateQuery){
-        return logCzService.listPagerCriteria(page,limit,dateQuery);
+    @RequestMapping("pager")
+    public Pager listRecord(int page, int limit, HttpSession session){
+        User user = (User) session.getAttribute(Constant.SESSION_USER);
+        return logCzService.listPagerByUid(page,limit,user.getUid());
     }
 }
