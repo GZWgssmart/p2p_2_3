@@ -11,17 +11,17 @@ import java.util.Date;
  */
 public class RechargeVO {
 
-    private  Integer cardno;
+    private  String cardno;
     private String type;
     private BigDecimal money;
     private Integer status;
-    private Date created_time;
+    private Date createdTime;
 
-    public Integer getCardno() {
+    public String getCardno() {
         return cardno;
     }
 
-    public void setCardno(Integer cardno) {
+    public void setCardno(String cardno) {
         this.cardno = cardno;
     }
 
@@ -49,11 +49,11 @@ public class RechargeVO {
         this.status = status;
     }
 
-    public Date getCreated_time() {
-        return created_time;
+    public Date getCreatedTime() {
+        return createdTime;
     }
 
-    public void setCreated_time(Date created_time) {
-        this.created_time = created_time;
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
     }
 }

@@ -13,6 +13,8 @@ import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by qm on 2017/12/25.
  *
@@ -55,6 +57,14 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
     }
 
     @Override
+    public Pager listAll(Integer pageNo, Integer pageSize) {
+        Pager pager = new Pager(pageNo, pageSize);
+        pager.setRows(logTxMapper.listAll(pager));
+        pager.setTotal(logTxMapper.count());
+        return pager;
+    }
+
+    @Override
     public ServerResponse save(Object object) {
         LogTx logTx = (LogTx) object;
         //保存用户提现记录
@@ -71,4 +81,6 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
         usermoneyMapper.updateByPrimaryKeySelective(usermoney);
         return ServerResponse.createBySuccess("提现成功");
     }
+
+
 }

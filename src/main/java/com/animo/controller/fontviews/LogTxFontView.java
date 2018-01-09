@@ -15,6 +15,6 @@ public class LogTxFontView {
 
     @RequestMapping("/withdraw")
     public String mybank() {
-        return "user/Recharge";
+        return "user/recharge";
     }
 }

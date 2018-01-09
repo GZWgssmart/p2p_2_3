@@ -81,4 +81,9 @@ public class LogTxController {
         User user = (User) session.getAttribute(Constant.SESSION_USER);
         return logTxService.listPagerByUid(page, limit,user.getUid());
     }
+
+    @RequestMapping("listAll")
+    public Pager listAll(Integer page, Integer limit) {
+        return logTxService.listAll(page,limit);
+    }
 }

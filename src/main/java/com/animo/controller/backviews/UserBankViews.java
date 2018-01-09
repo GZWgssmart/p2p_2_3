@@ -26,4 +26,9 @@ public class UserBankViews {
         return "user/email";
     }
 
+    @GetMapping("tx")
+    public String tx() {
+        return "user/txCheck";
+    }
+
 }

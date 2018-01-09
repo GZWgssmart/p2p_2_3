@@ -26,4 +26,9 @@ public class UserFontViews {
         return "user/important";
     }
 
+    @GetMapping("recharge")
+    public String Recharge(){
+        return "user/recharge";
+    }
+
 }

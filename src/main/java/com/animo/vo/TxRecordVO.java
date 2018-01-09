@@ -1,5 +1,7 @@
 package com.animo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.zip.DataFormatException;
@@ -12,17 +14,27 @@ import java.util.zip.DataFormatException;
  */
 public class TxRecordVO {
 
-    private  Integer cardno;
+    private Integer txid;
+    private String cardno;
     private String type;
     private BigDecimal money;
     private Integer status;
-    private Date created_time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date createdTime;
 
-    public Integer getCardno() {
+    public Integer getTxid() {
+        return txid;
+    }
+
+    public void setTxid(Integer txid) {
+        this.txid = txid;
+    }
+
+    public String getCardno() {
         return cardno;
     }
 
-    public void setCardno(Integer cardno) {
+    public void setCardno(String cardno) {
         this.cardno = cardno;
     }
 
@@ -50,11 +62,11 @@ public class TxRecordVO {
         this.status = status;
     }
 
-    public Date getCreated_time() {
-        return created_time;
+    public Date getCreatedTime() {
+        return createdTime;
     }
 
-    public void setCreated_time(Date created_time) {
-        this.created_time = created_time;
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
     }
 }
