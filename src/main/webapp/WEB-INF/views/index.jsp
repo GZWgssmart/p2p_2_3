@@ -319,6 +319,7 @@
     <div class="index-concat">
         <div class="wrap cl">
             <div class="index-concat-left">
+                <img src="/static/images/index/index_erweima.png">
 
             </div>
             <div class="index-concat-phone">
@@ -327,17 +328,23 @@
             </div>
             <div class="index-concat-channel">
                 <p class="about_cel_text">
-                    <a target="_blank" href="" class="about_wb"></a>
+                    <a target="_blank" href="http://weibo.com/pujinziben" class="about_wb">
+                        <img src="/static/images/index/wb.png">
+                    </a>
                     <a href="javascript:void(0);" class="about_wx line_02">
+                        <img src="/static/images/index/wx.png">
 						<span class="line_l_h">
 							<span class="line_l_sj"></span>
 							<span class="line_l_text">关注普金资本公众号</span>
 							<span class="line_l_pic"></span>
 						</span>
                     </a>
-                    <a target="_blank" href=""
-                       class="about_qq"></a>
+                    <a target="_blank" href="http://web2.qq.com/"
+                       class="about_qq">
+                        <img src="/static/images/index/qq.png">
+                    </a>
                     <a href="javascript:void(0);" class="about_wx about_rr">
+                        <img src="/static/images/index/phone.png">
 						<span class="line_l_j">
 							<span class="line_l_sj"></span>
 							<span class="line_l_texts">400-606-2079</span>
@@ -348,10 +355,10 @@
             </div>
             <div class="index-concat-link cl"><a href="javascript:;" class="title">友情链接</a><a target="_blank"
                                                                                               href="">网贷天眼</a><a
-                    target="_blank" href="">网贷天下</a><a target="_blank" href="">中国平安银行</a><a
-                    target="_blank" href="">中国建设银行</a><a target="_blank"
-                                                                                                href="">网贷东方</a><a
-                    target="_blank" href="">第一网贷</a></div>
+                    target="_blank" href="http://www.p2peye.com/">网贷天下</a><a target="_blank" href="http://bank.pingan.com/">中国平安银行</a><a
+                    target="_blank" href="http://www.ccb.com/cn/home/indexv3.html">中国建设银行</a><a target="_blank"
+                                                                                                href="http://www.wangdaidongfang.com/">网贷东方</a><a
+                    target="_blank" href="http://www.p2p001.com/">第一网贷</a></div>
         </div>
     </div>
     <%@include file="common/footer.jsp"%>
