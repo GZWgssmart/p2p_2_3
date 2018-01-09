@@ -16,7 +16,7 @@
     <result column="face" property="face" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="isvip" property="isvip" jdbcType="INTEGER" />
-    <result column="resint1" property="resint1" jdbcType="INTEGER" />
+    <result column="resint1" property="resint1" jdbcType="TIMESTAMP" />
     <result column="resint2" property="resint2" jdbcType="INTEGER" />
     <result column="resstr1" property="resstr1" jdbcType="VARCHAR" />
     <result column="resstr2" property="resstr2" jdbcType="VARCHAR" />
@@ -39,14 +39,14 @@
     insert into t_user (uid, uname, upwd, 
       phone, tzm, zpwd, idtype, 
       idno, email, rname, 
-      tid, face, sex, isvip, 
+      tid, face, sex, isvip,
       resint1, resint2, resstr1, 
       resstr2)
     values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{tzm,jdbcType=INTEGER}, #{zpwd,jdbcType=VARCHAR}, #{idtype,jdbcType=VARCHAR}, 
       #{idno,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, 
       #{tid,jdbcType=INTEGER}, #{face,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{isvip,jdbcType=INTEGER}, 
-      #{resint1,jdbcType=INTEGER}, #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=VARCHAR}, 
+      #{resint1,jdbcType=INTEGER}, #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=TIMESTAMP},
       #{resstr2,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.User" >
@@ -160,7 +160,7 @@
         #{resint2,jdbcType=INTEGER},
       </if>
       <if test="resstr1 != null" >
-        #{resstr1,jdbcType=VARCHAR},
+        #{resstr1,jdbcType=TIMESTAMP},
       </if>
       <if test="resstr2 != null" >
         #{resstr2,jdbcType=VARCHAR},
@@ -223,7 +223,7 @@
         resint2 = #{resint2,jdbcType=INTEGER},
       </if>
       <if test="resstr1 != null" >
-        resstr1 = #{resstr1,jdbcType=VARCHAR},
+        resstr1 = #{resstr1,jdbcType=TIMESTAMP},
       </if>
       <if test="resstr2 != null" >
         resstr2 = #{resstr2,jdbcType=VARCHAR},
@@ -248,7 +248,7 @@
       isvip = #{isvip,jdbcType=INTEGER},
       resint1 = #{resint1,jdbcType=INTEGER},
       resint2 = #{resint2,jdbcType=INTEGER},
-      resstr1 = #{resstr1,jdbcType=VARCHAR},
+      resstr1 = #{resstr1,jdbcType=TIMESTAMP},
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
@@ -283,5 +283,20 @@
 			 where u.uid = rz.uid and u.tid = re.tid and rz.uid = re.uid
 		]]>
   </select>
+
+
+
+
+  <select id="listPagerCriteria" resultType="com.animo.pojo.User">
+    <![CDATA[
+        SELECT * from t_user where resstr2= #{resstr2}
+    ]]>
+    limit #{pager.beginIndex}, #{pager.pageSize}
+  </select>
+
+  <select id="countCriteria" resultType="long" >
+    select count(uid) FROM t_user WHERE resstr2= #{resstr2}
+  </select>
+
 
 </mapper>

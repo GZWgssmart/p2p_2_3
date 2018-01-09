@@ -1,5 +1,6 @@
 package com.animo.service;
 
+import com.animo.common.Pager;
 import com.animo.pojo.User;
 
 /**
@@ -11,5 +12,5 @@ public interface UserService extends BaseService {
     int getByPhone(String phone);
     User getByPhonePwd(String phone, String upwd);
 
-
+    Pager listPagerCriteria(Integer beginIndex,Integer pageSize,String resstr2);
 }

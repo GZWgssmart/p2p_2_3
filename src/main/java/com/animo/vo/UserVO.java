@@ -27,6 +27,17 @@ public class UserVO {
     private String tname;//推荐人姓名
     private Date createdTime;//推荐时间
 
+
+    private String resstr2;
+
+    public String getResstr2() {
+        return resstr2;
+    }
+
+    public void setResstr2(String resstr2) {
+        this.resstr2 = resstr2;
+    }
+
     private Integer tid;
 
     public int getUid() {

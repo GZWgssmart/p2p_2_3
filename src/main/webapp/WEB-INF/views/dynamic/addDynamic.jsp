@@ -15,11 +15,15 @@
     <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
 </head>
 <body>
-<div id="app">
-    <button class="layui-btn" @click="saveDynamic">保存</button>
-    <input type="text"  v-model="dynamic.title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+<div id="app" style="width: 1140px; margin: 0;">
+    <br/>
+    <button  style="width: 1140px; margin: 0;" class="layui-btn layui-btn-fluid" @click="saveDynamic">保存</button>
+    <br/>
+    <br/>
+    <input type="text"  v-model="dynamic.title" required  lay-verify="required" placeholder="请输入公司动态" autocomplete="off" class="layui-input">
+    <br/>
     <!-- 加载编辑器的容器 -->
-    <script id="container" name="content" type="text/plain">
+        <script id="container" name="content" type="text/plain">
 
       </script>
 </div>

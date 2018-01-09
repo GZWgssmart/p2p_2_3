@@ -21,8 +21,8 @@
 <body>
 
 <div id="app">
-
-    <button  class="layui-btn" v-on:click="save">添加</button>
+    <br/>
+    <button style="width: 1144px; margin: 0;"   class="layui-btn" v-on:click="save">添加</button>
        <table class="layui-hide" id="test" lay-filter="demo"></table>
 
 

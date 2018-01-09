@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
 </head>
 <body>
-<div id="app">
-
-    <button class="layui-btn" @click="saveMedia">保存</button>
+<div id="app" style="width: 1140px; margin: 0;">
+    <br/>
+    <button style="width: 1140px; margin: 0;" class="layui-btn" @click="saveMedia">保存</button>
+    <br/><br/>
     <input type="text"  v-model="media.title" required  lay-verify="required" placeholder="请输入媒体报道标题" autocomplete="off" class="layui-input">
-
+    <br/>
     <!-- 加载编辑器的容器 -->
     <script id="container" name="content"  type="text/plain">
 

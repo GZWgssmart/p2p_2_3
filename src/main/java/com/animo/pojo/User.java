@@ -1,5 +1,9 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
+
 public class User {
     private Integer uid;
 
@@ -28,8 +32,8 @@ public class User {
     private String sex;
 
     private Integer isvip;
-
-    private Integer resint1;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date resint1;
 
     private Integer resint2;
 
@@ -149,11 +153,11 @@ public class User {
         this.isvip = isvip;
     }
 
-    public Integer getResint1() {
+    public Date getResint1() {
         return resint1;
     }
 
-    public void setResint1(Integer resint1) {
+    public void setResint1(Date resint1) {
         this.resint1 = resint1;
     }
 

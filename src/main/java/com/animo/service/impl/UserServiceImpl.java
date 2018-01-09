@@ -1,5 +1,6 @@
 package com.animo.service.impl;
 
+import com.animo.common.Pager;
 import com.animo.dao.UserMapper;
 import com.animo.pojo.User;
 import com.animo.service.UserService;
@@ -34,6 +35,14 @@ public class UserServiceImpl extends AbstractServiceImpl implements UserService 
     @Override
     public User getByPhonePwd(String phone, String upwd) {
         return userMapper.getByPhonePwd(phone, upwd);
+    }
+
+    @Override
+    public Pager listPagerCriteria(Integer beginIndex, Integer pageSize, String resstr2) {
+        Pager pager = new Pager(beginIndex, pageSize);
+        pager.setRows(userMapper.listPagerCriteria(pager ,resstr2));
+        pager.setTotal(userMapper.countCriteria(resstr2));
+        return pager;
     }
 
 }

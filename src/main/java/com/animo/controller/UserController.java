@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +40,7 @@ public class UserController {
     public ServerResponse register(User user, HttpSession session){
         user.setUpwd(EncryptUtils.md5(user.getUpwd()));
         user.setResstr1(getRandomFourNum());
+        user.setResint1(new Date());
        ServerResponse serverResponse = userService.save(user);
 
        if (serverResponse.isSuccess()) {
@@ -157,10 +159,6 @@ public class UserController {
         return result;
     }
 
-
-    /*
-    * 根据id查推荐码
-    * */
 /*
 * 根据id查
 * */
@@ -169,5 +167,11 @@ public class UserController {
         System.out.println(id);
         return  userService.getById(id);
 
+    }
+
+    /*用条件查所有数据加分页*/
+    @GetMapping("PagerCriteria")
+    public Pager PagerCriteria(int page, int limit,String resstr2){
+        return userService.listPagerCriteria(page,limit,resstr2);
     }
 }

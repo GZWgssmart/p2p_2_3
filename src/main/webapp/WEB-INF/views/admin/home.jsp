@@ -105,18 +105,39 @@
                         <dd>
                             <a href="javascript:;" data-url="" data-id="8">首页轮播图</a>
                         </dd>
+
                         <dd>
                             <a href="javascript:;" data-url="/back/dyna/pager" data-id="9">公司动态</a>
                         </dd>
+
                         <dd>
-                            <a href="javascript:;" data-url="/back/dyna/save" data-id="10">添加动态</a>
+                            <a href="javascript:;" data-url="/back/med/pager" data-id="10">媒体报道</a>
                         </dd>
+
+                        <dd>
+                            <a href="javascript:;" data-url="/back/not/pager" data-id="11">公司公告</a>
+                        </dd>
+
+                        <dd>
+                            <a href="javascript:;" data-url="/back/dyna/save" data-id="12">添加公司动态</a>
+                        </dd>
+
+                        <dd>
+                            <a href="javascript:;" data-url="/back/med/save" data-id="13">添加媒体报道</a>
+                        </dd>
+
+                        <dd>
+                            <a href="javascript:;" data-url="/back/not/save" data-id="14">添加公司公告</a>
+                        </dd>
+
                         <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">站内信</a>
                         </dd>
+
                         <dd>
                             <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="26">短信模板</a>
                         </dd>
+
                     </dl>
                 </li>
                 <li class="layui-nav-item">
