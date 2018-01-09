@@ -307,12 +307,22 @@
 <div id="ajaxFooter">
     <div class="mod-sidebar">
         <ul>
-            <li><a target="_blank" href=""
-                   class="sidebar-qq"></a></li>
-            <li><a href="javascript:;" class="sidebar-wx"></a></li>
-            <li><a href="" class="sidebar-cl"></a></li>
-            <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
-            <li><a href="javascript:;" class="sidebar-top"></a></li>
+            <li><a target="_blank" href="http://web2.qq.com/"
+                   class="sidebar-qq">
+                <img src="/static/images/index/qq1.png">
+            </a></li>
+            <li><a href="javascript:;" class="sidebar-wx">
+                <img src="/static/images/index/wx1.png">
+            </a></li>
+            <li><a href="" class="sidebar-cl">
+                <img src="/static/images/index/sf.png">
+            </a></li>
+            <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券">
+                <img src="/static/images/index/log.png">
+            </a></li>
+            <li><a href="javascript:;" class="sidebar-top">
+                <img src="/static/images/index/more.png">
+            </a></li>
         </ul>
     </div>
     <!-- concat -->
