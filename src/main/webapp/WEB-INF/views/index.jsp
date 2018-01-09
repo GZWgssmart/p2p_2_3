@@ -256,48 +256,9 @@
                          scrollamount="2" onMouseOut="this.start()" onMouseOver="this.stop()">
                     <div class="link-list-box" style="width: 20000px;">
                         <ul class="cl" id="linkList" style="width: 6000px;">
-                            <li><a target="view_frame" href="http://www.gzctgroup.cn" title="赣州城投集团"><img
-                                    src="/static/images/index/gzct.jpg" alt="赣州城投集团"></a></li>
-                            <li><a target="view_frame" href="http://www.heimadc.com/" title="黑马地产"><img
-                                    src="/static/images/index/hmdc.jpg" alt="黑马地产"></a></li>
-                            <li><a target="view_frame" href="http://www.chinapnr.com/" title="汇付天下"><img
-                                    src="/static/images/index/hftx.jpg" alt="汇付天下"></a></li>
-                            <li><a target="view_frame" href="https://www.fadada.com/" title="法大大"><img
-                                    src="/static/images/index/fdd.jpg" alt="法大大"></a></li>
-                            <li><a target="view_frame" href="http://www.evergrande.com/" title="恒大集团"><img
-                                    src="/static/images/index/hdtcjt.jpg" alt="恒大集团"></a></li>
-                            <li><a target="view_frame" href="http://www.erongtu.com/" title="融途网"><img
-                                    src="/static/images/index/rtw.jpg" alt="融途网"></a></li>
-                            <li><a target="view_frame" href="http://www.jxifa.org.cn/" title="江西省互联网金融协会"><img
-                                    src="/static/images/index/jxshlwjrxh.png" alt="江西省互联网金融协会"></a></li>
-                            <li><a target="view_frame" href="http://www.cgfae.cn/" title="江西赣南金融资产交易中心"><img
-                                    src="/static/images/index/jxsgyjrd.png" alt="江西赣南金融资产交易中心"></a></li>
-                            <li><a target="view_frame" href="http://www.chinacsfl.cn/" title="中国供应链金融服务联盟"><img
-                                    src="/static/images/index/zggyl.png" alt="中国供应链金融服务联盟"></a></li>
-                            <li><a target="view_frame" href="http://www.wdzj.com/" title="网贷之家"><img
-                                    src="/static/images/index/wdzj.png" alt="网贷之家"></a></li>
-
-
-                            <li><a target="view_frame" href="http://www.gzctgroup.cn" title="赣州城投集团"><img
-                                    src="/static/images/index/gzct.jpg" alt="赣州城投集团"></a></li>
-                            <li><a target="view_frame" href="http://www.heimadc.com/" title="黑马地产"><img
-                                    src="/static/images/index/hmdc.jpg" alt="黑马地产"></a></li>
-                            <li><a target="view_frame" href="http://www.chinapnr.com/" title="汇付天下"><img
-                                    src="/static/images/index/hftx.jpg" alt="汇付天下"></a></li>
-                            <li><a target="view_frame" href="https://www.fadada.com/" title="法大大"><img
-                                    src="/static/images/index/fdd.jpg" alt="法大大"></a></li>
-                            <li><a target="view_frame" href="http://www.evergrande.com/" title="恒大集团"><img
-                                    src="/static/images/index/hdtcjt.jpg" alt="恒大集团"></a></li>
-                            <li><a target="view_frame" href="http://www.erongtu.com/" title="融途网"><img
-                                    src="/static/images/index/rtw.jpg" alt="融途网"></a></li>
-                            <li><a target="view_frame" href="http://www.jxifa.org.cn/" title="江西省互联网金融协会"><img
-                                    src="/static/images/index/jxshlwjrxh.png" alt="江西省互联网金融协会"></a></li>
-                            <li><a target="view_frame" href="http://www.cgfae.cn/" title="江西赣南金融资产交易中心"><img
-                                    src="/static/images/index/jxsgyjrd.png" alt="江西赣南金融资产交易中心"></a></li>
-                            <li><a target="view_frame" href="http://www.chinacsfl.cn/" title="中国供应链金融服务联盟"><img
-                                    src="/static/images/index/zggyl.png" alt="中国供应链金融服务联盟"></a></li>
-                            <li><a target="view_frame" href="http://www.wdzj.com/" title="网贷之家"><img
-                                    src="/static/images/index/wdzj.png" alt="网贷之家"></a></li>
+                            <li v-for="item in friends">
+                                <a target="_blank" :href="item.furl"><img style="width:260px;height: 58px;" :src="item.fpic"></a>
+                            </li>
                         </ul>
                     </div>
                 </marquee>
@@ -330,47 +291,6 @@
         <div class="wrap cl">
             <div class="index-concat-left">
                 <img src="/static/images/index/index_erweima.png">
-                                <li><a target="view_frame" href="http://www.gzctgroup.cn" title="赣州城投集团"><img
-                                        src="/static/images/index/gzct.jpg" alt="赣州城投集团"></a></li>
-                                <li><a target="view_frame" href="http://www.heimadc.com/" title="黑马地产"><img
-                                        src="/static/images/index/hmdc.jpg" alt="黑马地产"></a></li>
-                                <li><a target="view_frame" href="http://www.chinapnr.com/" title="汇付天下"><img
-                                        src="/static/images/index/hftx.jpg" alt="汇付天下"></a></li>
-                                <li><a target="view_frame" href="https://www.fadada.com/" title="法大大"><img
-                                        src="/static/images/index/fdd.jpg" alt="法大大"></a></li>
-                                <li><a target="view_frame" href="http://www.evergrande.com/" title="恒大集团"><img
-                                        src="/static/images/index/hdtcjt.jpg" alt="恒大集团"></a></li>
-                                <li><a target="view_frame" href="http://www.erongtu.com/" title="融途网"><img
-                                        src="/static/images/index/rtw.jpg" alt="融途网"></a></li>
-                                <li><a target="view_frame" href="http://www.jxifa.org.cn/" title="江西省互联网金融协会"><img
-                                        src="/static/images/index/jxshlwjrxh.png" alt="江西省互联网金融协会"></a></li>
-                                <li><a target="view_frame" href="http://www.cgfae.cn/" title="江西赣南金融资产交易中心"><img
-                                        src="/static/images/index/jxsgyjrd.png" alt="江西赣南金融资产交易中心"></a></li>
-                                <li><a target="view_frame" href="http://www.chinacsfl.cn/" title="中国供应链金融服务联盟"><img
-                                        src="/static/images/index/zggyl.png" alt="中国供应链金融服务联盟"></a></li>
-                                <li><a target="view_frame" href="http://www.wdzj.com/" title="网贷之家"><img
-                                        src="/static/images/index/wdzj.png" alt="网贷之家"></a></li>
-                                <li><a target="view_frame" href="http://www.gzctgroup.cn" title="赣州城投集团"><img
-                                        src="/static/images/index/gzct.jpg" alt="赣州城投集团"></a></li>
-                                <li><a target="view_frame" href="http://www.heimadc.com/" title="黑马地产"><img
-                                        src="/static/images/index/hmdc.jpg" alt="黑马地产"></a></li>
-                                <li><a target="view_frame" href="http://www.chinapnr.com/" title="汇付天下"><img
-                                        src="/static/images/index/hftx.jpg" alt="汇付天下"></a></li>
-                                <li><a target="view_frame" href="https://www.fadada.com/" title="法大大"><img
-                                        src="/static/images/index/fdd.jpg" alt="法大大"></a></li>
-                                <li><a target="view_frame" href="http://www.evergrande.com/" title="恒大集团"><img
-                                        src="/static/images/index/hdtcjt.jpg" alt="恒大集团"></a></li>
-                                <li><a target="view_frame" href="http://www.erongtu.com/" title="融途网"><img
-                                        src="/static/images/index/rtw.jpg" alt="融途网"></a></li>
-                                <li><a target="view_frame" href="http://www.jxifa.org.cn/" title="江西省互联网金融协会"><img
-                                        src="/static/images/index/jxshlwjrxh.png" alt="江西省互联网金融协会"></a></li>
-                                <li><a target="view_frame" href="http://www.cgfae.cn/" title="江西赣南金融资产交易中心"><img
-                                        src="/static/images/index/jxsgyjrd.png" alt="江西赣南金融资产交易中心"></a></li>
-                                <li><a target="view_frame" href="http://www.chinacsfl.cn/" title="中国供应链金融服务联盟"><img
-                                        src="/static/images/index/zggyl.png" alt="中国供应链金融服务联盟"></a></li>
-                                <li><a target="view_frame" href="http://www.wdzj.com/" title="网贷之家"><img
-                                        src="/static/images/index/wdzj.png" alt="网贷之家"></a></li>
-
             </div>
             <div class="index-concat-phone">
                 <p>财富热线</p>
@@ -451,6 +371,11 @@
         return axios.get('/dyna/data/json/pager?page=1&limit=5');
     };
 
+    //合作伙伴
+    function friends() {
+        return axios.get('/friend/data/json/pager?page=1&limit=10');
+    }
+
     new Vue({
         el:'#app',
         data:{
@@ -460,7 +385,8 @@
             hjb:[],
             media:[],
             notice:[],
-            dynamic:[]
+            dynamic:[],
+            friends:[]
         },
         filters: {
             formatDate(time) {
@@ -469,7 +395,7 @@
             }
         },
         created () {
-            axios.all([three(),Media(),notice(),dynamic()]).then(axios.spread((threes,media,notice,dynamic)=>{
+            axios.all([three(),Media(),notice(),dynamic(),friends()]).then(axios.spread((threes,media,notice,dynamic,friends)=>{
                 this.djb = threes.data.data['多金宝'].data;
                 this.xsb = threes.data.data['新手标'].data;
                 this.pjb = threes.data.data['普金保'].data;
@@ -477,6 +403,7 @@
                 this.media = media.data.rows;
                 this.notice = notice.data.rows;
                 this.dynamic = dynamic.data.rows;
+                this.friends = friends.data.rows;
             }));
         },
         methods: {
