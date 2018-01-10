@@ -123,7 +123,18 @@
 		]]>
     </select>
 
+    <select id="listAll" resultType="com.animo.pojo.LogTx">
+        <![CDATA[
+			select * FROM log_tx
+			limit #{pager.beginIndex}, #{pager.pageSize}
+		]]>
+    </select>
+
     <select id="countByUid" resultType="long">
         select count(txid) FROM log_tx WHERE uid=#{uid}
+    </select>
+
+    <select id="count" resultType="long">
+        select count(txid) FROM log_tx
     </select>
 </mapper>
