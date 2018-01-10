@@ -62,9 +62,9 @@
                 <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
                 <li><a href="javascript:;">信息披露 </a></li>
                 <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li><a href="javascript:;">安全保障</a></li>
+                <li><a href="/back/font/security">安全保障</a></li>
                 <li id="touzilicai">
-                    <a href="javascript:;">投资理财</a>
+                    <a href="/back/font/investment">投资理财</a>
                     <div id="list" class="sub-nav">
                         <a href="/borrowapply/all/1">恒金保</a>
                         <a href="/borrowapply/all/4">普金保</a>

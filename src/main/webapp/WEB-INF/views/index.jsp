@@ -266,6 +266,14 @@
         </div>
     </div>
 <div id="ajaxFooter">
+
+    <div id="gzh" class="popup wechart-box show">
+        <p class="title left">关注普金资本微信公众号</p>
+        <a href="javascript:void(0);" class="close icon icon-close"></a>
+        <div class="popup-from">
+            <img class="wechart" src="/static/images/index/wechart.jpg">
+        </div>
+    </div>
     <div class="mod-sidebar">
         <ul>
             <li><a target="_blank" href="http://web2.qq.com/"
@@ -313,7 +321,7 @@
                        class="about_qq">
                         <img src="/static/images/index/qq.png">
                     </a>
-                    <a href="javascript:void(0);" class="about_wx about_rr">
+                    <a id="aaa" href="javascript:void(0);" class="about_wx about_rr">
                         <img src="/static/images/index/phone.png">
 						<span class="line_l_j">
 							<span class="line_l_sj"></span>
@@ -341,7 +349,7 @@
 <script src="<%=path%>/static/layui/layui.js"></script>
 <script src="/static/layui/lay/modules/element.js"></script>
 <script src="/static/js/common.js"></script>
-
+<script src="/static/js/jquery.min.js"></script>
 <script>
     layui.use('carousel', function(){
         var carousel = layui.carousel;
@@ -415,5 +423,15 @@
 
         },
     });
+
+    $(function(){
+       $("#gzh").hide();
+    });
+
+    /*$(document).ready(function(){
+        $("#aaa").click(function(){
+            $("#gzh").show();
+        });
+    });*/
 </script>
 </html>
