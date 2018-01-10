@@ -189,6 +189,8 @@
     </div>
 </div>
 <div id="ajaxFooter"></div>
+
+<%@include file="../common/footer.jsp"%>
 <!--[if lt IE 9]>
 <script src="/static/js/font/json2.js"></script>
 <![endif]-->
