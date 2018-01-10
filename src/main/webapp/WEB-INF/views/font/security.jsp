@@ -51,7 +51,7 @@
     </div>
 </div>
 <div class="banner">
-    <div class="banner-box"><img src="picture/safty.jpg"></div>
+    <div class="banner-box"><img src="/static/images/index/safty.jpg"></div>
 </div>
 <div class="safety">
     <div class="item-one">
@@ -60,12 +60,13 @@
         </div>
         <div class="item-content">
             <p class="title">所有普金资本上线项目，必须经过五级过滤！</p>
-            <img class="img" src="picture/item1.png"/>
+            <img class="img" src="/static/images/index/item1.png"/>
         </div>
     </div>
     <div class="item-two">
-        <div class="wrap">
+        <img class="wrap">
             <div class="item-title">
+
                 <p class="title">02 项目保障</p>
             </div>
             <div class="item-content">
@@ -87,14 +88,16 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
     <div class="item-three">
         <div class="item-title">
             <p>03 风控流程</p>
         </div>
         <div class="item-content">
-            <img class="img" src="picture/item3.png"/>
+            <img class="img" src="/static/images/index/item3.png"/>
         </div>
     </div>
     <div class="item-four">
@@ -187,7 +190,7 @@
 </div>
 <div id="ajaxFooter"></div>
 <!--[if lt IE 9]>
-<script src="js/json2.js"></script>
+<script src="/static/js/font/json2.js"></script>
 <![endif]-->
 <script charset="utf-8" type="text/javascript" src="/static/js/font/wpa.js"></script>
 <script type="text/javascript" src="/static/js/font/jquery.js"></script>
