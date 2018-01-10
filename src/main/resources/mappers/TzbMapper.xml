@@ -199,7 +199,7 @@
     borrowapply as bw on tz.baid = bw.baid LEFT JOIN
     bz as bz on bw.bzid = bz.bzid LEFT JOIN
     sway as sw on bd.way = sw.sid
-    where tz.uid = #{uid} limit #{pager.beginIndex}, #{pager.pageSize};
+    where tz.uid = #{uid}   order by tz.tztime desc limit #{pager.beginIndex}, #{pager.pageSize};
   </select>
 
   <select id="countByUid" resultType="long">
