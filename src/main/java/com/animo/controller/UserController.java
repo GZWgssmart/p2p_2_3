@@ -39,8 +39,8 @@ public class UserController {
     @RequestMapping(value="register", method = RequestMethod.POST)
     public ServerResponse register(User user, HttpSession session){
         user.setUpwd(EncryptUtils.md5(user.getUpwd()));
-        user.setResstr1(getRandomFourNum());
         user.setResint1(new Date());
+        user.setResstr1(getRandomFourNum());
        ServerResponse serverResponse = userService.save(user);
 
        if (serverResponse.isSuccess()) {

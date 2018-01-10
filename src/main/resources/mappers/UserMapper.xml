@@ -46,7 +46,7 @@
       #{phone,jdbcType=VARCHAR}, #{tzm,jdbcType=INTEGER}, #{zpwd,jdbcType=VARCHAR}, #{idtype,jdbcType=VARCHAR}, 
       #{idno,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, 
       #{tid,jdbcType=INTEGER}, #{face,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{isvip,jdbcType=INTEGER}, 
-      #{resint1,jdbcType=INTEGER}, #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=TIMESTAMP},
+      #{resint1,jdbcType=TIMESTAMP}, #{resint2,jdbcType=INTEGER}, #{resstr1,jdbcType=VARCHAR},
       #{resstr2,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.User" >
@@ -154,13 +154,13 @@
         #{isvip,jdbcType=INTEGER},
       </if>
       <if test="resint1 != null" >
-        #{resint1,jdbcType=INTEGER},
+        #{resint1,jdbcType=TIMESTAMP},
       </if>
       <if test="resint2 != null" >
         #{resint2,jdbcType=INTEGER},
       </if>
       <if test="resstr1 != null" >
-        #{resstr1,jdbcType=TIMESTAMP},
+        #{resstr1,jdbcType=VARCHAR},
       </if>
       <if test="resstr2 != null" >
         #{resstr2,jdbcType=VARCHAR},
@@ -217,13 +217,13 @@
         isvip = #{isvip,jdbcType=INTEGER},
       </if>
       <if test="resint1 != null" >
-        resint1 = #{resint1,jdbcType=INTEGER},
+        resint1 = #{resint1,jdbcType=TIMESTAMP},
       </if>
       <if test="resint2 != null" >
         resint2 = #{resint2,jdbcType=INTEGER},
       </if>
       <if test="resstr1 != null" >
-        resstr1 = #{resstr1,jdbcType=TIMESTAMP},
+        resstr1 = #{resstr1,jdbcType=VARCHAR},
       </if>
       <if test="resstr2 != null" >
         resstr2 = #{resstr2,jdbcType=VARCHAR},
@@ -246,9 +246,9 @@
       face = #{face,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       isvip = #{isvip,jdbcType=INTEGER},
-      resint1 = #{resint1,jdbcType=INTEGER},
+      resint1 = #{resint1,jdbcType=TIMESTAMP},
       resint2 = #{resint2,jdbcType=INTEGER},
-      resstr1 = #{resstr1,jdbcType=TIMESTAMP},
+      resstr1 = #{resstr1,jdbcType=VARCHAR},
       resstr2 = #{resstr2,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
