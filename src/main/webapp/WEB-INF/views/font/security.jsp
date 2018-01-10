@@ -17,39 +17,8 @@
 </head>
 <link rel="icon" href="resources/front/v01/src/images/logo_title.jpg" type="image/x-icon" />
 <body class="safety">
-<!--[if lt IE 8]>
-<div class="show-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
-<![endif]-->
-<!-- top -->
-<div class="top" id="top">
-</div>
-<!-- nav -->
-<div class="nav">
-    <div class="wrap cl">
-        <div class="logo"><a href="index.html"><img src="/static/images/index/logo.png" alt="普金资本"></a></div>
-        <div class="nav-bar">
-            <ul>
-                <li class="icon icon-acc"><a href="account.html">我的账户</a></li>
-                <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="/back/font/information">信息披露</a></li>
-                <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li class="active"><a href="/back/font/security">安全保障</a></li>
-                <li>
-                    <a href="/back/font/investment">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
-                        <a href="creditorlist.html">债权转让</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
-                    </div>
-                </li>
-                <li><a href="/index">首页</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+
+<%@include file="../common/top.jsp"%>
 <div class="banner">
     <div class="banner-box"><img src="/static/images/index/safty.jpg"></div>
 </div>

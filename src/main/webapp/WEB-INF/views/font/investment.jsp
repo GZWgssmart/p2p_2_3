@@ -16,12 +16,9 @@
     <link rel="stylesheet" href="/static/css/index/index.css">
 </head>
 <link rel="icon" href="resources/front/v01/src/images/logo_title.jpg" type="image/x-icon" />
-<body onhashchange="hashChange()">
-<!--[if lt IE 8]>
-<div class="show-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
-<![endif]-->
-<!-- top -->
-<div class="top" id="top">
+<body >
+
+<%--<div class="top" id="top">
 </div>
 <!-- nav -->
 <div class="nav">
@@ -50,8 +47,10 @@
             </ul>
         </div>
     </div>
-</div>
+</div>--%>
 <!-- invest list -->
+
+<%@include file="../common/top.jsp"%>
 <div class="invest-list">
     <div class="wrap">
         <div class="invest-top">
@@ -102,7 +101,7 @@
         </div>
     </div>
 </div>
-<div id="ajaxFooter"></div>
+<%@include file="../common/footer.jsp"%>
 <!--[if lt IE 9]>
 <script src="/static/js/font/json2.js"></script>
 <![endif]-->

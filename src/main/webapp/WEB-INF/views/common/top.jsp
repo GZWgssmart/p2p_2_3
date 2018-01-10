@@ -59,9 +59,7 @@
                 <c:if test="${sessionScope.user != null}">
                 <li class="icon icon-acc"><a href="/user/accountOverride">我的账户</a></li
                 </c:if>
-                <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="javascript:;">信息披露 </a></li>
-                <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
+                <li><a href="/back/font/information">信息披露 </a></li>
                 <li><a href="/back/font/security">安全保障</a></li>
                 <li id="touzilicai">
                     <a href="/back/font/investment">投资理财</a>

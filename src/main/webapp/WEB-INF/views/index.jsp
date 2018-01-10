@@ -27,7 +27,7 @@
 </head>
 <link rel="icon" href="" type="image/x-icon"/>
 <body>
-<%@include file="common/top.jsp"%>
+<%@include file="./common/top.jsp"%>
 <div id="app">
 <div class="top" id="top">
     <!-- top -->
