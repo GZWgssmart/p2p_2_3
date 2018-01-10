@@ -37,8 +37,11 @@
 
 
     <script type="text/html" id="barDemo">
+
         <a class="layui-btn layui-btn layui-btn-xs" lay-event="agree" >同意</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refuse" >拒绝</a>
+
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete" >删除</a>
     </script>
 
     <!--拒绝编辑窗口-->
