@@ -108,6 +108,11 @@ $(function () {
     function initDisTreeRole() {
         var roleNodes =[];
         var setting = {
+            async:{
+                enable:true,
+                type:"get",
+                url:"/role/data/json/all"
+            },
             view: {
                 dblClickExpand: false,
                 showLine: true,
@@ -146,16 +151,8 @@ $(function () {
                 chkboxType: { "Y" : "ps", "N" : "ps" },
             }
         };
-        // roleNodes = [{"rid":1,"pid":0,"rname":"角色","content":"aa"},{"rid":2,"pid":1,"rname":"角色0","content":"aa"}]
         $(document).ready(function(){
-            var tree = $("#roleTree");
-            axios.get(' /role/data/json/all', {
-            }).then((response)=>{
-                roleNodes = response.data
-                tree = $.fn.zTree.init(tree, setting, roleNodes);
-            },(error)=>{
-                alert(error);
-            });
+            $.fn.zTree.init($("#roleTree"), setting);
         });
     }
 });

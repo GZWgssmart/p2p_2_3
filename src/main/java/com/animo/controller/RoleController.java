@@ -3,6 +3,8 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Role;
+import com.animo.pojo.Rolejur;
+import com.animo.service.RoleJurService;
 import com.animo.service.RoleService;
 import com.animo.vo.RoleJurVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +25,8 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
-
+    @Autowired
+    private RoleJurService roleJurService;
     /**
      * 添加角色
      * @return
@@ -42,7 +46,25 @@ public class RoleController {
      * @return
      */
     @RequestMapping("update")
-    public ServerResponse updateRole(Role role){
+    public ServerResponse updateRole(RoleJurVO roleJurVO){
+        String jurString = roleJurVO.getJurString();
+        Role role = new Role();
+        role.setRid(roleJurVO.getRid());
+        role.setContent(roleJurVO.getContent());
+        role.setPid(roleJurVO.getPid());
+        if (!jurString.isEmpty()){
+            //获取rid
+            String [] jurList = jurString.split(",");
+            List<Rolejur> rolejurList = new ArrayList<>();
+            Rolejur rolejur;
+            for (int i = 0; i < jurList.length; i++){
+                rolejur = new Rolejur();
+                rolejur.setRid(role.getRid());
+                rolejur.setJid(Integer.valueOf(jurList[i]));
+                rolejurList.add(rolejur);
+            }
+            roleJurService.saveRolejur(rolejurList);
+        }
         return roleService.update(role);
     }
 

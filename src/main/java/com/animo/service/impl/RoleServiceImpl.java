@@ -41,8 +41,12 @@ public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
 
     @Override
     public ServerResponse deleteByRoleKey(Integer id) {
-        Integer integer =  roleMapper.deleteByRoleKey(id);
-        return integer==1?ServerResponse.createBySuccess("删除成功"):ServerResponse.createByError("删除失败");
+        try {
+            roleMapper.deleteByRoleKey(id);
+            return ServerResponse.createBySuccess("删除成功");
+        }catch (Exception e){
+            return ServerResponse.createByError("删除失败");
+        }
     }
 
     @Override

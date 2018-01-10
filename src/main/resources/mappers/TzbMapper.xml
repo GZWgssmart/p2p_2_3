@@ -194,7 +194,7 @@
   </select>
 
   <select id="listInvestByUid" resultType="com.animo.vo.InvestManageVO">
-    select tz.money,tz.tztime,tz.nprofit,tz.cpname,bz.bzname,bw.term,sw.way from tzb as tz LEFT JOIN
+    select tz.money,tz.tztime,tz.nprofit,tz.cpname,tz.baid,bz.bzname,bw.term,sw.way from tzb as tz LEFT JOIN
     borrowdetail as bd on tz.cpname = bd.cpname LEFT JOIN
     borrowapply as bw on tz.baid = bw.baid LEFT JOIN
     bz as bz on bw.bzid = bz.bzid LEFT JOIN

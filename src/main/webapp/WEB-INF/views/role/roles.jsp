@@ -15,11 +15,11 @@
     <div class="layui-row">
         <div class="layui-col-xs6">
             <div>
-                <shiro:hasPermission name="role:add">
-                    <button class="layui-btn" @click="showAddRole">添加角色</button>
-                </shiro:hasPermission>
+                <%--<shiro:hasPermission name="role:add">--%>
+                <%--</shiro:hasPermission>--%>
+                <button class="layui-btn" @click="showAddRole">添加角色</button>
                 <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
-                <button class="layui-btn" @click="showRoleJur">用户角色分配</button>
+                <button class="layui-btn" @click="showRoleJur">角色分配</button>
             </div>
             <!--角色zTree的显示容器-->
             <div>
@@ -119,7 +119,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">部门描述</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入角色描述"
+                    <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入部门描述"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -181,7 +181,7 @@
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">当前所属部门：</label>
+                <label class="layui-form-label">当前所属部门</label>
                 <div class="layui-input-block">
                     <input type="text" disabled v-model="roleDel.dep" required lay-verify="required" placeholder=""
                            autocomplete="off" class="layui-input">
@@ -189,7 +189,7 @@
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">更改部门：</label>
+                <label class="layui-form-label">更改部门</label>
                 <div class="layui-input-block">
                     <!--角色部门的显示容器-->
                     <ul id="updateRoleDepTree" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
@@ -198,8 +198,9 @@
 
             <div class="layui-form-item">
                 <label class="layui-form-label">权限配置</label>
+                <a class="layui-btn layui-btn-xs" style="margin-left: 5%;" @click="showJur">添加权限</a>
                 <!--权限树的显示容器-->
-                <ul id="editRoleJurTree" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+                <ul id="editRoleJurTree" class="ztree" style="width:150px; height: 100px; overflow:auto;"></ul>
             </div>
 
             <div class="layui-form-item">
@@ -212,6 +213,15 @@
         </form>
     </div>
 
+    <!--权限分配-->
+    <div id="jurWin" style="display: none">
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限配置</label>
+            <!--权限树的显示容器-->
+            <ul id="jurTree" class="ztree" style="width:auto; height: auto; overflow:auto;"></ul>
+        </div>
+        <button class="layui-btn layui-btn-normal layui-btn-xs" style="margin-top:-40%;margin-left:20%;" lay-filter="formDemo" @click="saveJurIds">确定</button>
+    </div>
 </div>
 </body>
 <!--引入js文件-->
@@ -243,7 +253,8 @@
             roleUserVO:{
                 roleString:'',
                 userString:''
-            }
+            },
+            jurIds:''
         },
         created() {
             //初始化树
@@ -254,11 +265,9 @@
                 this.roleJurVO.pid = this.role.pid;
                 this.roleJurVO.content = this.role.content;
                 this.roleJurVO.rname = this.role.rname;
-                this.roleJurVO.jurString = nodeJurOnCheck();
                 if (this.role.pid.length != 0) {
                     axios.post('/role/data/json/save', Qs.stringify(this.roleJurVO)).then((response) => {
                         layer.msg(response.data.message);
-//                        console.log(this.role);
                     }, (error) => {
                         layer.alert("请求失败");
                     });
@@ -321,14 +330,25 @@
                 }
             },
             updateRole:function () {
-                axios.post('/role/data/json/update', Qs.stringify(this.role))
+                this.roleJurVO.rid = this.role.rid;
+                this.roleJurVO.pid = this.role.pid;
+                this.roleJurVO.content = this.role.content;
+                this.roleJurVO.rname = this.role.rname;
+                this.roleJurVO.jurString = this.jurIds;
+                axios.post('/role/data/json/update', Qs.stringify(this.roleJurVO))
                     .then((response)=>{
                         layer.msg(response.data.message);
                     },(error)=>{
                         layer.alert("请求失败");
                     });
+            },
+            showJur:function () {
+                showJur();
+            },
+            saveJurIds:function () {
+                layer.close(2);
             }
         }
-    })
+    });
 </script>
 </html>

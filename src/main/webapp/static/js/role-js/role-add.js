@@ -8,6 +8,20 @@ $(function () {
     });
 })
 
+//弹出页面：权限
+function showJur() {
+    layer.open({
+        type: 1,
+        title:'权限分配',
+        area: ['300px', '200px'],
+        fixed: false, //不固定
+        maxmin: true,
+        closeBtn: 1,
+        skin: '',
+        content: $("#jurWin")
+    });
+}
+
 //弹出页面：添加角色
 function showAddRole() {
     vue.role.rname = "";
@@ -22,10 +36,11 @@ function showAddRole() {
         skin: '',
         content: $("#addWin")
     });
+    vue.roleJurVO.jurString = '';
     //初始化树,角色部门
     initRoleDepTree('roleDepTree');
     //角色权限
-    initJurTree();
+    initJurTree('roleJurTree');
 }
 
 //弹出页面：添加部门
@@ -72,10 +87,13 @@ function showEditRole() {
         skin: '',
         content: $("#editWin")
     });
+    vue.jurIds = '';
     //初始化树,角色部门
     initRoleDepTree('updateRoleDepTree');
     //初始化树,角色权限
     editRoleJurTree('editRoleJurTree', vue.role.rid);
+    //分配角色权限
+    initJurTree('jurTree');
 }
 
 /**
@@ -115,7 +133,7 @@ function userOnCheck(event, treeId, roleNodes) {
  * @returns {boolean}
  */
 function jurBeforeRemove(treeId, treeNode) {
-    layer.msg('你确定要删除权限：'+'“'+treeNode.content+'”'+' 吗？删除后拥有该角色用户的将失去相关权限！', {
+    layer.msg('你确定要删除权限：'+'“'+treeNode.content+'”'+' 吗？删除后拥有该角色的用户将失去相关权限！', {
         time: 0 //不自动关闭
         ,btn: ['是的', '取消']
         ,yes: function(index){
@@ -205,17 +223,6 @@ function editRoleJurTree(treeId, rid) {
     $(document).ready(function () {
         $.fn.zTree.init($("#"+treeId), setting);
     });
-    // $(document).ready(function () {
-    //     var tree = $("#roleUserTree");
-    //     axios.get('/admin/data/json/list?page=1&limit=100', {
-    //     }).then((response)=>{
-    //         roleNodes = response.data.rows;
-    //         console.log(roleNodes);
-    //         tree = $.fn.zTree.init(tree, setting, roleNodes);
-    //     },(error)=>{
-    //         alert(error);
-    //     });
-    // });
 }
 
 /**
@@ -259,7 +266,6 @@ function initRoleUserTree() {
         axios.get('/admin/data/json/list?page=1&limit=1000', {
         }).then((response)=>{
             roleNodes = response.data.rows;
-            console.log(roleNodes);
             tree = $.fn.zTree.init(tree, setting, roleNodes);
         },(error)=>{
             alert(error);
@@ -325,7 +331,7 @@ function initRoleDepTree(treeId) {
 var nodesList;
 function nodeJurOnCheck(event, treeId, treeNode) {
     nodesList="";
-    var treeObj = $.fn.zTree.getZTreeObj("roleJurTree");
+    var treeObj = $.fn.zTree.getZTreeObj(treeId);
     var nodes = treeObj.getCheckedNodes(true);//获取选中的个数
     for (var i =0; i <nodes.length; i++){
         if(nodesList==null){
@@ -334,15 +340,21 @@ function nodeJurOnCheck(event, treeId, treeNode) {
             nodesList+=nodes[i].jid+",";
         }
     }
+    vue.roleJurVO.jurString = nodesList;
+    vue.jurIds = nodesList;
     return nodesList;
 };
 
 /**
  * 初始化树：角色权限
  */
-function initJurTree() {
-    var roleNodes =[];
+function initJurTree(treeId) {
     var setting = {
+        async:{
+            enable:true,
+            type:"get",
+            url:"/jur/data/json/all"
+        },
         view: {
             dblClickExpand: false,
             showLine: true,
@@ -371,15 +383,7 @@ function initJurTree() {
             chkboxType: { "Y" : "ps", "N" : "ps" },
         }
     };
-    // roleNodes = [{"rid":1,"pid":0,"rname":"角色","content":"aa"},{"rid":2,"pid":1,"rname":"角色0","content":"aa"}]
     $(document).ready(function(){
-        var tree = $("#roleJurTree");
-        axios.get('/jur/data/json/all', {
-        }).then((response)=>{
-            roleNodes = response.data,
-            tree = $.fn.zTree.init(tree, setting, roleNodes);
-        },(error)=>{
-            alert(error);
-        });
+        $.fn.zTree.init($("#"+treeId), setting);
     });
 }

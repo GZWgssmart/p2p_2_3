@@ -76,6 +76,8 @@ function zTreeBeforeRemove(treeId, treeNode) {
                 axios.post(' /role/data/json/delete',params)
                     .then((response)=>{
                         layer.msg(response.data.message);
+                        vue.roleDel = '';
+                        editRoleJurTree('roleDelJurTree', vue.role.rid);
                         initTreeRole();
                     },(error)=>{
                         layer.msg("请求失败");
@@ -98,17 +100,6 @@ function zTreeBeforeRemove(treeId, treeNode) {
 function nodeOnCheck(event, treeId, roleNodes) {
     var treeObj = $.fn.zTree.getZTreeObj("roleTree");
     var checked = treeObj.getCheckedNodes(true);//获取选中的个数
-    // if (checked.length > 0){
-    //     roleObj.rid = checked[0].rid;
-    //     roleObj.pid = checked[0].pid;
-    //     roleObj.rname = checked[0].rname;
-    //     roleObj.content = checked[0].content;
-    //     roleObj.nodeNum = checked.length;
-    // }else {
-    //     roleObj = {"rid":"", "pid":"", "rname":"", "nodeNum":"", "content":""};
-    // }
-    // return roleObj;
-    // console.log(checked);
     return checked;
 }
 
@@ -126,13 +117,15 @@ function zTreeOnClick(event, treeId, treeNode) {
         var parentNode = sNodes[0].getParentNode();
     }
     // 获取当前被选中的父节点名称
-    var parentNodeName=parentNode.rname;
-    vue.roleDel.dep = parentNodeName;
-    vue.roleDel.rname = treeNode.rname;
-    vue.roleDel.content = treeNode.content;
-    vue.role.rname = treeNode.rname;
-    vue.role.content = treeNode.content;
-    vue.role.rid = treeNode.rid;
+    if (null != parentNode){
+        var parentNodeName=parentNode.rname;
+        vue.roleDel.dep = parentNodeName;
+        vue.roleDel.rname = treeNode.rname;
+        vue.roleDel.content = treeNode.content;
+        vue.role.rname = treeNode.rname;
+        vue.role.content = treeNode.content;
+        vue.role.rid = treeNode.rid;
+    }
     //初始化树,角色权限
     editRoleJurTree('roleDelJurTree', vue.role.rid);
 };
