@@ -48,10 +48,10 @@ public class TxCheckController {
             txCheck.setTxid(txCheckVO.getTxid());
             txCheck.setCreatedTime(DateFormateUtils.Formate());
             //提现成功
-            if(txCheck.getIsok()==1 && StringUtils.isEmpty(txCheck.getExcuse())){
+            if(txCheck.getIsok()==1 && StringUtils.isNotBlank(txCheck.getExcuse())){
                 return txCheckService.updateUserMoneyAndLogMoney(usermoney,logMoney,txCheckVO);
                 //提现失败
-            }else if(txCheck.getIsok()==2 && StringUtils.isEmpty(txCheck.getExcuse())){
+            }else if(txCheck.getIsok()==2 && StringUtils.isNotBlank(txCheck.getExcuse())){
                 return txCheckService.updateUserMoneyAndLogMoney(usermoney,logMoney,txCheckVO);
             //理由不够充分
             }else{

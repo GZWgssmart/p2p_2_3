@@ -32,4 +32,9 @@ public class UserMoneyServiceImpl extends AbstractServiceImpl implements UserMon
         return  ServerResponse.createBySuccess(usermoneyMapper.selectAvailableMoney(id));
     }
 
+    @Override
+    public ServerResponse updateUserMoney(Integer id) {
+        return ServerResponse.createBySuccess(usermoneyMapper.updateUserMoney(id));
+    }
+
 }

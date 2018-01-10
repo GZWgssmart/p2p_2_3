@@ -64,12 +64,12 @@ public class TxCheckServiceImpl extends AbstractServiceImpl implements TxCheckSe
     @Override
     @Transactional
     public ServerResponse updateUserMoneyAndLogMoney(Usermoney usermoney, LogMoney logMoney, TxCheckVO txCheckVO) {
-        usermoney =usermoneyMapper.selectByUid(txCheckVO.getUid());
+        usermoney = usermoneyMapper.selectByUid(txCheckVO.getUid());
         //审核成功后对可用余额和总资产进行相应加减
         usermoney.setKymoney(usermoney.getKymoney().subtract(txCheckVO.getMoney()));
         usermoney.setZmoney(usermoney.getZmoney().subtract(txCheckVO.getMoney()));
         //更新用户资金表
-        usermoneyMapper.insertSelective(usermoney);
+        usermoneyMapper.updateUserMoney(usermoney);
         logMoney.setUid(txCheckVO.getUid());
         logMoney.setOutlay(txCheckVO.getMoney());
         logMoney.setCreatedTime(DateFormateUtils.Formate());

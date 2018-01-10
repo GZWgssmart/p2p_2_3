@@ -16,4 +16,6 @@ public interface UsermoneyMapper extends BaseMapper{
 
     Usermoney selectAvailableMoney(Integer id);
 
+    int updateUserMoney(Object object);
+
 }

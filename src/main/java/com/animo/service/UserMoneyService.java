@@ -11,6 +11,7 @@ public interface UserMoneyService extends BaseService {
 
     ServerResponse selectByUid(Integer uid);
 
-
     ServerResponse selectAvailableMoney(Integer id);
+
+    ServerResponse updateUserMoney(Integer id);
 }
