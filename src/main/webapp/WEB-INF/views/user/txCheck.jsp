@@ -24,8 +24,8 @@
             line-height: 200px;
             text-align: center;
         }
-        #excuse{
-            width: 500px;
+        #agree,#refuse{
+            width: 400px;
             height: 100px;
         }
     </style>
@@ -37,22 +37,35 @@
 
 
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="check" >审核</a>
+        <a class="layui-btn layui-btn layui-btn-xs" lay-event="agree" >同意</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refuse" >拒绝</a>
     </script>
 
-    <!--编辑窗口-->
-    <div id="editWin" style="display: none">
+    <!--同意编辑窗口-->
+    <div id="agreeWin" style="display: none">
         <form class="layui-form">
-            <div class="layui-form-item">
-                <label class="layui-form-label">审核</label>
-                <div class="layui-input-block">
-                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="同意|拒绝">
-                </div>
-            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">原因</label>
                 <div class="layui-input-block">
-                    <input id="excuse" type="text" v-model="txCheckVO.excuse" required  lay-verify="required" placeholder="请输入审核原因" autocomplete="off" class="layui-input">
+                    <textarea placeholder="请输入同意内容" class="layui-textarea" style="width: 400px;"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" @click="agreeCheck">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--拒绝编辑窗口-->
+    <div id="refuseWin" style="display: none">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">原因</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入拒绝原因" class="layui-textarea" style="width: 400px;"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -84,13 +97,13 @@
                 status:'',
                 excuse:''
             },
+            seen:true
         },
         created () {
         },
         methods:{
             agreeCheck () {
                 vue.txCheckVO.txid=vue.txCheckData.txid;
-                vue.txCheckVO.status=vue.txCheckData.status;
                 vue.txCheckVO.money=vue.txCheckData.money;
                 vue.txCheckVO.uid=vue.txCheckData.uid;
                 axios.post('/txCheck/data/json/check', Qs.stringify(this.txCheckVO))
@@ -141,7 +154,7 @@
         table.on('tool(demo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
-            if (layEvent === 'check') {
+            if (layEvent === 'agree') {
                 layer.open({
                     type: 1,
                     title:'对提现进行审核',
@@ -150,9 +163,23 @@
                     maxmin: true,
                     closeBtn: 1,
                     skin: '',
-                    content: $("#editWin")
+                    content: $("#agreeWin")
                 });
                 vue.txCheckData = data;
+                vue.txCheckVO.status = 0;
+            }else if(layEvent === 'refuse'){
+                layer.open({
+                    type: 1,
+                    title:'对提现进行审核',
+                    area: ['700px', '450px'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    closeBtn: 1,
+                    skin: '',
+                    content: $("#refuseWin")
+                });
+                vue.txCheckData = data;
+                vue.txCheckVO.status = 1;
             }
         });
 
