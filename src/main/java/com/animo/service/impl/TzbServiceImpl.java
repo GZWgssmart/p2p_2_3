@@ -213,6 +213,15 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
         pager.setTotal(tzbMapper.countByBaid(baid));
         return pager;
     }
+
+    @Override
+    public Pager listInvestByUid(int pageNo, int pageSize, int uid) {
+        Pager pager = new Pager(pageNo, pageSize);
+        pager.setRows(tzbMapper.listInvestByUid(pager, uid));
+        pager.setTotal(tzbMapper.countByUid(uid));
+        return pager;
+    }
+
     @Autowired
     public void setTzbMapper(TzbMapper tzbMapper) {
         super.setBaseMapper(tzbMapper);

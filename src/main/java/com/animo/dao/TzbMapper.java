@@ -13,4 +13,8 @@ public interface TzbMapper extends BaseMapper{
     Long countByBaid(Integer baid);
 
     List<Tzb> listTzb(@Param("uid") Integer uid,@Param("baid") Integer baid);
+
+    List<Object> listInvestByUid(@Param("pager") Pager pager,@Param("uid") Integer uid);
+
+    Long countByUid(Integer uid);
 }

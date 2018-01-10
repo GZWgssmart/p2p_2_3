@@ -49,4 +49,9 @@ public class TzbController {
         return tzbService.listPagerByBaid(pageNumber,pageSize,baid);
     }
 
+    //用户投资管理
+    @GetMapping("investPager")
+    public Pager listInvestByUid(Integer page,Integer limit, Integer uid){
+        return tzbService.listInvestByUid(page,limit,uid);
+    }
 }
