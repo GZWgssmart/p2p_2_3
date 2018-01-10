@@ -64,18 +64,28 @@ public class TxCheckServiceImpl extends AbstractServiceImpl implements TxCheckSe
     @Override
     @Transactional
     public ServerResponse updateUserMoneyAndLogMoney(Usermoney usermoney, LogMoney logMoney, TxCheckVO txCheckVO) {
-        usermoney = usermoneyMapper.selectByUid(txCheckVO.getUid());
-        //审核成功后对可用余额和总资产进行相应加减
-        usermoney.setKymoney(usermoney.getKymoney().subtract(txCheckVO.getMoney()));
-        usermoney.setZmoney(usermoney.getZmoney().subtract(txCheckVO.getMoney()));
-        //更新用户资金表
-        usermoneyMapper.updateUserMoney(usermoney);
-        logMoney.setUid(txCheckVO.getUid());
-        logMoney.setOutlay(txCheckVO.getMoney());
-        logMoney.setCreatedTime(DateFormateUtils.Formate());
-        //插入用户资金流向记录表
-        logMoneyMapper.insertSelective(logMoney);
-        return ServerResponse.createBySuccess("审核成功");
+        if(txCheckVO.getStatus()==1){
+            usermoney = usermoneyMapper.selectByUid(txCheckVO.getUid());
+            //审核成功后对可用余额和总资产进行相应加减
+            if(usermoney.getKymoney().compareTo(txCheckVO.getMoney())>1){
+                usermoney.setKymoney(usermoney.getKymoney().subtract(txCheckVO.getMoney()));
+            }
+            if(usermoney.getZmoney().compareTo(txCheckVO.getMoney())>1){
+                usermoney.setZmoney(usermoney.getZmoney().subtract(txCheckVO.getMoney()));
+            }
+            //更新用户资金表
+            usermoneyMapper.updateUserMoney(usermoney);
+            logMoney.setUid(txCheckVO.getUid());
+            logMoney.setOutlay(txCheckVO.getMoney());
+            logMoney.setCreatedTime(DateFormateUtils.Formate());
+            //插入用户资金流向记录表
+            logMoneyMapper.insertSelective(logMoney);
+            return ServerResponse.createBySuccess("审核成功");
+        }else if(txCheckVO.getStatus()==2){
+            return ServerResponse.createBySuccess("您已拒绝用户的提现");
+        }else{
+            return ServerResponse.createByError("审核理由不充分");
+        }
     }
 
 }

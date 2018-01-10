@@ -47,11 +47,15 @@ public class TxCheckController {
             txCheck.setExcuse(txCheckVO.getExcuse());
             txCheck.setTxid(txCheckVO.getTxid());
             txCheck.setCreatedTime(DateFormateUtils.Formate());
-            //提现成功
+            //同意提现
             if(txCheck.getIsok()==1 && StringUtils.isNotBlank(txCheck.getExcuse())){
+                //生成提现记录
+                txCheckService.save(txCheck);
+                //更新用户资金
                 return txCheckService.updateUserMoneyAndLogMoney(usermoney,logMoney,txCheckVO);
                 //提现失败
             }else if(txCheck.getIsok()==2 && StringUtils.isNotBlank(txCheck.getExcuse())){
+                //提现失败也要生成提现记录
                 return txCheckService.updateUserMoneyAndLogMoney(usermoney,logMoney,txCheckVO);
             //理由不够充分
             }else{
