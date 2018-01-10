@@ -159,7 +159,7 @@
         jlmoney = #{jlmoney,jdbcType=DECIMAL},
       </if>
     </set>
-    where uid = #{id,jdbcType=INTEGER}
+    where uid = #{uid,jdbcType=INTEGER}
   </update>
 
   <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Usermoney" >

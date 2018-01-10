@@ -41,31 +41,13 @@
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refuse" >拒绝</a>
     </script>
 
-    <!--同意编辑窗口-->
-    <div id="agreeWin" style="display: none">
-        <form class="layui-form">
-            <div class="layui-form-item">
-                <label class="layui-form-label">原因</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入同意内容" class="layui-textarea" style="width: 400px;"></textarea>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" @click="agreeCheck">保存</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <!--拒绝编辑窗口-->
-    <div id="refuseWin" style="display: none">
+    <div id="editWin" style="display: none">
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">原因</label>
                 <div class="layui-input-block">
-                    <textarea placeholder="请输入拒绝原因" class="layui-textarea" style="width: 400px;"></textarea>
+                    <textarea v-model="txCheckVO.excuse" placeholder="请输入拒绝原因" class="layui-textarea" style="width: 400px;"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -111,7 +93,7 @@
                         layer.msg(response.data.message);
                         window.location.reload();
                     },(error)=>{
-                        layer.alert("请求失败");
+                        layer.msg("请求失败");
                     });
             }
         }
@@ -141,11 +123,11 @@
             , cols: [[//表头
                 {field: 'txid', title: 'ID', width: 60, sort: true, fixed: 'left'}
                 ,{field: 'uid', title: 'userID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'bankcard', title: '卡号', width: 180}
-                , {field: 'banktype', title: '所属银行', width: 120}
+                , {field: 'bankcard', title: '卡号', width: 193}
+                , {field: 'banktype', title: '所属银行', width: 140}
                 , {field: 'money', title: '金额', width: 120}
                 , {field: 'status', title: '状态', width: 120,templet:'<div>{{statusFormat(d.status)}}</div>'}
-                , {field: 'createdTime', title: '创建时间', width: 180,sort:true}
+                , {field: 'createdTime', title: '创建时间', width: 240,sort:true}
                 , {fixed: 'right', title: '操作', width: 155, align: 'center', toolbar: '#barDemo'}
             ]]
         });
@@ -163,7 +145,7 @@
                     maxmin: true,
                     closeBtn: 1,
                     skin: '',
-                    content: $("#agreeWin")
+                    content: $("#editWin")
                 });
                 vue.txCheckData = data;
                 vue.txCheckVO.status = 0;
@@ -176,7 +158,7 @@
                     maxmin: true,
                     closeBtn: 1,
                     skin: '',
-                    content: $("#refuseWin")
+                    content: $("#editWin")
                 });
                 vue.txCheckData = data;
                 vue.txCheckVO.status = 1;

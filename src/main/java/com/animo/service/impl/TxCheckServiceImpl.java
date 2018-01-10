@@ -43,6 +43,7 @@ public class TxCheckServiceImpl extends AbstractServiceImpl implements TxCheckSe
         this.usermoneyMapper = usermoneyMapper;
     }
 
+    @Autowired
     public void setLogMoneyMapper(LogMoneyMapper logMoneyMapper) {
         this.logMoneyMapper = logMoneyMapper;
     }
@@ -67,16 +68,17 @@ public class TxCheckServiceImpl extends AbstractServiceImpl implements TxCheckSe
         if(txCheckVO.getStatus()==1){
             usermoney = usermoneyMapper.selectByUid(txCheckVO.getUid());
             //审核成功后对可用余额和总资产进行相应加减
-            if(usermoney.getKymoney().compareTo(txCheckVO.getMoney())>1){
-                usermoney.setKymoney(usermoney.getKymoney().subtract(txCheckVO.getMoney()));
-            }
-            if(usermoney.getZmoney().compareTo(txCheckVO.getMoney())>1){
+            if (usermoney.getKymoney().doubleValue() - txCheckVO.getMoney().doubleValue() > 0
+                    && usermoney.getZmoney().doubleValue() - txCheckVO.getMoney().doubleValue() > 0) {
                 usermoney.setZmoney(usermoney.getZmoney().subtract(txCheckVO.getMoney()));
+                usermoney.setKymoney(usermoney.getKymoney().subtract(txCheckVO.getMoney()));
             }
             //更新用户资金表
             usermoneyMapper.updateUserMoney(usermoney);
             logMoney.setUid(txCheckVO.getUid());
             logMoney.setOutlay(txCheckVO.getMoney());
+            //1表示提现，0表示充值
+            logMoney.setType(1);
             logMoney.setCreatedTime(DateFormateUtils.Formate());
             //插入用户资金流向记录表
             logMoneyMapper.insertSelective(logMoney);
