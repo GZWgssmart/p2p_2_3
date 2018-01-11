@@ -55,6 +55,9 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
         if(bAD.getUid().equals(tzb.getUid())) {
             return ServerResponse.createByError("投资失败！不能给自己投资");
         }
+        if(bAD.getMoneyCount().compareTo(bAD.getMoney()) == 0) {
+            return ServerResponse.createByError("已满标");
+        }
         tzb.setJuid(bAD.getUid());
         tzb.setNprofit(bAD.getNprofit());
         tzb.setCpname(bAD.getCpname());

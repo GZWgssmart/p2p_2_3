@@ -320,7 +320,8 @@
             tzb:{
                 money:'',
                 baid:${requestScope.get("baid")},
-                resint1:''
+                resint1:'',
+                resint2:''
             }
         },
         filters: {
@@ -364,6 +365,7 @@
                     alert("请输入投资金额");
                 }else{
                     this.tzb.resint1 = this.borrowapply.term;
+                    this.tzb.resint2 = this.borrowdetail.way;
                     axios.post('/tzb/data/json/save', Qs.stringify(this.tzb)).then((response) => {
                         alert(response.data.message);
                     }, (error) => {

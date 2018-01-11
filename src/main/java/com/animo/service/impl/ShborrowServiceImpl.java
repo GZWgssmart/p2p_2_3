@@ -5,6 +5,7 @@ import com.animo.dao.BorrowapplyMapper;
 import com.animo.dao.ShborrowMapper;
 import com.animo.pojo.Shborrow;
 import com.animo.service.ShborrowService;
+import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,7 @@ public class ShborrowServiceImpl extends AbstractServiceImpl implements Shborrow
         }else{
             ckstatus=2;
         }
-        Integer integer = borrowapplyMapper.updateStatus(ckstatus,shborrow.getBaid());
+        Integer integer = borrowapplyMapper.updateStatusAndTime(shborrow.getBaid(),ckstatus,DateFormateUtils.Formate());
         if(integer==1){
             return ServerResponse.createBySuccess("审核成功");
         }

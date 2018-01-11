@@ -21,8 +21,8 @@
           content="普金资本是目前国内拥有国资系背景的P2P理财平台，为P2P网贷和理财用户提供安全、高效的互联网金融理财服务。普金资本，以“国资系、可信赖”的企业理念，为理财用户提供安全稳定的网上理财通道，快速实现资金周转，实现财富稳定增长。"/>
     <link rel="stylesheet" href="<%=path%>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/index/index.css">
-   <%-- <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css">
-    <link rel="stylesheet" href="<%=path%>/static/dynajs/css/shenluehao.css">--%>
+   <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css">
+    <link rel="stylesheet" href="<%=path%>/static/dynajs/css/shenluehao.css">
 
 </head>
 <link rel="icon" href="" type="image/x-icon"/>
@@ -112,7 +112,8 @@
                         <div class="submit">
                             <div class="submit">
                                 <button v-if="item.ckstatus==2" type="button" class="submit" @click="detail(item.baid,item.bdid,item.bzname)">立即投标</button>
-                                <button v-else type="button" class="submit disabled" onclick="">还款中</button>
+                                <button v-else-if="item.ckstatus==5" type="button" class="submit disabled">已完成</button>
+                                <button v-else-if="item.ckstatus==4" type="button" class="submit disabled">还款中</button>
                             </div>
                         </div>
                     </div>

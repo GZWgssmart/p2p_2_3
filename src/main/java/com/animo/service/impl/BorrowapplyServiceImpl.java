@@ -4,6 +4,7 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.dao.BorrowapplyMapper;
 import com.animo.service.BorrowapplyService;
+import com.animo.vo.BorrowapplyMoneyVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,14 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
         pager.setRows(borrowapplyMapper.listPagerCriteria(pager, object));
         pager.setTotal(borrowapplyMapper.countCriteria(object));
         return pager;
+    }
+
+    @Override
+    public ServerResponse getMoneyAndYMoney(Integer baid) {
+        BorrowapplyMoneyVo borrowapplyMoneyVo = (BorrowapplyMoneyVo) borrowapplyMapper.getById(baid);
+        if(borrowapplyMoneyVo.getMmoney().compareTo(borrowapplyMoneyVo.getMoney())==0){
+            return ServerResponse.createBySuccess("已投满");
+        }
+        return ServerResponse.createByError("未投满");
     }
 }

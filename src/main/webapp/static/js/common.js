@@ -25,6 +25,7 @@ function padLeftZero(str) {
     return ('00' + str).substr(str.length);
 }
 
+//还款方式格式化
 function sway(value) {
     if(value == 1){
         return "等额本息";
@@ -34,6 +35,49 @@ function sway(value) {
         return "每月付息,到期还本";
     }else if(value == 4){
         return "一次性还本付息";
+    }
+}
+
+//标种格式化
+function bz(value) {
+    if(value==1){
+        return"恒金保"
+    }else if(value == 2){
+        return "多金宝"
+    }else if(value ==3){
+        return "新手标"
+    }else if(value==4){
+        return"普金保"
+    }
+}
+
+//借款表的借款类型
+function borrowapplyType(value) {
+    if(value==0){
+        return"审核中"
+    }else if(value==1){
+        return"审核失败"
+    }else if(value==2){
+        return "投标中"
+    }else if(value==3){
+        return "已流标"
+    }else if(value==4){
+        return "还款中"
+    }else if(value==5){
+        return "已完成"
+    }else if(value==6){
+        return"前台特殊情况"
+    }
+}
+
+//用户提现状态
+function logTx(value) {
+    if(value==0){
+        return"未受理"
+    }else if(value==1){
+        return "提现失败"
+    }else if(value==2){
+        return"提现成功"
     }
 }
 

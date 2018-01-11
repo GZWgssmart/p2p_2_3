@@ -36,14 +36,13 @@
             overflow: hidden;
         }
 
-        .box1, .bo1, .account2, .ipay, .cash, .taste, .fund, .invest, .claimm, .claimb, .loan, .bank, .safe, .msg, .tuijian, .zongl, .shenlib, .chongz, .zcjl, .tix, .tixjl, .daijj, .jiaxj, .xianjj, .tyj, .tzgl, .skmx, .lzr, .zrz, .yzr, .zrsb, .cygm, .cggm, .jggl, .hkgl, .zdhg, .tjhy, .tjlb {
-
+        .box1, .bo1, .account2, .ipay, .cash, .taste, .fund, .invest, .claimm, .claimb, .loan, .bank, .safe, .msg, .tuijian, .zongl, .shenlib, .chongz, .zcjl, .tix, .tixjl, .daijj, .jiaxj, .xianjj, .tyj, .tzgl, .skmx, .lzr, .zrz, .yzr, .zrsb, .cygm, .cggm, .jggl, .hkgl, .zdhg, .tjhy, .tjlb, .sqjk {
             width: 900px;
             height: 950px;
         }
 
-        .account2, .ipay, .cash, .taste, .fund, .invest, .claimm, .claimb, .loan, .bank, .safe, .msg, .tuijian, .zongl, .shenlib, .chongz, .zcjl, .tix, .tixjl, .daijj, .jiaxj, .xianjj, .tyj, .tzgl, .skmx, .lzr, .zrz, .yzr, .zrsb, .cygm, .cggm, .jggl, .hkgl, .zdhg, .tjhy, .tjlb {
-            padding-top: 30px;
+        .account2, .ipay, .cash, .taste, .fund, .invest, .claimm, .claimb, .loan, .bank, .safe, .msg, .tuijian, .zongl, .shenlib, .chongz, .zcjl, .tix, .tixjl, .daijj, .jiaxj, .xianjj, .tyj, .tzgl, .skmx, .lzr, .zrz, .yzr, .zrsb, .cygm, .cggm, .jggl, .hkgl, .zdhg, .tjhy, .tjlb, .sqjk {
+            padding-top: 10px;
         }
 
     </style>
@@ -69,6 +68,7 @@
                 <ul class="sub-nav">
                     <li><a href="#invest" class="investTable">投资管理</a></li>
                     <li><a href="#loan">借款管理</a></li>
+                    <li><a href="#claimb">申请借款</a></li>
                 </ul>
                 <div class="navbar icon icon-settings">账户设置</div>
                 <ul class="sub-nav">
@@ -539,6 +539,7 @@
                                     </script>
                                     <!--收款计划窗口：开始-->
                                     <div id="viewWin" style="display: none">
+                                        <table class="layui-hide" id="shoukuanjihua" lay-filter="demo"></table>
                                     </div>
                                     <!--收款计划窗口：结束-->
                                 </div>
@@ -554,54 +555,11 @@
                         <div class="jggl " id="jggl">
                             <div class="account-right-nav">
                                 <div class="sub-a-nav">
-                                    <a href="#jggl">借款管理</a><a href="#hkgl">还款明细</a><a href="#zdhg">自动还款设置</a>
+                                    <a href="#jggl">借款管理</a>
                                 </div>
                                 <em class="em-line"></em>
                             </div>
-                            <div class="account-content" style="display: block;">
-                                <div class="account-content" id="loan" style="display: block;">
-                                    <div class="sub-nav">
-                                        <a href="javascript:;" class="active" id="loan-s">审核中</a>
-                                        <a href="javascript:;" id="loan-z">招标中</a>
-                                        <a href="javascript:;" id="loan-c">成功</a>
-                                        <a href="javascript:;" id="loan-j">借款明细</a>
-                                    </div>
-                                    <div class="account-form account-form-manage cl">
-                                        <lable class="lable-long">发布时间：</lable>
-                                        <input type="text" class="date icon icon-date" autocomplete="off" id="startDate"
-                                               readonly="readonly">
-                                        <p class="text">至</p>
-                                        <input type="text" class="date icon icon-date" autocomplete="off" id="endDate"
-                                               readonly="readonly">
-                                        <!-- <input type="text" placeholder="请输入关键字搜索" class="search icon icon-search" /> -->
-                                        <button type="button" class="search" id="loanSearch">搜索</button>
-                                    </div>
-                                    <div class="account-form account-form-investor cl">
-                                        <input type="text" class="text" autocomplete="off" placeholder="请输入投资者"
-                                               id="investor">
-                                        <button type="button" class="search" id="j-loanSearch">搜索</button>
-                                    </div>
-                                    <div class="loan-listData loan-listData1">
-                                        <ul class="loanData list-box">
-                                            <li class="title title1">
-                                                <div class="children0">标题</div>
-                                                <div class="children1">类型</div>
-                                                <div class="children2">还款方式</div>
-                                                <div class="children3">金额（元）</div>
-                                                <div class="children4">年利率</div>
-                                                <div class="children5">期限</div>
-                                                <div class="children6">发布时间</div>
-                                                <div class="children7">进度</div>
-                                                <div class="children8">状态</div>
-                                            </li>
-                                        </ul>
-                                        <ul class="loanData listData">
-                                            <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                        </ul>
-                                        <ul class="paging"></ul>
-                                    </div>
-                                </div>
-                            </div>
+                            1
                         </div>
 
                         <div class="hkgl " id="hkgl">
@@ -651,38 +609,156 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="zdhg " id="zdhg">
-                            <div class="account-right-nav">
-                                <div class="sub-a-nav">
-                                    <a href="#jggl">借款管理</a><a href="#hkgl">还款明细</a><a href="#zdhg">自动还款设置</a>
+                    </div>
+                </div>
+
+                <div class="claimb" id="claimb" style="overflow-y:auto;">
+                    <div class="account cl">
+                        <div class="account-right">
+                            <h1>申请借款</h1>
+                            <hr/>
+                            <form class="layui-form" id="borrowApplyDetail">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">真实姓名</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="rname" lay-verify="title" autocomplete="off" placeholder="请输入真实姓名" class="layui-input">
+                                    </div>
                                 </div>
-                                <em class="em-line" style="left: 240px;"></em>
-                            </div>
-                            <div class="account-content" style="display: block;">
-                                <div class="account-content" id="repayEdit" style="display: block;">
-                                    <p class="tips-title">
-                                        <b>自动还款工具说明:</b><br>
-                                        a）用户开启自动还款设置后，到达还款日的当天12点15分，如果用户账户正常，即会自动进行还款。<br>
-                                        b）保证用户账户可用余额足够支付还款金额，如果还款日当天超过12点15分用户账户可用余额不足而导致自动还款失败，则用户需要进行手动还款，否则会造成还款逾期。
-                                    </p>
-                                    <div class="popup-from">
-                                        <div class="div_state">
-                                            <label class="text_div">账户余额：</label>
-                                            <p class="div_state_text" id="payment_money">0</p>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">申请金额</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="money" lay-verify="title" autocomplete="off" placeholder="请输入申请金额" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">借款类型</label>
+                                    <div class="layui-input-block">
+                                        <select name="type" lay-filter="jkqx">
+                                            <option value="1">个人</option>
+                                            <option value="2">企业</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">标种</label>
+                                    <div class="layui-input-block">
+                                        <select name="bzid" lay-filter="jkqx">
+                                            <option value="1">普金宝</option>
+                                            <option value="2">恒金宝</option>
+                                            <option value="3">多金宝</option>
+                                            <option value="4">新手标</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">借款期限</label>
+                                    <div class="layui-input-block">
+                                        <select name="term" lay-filter="month">
+                                            <option value="3">3个月</option>
+                                            <option value="6" selected="">6个月</option>
+                                            <option value="12">12个月</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">截止时间</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="deadline" class="layui-input" id="deadline" placeholder="yyyy-MM-dd">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">年化收益</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="nprofit" lay-verify="title" autocomplete="off" placeholder="请输入年化收益" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">收益方式</label>
+                                    <div class="layui-input-block">
+                                        <select name="way" lay-filter="jkqx">
+                                            <option value="1">等额本息</option>
+                                            <option value="2">等额本金</option>
+                                            <option value="3">先息后本</option>
+                                            <option value="4">一次还清</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">资金用途</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="mpurpose" placeholder="请输入资金用途" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">还款来源</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="hksource" placeholder="请输入还款来源" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">借款人介绍</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="suggest" placeholder="请输入借款人介绍" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">项目描述</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="xmdescrip" placeholder="请输入保障措施" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-row">
+                                        <label class="layui-form-label">相关文件</label>
+                                        <div class="layui-col-md2">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="fpic">法人身份证</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="fpicDemo" style="width:120px;height:120px">
+                                                    <p id="fpicText"></p>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="fpic" id="fpicImg"/>
                                         </div>
-                                        <div class="div_state">
-                                            <label class="text_div">自动还款状态：</label>
-                                            <p class="div_state_text" id="payment_state">已关闭</p>
+                                        <div class="layui-col-md2">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="ypic">营业执照</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="ypicDemo" style="width:120px;height:120px">
+                                                    <p id="ypicText"></p>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="ypic" id="ypicImg"/>
                                         </div>
-                                        <div class="div_state">
-                                            <label class="text_div">操作：</label>
-                                            <p class="div_state_text">
-                                                <button type="button" class="btn_start" id="payment_btn">开启</button>
-                                            </p>
+                                        <div class="layui-col-md2">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="qpic">银行卡</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="qpicDemo" style="width:120px;height:120px">
+                                                    <p id="qpicText"></p>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="qpic" id="qpicImg"/>
+                                        </div>
+                                        <div class="layui-col-md2">
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn" id="tpic">其他资料</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="tpicDemo" style="width:120px;height:120px">
+                                                    <p id="tpicText"></p>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="tpic" id="tpicImg"/>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-block">
+                                        <a href="javascript:void(0);" class="layui-btn" onclick="saveBorrow();">提交申请</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -983,12 +1059,13 @@
 <script src="/static/layui/layui.all.js"></script>
 <script>
 
-    new Vue({
+    var vue = new Vue({
         el: '#app',
         data: {
             dataRows: [],
             czmoney: '',
-            txmoney: ''
+            txmoney: '',
+            uid:${sessionScope.user.uid}
         },
         created() {
             this.getUserMoney();
@@ -1213,16 +1290,52 @@
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
             if (layEvent === 'view') {
-                layer.open({
-                    type: 1,
-                    title:'收款计划',
-                    offset:['100px'],
-                    area: ['700px', '450px'],
-                    fixed: false, //不固定
-                    maxmin: true,
-                    closeBtn: 1,
-                    skin: '',
-                    content: $("#viewWin")
+                axios.get('/borrowapply/data/json/isSkb?baid=' + data.baid).then((response) => {
+                    if(response.data.code==1){
+                        return alert(response.data.message);
+                    }
+                    layer.open({
+                        type: 1,
+                        title:'收款计划',
+                        offset:['100px'],
+                        area: ['700px', '450px'],
+                        fixed: false, //不固定
+                        maxmin: true,
+                        closeBtn: 1,
+                        skin: '',
+                        content: $("#viewWin")
+                    });
+                    table.render({
+                        elem: '#shoukuanjihua'
+                        , height: 500
+                        , url: '/skb/data/json/list' //数据接口
+                        , where: {'uid': vue.uid,'baid':data.baid}
+                        , page: true //开启分页
+                        , limit: 10//每页显示多少个
+                        //后台Pager响应对象 不要动
+                        , response: {
+                            statusName: 'status'
+                            , statusCode: 0
+                            , msgName: 'message'
+                            , countName: 'total'
+                            , dataName: 'rows'
+                        }
+                        //后台Pager响应对象 不要动
+                        //表头
+                        , cols: [[
+                            //{field: 'cpname', title: '标题', width: 100, sort: true}
+//                            , {field: 'nprofit', title: '年利率（%）', width: 110}
+//                            , {field: 'bzname', title: '类型', width: 80}
+//                            , {field: 'term', title: '期限（月）', width: 80}
+//                            , {field: 'way', title: '还款方式', width: 150}
+//                            , {field: 'money', title: '投资金额（元）', width: 120}
+//                            , {field: 'tztime', title: '投资时间', width: 180}
+//                            , {title: '操作', fixed: 'right', width: 100, align: 'center', toolbar: '#barTzgl'}
+                        ]]
+                        //表头
+                    });
+                }, (error) => {
+
                 });
             }
         });

@@ -1,5 +1,6 @@
 package com.animo.controller;
 
+import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.service.SkbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class SkbController {
      * 查询个人用户收款
      */
     @GetMapping("list")
-    public ServerResponse list(Integer pageNumber, Integer pageSize, Integer uid,Integer baid){
-        return skbService.skblist(pageNumber,pageSize,uid,baid);
+    public Pager list(Integer page, Integer limit, Integer uid, Integer baid){
+        return skbService.skblist(page,limit,uid,baid);
     }
 
 

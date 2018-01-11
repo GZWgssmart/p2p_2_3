@@ -34,15 +34,12 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
 
     @Override
     @Transactional
-    public ServerResponse skblist(int pageNo, int pageSize, Integer uid,Integer baid) {
-        ServerResponse serverResponse  = saveSkb(uid,baid);
-        if(serverResponse.isSuccess()) {
-            Pager pager = new Pager(pageNo, pageSize);
-            pager.setRows(skbMapper.list(pager, uid, baid));
-            pager.setTotal(skbMapper.countUid(uid, baid));
-            return ServerResponse.createBySuccess(pager);
-        }
-        return serverResponse;
+    public Pager skblist(int pageNo, int pageSize, Integer uid,Integer baid) {
+        saveSkb(uid,baid);
+        Pager pager = new Pager(pageNo, pageSize);
+        pager.setRows(skbMapper.list(pager, uid, baid));
+        pager.setTotal(skbMapper.countUid(uid, baid));
+        return pager;
     }
 
     public ServerResponse saveSkb(Integer uid, Integer baid){
@@ -54,8 +51,6 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
         Long count = skbMapper.getByUidAndBaid(uid, baid);
         //如果没有记录就生成
         if(count==0) {
-            //如果当前借款的目标金额和已筹金额相等
-            if (borrowapplyMoneyVo.getMoney().compareTo(borrowapplyMoneyVo.getMmoney()) == 0) {
                 //查询出该用户对该借款投了几次
                 List<Tzb> tzbList = tzbMapper.listTzb(uid, baid);
                 //计算出总投资金额
@@ -88,8 +83,6 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
                 skbMapper.saveList(skbList);
                 return ServerResponse.createBySuccess();
             }
-            return ServerResponse.createByError("未投满");
-        }
         return ServerResponse.createBySuccess();
     }
 

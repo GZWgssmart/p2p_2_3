@@ -284,10 +284,10 @@
     ]]>
   </select>
 
-  <update id="updateStatus">
+  <update id="updateStatusAndTime">
 
     <![CDATA[
-      UPDATE borrowapply SET ckstatus=#{status}
+      UPDATE borrowapply SET ckstatus=#{status},cktime=#{ckTime}
       where baid=#{id}
     ]]>
 

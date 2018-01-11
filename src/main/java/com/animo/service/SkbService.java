@@ -8,6 +8,6 @@ import com.animo.common.ServerResponse;
  */
 public interface SkbService {
 
-    ServerResponse<Pager> skblist(int pageNo, int pageSize, Integer uid,Integer baid);
+    Pager skblist(int pageNo, int pageSize, Integer uid,Integer baid);
 
 }

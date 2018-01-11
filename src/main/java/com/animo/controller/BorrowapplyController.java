@@ -126,4 +126,9 @@ public class BorrowapplyController {
         return borrowapplyService.listPagerCriteria(pageNumber,pageSize,query);
     }
 
+    @GetMapping("isSkb")
+    public ServerResponse isSkb(Integer baid){
+        return borrowapplyService.getMoneyAndYMoney(baid);
+    }
+
 }

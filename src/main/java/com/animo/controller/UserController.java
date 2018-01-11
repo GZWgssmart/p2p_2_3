@@ -87,7 +87,7 @@ public class UserController {
 
     @GetMapping(value="list")
     public Pager list(int page, int limit) {
-        return userService.listPager(page-0, limit-1);
+        return userService.listPager(page, limit);
     }
 
     //退出

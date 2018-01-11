@@ -67,6 +67,7 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
     @Override
     public ServerResponse save(Object object) {
         LogTx logTx = (LogTx) object;
+        logTx.setStatus(0);
         //保存用户提现记录
         logTxMapper.insertSelective(logTx);
         LogMoney logMoney = new LogMoney();
@@ -79,7 +80,7 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
         usermoney.setZmoney(usermoney.getZmoney().subtract(logTx.getMoney()));
         usermoney.setKymoney(usermoney.getKymoney().subtract(logTx.getMoney()));
         usermoneyMapper.updateByPrimaryKeySelective(usermoney);
-        return ServerResponse.createBySuccess("提现成功");
+        return ServerResponse.createBySuccess("等待提现审核");
     }
 
 

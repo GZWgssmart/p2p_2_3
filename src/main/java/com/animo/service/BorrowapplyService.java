@@ -16,4 +16,6 @@ public interface BorrowapplyService extends BaseService{
 
     Pager listPagerCriteria(Integer pageNumber,Integer pageSize,Object object);
 
+    ServerResponse getMoneyAndYMoney(Integer baid);
+
 }
