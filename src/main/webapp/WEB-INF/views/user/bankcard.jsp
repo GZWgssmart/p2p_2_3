@@ -108,7 +108,7 @@
                     </div>
                     <div class="bank-center">
                         <div class="bank-cardNumber">{{bankcards.cardno}}</div>
-                        <div class="bank-userName">${sessionScope.User.rname}</div>
+                        <div class="bank-userName">{{bankcards.rname}}</div>
                     </div>
                 </div>
                 <div v-if="ss"  id="card3" class="bank-card_3" v-on:click="addCard" style="cursor:pointer;">
