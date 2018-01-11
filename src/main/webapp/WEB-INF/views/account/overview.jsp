@@ -77,7 +77,7 @@
                     <li><a href="#msg">消息中心</a></li>
                 </ul>
             </div>
-            <a href="#tuijian" class="tuijian"><img src="images/tuijian.png"/></a>
+            <a href="#tuijian" class="tuijian"><img src="<%=path%>/static/images/home/tuijian.png"/></a>
         </div>
         <div class="account-right">
             <div class="box1">
