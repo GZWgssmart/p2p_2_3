@@ -153,6 +153,7 @@
                 axios.post('/bankcard/data/json/save', Qs.stringify(this.bankcard))
                     .then((response) => {
                         layer.msg(response.data.message);
+                        window.location.href="/bankCard/add";
                     }, (error) => {
                         layer.msg("请求失败");
                     });

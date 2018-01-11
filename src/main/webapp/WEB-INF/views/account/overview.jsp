@@ -72,7 +72,7 @@
                 </ul>
                 <div class="navbar icon icon-settings">账户设置</div>
                 <ul class="sub-nav">
-                    <li><a href="#bank">我的银行卡</a></li>
+                    <li><a href="<%=path%>/bankCard/mybank">我的银行卡</a></li>
                     <li><a href="#safe">安全设置</a></li>
                     <li><a href="#msg">消息中心</a></li>
                 </ul>
@@ -758,31 +758,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bank" id="bank">
-                    <div class="account-right-nav">
-                        <div class="sub-a-nav">
-                            <a href="javascript:void(0);" class="active">我的银行卡</a>
-                        </div>
-                        <em></em>
-                    </div>
-                    <div id="myDebitCard" class="account-content">
-                        <div id="card1" class="bank-card_1">
-                            <div class="bank-top">
-                                <div class="bank-cardTitle">建设银行</div>
-                                <div class="bank-cardType">储蓄卡</div>
-                            </div>
-                            <div class="bank-center">
-                                <div class="bank-cardNumber">6212 **** **** 4699</div>
-                                <div class="bank-userName">*广胜</div>
-                            </div>
-                        </div>
-                        <div id="card3" class="bank-card_3" onclick="addCard();" style="cursor:pointer;">
-                            <div class="bank-addCard"><a href="javascript:;">添加银行卡</a>
-                            </div>
                         </div>
                     </div>
                 </div>
