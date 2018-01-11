@@ -47,11 +47,11 @@
                                             <dd>
                                                 <div class="form-group">
                                                     <label class="label">真实姓名:</label>
-                                                    <span class="form-text">${sessionScope.User.rname}</span>
+                                                    <span class="form-text">${sessionScope.user.rname}</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="label">证件号码:</label>
-                                                    <span class="form-text">${sessionScope.User.idno}</span>
+                                                    <span class="form-text">${sessionScope.user.idno}</span>
                                                 </div>
                                             </dd>
                                             <dd>
