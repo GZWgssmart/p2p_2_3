@@ -37,11 +37,10 @@ public class TxCheckController {
      */
     @RequestMapping("check")
     public ServerResponse passCheck(HttpSession session, TxCheckVO txCheckVO, TxCheck txCheck, Usermoney usermoney, LogMoney logMoney){
-//        Object object = session.getAttribute(Constant.SESSION_ADMIN);
-
+        Object object = session.getAttribute(Constant.SESSION_ADMIN);
         txCheck.setTxid(txCheckVO.getTxid());
-//        if (object != null){
-//            Huser huser = (Huser) object;
+        if (object != null){
+            Huser huser = (Huser) object;
             txCheck.setHuid(1);
             txCheck.setIsok(txCheckVO.getStatus());
             txCheck.setExcuse(txCheckVO.getExcuse());
@@ -61,10 +60,9 @@ public class TxCheckController {
             }else{
                 return ServerResponse.createByError("请填写审核理由");
             }
-
-//        }else {
-//            return ServerResponse.createByError("您的登录已超时，审核失败!");
-//        }
+        }else {
+            return ServerResponse.createByError("您的登录已超时，审核失败!");
+        }
     }
 
     /**
