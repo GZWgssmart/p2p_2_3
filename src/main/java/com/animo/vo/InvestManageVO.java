@@ -18,6 +18,7 @@ public class InvestManageVO {
     private String way;
     private String bzname;
     private Integer term;
+    private Integer baid;
 
     public BigDecimal getMoney() {
         return money;
@@ -73,5 +74,13 @@ public class InvestManageVO {
 
     public void setTerm(Integer term) {
         this.term = term;
+    }
+
+    public Integer getBaid() {
+        return baid;
+    }
+
+    public void setBaid(Integer baid) {
+        this.baid = baid;
     }
 }
