@@ -180,19 +180,6 @@
         }
     }
 
-//    form.on('switch(switchTest)', function(data){
-//            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-//                offset: '6px'
-//            });
-//            if(this.checked){
-//                $(this).val("1");
-//            }else{
-//                $(this).val("0");
-//            }
-//
-//        //开关状态判断，是否添加或更新数据
-//        switchStatus($(this));
-//        });
 
 </script>
 </body>
