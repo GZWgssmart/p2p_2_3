@@ -3,31 +3,31 @@
 /*account*/
 
 .about {
-    width: 1200px;
-    margin: 30px auto 0;
-    height:auto;
-    display: table;
+	width: 1200px;
+	margin: 30px auto 0;
+	height:auto;
+	display: table;
 }
 
 .about-left {
-    width: 220px;
-    padding: 24px 0 176px 0;
-    height: auto;
-    background-color: #fff;
-    display: table-cell;
-    border-right: 1px solid #e4e4e4;
-    vertical-align: top;
+	width: 220px;
+	padding: 24px 0 176px 0;
+	height: auto;
+	background-color: #fff;
+	display: table-cell;
+	border-right: 1px solid #e4e4e4;
+	vertical-align: top;
 }
 .about-right {
-    width: 899px;
-    padding: 27px 40px 60px;
-    display: table-cell;
-    background: url(../images/product-loading.gif)center center no-repeat;
-    background-color: #fff;
-    vertical-align: top;
+	width: 899px;
+	padding: 27px 40px 60px;
+	display: table-cell;
+	background: url(../images/product-loading.gif)center center no-repeat;
+	background-color: #fff;
+	vertical-align: top;
 }
 .about-left .about-left-nav {
-    padding: 0 21px;
+	padding: 0 21px;
 }
 .about-left-nav .sub-nav>li{
 	height:36px;
@@ -41,7 +41,7 @@
 }
 .icon-about{
 	background-image: url(../images/icon-about-gray.png);
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 }
 .active .icon-about,.about-left-nav .sub-nav>li a:hover.icon-about{
 	background-image: url(../images/icon-about-white.png);
@@ -50,104 +50,104 @@
 }
 
 .about-xxpl{
-	 background-position: 18px -324px;
+	background-position: 18px -324px;
 }
 .about-cyjg{
-	 background-position: 18px -370px;
+	background-position: 18px -370px;
 }
 .about-ptyy{
-	 background-position: 18px -414px;
+	background-position: 18px -414px;
 }
 .about-jkxm{
-	 background-position: 18px -461px;
+	background-position: 18px -461px;
 }
 .about-gudong{
-	 background-position: 18px top;
-	 margin-top: -30px;
+	background-position: 18px top;
+	margin-top: -30px;
 }
 .about-jianjie{
-	 background-position: 18px -36px;
+	background-position: 18px -36px;
 }
 .about-zizhi{
-	 background-position: 18px -72px;
+	background-position: 18px -72px;
 }
 .about-guanli{
-	 background-position: 18px -108px;
+	background-position: 18px -108px;
 }
 .about-guwen{
-	 background-position: 18px -144px;
+	background-position: 18px -144px;
 }
 .about-dongtai{
-	 background-position: 18px -180px;
+	background-position: 18px -180px;
 }
 .about-gonggao{
-	 background-position: 18px -216px;
+	background-position: 18px -216px;
 }
 .about-zhaopin{
-	 background-position: 18px -252px;
+	background-position: 18px -252px;
 }
 .about-lianxi{
-	 background-position: 18px -288px;
+	background-position: 18px -288px;
 }
 .about-right-nav {
-    position: relative;
+	position: relative;
 }
 
 .about-right-nav .sub-a-nav {
 	width:899px;
-    height: 45px;
-    border-bottom: 1px solid #e4e4e4;
+	height: 45px;
+	border-bottom: 1px solid #e4e4e4;
 }
 
 .about-right-nav .sub-a-nav a {
-    width: 120px;
-    height: 45px;
-    text-align: center;
-    line-height: 45px;
-    float: left;
+	width: 120px;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	float: left;
 }
 
 .about-right-nav .sub-a-nav a.active,
 .about-right-nav .sub-a-nav a:hover {
-    color: #e62538;
+	color: #e62538;
 }
 
 .about-right-nav em {
-    width: 120px;
-    height: 1px;
-    position: absolute;
-    top: 45px;
-    left: 0px;
-    z-index: 1;
-    background-color: #e62538;
+	width: 120px;
+	height: 1px;
+	position: absolute;
+	top: 45px;
+	left: 0px;
+	z-index: 1;
+	background-color: #e62538;
 }
 
 .about-content {
-    padding-top: 20px;
-    background-color: #fff;
-    min-height: 638px;
-    overflow:hidden;
+	padding-top: 20px;
+	background-color: #fff;
+	min-height: 638px;
+	overflow:hidden;
 }
 
 .about-content .sub-nav {
-    height: 48px;
-    padding-left: 20px;
+	height: 48px;
+	padding-left: 20px;
 }
 
 .about-content .sub-nav a {
-    height: 26px;
-    color: #999999;
-    float: left;
-    padding: 0 20px;
-    margin-right: 40px;
-    line-height: 26px;
-    text-align: center;
+	height: 26px;
+	color: #999999;
+	float: left;
+	padding: 0 20px;
+	margin-right: 40px;
+	line-height: 26px;
+	text-align: center;
 }
 
 .about-content .sub-nav a.active,
 .about-content .sub-nav a:hover {
-    background-color: #ffa13d;
-    color: #fff;
+	background-color: #ffa13d;
+	color: #fff;
 }
 
 /*gdbj*/
@@ -293,7 +293,7 @@
 .content-photo-left p.name{
 	padding-top:15px;
 	font-size:20px;
-	
+
 }
 .content-photo-right{
 	width:680px;
@@ -351,7 +351,7 @@
 	color:#333;
 	overflow:hidden;
 	white-space:normal;
-	text-overflow:ellipsis; 
+	text-overflow:ellipsis;
 }
 .notice-list li a.title:hover{
 	color:#eb2a2b;
@@ -367,7 +367,7 @@
 	min-height:300px;
 	margin:30px auto 0;
 	background: url(../images/product-loading.gif)center center no-repeat;
-    background-color: #fff;
+	background-color: #fff;
 }
 .news-contents{
 	padding:50px 60px;
@@ -390,7 +390,7 @@
 	width:36px;
 	height:36px;
 	background-image: url(../images/news-top.png);
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 	margin-right:10px;
 }
 .news-contents .news-links{
@@ -498,7 +498,7 @@
 	width:100px;
 	height:100px;
 	background-image: url(../images/lxwm.png);
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 	background-color:#ffdfdd;
 	float:left;
 }
@@ -543,7 +543,7 @@
 .weChart .shareMsg{
 	width:180px;
 	float:left;
-	
+
 }
 .weChart .shareMsg p{
 	font-size:13px;
@@ -554,12 +554,12 @@
 }
 .weChart .topTag{
 	width: 27px;
-    height: 14px;
-    z-index: 1;
-    position: absolute;
-    left: 60px;
-    bottom:140px;
-    background: url(../images/weixintop.png) -93px top no-repeat;
+	height: 14px;
+	z-index: 1;
+	position: absolute;
+	left: 60px;
+	bottom:140px;
+	background: url(../images/weixintop.png) -93px top no-repeat;
 }
 .weChart .loginTag{
 	width:120px;
@@ -574,15 +574,15 @@
 	color:#e62538;
 }
 .weChart .loginTag a:hover{
-	    text-decoration: underline;
+	text-decoration: underline;
 }
 .oBanner-box{
-    position: fixed;
-    z-index: 10004;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+	position: fixed;
+	z-index: 10004;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
 }
 .oBanner-box a{
 	position:absolute;
@@ -613,15 +613,15 @@
 	transition:.4s;
 	-webkit-transition:.4s;
 	position: fixed;
-    z-index: 10005;
-    top: 50%;
-    left: 50%;
+	z-index: 10005;
+	top: 50%;
+	left: 50%;
 }
 /* 底线 */
 .hr {
 	wdith: 100%;
 	height: 1px;
-    border-bottom: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
 }
 /* 信息披露  */
 .textRight {
@@ -636,7 +636,7 @@
 }
 .textDivs .xx{
 	text-indent: 0px;
-    line-height: 28px;
+	line-height: 28px;
 }
 .xxpl_a{
 	color: #2277da;
@@ -715,7 +715,7 @@
 .msgDIv{
 	margin-top: 25px;
 }
-.msgDIv .text{	
+.msgDIv .text{
 	margin-bottom: 10px;
 }
 .marginTop{
@@ -726,14 +726,14 @@
 	margin-bottom: 30px;
 	wdith: 100%;
 	height: 1px;
-    border-bottom: 1px dashed #e4e4e4;
+	border-bottom: 1px dashed #e4e4e4;
 }
 .fgx2 {
 	margin-top: 60px;
 	margin-bottom: 40px;
 	wdith: 100%;
 	height: 1px;
-    border-bottom: 1px dashed #e4e4e4;
+	border-bottom: 1px dashed #e4e4e4;
 }
 .logoDiv {
 	width: 262px;
@@ -744,7 +744,7 @@
 .logoDiv2 {
 	margin-right: 0;
 }
-.logoDiv img { 
+.logoDiv img {
 	width: 262px;
 	height: 60px;
 	padding-top: 20px;
@@ -856,7 +856,7 @@
 	color: #e62538;
 	margin: 50px auto 0 auto;
 	height: 94px;
-    width: 880px;
+	width: 880px;
 }
 .item_Div {
 	margin:0 auto;
