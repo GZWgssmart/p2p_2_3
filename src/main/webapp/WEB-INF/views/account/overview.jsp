@@ -79,7 +79,6 @@
             </div>
             <a href="#tuijian" class="tuijian"><img src="images/tuijian.png"/></a>
         </div>
-
         <div class="account-right">
             <div class="box1">
                 <div class="account2" id="account2">
@@ -1009,47 +1008,8 @@
                 <li><a href="javascript:;" class="sidebar-top"></a></li>
             </ul>
         </div>
-        <div class="index-concat">
-            <div class="wrap cl">
-                <div class="index-concat-left">
-
-                </div>
-                <div class="index-concat-phone">
-                    <p>财富热线</p>
-                    <h3>400-606-2079</h3>
-                </div>
-                <div class="index-concat-channel">
-                    <p class="about_cel_text">
-                        <a target="_blank" href="" class="about_wb"></a>
-                        <a href="javascript:void(0);" class="about_wx line_02">
-						<span class="line_l_h">
-							<span class="line_l_sj"></span>
-							<span class="line_l_text">关注普金资本公众号</span>
-							<span class="line_l_pic"></span>
-						</span>
-                        </a>
-                        <a target="_blank" href="" class="about_qq"></a>
-                        <a href="javascript:void(0);" class="about_wx about_rr">
-						<span class="line_l_j">
-							<span class="line_l_sj"></span>
-							<span class="line_l_texts">400-606-2079</span>
-						</span>
-                        </a>
-                    </p>
-                    <p class="about_cel_no">admin@pujinziben.com</p>
-                </div>
-                <div class="index-concat-link cl">
-                    <a href="javascript:;" class="title">友情链接</a>
-                    <a target="_blank" href="">网贷天眼</a>
-                    <a target="_blank" href="">网贷天下</a>
-                    <a target="_blank" href="">中国平安银行</a>
-                    <a target="_blank" href="">中国建设银行</a>
-                    <a target="_blank" href="">网贷东方</a>
-                    <a target="_blank" href="">第一网贷</a></div>
-            </div>
-        </div>
+        <%@include file="../common/footer.jsp" %>
     </div>
-    <%@include file="../common/footer.jsp" %>
 </div>
 </body>
 <script src="/static/js/jquery.min.js"></script>
