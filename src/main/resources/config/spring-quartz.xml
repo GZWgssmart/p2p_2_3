@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.animo.job" />
+
+    <!--GiveAward-->
+
+    <bean id="cronDetailMoney" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="giveAwardJob"/>
+        </property>
+        <property name="targetMethod" value="execute"/>
+    </bean>
+
+    <bean id="cronTriggerMoney" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="cronTriggerMoney" />
+        <property name="group" value="group1" />
+        <property name="jobDetail" ref="cronDetailMoney" />
+        <property name="cronExpression" value="0 * 8-22 * * ? *" />
+        <!--测试阶段， 0 * 8-22 * * ? *每分钟发放一次-->
+        <!--实际阶段，0 0 23 L * ?每月月末发放一次-->
+    </bean>
+
+
+    <!--作业类：每个月定时统计运营数据-->
+    <bean id="cronJobMonthData" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="MonthStatisticsData"/>
+        </property>
+        <property name="targetMethod" value="execute"/>
+    </bean>
+    <!--触发器：每个月定时统计运营数据-->
+    <bean id="cronTriggerMonthData" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="cronTriggerMonthData" />
+        <property name="group" value="group1" />
+        <property name="jobDetail" ref="cronJobMonthData" />
+        <property name="cronExpression" value="0 0 0 1 * ? 2018" />
+        <!--<property name="cronExpression" value="0 0 0 1 * ?" />-->
+    </bean>
+
+
+    <!--调度器-->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="cronDetailMoney"/>
+                <ref bean="cronJobMonthData"/>
+            </list>
+        </property>
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerMoney"/>
+                <ref bean="cronTriggerMonthData"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

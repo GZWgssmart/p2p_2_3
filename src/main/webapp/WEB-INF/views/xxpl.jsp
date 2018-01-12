@@ -168,36 +168,7 @@
                                     <div class="itemText">为用户创造的收益（元）</div>
                                     <div class="itemSJ" id="hasInterest">613,196.00</div>
                                 </div>
-                                <div class="item">
-                                    <div class="item-icon icon-compensatoryMoney"></div>
-                                    <div class="itemText">累计代偿金额（元）</div>
-                                    <div class="itemSJ" id="compensatoryMoney">0.00</div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-icon icon-compensatoryNumber"></div>
-                                    <div class="itemText">累计代偿笔数（笔）</div>
-                                    <div class="itemSJ" id="compensatoryNumber">0</div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-icon icon-overdueMoney"></div>
-                                    <div class="itemText">逾期金额（元）</div>
-                                    <div class="itemSJ" id="overdueMoney">12.26</div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-icon icon-overdueNumber"></div>
-                                    <div class="itemText">逾期笔数（笔）</div>
-                                    <div class="itemSJ" id="overdueNumber">3</div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-icon icon-overtimeNumber"></div>
-                                    <div class="itemText">逾期90天以上笔数（笔）</div>
-                                    <div class="itemSJ" id="overtimeNumber">0</div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-icon icon-overtimeMoney"></div>
-                                    <div class="itemText">逾期90天以上金额（元）</div>
-                                    <div class="itemSJ" id="overtimeMoney">0.00</div>
-                                </div>
+
                             </div>
                             <div class="btnDiv btnDiv-P">平台用户数据</div>
                             <div class="sjList sjList-2">
