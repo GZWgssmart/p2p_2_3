@@ -5,6 +5,7 @@ import com.animo.common.ServerResponse;
 import com.animo.pojo.DataBean;
 import com.animo.pojo.Ydata;
 import com.animo.service.YdataService;
+import com.animo.utils.DateFormateUtils;
 import com.animo.utils.GetFirstMonthDay;
 import com.animo.utils.GetLastMonthDay;
 import com.animo.vo.StatisticalReportVO;
@@ -19,6 +20,7 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,7 +50,7 @@ public class YdataController {
     }
 
     @RequestMapping("downloadMonthData")
-    public String excelDownload(HttpServletResponse response, String time) throws IOException {
+    public String excelDownload(HttpServletResponse response, Long longTime) throws IOException {
         // 1.创建一个workbook，对应一个Excel文件
         HSSFWorkbook wb = new HSSFWorkbook();
         // 2.在workbook中添加一个sheet，对应Excel中的一个sheet
@@ -111,8 +113,11 @@ public class YdataController {
         cell.setCellValue("月贷款笔数");
         cell.setCellStyle(style);
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        date.setTime(longTime);
+        String time = simpleDateFormat.format(date);
         Ydata ydata = ydataService.getYdataByTime(time);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
         row = sheet.createRow(1);
         row.createCell(0).setCellValue(1);
         row.createCell(1).setCellValue(ydata.getYid());
@@ -127,8 +132,8 @@ public class YdataController {
         row.createCell(10).setCellValue(ydata.getMdkno());
         row.createCell(11).setCellValue(ydata.getTdkbno());
         row.createCell(12).setCellValue(ydata.getMdkbno());
-
-        String fileName = time+"月运营报表";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月份");
+        String fileName = format.format(date)+"运营数据统计报表";
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         try {
             wb.write(os);

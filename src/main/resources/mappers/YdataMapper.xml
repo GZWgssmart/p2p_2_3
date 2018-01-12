@@ -237,7 +237,7 @@
     </select>
 
     <select id="listPager" resultType="com.animo.pojo.Ydata" parameterType="com.animo.common.Pager">
-       select * from ydata limit #{beginIndex}, #{pageSize}
+       select * from ydata order by created_time  limit #{beginIndex}, #{pageSize}
     </select>
 
     <select id="count" resultType="long">

@@ -40,7 +40,7 @@
         <property name="name" value="cronTriggerMonthData" />
         <property name="group" value="group1" />
         <property name="jobDetail" ref="cronJobMonthData" />
-        <property name="cronExpression" value="0 0 0 1 * ? 2018" />
+        <property name="cronExpression" value="0 59 23 L * ?" />
         <!--<property name="cronExpression" value="0 0 0 1 * ?" />-->
     </bean>
 

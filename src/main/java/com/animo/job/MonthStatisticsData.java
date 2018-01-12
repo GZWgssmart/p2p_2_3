@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * 每个月的第一天的零点零分零秒生成上个月的运营数据
+ * 每个月定时统计运营数据
  */
 @Component("MonthStatisticsData")
 public class MonthStatisticsData {
@@ -22,11 +22,11 @@ public class MonthStatisticsData {
 
     Logger logger = LoggerFactory.getLogger(MonthStatisticsData.class);
     public void execute(){
-        logger.info("开始统计上个月的运营数据");
-        System.out.println("每个月的第一天的零点零分零秒生成上个月的运营数据，当前时间："+new Date());
+        logger.info("开始统计运营数据");
+        System.out.println("开始统计运营数据，当前时间："+new Date().getTime());
         String today = GetLastMonthDay.getToday();
         String firstDay = GetFirstMonthDay.getFistMothDay();
         ydataService.save(new Ydata(),today,firstDay);
-        logger.info("统计上个月的运营数据已完成");
+        logger.info("运营数据统计已完成");
     }
 }

@@ -39,45 +39,52 @@
             </div>
         </div>
 
-
-        <div class="layui-tab-item">
+        <!--月运营数据-->
+        <div class="layui-tab-item" id="monthData">
             <div class="about-content" id="yybgDiv" style="display: block;">
-                <div class="tableDiv"><a
-                        href="http://pujinziben.com/upload/operatereport/front/2018/1/20180103141623751.pdf"
-                        download=""><img class="yybgImg" alt=""
-                                         src="/static/js/font/images/12.jpg"></a><a
-                        href="https://www.pujinziben.com:443/upload/operatereport/front/2017/12/20171206145349608.pdf"
-                        download=""><img class="yybgImg" alt=""
-                                         src="/static/js/font/images/11.jpg"></a><a
-                        href="http://pujinziben.com/upload/operatereport/front/2017/11/20171103084426675.pdf"
-                        download=""><img class="yybgImg" alt=""
-                                         src="/static/js/font/images/10.jpg"></a><a
-                        href="http://www.pujinziben.com/upload/operatereport/front/2017/10/20171010103911597.pdf"
-                        download=""><img class="yybgImg" alt=""
-                                         src="http://www.pujinziben.com/upload/operatereport/front/2017/10/20171010103706853.jpg"></a><a
-                        href="http://www.pujinziben.com/upload/operatereport/front/2017/9/20170902163654022.pdf"
-                        download=""><img class="yybgImg" alt=""
-                                         src="http://www.pujinziben.com/upload/operatereport/front/2017/9/20170902163618853.jpg"></a><a
-                        href="../upload/operatereport/front/2017/8/20170802115615736.pdf" download=""><img
-                        class="yybgImg" alt=""
-                        src="http://www.pujinziben.com/upload/operatereport/front/2017/8/20170802115538445.jpg"></a><a
-                        href="https://pujinziben.com/upload/yybg/201707041659007394.pdf" download=""><img
-                        class="yybgImg" alt="" src="https://pujinziben.com/upload/yybg/201707041658181221.png"></a><a
-                        href="https://www.pujinziben.com/upload/yybg/201706021854322124.pdf" download=""><img
-                        class="yybgImg" alt="" src="https://pujinziben.com:8443/upload/yybg/201706021848519136.jpg"></a><a
-                        href="https://www.pujinziben.com:8443/upload/yybg/201705050916342143.pdf" download=""><img
-                        class="yybgImg" alt="" src="https://www.pujinziben.com:8443/upload/yybg/201705050915048087.jpg"></a><a
-                        href="https://www.pujinziben.com/upload/yybg/201704101141308789.pdf" download=""><img
-                        class="yybgImg" alt=""
-                        src="https://www.pujinziben.com/upload/yybg/201704101141172039.png"></a><a
-                        href="http://www.pujinziben.com/upload/yybg/201704061519519851.pdf" download=""><img
-                        class="yybgImg" alt="" src="http://www.pujinziben.com/upload/yybg/20170406151936564.jpg"></a><a
-                        href="http://www.pujinziben.com/upload/yybg/201704101103162901.pdf" download=""><img
-                        class="yybgImg" alt="" src="http://pujinziben.com/upload/yybg/201702201718479704.jpg"></a></div>
+                <div class="tableDiv">
+                    <a :href="'/ydata/data/json/downloadMonthData?longTime='+item.createdTime" v-for="item in ydatas">
+                        <img class="yybgImg" title="点击下载统计报表" src="/static/js/font/images/defaultjpg.jpg">
+                        <span>{{item.createdTime | formatDate}}</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/static/js/font/jquery.js"></script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/vue.min.js/"></script>
+<script src="/static/js/axios.min.js/"></script>
+<script type="text/javascript">
+    $(function () {
+        var vue = new Vue({
+            el: '#monthData',
+            data: {
+                ydatas: []
+            },
+            methods: {
+            },
+            filters: {
+                formatDate(time) {
+                    var date = new Date(time);
+                    return formatDate(date, 'yyyy年MM月份');
+                }
+            },
+            created() {
+                getMonthData();
+            }
+        });
 
+        function getMonthData() {
+            axios.get('/ydata/data/json/pager').then((response) => {
+                vue.ydatas = response.data.rows;
+                console.log(vue.ydatas);
+            }, (error) => {
+                layer.alert("请求失败");
+            });
+        }
+    })
+</script>
 <%--
 </div>--%>
