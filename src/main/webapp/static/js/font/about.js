@@ -1,6 +1,7 @@
 var contentType = "application/x-www-form-urlencoded; charset=utf-8";
 var oPage;
 var isClick = false;
+
 $(function(){
 		//初始化footer
 		utils.initPage();
@@ -13,7 +14,7 @@ function animate1() {
 		$("#animateUl").empty();
 		$("#animateUl").html(
 				'<li class="xxpl"><a href="javaScript:void(0);" onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>'
-				+'<li class="cyjg"><a href="#cyjg" class="icon-about about-cyjg">从业机构信息</a></li>'
+				+'<li class="cyjg"><a href="#cyjg" onclick="bb();" class="icon-about about-cyjg">从业机构信息</a></li>'
 				+'<li class="ptyy"><a href="#ptyy" class="icon-about about-ptyy">平台运营信息</a></li>'
 				+'<li class="jkxm"><a href="#jkxm" class="icon-about about-jkxm">借款项目信息</a></li>');
 		$('.cyjg').show();

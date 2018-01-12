@@ -325,7 +325,7 @@
 <script type="text/javascript" src="/static/js/font/public.js"></script>
 <script charset="utf-8" type="text/javascript" src="/static/js/font/wpa.js"></script>
 <script type="text/javascript" src="/static/js/font/countup.min.js"></script>
-<script type="text/javascript" src="/static/js/font/about.js"></script>
+<%--<script type="text/javascript" src="/static/js/font/about.js"></script>--%>
 <script type="text/javascript" src="/static/layui/layui.js"></script>
 
 <script>
