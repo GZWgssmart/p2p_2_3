@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface RewardMapper extends BaseMapper{
 
-    Object selectByUid(Integer uid);
+    Reward selectByUid(Integer uid);
 
     List<Reward> selectByStatus(@Param("status") String status);
 

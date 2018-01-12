@@ -10,6 +10,7 @@ import com.animo.pojo.Usermoney;
 import com.animo.service.RzvipService;
 import com.animo.service.UserMoneyService;
 import com.animo.service.UserService;
+import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,10 +42,9 @@ public class UserController {
         user.setUpwd(EncryptUtils.md5(user.getUpwd()));
         user.setResint1(new Date());
         user.setResstr1(getRandomFourNum());
+        user.setResint1(DateFormateUtils.Formate());
        ServerResponse serverResponse = userService.save(user);
-
        if (serverResponse.isSuccess()) {
-
            Rzvip revip = new Rzvip();
            revip.setUid(user.getUid());
            rzvipService.save(revip);
@@ -56,7 +56,7 @@ public class UserController {
         return ServerResponse.createByError("error");
     }
 
-    @RequestMapping(value="getByPhone/{phone}", method = RequestMethod.POST)
+    @RequestMapping(value="getByPhone/{phone}", method = RequestMethod.GET)
     public ServerResponse getByPhone(@PathVariable("phone") String phone) {
         int user = userService.getByPhone(phone);
         if(user == 0) {
@@ -68,21 +68,12 @@ public class UserController {
 
     @RequestMapping(value="login", method = RequestMethod.POST)
     public ServerResponse login(String phone, String upwd, HttpSession session) {
-//        User user = userService.getByPhonePwd(phone, EncryptUtils.md5(upwd));
-//        if(user != null) {
-//            session.setAttribute(Constant.SESSION_USER, user);
-//            return ServerResponse.createBySuccess("success", user);
-//        }
-//        return ServerResponse.createByError("error");
-        //User user = userService.getByPhonePwd(phone, EncryptUtils.md5(upwd));
-        //if(user != null) {
-        User user = new User();
-        user.setUid(1);
-        user.setPhone("17607974221");
-        session.setAttribute(Constant.SESSION_USER, user);
-        return ServerResponse.createBySuccess("success", user);
-        //}
-        //return ServerResponse.createByError("error");
+        User user = userService.getByPhonePwd(phone, EncryptUtils.md5(upwd));
+        if(user != null) {
+            session.setAttribute(Constant.SESSION_USER, user);
+            return ServerResponse.createBySuccess("success", user);
+        }
+        return ServerResponse.createByError("error");
     }
 
     @GetMapping(value="list")
@@ -95,7 +86,7 @@ public class UserController {
     public String logout(HttpSession session) {
         User user = (User)session.getAttribute(Constant.SESSION_USER);
         session.invalidate();
-        return "index";
+        return "/";
     }
 
     @PostMapping("updatePwd")

@@ -1,6 +1,8 @@
 package com.animo.dao;
 
 import com.animo.common.Pager;
+import com.animo.pojo.Borrowapply;
+import com.animo.vo.BorrowApplyDetail;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -23,4 +25,7 @@ public interface BorrowapplyMapper extends BaseMapper{
 
     int updateStatusAndTime(@Param("id") Integer id,@Param("status") Integer status, @Param("ckTime") Date ckTime);
 
+    List<Borrowapply> list(Integer ckstatus);
+
+    List<BorrowApplyDetail> getByCkstaus(Integer ckstatus);
 }

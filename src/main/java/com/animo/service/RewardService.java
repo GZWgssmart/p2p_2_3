@@ -11,4 +11,6 @@ public interface RewardService extends BaseService{
 
     List<Reward> selectByStatus(String status);
 
+    Reward selectByUid(Integer uid);
+
 }

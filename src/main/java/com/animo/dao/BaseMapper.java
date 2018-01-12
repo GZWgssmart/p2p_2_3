@@ -30,6 +30,4 @@ public interface BaseMapper {
 
     int updateStatus(Integer id,Integer status);
 
-
-
 }

@@ -3,12 +3,15 @@ package com.animo.service.impl;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.dao.BorrowapplyMapper;
+import com.animo.pojo.Borrowapply;
 import com.animo.service.BorrowapplyService;
+import com.animo.vo.BorrowApplyDetail;
 import com.animo.vo.BorrowapplyMoneyVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Animo on 2017-12-24.
@@ -51,5 +54,15 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
             return ServerResponse.createBySuccess("已投满");
         }
         return ServerResponse.createByError("未投满");
+    }
+
+    @Override
+    public List<Borrowapply> list(Integer ckstatus) {
+        return borrowapplyMapper.list(ckstatus);
+    }
+
+    @Override
+    public List<BorrowApplyDetail> getByCkstaus(Integer ckstatus) {
+        return borrowapplyMapper.getByCkstaus(ckstatus);
     }
 }

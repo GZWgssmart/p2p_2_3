@@ -50,11 +50,10 @@ public class BankCardController {
     /**
      * 查询出用户绑定的所有的银行卡
      * @param session
-     * @param bankcard
      * @return
      */
     @RequestMapping("list")
-    public ServerResponse<Bankcard> listBankCards(HttpSession session,Bankcard bankcard){
+    public ServerResponse<Bankcard> listBankCards(HttpSession session){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;

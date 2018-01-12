@@ -212,6 +212,7 @@
     <![CDATA[
       SELECT bo.ckstatus,bd.bdid,bo.uid,b.bzid,bo.baid,b.bzname,bd.cpname,bo.money,bd.money AS ymoney,bo.term,bd.nprofit
        FROM borrowapply AS bo,borrowdetail AS bd,bz AS b WHERE bo.baid=bd.baid AND bo.bzid=b.bzid AND bo.bzid=#{bzid}
+      ANd bo.ckstatus in (2,4,5)
       ORDER BY RAND() LIMIT 3
     ]]>
   </select>
@@ -271,6 +272,14 @@
     where b.bzid = ba.bzid and bd.baid = ba.baid and ba.baid = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="getByCkstaus" parameterType="integer" resultType="com.animo.vo.BorrowApplyDetail">
+    select
+    <include refid="Base_column_list" />
+    from borrowapply ba, bz b, borrowdetail bd
+    where b.bzid = ba.bzid and bd.baid = ba.baid and ba.baid = #{id,jdbcType=INTEGER}
+    and ckstatus=#{ckstatus}
+  </select>
+
   <select id="listPager" resultType="com.animo.pojo.Borrowapply">
     <![CDATA[
       SELECT * FROM borrowapply WHERE ckstatus='0' limit #{beginIndex}, #{pageSize}
@@ -292,5 +301,11 @@
     ]]>
 
   </update>
+
+  <select id="list" resultType="com.animo.pojo.Borrowapply">
+    <![CDATA[
+      SELECT * FROM borrowapply WHERE ckstatus=#{ckstatus}
+    ]]>
+  </select>
   
 </mapper>

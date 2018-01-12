@@ -15,4 +15,5 @@ public interface SkbMapper extends BaseMapper{
     int saveList(List<Skb> list);
 
     Long getByUidAndBaid(@Param("uid") Integer uid,@Param("baid") Integer baid);
+
 }

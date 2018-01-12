@@ -22,7 +22,7 @@
         <property name="name" value="cronTriggerMoney" />
         <property name="group" value="group1" />
         <property name="jobDetail" ref="cronDetailMoney" />
-        <property name="cronExpression" value="0 * 8-22 * * ? *" />
+        <property name="cronExpression" value="0 0 23 L * ?" />
         <!--测试阶段， 0 * 8-22 * * ? *每分钟发放一次-->
         <!--实际阶段，0 0 23 L * ?每月月末发放一次-->
     </bean>

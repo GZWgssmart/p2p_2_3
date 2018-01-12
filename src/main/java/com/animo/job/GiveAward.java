@@ -39,8 +39,6 @@ public class GiveAward {
             for (Reward r : rewards) {
                 r.setStatus("已发放");
                 r.setRewardTime((Date) Calendar.getInstance().getTime());
-
-
                 serverResponse = userMoneyService.selectByUid(r.getUid());//通过uid查出对应的用户资金表数据
                 Usermoney usermoney = (Usermoney) serverResponse.getData();
                 BigDecimal jlmoney = usermoney.getJlmoney() == null ? BigDecimal.valueOf(0) : usermoney.getJlmoney();

@@ -22,15 +22,22 @@
             <li><a href="" class="icon icon-inv">邀请有礼</a></li>
             <li><a href="">关于我们</a></li>
             <li><a href="">帮助中心</a></li>
-            <li></li>
-            <li id="userName">
-                <c:if test="${sessionScope.user == null}">
-                    <a href="/user/login">登录</a>
-                </c:if>
-                <c:if test="${sessionScope.user != null}">
-                    <a href="#" style="color:red">${sessionScope.user.phone }</a>
-                </c:if>
-            </li>
+            <c:if test="${sessionScope.user == null}">
+                    <li id="userName">
+                        <a href="/user/login">登录</a>
+                    </li>
+                    <li>
+                        <a href="/user/register">注册</a>
+                    </li>
+            </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <li>
+                    <a href="/user/accountOverride" style="color:red">${sessionScope.user.phone }</a>
+                </li>
+                <li>
+                    <a href="/user/data/json/logout" style="color:red">退出</a>
+                </li>
+            </c:if>
             <li><a href="javascript:;" class="icon icon-app" id="">APP下载</a></li>
         </ul>
         <div id="qrCodeDiv" style="display: none;">

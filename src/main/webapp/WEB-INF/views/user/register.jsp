@@ -12,6 +12,7 @@
 </head>
 <link rel="icon" href="<%=path%>/static/images/login/logo_title.jpg" type="image/x-icon" />
 <body>
+<div id="app">
 <div class="nav-out">
     <div class="wrap cl">
         <div class="logo"><a href="https://www.pujinziben.com/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
@@ -23,16 +24,16 @@
         <p>普金资本理财资金由汇付天下托管</p>
     </div>
     <div class="regist-box">
-        <form id="register" method="post">
+        <form id="register">
             <h3>欢迎注册</h3>
             <p class="error-msg icon icon-error"></p>
             <div class="from">
-                <label for="phone" class="icon icon-mobile"></label>
-                <input type="text" name="phone" id="phone"  onblur="checkPhone(this)" autocomplete="new-password" maxlength="11" placeholder="输入手机号"/>
+                <label  class="icon icon-mobile"></label>
+                <input type="text" v-model.lazy="phone"  id="phone"  autocomplete="new-password" maxlength="11" placeholder="输入手机号"/>
             </div>
             <div class="from">
-                <label for="upwd" class="icon icon-pwd"></label>
-                <input type="password" name="upwd" id="upwd" autocomplete="new-password" placeholder="输入密码" maxlength="18"/>
+                <label class="icon icon-pwd"></label>
+                <input type="password" v-model="user.upwd" id="upwd"  autocomplete="new-password" placeholder="输入密码" maxlength="18"/>
             </div>
             <!--<div class="from from-msg">
                 <label for="msgcode" class="icon icon-msg"></label>
@@ -46,9 +47,9 @@
             </div>
             <div class="from from-ext">
                 <label for="useCode" class="icon icon-ext"></label>
-                <input type="text" name="resstr2" id="useCode" placeholder="输入邀请码"/>
+                <input type="text" v-model="user.resstr2" id="useCode" placeholder="输入邀请码"/>
             </div>
-            <button class="btn" type="button" onclick="register();">注册</button>
+            <button class="btn" type="button" @click="register">注册</button>
             <div class="agree"><input type="checkbox" id="agree">我已阅读并同意《<a href="javascript:AgreeMent(0);">普金资本服务协议</a>》和《<a href="javascript:AgreeMent(1);">风险提示书</a>》</div>
         </form>
     </div>
@@ -81,69 +82,76 @@
 <div class="login-footer">
     <p>版权所有 © 普金资本运营（赣州）有限公司 All rights reserved 备案确认书：赣ICP备16004010号</p>
 </div>
+</div>
 <script type="text/javascript" src="<%=path%>/static/js/user/jquery.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/user/public.js"></script>
 <script src="<%=path%>/static/js/user/gt.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/user/register.js"></script>
 <script>
-    //错误提示
+
     function showError(msg,obj){
-        $('.error-msg').text(msg).addClass('show');
-        obj.parent('.from').addClass('error');
-        obj.focus(function(){
+            $('.error-msg').text(msg).addClass('show');
+            obj.parent('.from').addClass('error');
+            obj.focus(function(){
             obj.parent('.from').removeClass('error');
             $('.error-msg').removeClass('show');
         });
     }
-</script>
-<script>
-    function checkPhone(phone) {
-        var phone = $("#phone").val();
-        if(phone == ''){
-            showError('请输入手机号码',$(phone));
-            return;
-        }else if(phone.length != 11){
-            showError('请输入正确手机号',$(phone));
-            return;
-        };
-        $.post( '/user/data/json/getByPhone/'+phone,
-            function (data) {
-                if (data.message === 'success') {
 
-                } else {
-                    showError('该手机号已存在',$(phone));
+    new Vue({
+        el:'#app',
+        data:{
+            phone:'',
+            user:{
+                phone:'',
+                upwd:'',
+                resstr2:''
+            }
+        },
+        created (){
+
+        },
+        methods:{
+            register () {
+                if(this.phone==''){
+                    showError('请输入手机号',$('#phone'));
                     return;
-                }
-            },
-            'json'
-        );
-    };
-
-    function register() {
-        var phone = $("#phone").val();
-        var upwd = $("#upwd").val();
-        if(phone==''){
-            showError('请输入手机号',$('#phone'));
-            return;
-        };
-        if(upwd==''){
-            showError('请输入登录密码',$('#upwd'));
-            return;
-        };
-        $.post( '/user/data/json/register',
-            $("#register").serialize(),
-            function (data) {
-                if (data.message === 'success') {
+                };
+                if(this.user.upwd==''){
+                    showError('请输入登录密码',$('#upwd'));
+                    return;
+                };
+                this.user.phone = this.phone;
+                axios.post('/user/data/json/register', Qs.stringify(this.user)).then((response) => {
+                    if(response.data.code==1){
+                        return showError('注册失败','error');
+                    }
                     window.location.href = "/user/login";
-                } else {
-                    showError('注册失败','error');
-                }
-            },
-            'json'
-        );
-    };
+                }, (error) => {
 
-
+                });
+            }
+        },
+        watch: {
+            phone (val){
+                if(val==''){
+                    showError('请输入手机号码',$("#phone"));
+                    return;
+                }else if(val.length != 11){
+                    showError('请输入正确手机号',$("#phone"));
+                    return;
+                };
+                axios.get('/user/data/json/getByPhone/'+this.phone).then((response)=>{
+                    if(response.data.code==1){
+                        showError('该手机号已存在',$("#phone"));
+                    }
+                },(error)=>{});
+            }
+        }
+    });
 </script>
 </body>
 </html>

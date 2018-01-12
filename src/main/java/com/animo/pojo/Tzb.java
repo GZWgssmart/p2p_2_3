@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 0 投标中
+ * 1 还款中
+ * 2 流标
+ */
 public class Tzb {
     private Integer tzid;
 
@@ -27,9 +32,9 @@ public class Tzb {
 
     private Integer resint2;
 
-    private String resstr1;
+    private Integer resint3;
 
-    private String resstr2;
+    private Integer resint4;
 
     public Integer getTzid() {
         return tzid;
@@ -111,19 +116,19 @@ public class Tzb {
         this.resint2 = resint2;
     }
 
-    public String getResstr1() {
-        return resstr1;
+    public Integer getResint3() {
+        return resint3;
     }
 
-    public void setResstr1(String resstr1) {
-        this.resstr1 = resstr1 == null ? null : resstr1.trim();
+    public void setResint3(Integer resint3) {
+        this.resint3 = resint3;
     }
 
-    public String getResstr2() {
-        return resstr2;
+    public Integer getResint4() {
+        return resint4;
     }
 
-    public void setResstr2(String resstr2) {
-        this.resstr2 = resstr2 == null ? null : resstr2.trim();
+    public void setResint4(Integer resint4) {
+        this.resint4 = resint4;
     }
 }

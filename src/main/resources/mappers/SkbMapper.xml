@@ -248,13 +248,13 @@
       INSERT INTO skb(uid, juid,
       ybx, rbx, ylx, rlx,
       ybj, rbj, rnum, tnum,
-      baid
+      baid,sktime
       )VALUES
     ]]>
     <foreach collection="list" item="item" index="index" separator="," >
       (#{item.uid},#{item.juid},#{item.ybx},#{item.rbx}
       ,#{item.ylx},#{item.rlx},#{item.ybj},#{item.rbj}
-      ,#{item.rnum},#{item.tnum},#{item.baid})
+      ,#{item.rnum},#{item.tnum},#{item.baid},#{item.sktime})
     </foreach>
   </insert>
 

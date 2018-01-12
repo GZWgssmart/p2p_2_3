@@ -103,7 +103,7 @@
                 if (data.message === 'success') {
                     window.location.href = "/user/accountOverride";
                 } else {
-                    alert("登录失败");
+                    alert("账号或密码错误");
                 }
             },
             'json'

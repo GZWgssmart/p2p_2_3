@@ -56,7 +56,7 @@
             <div class="account-left-nav">
                 <div class="navbar icon icon-account"><a href="#myCount">我的账户</a></div>
                 <ul class="sub-nav">
-                    <li class=""><a href="#account2">账户总览</a></li>
+                    <li class=""><a href="#account2" class="zhanghuzonglan">账户总览</a></li>
                     <li><a href="#ipay">充值</a></li>
                     <li><a href="#cash">提现</a></li>
 
@@ -72,7 +72,7 @@
                 </ul>
                 <div class="navbar icon icon-settings">账户设置</div>
                 <ul class="sub-nav">
-                    <li><a href="<%=path%>/bankCard/mybank">我的银行卡</a></li>
+                    <li><a href="#bank" class="mybank">我的银行卡</a></li>
                     <li><a href="#safe">安全设置</a></li>
                     <li><a href="#msg">消息中心</a></li>
                 </ul>
@@ -86,7 +86,7 @@
                         <div class="zongl " id="zongl">
                             <div class="account-right-nav">
                                 <div class="sub-a-nav">
-                                    <a href="#zongl">账户总览</a><a href="#shenlib">生利宝</a>
+                                    <a href="#zongl">账户总览</a>
                                 </div>
                                 <em class="em-line"></em>
                             </div>
@@ -151,86 +151,6 @@
 
                             </div>
                         </div>
-
-                        <div class="shenlib" id="shenlib">
-                            <div class="account-right-nav">
-                                <div class="sub-a-nav">
-                                    <a href="#zongl">账户总览</a><a href="#shenlib">生利宝</a>
-                                </div>
-                                <em class="em-line" style="left: 120px;"></em>
-                            </div>
-                            <div class="account-content" style="display: block;">
-                                <div class="slb-view" style="display: block;">
-                                    <div class="slb-all">
-                                        <div class="slb-left">
-                                            <p><span id="slbSum">10000000.00</span>元</p>
-                                            <h1>总金额</h1>
-                                            <a href="javascript:slbaoTrading();">转入/转出</a>
-                                        </div>
-                                        <ul class="slb-right">
-                                            <li>
-                                                <h2><span id="annuRate">3.235</span>%</h2>
-                                                <p>最近7日年化收益率</p>
-                                            </li>
-                                            <li>
-                                                <h2><span id="prdRate">0.788</span>%</h2>
-                                                <p>最新收益率</p>
-                                            </li>
-                                            <li>
-                                                <h2><span id="totalProfit">0.00</span>元</h2>
-                                                <p>生利宝历史累计收益</p>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="slb-govern">
-                                        <div class="sub-a-nav">
-                                            <a href="javascript:void(0);" class="active slb-to" id="to">转入</a>
-                                            <a href="javascript:void(0);" class="slb-go" id="go">转出</a>
-                                            <a href="javascript:void(0);" class="slb-sy" id="earn">收益</a>
-                                            <em class="em-list"></em>
-                                            <div class="account-form cl">
-                                                <input type="text" class="date icon icon-date" id="startDate"
-                                                       readonly="readonly">
-                                                <p class="text">至</p>
-                                                <input type="text" class="date icon icon-date" id="endDate"
-                                                       readonly="readonly">
-                                                <button type="button" class="search" id="slbSearch">搜索</button>
-                                            </div>
-                                        </div>
-                                        <div class="govern-list list-a">
-                                            <ul class="govern-list-box list-box">
-                                                <li class="title">
-                                                    <div class="children0">日期</div>
-                                                    <div class="children1">金额（元）</div>
-                                                    <div class="children2">生利宝余额（元）</div>
-                                                    <div class="children3">订单号</div>
-                                                    <div class="children4">信息</div>
-                                                </li>
-                                            </ul>
-                                            <ul class="govern-list-box listData">
-                                                <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                            </ul>
-                                            <ul class="paging" style="width:340px;margin:30px auto 0;"></ul>
-                                        </div>
-                                        <div class="govern-list list-c" style="display: none;">
-                                            <ul class="govern-list-box list-box">
-                                                <li class="title">
-                                                    <div class="children0">日期</div>
-                                                    <div class="children1">金额（元）</div>
-                                                    <div class="children2">生利宝余额（元）</div>
-                                                    <div class="children3">信息</div>
-                                                </li>
-                                            </ul>
-                                            <ul class="govern-list-box listData">
-                                                <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                            </ul>
-                                            <ul class="paging"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -254,9 +174,6 @@
                                             <label>充值金额：</label><input type="text" v-model="czmoney" id="ipay-amt"
                                                                        maxlength="18" placeholder="请输入充值金额">
                                             <p class="roll">元</p>
-                                        </div>
-                                        <div class="label cl">
-                                            <label>充值类型：</label><img src="images/huifu.png">
                                         </div>
                                         <button type="button" class="btn" @click="chongzhi">立即充值</button>
                                     </div>
@@ -300,15 +217,8 @@
                                     </p>
                                     <div class="pay-from">
                                         <div class="label cl">
-                                            <label class="long">持卡人：</label>
-                                            <p class="text" id="cash-realName">陈广胜</p>
-                                        </div>
-                                        <div class="label cl">
                                             <label class="long">可提现金额：</label>
                                             <p class="text color" id="cash-usableSum">{{dataRows.kymoney}}元</p>
-                                        </div>
-                                        <div class="label cl label-msg">
-                                            <label class="long">提现至银行：</label><input type="text" class="select">
                                         </div>
                                         <div class="label cl">
                                             <label class="long">提现金额：</label><input type="text" v-model="txmoney"
@@ -333,7 +243,7 @@
                                         <%--<button type="button" id="getMsgCode">获取验证码</button>--%>
                                         <%--</div>--%>
                                         <%--</div>--%>
-                                        <button type="button" class="btn long disabled" @click="tixian">立即提现</button>
+                                        <button type="button" class="btn" @click="tixian">立即提现</button>
                                     </div>
                                     <div id="returnHtml"></div>
                                 </div>
@@ -519,6 +429,8 @@
                     </div>
                 </div>
 
+
+
                 <!--投资管理：开始-->
                 <div class="invest" id="invest">
                     <div class="bo1">
@@ -606,6 +518,32 @@
                                         <ul class="paging detailPaging"></ul>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--wo d -->
+                <div class="bank" id="bank">
+                    <div class="account-right-nav">
+                        <div class="sub-a-nav">
+                            <a href="#bank">我的银行卡</a>
+                        </div>
+                    </div>
+                    <div class="account-content" style="display: block;">
+                        <div id="card1" class="bank-card_1">
+                            <div class="bank-top">
+                                <div class="bank-cardTitle">{{bank.type}}</div>
+                                <div class="bank-cardType">储蓄卡</div>
+                            </div>
+                            <div class="bank-center">
+                                <div class="bank-cardNumber">{{bank.idno}}</div>
+                                <div class="bank-userName">{{bank.rname}}</div>
+                            </div>
+                        </div>
+                        <div v-if="bank==null" id="card3" class="bank-card_3" @click="addCard" style="cursor:pointer;">
+                            <div class="bank-addCard"><a href="/bankCard/add">添加银行卡</a>
                             </div>
                         </div>
                     </div>
@@ -997,6 +935,7 @@
     var vue = new Vue({
         el: '#app',
         data: {
+            bank:[],
             dataRows: [],
             czmoney: '',
             txmoney: '',
@@ -1007,11 +946,7 @@
         },
         methods: {
             getUserMoney() {
-                axios.get('/userMoney/data/json/selectBanlance').then((response) => {
-                    this.dataRows = response.data.data;
-                }, (error) => {
-
-                });
+                usermoney();
             },
             chongzhi() {
                 axios.get('/logCz/data/json/recharge?money=' + this.czmoney).then((response) => {
@@ -1033,10 +968,20 @@
                 }, (error) => {
 
                 });
+            },
+            addCard () {
+                window.location.href = "/bankCard/add";
             }
         }
     });
 
+    function usermoney(){
+        axios.get('/userMoney/data/json/selectBanlance').then((response) => {
+            vue.dataRows = response.data.data;
+        }, (error) => {
+
+        });
+    }
 
     layui.use(['laypage', 'layer', 'table', 'element'], function () {
         var laypage = layui.laypage //分页
@@ -1136,6 +1081,18 @@
         //投资管理
         $(".investTable").on('click', function () {
            invest();
+        });
+    });
+
+    $(".zhanghuzonglan").on('click', function () {
+        usermoney();
+    });
+
+    $(".mybank").on('click', function () {
+        axios.get(' /bankcard/data/json/list').then((response) => {
+            vue.bank = response.data.data
+        }, (error) => {
+
         });
     });
 

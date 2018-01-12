@@ -28,10 +28,16 @@ public class BorrowApplyDetail {
      */
     private BigDecimal moneyCount;
 
+    private Date cktime;
+
+    private Integer ckstatus;
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date deadline;
 
     private Integer bdid;
+
+    private Integer baid;
 
     private String bzname;
 
@@ -234,5 +240,29 @@ public class BorrowApplyDetail {
 
     public void setCpname(String cpname) {
         this.cpname = cpname;
+    }
+
+    public Date getCktime() {
+        return cktime;
+    }
+
+    public void setCktime(Date cktime) {
+        this.cktime = cktime;
+    }
+
+    public Integer getCkstatus() {
+        return ckstatus;
+    }
+
+    public void setCkstatus(Integer ckstatus) {
+        this.ckstatus = ckstatus;
+    }
+
+    public Integer getBaid() {
+        return baid;
+    }
+
+    public void setBaid(Integer baid) {
+        this.baid = baid;
     }
 }

@@ -28,4 +28,8 @@ public class RewardServiceImpl extends AbstractServiceImpl implements RewardServ
         return rewardMapper.selectByStatus(status);
     }
 
+    @Override
+    public Reward selectByUid(Integer uid) {
+        return rewardMapper.selectByUid(uid);
+    }
 }

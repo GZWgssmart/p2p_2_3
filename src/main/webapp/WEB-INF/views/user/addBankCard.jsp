@@ -59,12 +59,11 @@
                                                     <div class="layui-form-item">
                                                         <label class="layui-form-label">所属银行</label>
                                                         <div class="layui-input-block" style="width: 300px;">
-                                                            <select name="interest" id="type">
+                                                            <select id="type">
                                                                 <option value="中国银行">中国银行</option>
                                                                 <option value="中国农业银行">中国农业银行</option>
                                                                 <option value="中国建设银行">中国建设银行</option>
                                                                 <option value="中国工商银行">中国工商银行</option>
-                                                                <option value="招商银行">招商银行</option>
                                                                 <option value="招商银行">招商银行</option>
                                                             </select>
                                                         </div>

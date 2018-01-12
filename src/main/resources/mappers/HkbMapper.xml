@@ -361,4 +361,9 @@
     ]]>
   </select>
 
+  <select id="getSkTime" resultType="com.animo.pojo.Hkb">
+    <![CDATA[
+      SELECT h.ytime FROM hkb AS h  WHERE baid=#{baid}
+    ]]>
+  </select>
 </mapper>
