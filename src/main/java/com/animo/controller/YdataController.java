@@ -2,7 +2,6 @@ package com.animo.controller;
 
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
-import com.animo.pojo.DataBean;
 import com.animo.pojo.Ydata;
 import com.animo.service.YdataService;
 import com.animo.utils.DateFormateUtils;
