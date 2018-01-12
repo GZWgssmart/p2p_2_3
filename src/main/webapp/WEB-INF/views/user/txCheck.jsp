@@ -34,16 +34,6 @@
 <div id="apptxCheck">
     <table class="layui-hide" id="user" lay-filter="demo"></table>
 
-
-
-    <script type="text/html" id="barDemo">
-
-        <a class="layui-btn layui-btn layui-btn-xs" lay-event="agree" >同意</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refuse" >拒绝</a>
-
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete" >删除</a>
-    </script>
-
     <!--拒绝编辑窗口-->
     <div id="editWin" style="display: none">
         <form class="layui-form">
@@ -131,7 +121,7 @@
                 , {field: 'money', title: '金额', width: 120}
                 , {field: 'status', title: '状态', width: 120,templet:'<div>{{statusFormat(d.status)}}</div>'}
                 , {field: 'createdTime', title: '创建时间', width: 240,sort:true}
-                , {fixed: 'right', title: '操作', width: 155, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right', title: '操作', width: 155, align: 'center',templet:'<div>{{statusOpt(d.status)}}</div>'}
             ]]
         });
 
@@ -177,6 +167,17 @@
             return "提现成功";
         }else if(value==2){
             return "提现失败";
+        }
+    }
+
+    function statusOpt(value){
+        if(value==0){
+            return "<a class=\"layui-btn layui-btn layui-btn-xs\" lay-event=\"agree\" >同意</a>\n" +
+                "        <a class=\"layui-btn layui-btn-danger layui-btn-xs\" lay-event=\"refuse\" >拒绝</a>";
+        }else if(value==1){
+            return "不可操作";
+        }else if(value==2){
+            return "不可操作";
         }
     }
 

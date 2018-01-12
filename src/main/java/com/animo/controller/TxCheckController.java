@@ -10,6 +10,7 @@ import com.animo.utils.DateFormateUtils;
 import com.animo.vo.TxCheckVO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -74,5 +75,10 @@ public class TxCheckController {
     @RequestMapping("listRecord")
     public Pager listRecord(Integer page,Integer limit){
         return txCheckService.listPager(page,limit);
+    }
+
+    @RequestMapping("delete/{txid}")
+    public ServerResponse<TxCheck> deleteRecord(@PathVariable Integer txid){
+        return txCheckService.removeById(txid);
     }
 }
