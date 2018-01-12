@@ -25,7 +25,7 @@
     <!-- begin -->
     <div class="about-right">
         <%--<div class="account-right">--%>
-            <div class="layui-tab " lay-filter="demo" style="float: left;">
+            <div class="layui-tab layui-tab-brief" lay-filter="demo" style="float: left;">
                 <ul class="layui-tab-title">
                     <li class="layui-this">基本信息</li>
                     <li >治理信息</li>
