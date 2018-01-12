@@ -17,8 +17,11 @@ $(function () {
                 axios.post('/jur/data/json/updateJur', Qs.stringify(this.jur))
                     .then((response)=>{
                         layer.msg(response.data.message);
-                        window.location.reload();
-                        // layer.closeAll();
+                        table.reload('tbReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                        });
                     },(error)=>{
                         layer.alert("请求失败");
                     });
@@ -65,7 +68,8 @@ $(function () {
                 ,{field: 'jurl', title: '权限url', width:150}
                 ,{field: 'content', title: '描述', width:150}
                 ,{title:'操作', fixed: 'right', width: 165, align:'center', toolbar: '#barJur'}
-            ]]
+            ]],
+            id:'tbReload'
         });
         table.on('tool(jur)', function(obj){
             //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"

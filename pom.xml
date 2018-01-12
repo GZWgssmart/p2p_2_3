@@ -23,6 +23,7 @@
         <shiro.version>1.3.2</shiro.version>
         <shiro-crypto.version>1.4.0</shiro-crypto.version>
         <jstl-version>1.2</jstl-version>
+        <poi.version>3.17</poi.version>
     </properties>
 
     <dependencies>
@@ -228,7 +229,18 @@
         </dependency>
 
 
+        <!--excel导出-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
 
     </dependencies>
 

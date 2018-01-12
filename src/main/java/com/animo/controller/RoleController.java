@@ -49,10 +49,11 @@ public class RoleController {
     public ServerResponse updateRole(RoleJurVO roleJurVO){
         String jurString = roleJurVO.getJurString();
         Role role = new Role();
+        role.setRname(roleJurVO.getRname());
         role.setRid(roleJurVO.getRid());
         role.setContent(roleJurVO.getContent());
         role.setPid(roleJurVO.getPid());
-        if (!jurString.isEmpty()){
+        if (jurString !=null){
             //获取rid
             String [] jurList = jurString.split(",");
             List<Rolejur> rolejurList = new ArrayList<>();

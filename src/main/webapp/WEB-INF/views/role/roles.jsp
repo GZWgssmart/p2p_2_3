@@ -20,6 +20,7 @@
                 <button class="layui-btn" @click="showAddRole">添加角色</button>
                 <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
                 <button class="layui-btn" @click="showRoleJur">角色分配</button>
+                <a href="<%=path%>/ydata/data/json/downloadMonthData">下载</a>
             </div>
             <!--角色zTree的显示容器-->
             <div>
@@ -216,11 +217,11 @@
     <!--权限分配-->
     <div id="jurWin" style="display: none">
         <div class="layui-form-item">
-            <label class="layui-form-label">权限配置</label>
+            <label class="layui-form-label">请勾选需要的权限</label>
+            <button class="layui-btn layui-btn-normal layui-btn-xs" lay-filter="formDemo" @click="saveJurIds">确定</button>
             <!--权限树的显示容器-->
             <ul id="jurTree" class="ztree" style="width:auto; height: auto; overflow:auto;"></ul>
         </div>
-        <button class="layui-btn layui-btn-normal layui-btn-xs" style="margin-top:-40%;margin-left:20%;" lay-filter="formDemo" @click="saveJurIds">确定</button>
     </div>
 </div>
 </body>
@@ -346,7 +347,7 @@
                 showJur();
             },
             saveJurIds:function () {
-                layer.close(2);
+               layer.close(2);
             }
         }
     });

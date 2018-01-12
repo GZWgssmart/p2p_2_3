@@ -187,4 +187,64 @@
       (select(sum(hk.ybj) -(select sum(rbj) from hkb)) from hkb as hk) as stillreturnMoney
        from tzb as tz;
   </select>
+
+    <select id="selectByTime" resultType="com.animo.pojo.Ydata">
+        select  count(bw.baid) as mdkbno,count(distinct bw.uid) as mdkno,
+      (select count(distinct tz.uid)from tzb as tz where tz.tztime between #{firstDay} and #{today})as mtzno,
+      (select count(u.uid)from t_user as u where u.resint1 between #{firstDay} and #{today})as muser,
+      (select sum(tz.money)from tzb as tz where tz.tztime between #{firstDay} and #{today})as mmoney
+      from borrowapply as bw where bw.ckstatus = 2;
+    </select>
+
+    <select id="save" parameterType="com.animo.pojo.Ydata">
+      insert into ydata
+        <if test="yid != null">
+            yid,
+        </if>
+        <if test="tmoney != null">
+            tmoney,
+        </if>
+        <if test="mmoney != null">
+            mmoney,
+        </if>
+        <if test="tuser != null">
+            tuser,
+        </if>
+        <if test="muser != null">
+            muser,
+        </if>
+        <if test="ttzno != null">
+            ttzno,
+        </if>
+        <if test="mtzno != null">
+            mtzno,
+        </if>
+        <if test="tdkno != null">
+            tdkno,
+        </if>
+        <if test="mdkno != null">
+            mdkno,
+        </if>
+        <if test="tdkbno != null">
+            tdkbno,
+        </if>
+        <if test="mdkbno != null">
+            mdkbno,
+        </if>
+        <if test="createdTime != null">
+            created_time
+        </if>
+    </select>
+
+    <select id="listPager" resultType="com.animo.pojo.Ydata" parameterType="com.animo.common.Pager">
+       select * from ydata limit #{beginIndex}, #{pageSize}
+    </select>
+
+    <select id="count" resultType="long">
+        select count(yid) from ydata
+    </select>
+
+    <select id="getYdataByTime" parameterType="java.lang.String" resultType="com.animo.pojo.Ydata">
+        select * from ydata where  created_time = #{time}
+    </select>
 </mapper>
