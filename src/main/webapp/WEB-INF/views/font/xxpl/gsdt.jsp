@@ -16,7 +16,7 @@
                                     <img class="news-img" src="upload/mediareport/2017/10/20171020091300516.jpg"
                                          width="200" height="120">
                                     <div class="news-content">
-                                        <a href="news.html?id=103" class="news-title">【普金资本】校企联手 探寻合作新契机！</a>
+                                        <a href="news.html?id=103" class="news-title">！</a>
                                         <p class="news-about">
                                             &nbsp;&nbsp;2017年10月14号，普金资本公司与赣南医学院共同签定了《校外创新创业实践基地协议书》。根据协议，双方将充分发挥...</p>
                                         <p class="news-time">2017-10-19</p>
@@ -218,7 +218,7 @@
                                     <div class="news-content"><a href="news.html?id=90&amp;type=1" class="news-title">【潮汕在线】闲钱理财去哪里
                                         普金资本更稳健</a>
                                         <p class="news-about">
-                                            不经不觉间，2017年第二个理财季度已经过了一大半，对于大多数借助P2P网贷平台理财的投资者来说，投资短期标的的...</p>
+                                            不经不觉间，2017年第二个理财季度已经了一大半，对于大多数借助P2P网贷平台理财的投资者来说，投资短期标的的...</p>
                                         <p class="news-time">2017-05-08</p></div>
                                 </div>
                             </li>

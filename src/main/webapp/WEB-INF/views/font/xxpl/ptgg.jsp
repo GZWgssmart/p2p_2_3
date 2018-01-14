@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <div class="about-right-nav">
         <div class="sub-a-nav">
-            <a href="javascript:void(0);" class="active" id="">平台公告</a>
+            <a href="javascript:void(0);" class="active" id="">平台公</a>
         </div>
         <em class="em-line"></em>
     </div>
