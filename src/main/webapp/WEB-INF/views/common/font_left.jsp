@@ -76,7 +76,7 @@
         $(".about-right").load("/back/font/gsdt");
     }
     function ptgg() {
-        $(".about-right").load("/back/font/pygg");
+        $(".about-right").load("/back/font/ptgg");
     }
     function znxs() {
         $(".about-right").load("/back/font/znxs");

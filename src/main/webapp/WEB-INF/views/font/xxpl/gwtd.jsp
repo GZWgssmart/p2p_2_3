@@ -21,7 +21,7 @@
             <div class="content-photo">
                 <div class="content-photo-left">
                     <img src="/static/js/font/images/guwen_01.png">
-                    <p class="name">赖华明</p>
+                    <p class="name">张齐敏</p>
                     <p class="jobs">首席法律顾问</p>
                 </div>
                 <div class="content-photo-right">

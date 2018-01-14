@@ -367,7 +367,7 @@
                 <p class="top">关注我们</p>
                 <div class="bottom">
                     <p class="left four"></p>
-                    <p class="b-r two"><img src="resources/front/v01/src/images/about/lxwm_erwei.png"></p>
+                    <p class="b-r two"><img src="/static/js/font/images/lxwm_erwei.png"></p>
                 </div>
             </div>
         </div>

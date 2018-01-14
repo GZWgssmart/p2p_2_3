@@ -268,13 +268,13 @@
     </div>
 <div id="ajaxFooter">
 
-    <div id="gzh" class="popup wechart-box show">
+   <%-- <div id="gzh" class="popup wechart-box show">
         <p class="title left">关注普金资本微信公众号</p>
         <a href="javascript:void(0);" class="close icon icon-close"></a>
         <div class="popup-from">
             <img class="wechart" src="/static/images/index/wechart.jpg">
         </div>
-    </div>
+    </div>--%>
     <div class="mod-sidebar">
         <ul>
             <li><a target="_blank" href="http://web2.qq.com/"
