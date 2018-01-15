@@ -30,22 +30,6 @@
         <property name="securityManager" ref="securityManager"/>
     </bean>
 
-    <!--shiro异常处理-->
-    <bean
-            class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <!--没有权限-->
-                <prop key="org.apache.shiro.authz.UnauthorizedException">
-                    /shiro/Unauthorized
-                </prop>
-                <!--<prop key="org.apache.shiro.authz.UnauthenticatedException">-->
-                <!--/Unauthorized.jsp-->
-                <!--</prop>-->
-            </props>
-        </property>
-    </bean>
-
     <bean id="stringHttpMessageConverter"
           class="org.springframework.http.converter.StringHttpMessageConverter">
         <property name="supportedMediaTypes">

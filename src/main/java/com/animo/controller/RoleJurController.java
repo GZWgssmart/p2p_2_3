@@ -3,6 +3,7 @@ package com.animo.controller;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Rolejur;
 import com.animo.service.RoleJurService;
+import com.animo.utils.ShiroAuthorizationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,11 +29,13 @@ public class RoleJurController {
             rolejur.setRid(Integer.valueOf(nodeString[i]));
             rolejurList.add(rolejur);
         }
+        ShiroAuthorizationUtil.clearAuthAndCache();
         return roleJurService.saveRolejur(rolejurList);
     }
 
     @RequestMapping("delete")
     public ServerResponse removeRolejur(Integer rjid){
+        ShiroAuthorizationUtil.clearAuthAndCache();
         return roleJurService.removeById(rjid);
     }
 }

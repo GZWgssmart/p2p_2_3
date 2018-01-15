@@ -4,6 +4,7 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Jur;
 import com.animo.service.JurService;
+import com.animo.utils.ShiroAuthorizationUtil;
 import com.animo.vo.RoleJurVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +57,7 @@ public class JurController {
      */
     @RequestMapping("updateJur")
     public ServerResponse updateJur(Jur jur){
+        ShiroAuthorizationUtil.clearAuthAndCache();
         return jurService.update(jur);
     }
 

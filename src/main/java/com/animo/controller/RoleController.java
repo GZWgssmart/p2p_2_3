@@ -6,7 +6,9 @@ import com.animo.pojo.Role;
 import com.animo.pojo.Rolejur;
 import com.animo.service.RoleJurService;
 import com.animo.service.RoleService;
+import com.animo.utils.ShiroAuthorizationUtil;
 import com.animo.vo.RoleJurVO;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/role/data/json")
-public class RoleController {
+public class RoleController extends ShiroExecptionController{
 
     @Autowired
     private RoleService roleService;
@@ -32,8 +34,8 @@ public class RoleController {
      * @return
      */
     @PostMapping("save")
+    @RequiresPermissions("role:add")
     public ServerResponse saveRole(RoleJurVO roleJurVO){
-        System.out.println(roleJurVO.getJurString());
         Role role = new Role();
         role.setPid(roleJurVO.getPid());
         role.setRname(roleJurVO.getRname());
@@ -53,8 +55,7 @@ public class RoleController {
         role.setRid(roleJurVO.getRid());
         role.setContent(roleJurVO.getContent());
         role.setPid(roleJurVO.getPid());
-        if (jurString !=null){
-            //获取rid
+        if (jurString != null && jurString.length() > 0){
             String [] jurList = jurString.split(",");
             List<Rolejur> rolejurList = new ArrayList<>();
             Rolejur rolejur;
@@ -66,6 +67,7 @@ public class RoleController {
             }
             roleJurService.saveRolejur(rolejurList);
         }
+        ShiroAuthorizationUtil.clearAuthAndCache();
         return roleService.update(role);
     }
 
@@ -75,6 +77,7 @@ public class RoleController {
      */
     @RequestMapping("delete")
     public ServerResponse deleteRole(Role role){
+        ShiroAuthorizationUtil.clearAuthAndCache();
         return roleService.deleteByRoleKey(role.getRid());
     }
 

@@ -107,8 +107,12 @@ public class MyRealm extends AuthorizingRealm {
 
     // 清除缓存
     public void clearCached() {
-        PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
-        super.clearCache(principals);
+        super.clearCache(SecurityUtils.getSubject().getPrincipals());
+    }
+
+    //清除所有权限
+    public void clearAuthz(){
+        super.clearCachedAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
     }
 
 }

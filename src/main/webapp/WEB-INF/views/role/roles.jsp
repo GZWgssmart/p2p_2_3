@@ -16,11 +16,10 @@
         <div class="layui-col-xs6">
             <div>
                 <%--<shiro:hasPermission name="role:add">--%>
-                <%--</shiro:hasPermission>--%>
                 <button class="layui-btn" @click="showAddRole">添加角色</button>
+                    <%--</shiro:hasPermission>--%>
                 <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
                 <button class="layui-btn" @click="showRoleJur">角色分配</button>
-                <a href="<%=path%>/ydata/data/json/downloadMonthData">下载</a>
             </div>
             <!--角色zTree的显示容器-->
             <div>
@@ -218,7 +217,7 @@
     <div id="jurWin" style="display: none">
         <div class="layui-form-item">
             <label class="layui-form-label">请勾选需要的权限</label>
-            <button class="layui-btn layui-btn-normal layui-btn-xs" lay-filter="formDemo" @click="saveJurIds">确定</button>
+            <%--<button class="layui-btn layui-btn-normal layui-btn-xs" lay-filter="formDemo" @click="saveJurIds">确定</button>--%>
             <!--权限树的显示容器-->
             <ul id="jurTree" class="ztree" style="width:auto; height: auto; overflow:auto;"></ul>
         </div>
@@ -268,7 +267,7 @@
                 this.roleJurVO.rname = this.role.rname;
                 if (this.role.pid.length != 0) {
                     axios.post('/role/data/json/save', Qs.stringify(this.roleJurVO)).then((response) => {
-                        layer.msg(response.data.message);
+                        alert(response.data.message);
                     }, (error) => {
                         layer.alert("请求失败");
                     });

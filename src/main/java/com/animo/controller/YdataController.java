@@ -1,12 +1,8 @@
 package com.animo.controller;
 
 import com.animo.common.Pager;
-import com.animo.common.ServerResponse;
 import com.animo.pojo.Ydata;
 import com.animo.service.YdataService;
-import com.animo.utils.DateFormateUtils;
-import com.animo.utils.GetFirstMonthDay;
-import com.animo.utils.GetLastMonthDay;
 import com.animo.vo.StatisticalReportVO;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Administrator on 2018/1/11.

@@ -56,7 +56,7 @@ public class RoleServiceImpl extends AbstractServiceImpl implements RoleService{
             return ServerResponse.createByError(validationResult.getErrorMsg());
         }
         Integer integer = roleMapper.insertSelective(role);
-        if (!jurString.isEmpty()){
+        if (jurString != null && jurString.length() > 0){
             //获取rid
             String [] jurList = jurString.split(",");
             List<Rolejur> rolejurList = new ArrayList<>();
