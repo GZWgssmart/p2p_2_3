@@ -31,7 +31,7 @@
             <ul id="animateUl" class="sub-nav">
                 <li class="xxpl"><a href="javaScript:void(0);" onclick="animate1()" class="icon-about about-xxpl">信息披露</a></li>
                 <li ><a href="#cyjg" class="icon-about about-cyjg">从业机构信息</a></li>
-                <li ><a href="#ptyy" class="icon-about about-ptyy">平台运营信息</a></li>
+                <li ><a href="#ptyy" class="icon-about about-ptyy" @click="listydata">平台运营信息</a></li>
                 <li ><a href="#jkxm" class="icon-about about-jkxm">借款项目信息</a>
                 </li>
             </ul>
@@ -136,37 +136,44 @@
                             <div class="btnDiv">
                                 撮合交易总额（元）
                             </div>
-                            <div class="moneyDiv">
 
-                                <div class="item_Div">3</div><div class="marginLeft"></div><div class="item_Div">3</div><div class="marginLeft">,</div><div class="item_Div">8</div><div class="marginLeft"></div><div class="item_Div">6</div><div class="marginLeft"></div><div class="item_Div">9</div><div class="marginLeft">,</div><div class="item_Div">4</div><div class="marginLeft"></div><div class="item_Div">9</div><div class="marginLeft"></div><div class="item_Div">8</div><div class="marginLeft">.</div><div class="item_Div">0</div><div class="marginLeft"></div><div class="item_Div">0</div><div class="marginLeft"></div>
+                            <div   class="moneyDiv">
+                                <div v-for="item in tmoneyList">
+                                <div class="item_Div" id="allmoney7">{{item}}</div>
+                                </div>
+                                <div class="marginLeft">.</div>
+                                <div class="item_Div" id="allmoney8">0</div>
+                                <div class="item_Div" id="allmoney9">0</div>
                             </div>
+
+
                             <div class="btnDiv">平台数据总览</div>
                             <div class="sjList sjList-1">
                                 <div class="item">
 
                                     <div class="item-icon icon-dealNumber"></div>
                                     <div class="itemText">交易笔数（笔）</div>
-                                    <div class="itemSJ" id="dealNumber">1,926</div>
+                                    <div class="itemSJ" id="dealNumber">{{list.allTrade}}</div>
                                 </div>
                                 <div class="item">
                                     <div class="item-icon icon-repayAmount"></div>
                                     <div class="itemText">已还本金（元）</div>
-                                    <div class="itemSJ" id="repayAmount">22,301,677.26</div>
+                                    <div class="itemSJ" id="repayAmount">{{list.alreadyMoney}}</div>
                                 </div>
                                 <div class="item">
                                     <div class="item-icon icon-unRepayAmount"></div>
                                     <div class="itemText">待还本金（元）</div>
-                                    <div class="itemSJ" id="unRepayAmount">11,270,632.00</div>
+                                    <div class="itemSJ" id="unRepayAmount">{{list.stillreturnMoney}}</div>
                                 </div>
                                 <div class="item">
                                     <div class="item-icon icon-unRepayNumber"></div>
-                                    <div class="itemText">待还笔数（笔）</div>
-                                    <div class="itemSJ" id="unRepayNumber">27</div>
+                                    <div class="itemText">总贷款笔数（笔）</div>
+                                    <div class="itemSJ" id="unRepayNumber">{{list.tdkbno}}</div>
                                 </div>
                                 <div class="item">
                                     <div class="item-icon icon-hasInteres"></div>
                                     <div class="itemText">为用户创造的收益（元）</div>
-                                    <div class="itemSJ" id="hasInterest">613,196.00</div>
+                                    <div class="itemSJ" id="hasInterest">{{list.usersProfit}}</div>
                                 </div>
 
                             </div>
@@ -380,7 +387,10 @@
         el:'#app',
         data:{
             rows:[],
-            laypage:''
+            laypage:'',
+            list:{},
+            tmoneyList:[]
+
         },
         filters: {
             formatDate(time) {
@@ -391,6 +401,21 @@
         created () {
         },
         methods: {
+                 listydata: function () {
+                 axios.post('/ydata/data/json/all').then((response) => {
+                    this.list =response.data;
+                     var allMoney =this.list.tmoney + "";
+                     var strList = "";
+                     for(var i = allMoney.length - 1, len = 0;i >= len; i--){
+                         strList+= allMoney.charAt(i)+',';
+                     }
+                     this.tmoneyList = strList.split(",");
+                     this.tmoneyList.pop();
+                     }, (error) => {
+                 alert(error);
+                 });
+                 }
+            ,
             commonUtil(url,demo) {
                 var laypage = this.laypage;
                 $.getJSON(url, {
@@ -427,7 +452,7 @@
     });
 
 
-    
+
 </script>
 
 

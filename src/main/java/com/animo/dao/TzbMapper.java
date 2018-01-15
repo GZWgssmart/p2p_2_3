@@ -4,9 +4,10 @@ import com.animo.common.Pager;
 import com.animo.pojo.Tzb;
 import com.animo.vo.TzCountVO;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface TzbMapper extends BaseMapper{
 
     List<Object> listPagerByBaid(@Param("pager") Pager pager,@Param("baid") Integer baid);

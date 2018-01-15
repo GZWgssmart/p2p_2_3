@@ -73,6 +73,7 @@
         $(".about-right").load("/back/font/gwtd");
     }
     function gsdt() {
+
         $(".about-right").load("/back/font/gsdt");
     }
     function ptgg() {

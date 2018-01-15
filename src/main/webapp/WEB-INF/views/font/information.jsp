@@ -6,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path=request.getContextPath();
+%>
 
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>关于我们-普金资本-为用户提供详尽安全可靠的投资理财信息，网络贷款、融资服务</title>
@@ -321,13 +322,12 @@
     <!-- end -->
 </div>
 <%@include file="../common/footer.jsp"%>
-<script type="text/javascript" src="/static/js/font/jquery.js"></script>
-<script type="text/javascript" src="/static/js/font/public.js"></script>
-<script charset="utf-8" type="text/javascript" src="/static/js/font/wpa.js"></script>
-<script type="text/javascript" src="/static/js/font/countup.min.js"></script>
+</body>
+<script type="text/javascript" src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/font/public.js"></script>
+<script charset="utf-8" type="text/javascript" src="<%=path%>/static/js/font/wpa.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/font/countup.min.js"></script>
 <%--<script type="text/javascript" src="/static/js/font/about.js"></script>--%>
-<script type="text/javascript" src="/static/layui/layui.js"></script>
-
 <script>
     layui.use('element', function(){
         var element = layui.element;
@@ -338,6 +338,4 @@
     });
 
 </script>
-</body>
-
 </html>

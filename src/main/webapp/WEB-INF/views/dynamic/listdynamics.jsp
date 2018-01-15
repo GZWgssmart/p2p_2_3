@@ -67,7 +67,7 @@
             messageF();
         }
     });
-    this.title="asadasad";
+
     function tofindone (id) {
             var params = new URLSearchParams();
             params.append('id', id);

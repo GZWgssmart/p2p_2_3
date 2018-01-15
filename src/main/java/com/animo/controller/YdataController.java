@@ -50,66 +50,66 @@ public class YdataController {
 
     @RequestMapping("downloadMonthData")
     public String excelDownload(HttpServletResponse response, Long longTime) throws IOException {
-        // 1.åˆ›å»ºä¸€ä¸ªworkbookï¼Œå¯¹åº”ä¸€ä¸ªExcelæ–‡ä»¶
+        // 1.´´½¨Ò»¸öworkbook£¬¶ÔÓ¦Ò»¸öExcelÎÄ¼ş
         HSSFWorkbook wb = new HSSFWorkbook();
-        // 2.åœ¨workbookä¸­æ·»åŠ ä¸€ä¸ªsheetï¼Œå¯¹åº”Excelä¸­çš„ä¸€ä¸ªsheet
+        // 2.ÔÚworkbookÖĞÌí¼ÓÒ»¸ösheet£¬¶ÔÓ¦ExcelÖĞµÄÒ»¸ösheet
         HSSFSheet sheet = wb.createSheet("sheet1");
-        // 3.åœ¨sheetä¸­æ·»åŠ è¡¨å¤´ç¬¬0è¡Œï¼Œè€ç‰ˆæœ¬poiå¯¹excelè¡Œæ•°åˆ—æ•°æœ‰é™åˆ¶short
+        // 3.ÔÚsheetÖĞÌí¼Ó±íÍ·µÚ0ĞĞ£¬ÀÏ°æ±¾poi¶ÔexcelĞĞÊıÁĞÊıÓĞÏŞÖÆshort
         HSSFRow row = sheet.createRow((int) 0);
-        // 4.åˆ›å»ºå•å…ƒæ ¼ï¼Œè®¾ç½®å€¼è¡¨å¤´ï¼Œè®¾ç½®è¡¨å¤´å±…ä¸­
+        // 4.´´½¨µ¥Ôª¸ñ£¬ÉèÖÃÖµ±íÍ·£¬ÉèÖÃ±íÍ·¾ÓÖĞ
         HSSFCellStyle style = wb.createCellStyle();
-        // å±…ä¸­æ ¼å¼
+        // ¾ÓÖĞ¸ñÊ½
 //        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
         HSSFCell cell = row.createCell(0);
         cell.setCellValue("STORERKEY");
         cell.setCellStyle(style);
 
         cell = row.createCell(1);
-        cell.setCellValue("ç¼–å·");
+        cell.setCellValue("±àºÅ");
         cell.setCellStyle(style);
 
         cell = row.createCell(2);
-        cell.setCellValue("ç”Ÿæˆæ—¶é—´");
+        cell.setCellValue("Éú³ÉÊ±¼ä");
         cell.setCellStyle(style);
 
         cell = row.createCell(3);
-        cell.setCellValue("äº¤æ˜“æ€»é¢");
+        cell.setCellValue("½»Ò××Ü¶î");
         cell.setCellStyle(style);
 
         cell = row.createCell(4);
-        cell.setCellValue("æœˆäº¤æ˜“æ€»é¢");
+        cell.setCellValue("ÔÂ½»Ò××Ü¶î");
         cell.setCellStyle(style);
 
         cell = row.createCell(5);
-        cell.setCellValue("æ€»ç”¨æˆ·æ•°");
+        cell.setCellValue("×ÜÓÃ»§Êı");
         cell.setCellStyle(style);
 
         cell = row.createCell(6);
-        cell.setCellValue("æœˆæ³¨å†Œæ•°");
+        cell.setCellValue("ÔÂ×¢²áÊı");
         cell.setCellStyle(style);
 
         cell = row.createCell(7);
-        cell.setCellValue("æ€»æŠ•èµ„äººæ•°");
+        cell.setCellValue("×ÜÍ¶×ÊÈËÊı");
         cell.setCellStyle(style);
 
         cell = row.createCell(8);
-        cell.setCellValue("æœˆæŠ•èµ„äººæ•°");
+        cell.setCellValue("ÔÂÍ¶×ÊÈËÊı");
         cell.setCellStyle(style);
 
         cell = row.createCell(9);
-        cell.setCellValue("æ€»è´·æ¬¾äººæ•°");
+        cell.setCellValue("×Ü´û¿îÈËÊı");
         cell.setCellStyle(style);
 
         cell = row.createCell(10);
-        cell.setCellValue("æœˆè´·æ¬¾äººæ•°");
+        cell.setCellValue("ÔÂ´û¿îÈËÊı");
         cell.setCellStyle(style);
 
         cell = row.createCell(11);
-        cell.setCellValue("æ€»è´·æ¬¾ç¬”æ•°");
+        cell.setCellValue("×Ü´û¿î±ÊÊı");
         cell.setCellStyle(style);
 
         cell = row.createCell(12);
-        cell.setCellValue("æœˆè´·æ¬¾ç¬”æ•°");
+        cell.setCellValue("ÔÂ´û¿î±ÊÊı");
         cell.setCellStyle(style);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -131,8 +131,8 @@ public class YdataController {
         row.createCell(10).setCellValue(ydata.getMdkno());
         row.createCell(11).setCellValue(ydata.getTdkbno());
         row.createCell(12).setCellValue(ydata.getMdkbno());
-        SimpleDateFormat format = new SimpleDateFormat("yyyyå¹´MMæœˆä»½");
-        String fileName = format.format(date)+"è¿è¥æ•°æ®ç»Ÿè®¡æŠ¥è¡¨";
+        SimpleDateFormat format = new SimpleDateFormat("yyyyÄêMMÔÂ·İ");
+        String fileName = format.format(date)+"ÔËÓªÊı¾İÍ³¼Æ±¨±í";
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         try {
             wb.write(os);
@@ -142,7 +142,7 @@ public class YdataController {
         byte[] content = os.toByteArray();
         InputStream is = new ByteArrayInputStream(content);
 
-        // è®¾ç½®responseå‚æ•°ï¼Œå¯ä»¥æ‰“å¼€ä¸‹è½½é¡µé¢
+        // ÉèÖÃresponse²ÎÊı£¬¿ÉÒÔ´ò¿ªÏÂÔØÒ³Ãæ
         response.reset();
         response.setContentType("application/vnd.ms-excel;charset=utf-8");
         response.setHeader("Content-Disposition", "attachment;filename="+ new String((fileName + ".xls").getBytes(), "iso-8859-1"));
