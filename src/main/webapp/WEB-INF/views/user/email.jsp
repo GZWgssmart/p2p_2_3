@@ -13,6 +13,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="<%=path%>/static/css/style.css"/>
+    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
     <style>
         div.login{
             width: 400px;
@@ -57,6 +58,7 @@
 </div>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script src="<%=path%>/static/js/user/jquery-latest.js"></script>
+<script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
 
 <script>
     //错误提示
@@ -73,6 +75,10 @@
 <script>
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 
+    layui.use(['layer'], function() {
+        var layer = layui.layer //弹层
+    });
+
     function upEmail() {
         var email = $("#email").val();
         if(email == '') {
@@ -87,7 +93,7 @@
             function (data) {
                 if (data.code === 0) {
                     parent.layer.close(index); //再执行关闭
-                    alert("修改成功");
+                    layer.msg("修改成功");
                     $(":text").val("");
 
                 } else {

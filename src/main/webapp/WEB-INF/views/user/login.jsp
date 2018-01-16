@@ -109,7 +109,7 @@
                 if (data.message === 'success') {
                     window.location.href = "/user/accountOverride";
                 } else {
-                    alert("账号或密码错误");
+                    showError("账号或密码错误", $(phone));
                 }
             },
             'json'

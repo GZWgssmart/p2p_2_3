@@ -14,6 +14,7 @@
 <head>
     <title>添加管理员</title>
     <link rel="stylesheet" href="<%=path%>/static/css/style.css"/>
+    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
 
 </head>
 <body>
@@ -36,6 +37,7 @@
     </ul>
 </div>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
 <script>
     //错误提示
     function showError(msg,obj){
@@ -46,6 +48,10 @@
             $('.error-msg').removeClass('show');
         });
     }
+
+    layui.use(['layer'], function() {
+        var layer = layui.layer //弹层
+    });
 
     function checkPhone(phone) {
         var phone = $("#phone").val();
@@ -92,11 +98,11 @@
             $("#addAdmin").serialize(),
             function (data) {
                 if (data.message === 'success') {
-                    alert("添加成功");
+                    layer.msg("添加成功");
                     $(":text").val("");
                     $(":password").val("");
                 } else {
-                    alert(data.message);
+                    showError(data.message, $(rname));
                 }
             },
             'json'

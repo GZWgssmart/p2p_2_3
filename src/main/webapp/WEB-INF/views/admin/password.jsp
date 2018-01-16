@@ -50,6 +50,10 @@
 
 </script>
 <script>
+    layui.use(['layer'], function() {
+        var layer = layui.layer //弹层
+    });
+
     function updatePwd(){
             var pwd = $("#pwd").val();
             var nowPwd = $("#nowPwd").val();
@@ -68,7 +72,7 @@
             $("#updatePwd").serialize(),
             function (data) {
                 if (data.message === 'success') {
-                    alert('修改成功');
+                    layer.msg('修改成功');
                     $(":text").val("");
                     $(":password").val("");
                 } else {

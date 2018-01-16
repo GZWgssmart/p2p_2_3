@@ -78,6 +78,11 @@
 <script>
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 
+    layui.use(['layer'], function() {
+        var layer = layui.layer //弹层
+    });
+
+
     function updatePwd(){
         var pwd = $("#pwd").val();
         var nowPwd = $("#nowPwd").val();
@@ -97,7 +102,7 @@
             function (data) {
                 if (data.message === 'success') {
                     parent.layer.close(index); //再执行关闭
-                    alert("修改成功");
+                    layer.msg("修改成功");
                     $(":password").val("");
 
                 } else {
