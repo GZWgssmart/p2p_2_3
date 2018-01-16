@@ -137,4 +137,8 @@
     <select id="count" resultType="long">
         select count(txid) FROM log_tx
     </select>
+
+    <update id="updateStatus">
+        UPDATE  log_tx AS lt SET lt.status=#{status}  WHERE lt.txid=#{txid}
+    </update>
 </mapper>

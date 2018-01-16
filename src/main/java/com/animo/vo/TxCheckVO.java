@@ -15,6 +15,7 @@ public class TxCheckVO {
     private BigDecimal money;
     private Integer status;
     private String excuse;
+    private Integer huid;
 
     public Integer getTxid() {
         return txid;
@@ -54,5 +55,13 @@ public class TxCheckVO {
 
     public void setExcuse(String excuse) {
         this.excuse = excuse;
+    }
+
+    public Integer getHuid() {
+        return huid;
+    }
+
+    public void setHuid(Integer huid) {
+        this.huid = huid;
     }
 }

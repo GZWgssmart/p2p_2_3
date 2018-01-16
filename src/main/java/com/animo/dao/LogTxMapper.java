@@ -20,4 +20,6 @@ public interface LogTxMapper extends BaseMapper {
 
     List<Object> listAll(@Param("pager") Pager pager);
 
+    int updateStatus(@Param("txid") Integer txid,@Param("status")Integer status);
+
 }

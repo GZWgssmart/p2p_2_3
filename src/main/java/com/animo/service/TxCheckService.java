@@ -14,5 +14,4 @@ import com.animo.vo.TxCheckVO;
  */
 public interface TxCheckService extends BaseService {
 
-    ServerResponse updateUserMoneyAndLogMoney(Usermoney usermoney, LogMoney logMoney, TxCheckVO txCheckVO);
 }

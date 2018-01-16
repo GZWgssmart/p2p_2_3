@@ -34,19 +34,19 @@
 <div id="apptxCheck">
     <table class="layui-hide" id="user" lay-filter="demo"></table>
 
-    <!--拒绝编辑窗口-->
     <div id="editWin" style="display: none">
-        <form class="layui-form">
+        <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">原因</label>
+                <label class="layui-form-label">状态</label>
                 <div class="layui-input-block">
-                    <textarea v-model="txCheckVO.excuse" placeholder="请输入拒绝原因" class="layui-textarea" style="width: 400px;"></textarea>
+                    <input type="radio" name="status" value="0" title="同意" checked>
+                    <input type="radio" name="status"  value="1" title="拒绝" >
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">理由</label>
                 <div class="layui-input-block">
-                    <button class="layui-btn" @click="agreeCheck">保存</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <textarea v-model="txCheckVO.excuse" placeholder="请输理由" class="layui-textarea"></textarea>
                 </div>
             </div>
         </form>
@@ -77,18 +77,6 @@
         created () {
         },
         methods:{
-            agreeCheck () {
-                vue.txCheckVO.txid=vue.txCheckData.txid;
-                vue.txCheckVO.money=vue.txCheckData.money;
-                vue.txCheckVO.uid=vue.txCheckData.uid;
-                axios.post('/txCheck/data/json/check', Qs.stringify(this.txCheckVO))
-                    .then((response)=>{
-                        layer.msg(response.data.message);
-                        window.location.reload();
-                    },(error)=>{
-                        layer.msg("请求失败");
-                    });
-            }
         }
     });
     layui.use(['form','laydate', 'laypage', 'layer', 'table', 'element'], function () {
@@ -119,7 +107,7 @@
                 , {field: 'money', title: '金额', width: 120}
                 , {field: 'status', title: '状态', width: 120,templet:'<div>{{statusFormat(d.status)}}</div>'}
                 , {field: 'createdTime', title: '创建时间', width: 240,sort:true}
-                , {fixed: 'right', title: '操作', width: 155, align: 'center',templet:'<div>{{statusOpt(d.status)}}</div>'}
+                , {fixed: 'right', title: '操作', width: 155, align: 'center',toolbar: '#barDemo'}
             ]]
         });
 
@@ -128,31 +116,40 @@
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
             if (layEvent === 'agree') {
-                layer.open({
-                    type: 1,
-                    title:'对提现进行审核',
-                    area: ['700px', '450px'],
-                    fixed: false, //不固定
-                    maxmin: true,
-                    closeBtn: 1,
-                    skin: '',
-                    content: $("#editWin")
-                });
-                vue.txCheckData = data;
-                vue.txCheckVO.status = 0;
-            }else if(layEvent === 'refuse'){
-                layer.open({
-                    type: 1,
-                    title:'对提现进行审核',
-                    area: ['700px', '450px'],
-                    fixed: false, //不固定
-                    maxmin: true,
-                    closeBtn: 1,
-                    skin: '',
-                    content: $("#editWin")
-                });
-                vue.txCheckData = data;
-                vue.txCheckVO.status = 1;
+                if(data.status!=0){
+                    layer.msg('已审核');
+                }else{
+                    vue.txCheckData=data;
+                    layer.open({
+                        type: 1,
+                        id:'txsh',
+                        title:'提现审核',
+                        area: ['440px', '300px'],
+                        fixed: false, //不固定
+                        maxmin: true,
+                        btn:'确定',
+                        skin: '',
+                        content: $("#editWin"),
+                        yes:function(index){
+                            layer.close(index);
+                            if(vue.txCheckVO.excuse==''){
+                                layer.msg("请填写理由");
+                                return;
+                            }
+                            vue.txCheckVO.txid=vue.txCheckData.txid;
+                            vue.txCheckVO.uid=vue.txCheckData.uid;
+                            vue.txCheckVO.money=vue.txCheckData.money;
+                            vue.txCheckVO.status=$('input:radio[name="status"]:checked').val();
+                            axios.post('/txCheck/data/json/check', Qs.stringify(vue.txCheckVO)).then((response)=>{
+                                table.reload('txsh');
+                                layer.msg(response.data.message);
+                                vue.txCheckVO.excuse='';
+                            },(error)=>{
+
+                            });
+                        }
+                    });
+                }
             }
         });
 
@@ -160,26 +157,18 @@
 
     function statusFormat(value){
         if(value==0){
-            return "未受理";
+            return '未受理';
         }else if(value==1){
-            return "提现成功";
+            return '<p style="color: green;">提现成功</p>';
         }else if(value==2){
-            return "提现失败";
+            return '<p style="color: red;">提现失败</p>';
         }
     }
-
-    function statusOpt(value){
-        if(value==0){
-            return "<a class=\"layui-btn layui-btn layui-btn-xs\" lay-event=\"agree\" >同意</a>\n" +
-                "        <a class=\"layui-btn layui-btn-danger layui-btn-xs\" lay-event=\"refuse\" >拒绝</a>";
-        }else if(value==1){
-            return "不可操作";
-        }else if(value==2){
-            return "不可操作";
-        }
-    }
-
-
 </script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="agree">审核</a>
+</script>
+
 </body>
 </html>

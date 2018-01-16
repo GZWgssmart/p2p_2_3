@@ -263,10 +263,10 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
     }
 
     @Override
-    public Pager listPagerByBaid(Integer pageNumber, Integer pageSize, Integer baid) {
+    public Pager listPagerByBaid(Integer pageNumber, Integer pageSize, Integer baid,Integer uid) {
         Pager pager = new Pager(pageNumber, pageSize);
-        pager.setRows(tzbMapper.listPagerByBaid(pager,baid));
-        pager.setTotal(tzbMapper.countByBaid(baid));
+        pager.setRows(tzbMapper.listPagerByBaid(pager,baid,uid));
+        pager.setTotal(tzbMapper.countByBaid(baid,uid));
         return pager;
     }
 

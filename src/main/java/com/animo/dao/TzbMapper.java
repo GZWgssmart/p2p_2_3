@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface TzbMapper extends BaseMapper{
 
-    List<Object> listPagerByBaid(@Param("pager") Pager pager,@Param("baid") Integer baid);
+    List<Object> listPagerByBaid(@Param("pager") Pager pager,@Param("baid") Integer baid,@Param("uid") Integer uid);
 
-    Long countByBaid(Integer baid);
+    Long countByBaid(@Param("baid") Integer baid,@Param("uid") Integer uid);
 
     List<Tzb> listTzb(@Param("uid") Integer uid,@Param("baid") Integer baid);
 

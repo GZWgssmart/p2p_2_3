@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface TzbService extends BaseService{
 
-    Pager listPagerByBaid(Integer pageNumber, Integer pageSize,Integer baid);
+    Pager listPagerByBaid(Integer pageNumber, Integer pageSize,Integer baid,Integer uid);
 
     Pager listInvestByUid(int pageNo, int pageSize, int uid);
 

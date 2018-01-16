@@ -2,39 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2823dd51-a607-43ce-802f-1546f581f98d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/images/huifu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/images/tuijian.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_java6_2_3_13.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_3_0.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_3_12_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/recharge.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/user/txCheck.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/p2p_2_3_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/p2p_2_3_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/p2p_2_3.iml" afterPath="$PROJECT_DIR$/p2p_2_3.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/LogTxController.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/LogTxController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/TxCheckController.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/TxCheckController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/UserBankViews.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/UserBankViews.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/LogTxFontView.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/LogTxFontView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/UserFontViews.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/UserFontViews.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/TzbController.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/TzbController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/service/LogTxService.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/service/LogTxService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/dao/TzbMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/dao/TzbMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/service/TxCheckService.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/service/TxCheckService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/service/TzbService.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/service/TzbService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogTxServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogTxServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/service/impl/TxCheckServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/service/impl/TxCheckServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/vo/RechargeVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/vo/RechargeVO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/vo/TxRecordVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/vo/TxRecordVO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/service/impl/TzbServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/service/impl/TzbServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/animo/vo/TzbVo.java" afterPath="$PROJECT_DIR$/src/main/java/com/animo/vo/TzbVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/BorrowapplyMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/BorrowapplyMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/LogTxMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/LogTxMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/TzbMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/TzbMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/account/overview.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/account/overview.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/Recharge.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/Recharge.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrowapply/allBorrowapply.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrowapply/allBorrowapply.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/top.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/top.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/user/Recharge.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/user/Recharge.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/common.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,6 +46,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -97,145 +103,58 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="txCheck.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="92" column="47" lean-forward="true" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogTxMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogTxController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/LogTxController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="847">
-              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="e#2691#2692#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TxCheckController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/TxCheckController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TxCheckServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/TxCheckServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="76" column="32" lean-forward="false" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
-              <folding>
-                <element signature="e#1399#1400#0" expanded="true" />
-                <element signature="e#1451#1452#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsermoneyMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UsermoneyMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="4" selection-end-line="144" selection-end-column="8" />
-              <folding>
-                <marker date="1515025838871" expanded="true" signature="1108:1217" ph="select from usermoney" />
-                <marker date="1515025838871" expanded="true" signature="1331:1413" ph="SELECT FROM usermoney" />
-                <marker date="1515025838871" expanded="true" signature="1500:1563" ph="delete from " />
-                <marker date="1515025838871" expanded="true" signature="1645:2047" ph="insert into usermoney... " />
-                <marker date="1515025838871" expanded="true" signature="3701:4518" ph="update userm... " />
-                <marker date="1515025838871" expanded="true" signature="4612:5021" ph="update userm... " />
-                <marker date="1515025838871" expanded="true" signature="5144:5186" ph="select * fro... usermoney" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TxCheckService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/TxCheckService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>充值记录</find>
-      <find>borrowapply</find>
-      <find>demo3</find>
-      <find>lc.is</find>
-      <find>getJsonShang</find>
-      <find>overview</find>
-      <find>logmoney</find>
-      <find>createdTime</find>
+      <find>&lt;script type=&quot;text/html&quot;</find>
+      <find>detail</find>
+      <find>还款</find>
+      <find>jkgl</find>
+      <find>tzglFilter</find>
+      <find>shoukuanjihua</find>
+      <find>我的银行卡</find>
+      <find>vue</find>
+      <find>tj-clip-text</find>
+      <find>推荐列表</find>
+      <find>/user/data/json/PagerCriteria</find>
+      <find>http://localhost:8080/user/data/json/PagerCriteria</find>
+      <find>list</find>
+      <find>barDemo</find>
+      <find>letter</find>
       <find>listPager</find>
-      <find>logTx_query_common</find>
-      <find>loxTx_query_criteria</find>
-      <find>statusFormat</find>
-      <find>v-</find>
-      <find>item</find>
-      <find>appJur</find>
-      <find>$</find>
-      <find>demo</find>
-      <find>update</find>
-      <find>agreechec</find>
-      <find>jur</find>
-      <find>layer</find>
-      <find>excuse</find>
-      <find>listA</find>
-      <find>txid</find>
-      <find>check</find>
-      <find>id</find>
-      <find>apptxCheck</find>
+      <find>pager</find>
+      <find>收款计划</find>
+      <find>hkbStatus</find>
+      <find>收款</find>
+      <find>投资管理</find>
+      <find>tzpager</find>
+      <find>barTzgl</find>
+      <find>投资</find>
+      <find>借款管理</find>
+      <find>huankuanview</find>
+      <find>还款计划</find>
+      <find>statusOpt</find>
       <find>agreeCheck</find>
-      <find>txCheckData</find>
-      <find>upda</find>
+      <find>statusFormat</find>
     </findStrings>
     <replaceStrings>
       <replace>id</replace>
       <replace>tx</replace>
       <replace>txid</replace>
+      <replace>resint3</replace>
+      <replace>resint2</replace>
+      <replace>resint4</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -249,57 +168,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/UsermoneyMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/LogTxFontView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/job/FailureJob.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/spring-quartz.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/Overview.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/top.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/right.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/footer.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/query/TxRecordQuery.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/query/RechargeQuery.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/LogMoneyVO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/LogMoneyMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/LogMoneyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/LogMoneyController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/UserMoneyController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/user/LogMoney.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/user/Withdraw.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogMoneyServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/LogMoneyMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/UserMoneyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/addBankCard.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/AdminBackViews.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/BorrowapplyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/BorrowapplyMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/BorrowapplyServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/BorrowapplyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/BorrowapplyVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/HkbController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrowapplyInfo.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/borrowapply/detail.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/Recharge.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/enums/WayEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/pojo/Skb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/SkbServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/BankCardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/UserFontViews.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/user/Recharge.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/recharge.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/LogCzController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/account/overview.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/LogCzMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/RechargeVO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/pojo/LogCz.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/user/clipboard.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/common/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/common/CreateImageCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/utils/HttpUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/common/IndustrySMS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/common/PhoneCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/common/CheckCodeAction.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/animo/BankCardServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/FontBackViews.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/logTx/logTxRecord.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/BorrowapplyMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/top.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/TzbMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/TzbServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/TzbService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/TzbController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/TzbMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/TzbVo.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrowapply/allBorrowapply.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/account/overview.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/home.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/UserBankViews.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/TxRecordVO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/user/txCheck.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/LogTxController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogTxServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/LogTxService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/LogTxMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/animo/service/TxCheckService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogTxServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/animo/controller/TxCheckController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/LogTxMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/common.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/animo/service/impl/TxCheckServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp" />
       </list>
     </option>
   </component>
@@ -361,6 +280,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -402,6 +323,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="p2p_2_3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="p2p_2_3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -449,38 +400,72 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
+              <option name="myItemId" value="animo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="p2p_2_3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="p2p_2_3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="animo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/standard-1.1.2.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/BankAPI/Bank" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15366796" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="SearchEverywhereHistoryKey" value="s&#9;FILE&#9;file://H:/IDEA/p2p_2_3/src/main/java/com/animo/service/impl/LogTxServiceImpl.java" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\p2p_2_3\src\main\webapp\WEB-INF\views\user" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\IDEA\p2p_2_3\target\animo\static\uploads\borrowdetail" />
+      <recent name="H:\IDEA\p2p_2_3\src\main\webapp\static\js\user" />
+      <recent name="H:\IDEA\p2p_2_3\src\main\java\com\animo\vo" />
       <recent name="E:\p2p_2_3\src\main\webapp\static\css\images" />
       <recent name="E:\p2p_2_3\src\main\webapp\WEB-INF\lib" />
-      <recent name="E:\p2p_2_3\src\main\webapp\static\images\index" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.animo.common" />
+      <recent name="com.animo.utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\p2p_2_3\src\main\webapp\WEB-INF\views\user" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -496,6 +481,32 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.23">
+    <configuration default="false" name="BankCardServiceTest.BankCardSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.animo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="p2p_2_3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.animo" />
+      <option name="MAIN_CLASS_NAME" value="com.animo.BankCardServiceTest" />
+      <option name="METHOD_NAME" value="BankCardSave" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -789,13 +800,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -894,7 +898,7 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="Tomcat 8.5.23" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.23" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration default="false" name="Tomcat 8.5.23" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.15" ALTERNATIVE_JRE_ENABLED="false">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -967,9 +971,15 @@
         </option>
       </method>
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 8.5.23" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.BankCardServiceTest.BankCardSave" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.BankCardServiceTest.BankCardSave" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -990,19 +1000,30 @@
       <workItem from="1515376409491" duration="9321000" />
       <workItem from="1515399956046" duration="9918000" />
       <workItem from="1515456588599" duration="29259000" />
+      <workItem from="1515542858184" duration="23773000" />
+      <workItem from="1515628883188" duration="28599000" />
+      <workItem from="1515715291856" duration="25143000" />
+      <workItem from="1515927465659" duration="2324000" />
+      <workItem from="1515974228830" duration="29124000" />
+      <workItem from="1516060572423" duration="29212000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="BankCardServiceTest_BankCardSave - 2018.01.16 at 09h 26m 44s.xml">
+      <configuration name="BankCardServiceTest.BankCardSave" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107481000" />
+    <option name="totallyTimeSpent" value="245656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27096775" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7295082" sideWeight="0.50907713" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1012,18 +1033,19 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33606556" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.062295083" sideWeight="0.49394855" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6360656" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43770492" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53934425" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.009836066" sideWeight="0.49092284" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27685326" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="MyBatis Sql Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20196672" sideWeight="0.49344262" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27251908" sideWeight="0.5065574" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1033,7 +1055,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="MyBatis Sql Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1082,15 +1103,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/animo/controller/TxCheckController.java</url>
-          <line>50</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1099,522 +1112,503 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/vo/RechargeVO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="51" column="32" lean-forward="false" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+        <state relative-caret-position="352">
+          <caret line="304" column="0" lean-forward="false" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/font/security.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="15" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/FontBackViews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/WebUtilsPro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documents/数据表翻译.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/vo/UserVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="276" column="11" lean-forward="true" selection-start-line="276" selection-start-column="11" selection-end-line="276" selection-end-column="11" />
           <folding>
-            <element signature="e#356#357#0" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-            <element signature="e#429#430#0" expanded="false" />
-            <element signature="e#465#466#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1051#1052#0" expanded="false" />
+            <marker date="1515555512439" expanded="true" signature="1723:1827" ph="select from t_user" />
+            <marker date="1515555512439" expanded="true" signature="1914:1972" ph="delete from " />
+            <marker date="1515555512439" expanded="true" signature="2049:2756" ph="insert into t_user... " />
+            <marker date="1515555512439" expanded="true" signature="5759:7329" ph="update t_use... " />
+            <marker date="1515555512439" expanded="true" signature="7418:8169" ph="update t_use... " />
+            <marker date="1515555512439" expanded="true" signature="8230:8269" ph="select * fro... t_user" />
+            <marker date="1515555512439" expanded="true" signature="8337:8389" ph="select count... t_user" />
+            <marker date="1515555512439" expanded="true" signature="8455:8517" ph="select * fro... t_user" />
+            <marker date="1515555512439" expanded="true" signature="8670:8987" ph="select u.uid... t_user" />
+            <marker date="1515555512439" expanded="true" signature="9064:9188" ph="select count... t_user" />
+            <marker date="1515555512439" expanded="true" signature="9300:9403" ph="SELECT * fro... t_user" />
+            <marker date="1515555512439" expanded="true" signature="9470:9525" ph="select count... t_user" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/AdminBackViews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documents/ptp_2_3.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4341">
+          <caret line="256" column="10" lean-forward="false" selection-start-line="256" selection-start-column="10" selection-end-line="256" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/JurBackViews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/BorrowapplyMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="292" column="41" lean-forward="false" selection-start-line="292" selection-start-column="41" selection-end-line="292" selection-end-column="41" />
+          <folding>
+            <marker date="1516089624805" expanded="true" signature="1482:1593" ph="select from borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="1680:1745" ph="delete from " />
+            <marker date="1516089624805" expanded="true" signature="1829:2419" ph="insert into borrowapply... " />
+            <marker date="1516089624805" expanded="true" signature="4898:6158" ph="update borro... " />
+            <marker date="1516089624805" expanded="true" signature="6254:6872" ph="update borro... " />
+            <marker date="1516089624805" expanded="true" signature="6960:7052" ph="UPDATE borro... " />
+            <marker date="1516089624805" expanded="true" signature="7156:7451" ph="SELECT bo.ck... borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="8268:8518" ph="SELECT bo.ck... " />
+            <marker date="1516089624805" expanded="true" signature="8633:8654" ph="select count... " />
+            <marker date="1516089624805" expanded="true" signature="8813:8937" ph="SELECT b.mon... borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="9373:9553" ph="select from borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="9668:9877" ph="select from borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="9965:10148" ph="SELECT from borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="10225:10260" ph="SELECT count... borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="10339:10420" ph="UPDATE borro... " />
+            <marker date="1516089624805" expanded="true" signature="10524:10576" ph="SELECT * FRO... borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="10685:10933" ph="SELECT bbz.b... borrowapply" />
+            <marker date="1516089624805" expanded="true" signature="11021:11119" ph="SELECT count... borrowapply" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/BorrowapplyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1936">
+          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+          <folding>
+            <element signature="e#3082#3083#0" expanded="false" />
+            <element signature="e#3145#3146#0" expanded="false" />
+            <element signature="e#4085#4086#0" expanded="false" />
+            <element signature="e#4150#4151#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/BorrowapplyBackViews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="42" />
+          <folding>
+            <element signature="e#400#401#0" expanded="false" />
+            <element signature="e#451#452#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/ShborrowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/borrowapply/detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="28" column="56" lean-forward="false" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+        <state relative-caret-position="286">
+          <caret line="43" column="52" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/vue.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="5" column="135" lean-forward="false" selection-start-line="5" selection-start-column="135" selection-end-line="5" selection-end-column="135" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrowapplyInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-296">
-          <caret line="380" column="32" lean-forward="true" selection-start-line="380" selection-start-column="32" selection-end-line="380" selection-end-column="32" />
+        <state relative-caret-position="398">
+          <caret line="393" column="23" lean-forward="true" selection-start-line="389" selection-start-column="19" selection-end-line="393" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/Borrowdetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1275">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/Borrowapply.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1875">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/recharge.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2425">
-          <caret line="97" column="67" lean-forward="false" selection-start-line="97" selection-start-column="67" selection-end-line="97" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/LogCzController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1450">
-          <caret line="74" column="86" lean-forward="false" selection-start-line="74" selection-start-column="86" selection-end-line="74" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/Hkb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="108" column="4" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/LogCz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8698bf43-5852-488e-ab29-4b7d0cea9863/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/Overview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/fontviews/UserFontViews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/backviews/UserBankViews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/LogMoneyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.5/mybatis-3.4.5.jar!/org/apache/ibatis/ognl/ObjectPropertyAccessor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/AbstractServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="67" column="51" lean-forward="true" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
-          <caret line="75" column="83" lean-forward="false" selection-start-line="75" selection-start-column="83" selection-end-line="75" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/Dynamic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/LogTx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#451#452#0" expanded="false" />
-            <element signature="e#478#479#0" expanded="false" />
-            <element signature="e#519#520#0" expanded="false" />
-            <element signature="e#551#552#0" expanded="false" />
-            <element signature="e#582#583#0" expanded="false" />
-            <element signature="e#608#609#0" expanded="false" />
-            <element signature="e#647#648#0" expanded="false" />
-            <element signature="e#677#678#0" expanded="false" />
-            <element signature="e#712#713#0" expanded="false" />
-            <element signature="e#743#744#0" expanded="false" />
-            <element signature="e#791#792#0" expanded="false" />
-            <element signature="e#864#865#0" expanded="false" />
-            <element signature="e#899#900#0" expanded="false" />
-            <element signature="e#930#931#0" expanded="false" />
-            <element signature="e#978#979#0" expanded="false" />
-            <element signature="e#1051#1052#0" expanded="false" />
-            <element signature="e#1087#1088#0" expanded="false" />
-            <element signature="e#1115#1116#0" expanded="false" />
-            <element signature="e#1161#1162#0" expanded="false" />
-            <element signature="e#1195#1196#0" expanded="false" />
-            <element signature="e#1231#1232#0" expanded="false" />
-            <element signature="e#1265#1266#0" expanded="false" />
-            <element signature="e#1317#1318#0" expanded="false" />
-            <element signature="e#1363#1364#0" expanded="false" />
-            <element signature="e#1397#1398#0" expanded="false" />
-            <element signature="e#1426#1427#0" expanded="false" />
-            <element signature="e#1471#1472#0" expanded="false" />
-            <element signature="e#1507#1508#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allborrowapply.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="229" column="28" lean-forward="true" selection-start-line="229" selection-start-column="28" selection-end-line="229" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/user/txCheck.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-4245">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jur/jurs.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/top.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-779">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="50" selection-end-column="10" />
+        <state relative-caret-position="223">
+          <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/TzbMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="12" column="114" lean-forward="false" selection-start-line="12" selection-start-column="114" selection-end-line="12" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/TzbService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/vo/TzbVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#ul#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/449b3e4e/8698bf43-5852-488e-ab29-4b7d0cea9863/boot_ptp.huser">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/user/register.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/TzbMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/user/Withdraw.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="27" column="54" lean-forward="false" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/HkbServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="125">
+          <caret line="176" column="59" lean-forward="false" selection-start-line="176" selection-start-column="59" selection-end-line="176" selection-end-column="59" />
+          <folding>
+            <marker date="1516089624806" expanded="true" signature="1310:1413" ph="select from tzb" />
+            <marker date="1516089624806" expanded="true" signature="1500:1557" ph="delete from " />
+            <marker date="1516089624806" expanded="true" signature="1633:2138" ph="insert into tzb... " />
+            <marker date="1516089624806" expanded="true" signature="4181:5246" ph="update tzb u... " />
+            <marker date="1516089624806" expanded="true" signature="5334:5853" ph="update tzb s... " />
+            <marker date="1516089624806" expanded="true" signature="5935:6184" ph="SELECT u.rna... tzb" />
+            <marker date="1516089624806" expanded="true" signature="6249:6409" ph="SELECT count... tzb" />
+            <marker date="1516089624806" expanded="true" signature="6484:6540" ph="SELECT * FRO... tzb" />
+            <marker date="1516089624806" expanded="true" signature="6639:7029" ph="select tz.mo... tzb" />
+            <marker date="1516089624806" expanded="true" signature="7093:7147" ph="select count... tzb" />
+            <marker date="1516089624806" expanded="true" signature="7233:7360" ph="select sum(t... tzb" />
+            <marker date="1516089624806" expanded="true" signature="7452:7488" ph="SELECT * FRO... tzb" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/TzbServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="50" column="18" lean-forward="true" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        <state relative-caret-position="2846">
+          <caret line="268" column="56" lean-forward="true" selection-start-line="268" selection-start-column="56" selection-end-line="268" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jur/jur-foot.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/SkbServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="67" />
+        <state relative-caret-position="-256">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/SkbController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/TzbController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="54" column="63" lean-forward="true" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/account/overview.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="1143" column="7" lean-forward="true" selection-start-line="1143" selection-start-column="7" selection-end-line="1143" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/LogCzService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/BaseMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-166">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogTxServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+        <state relative-caret-position="1543">
+          <caret line="1097" column="48" lean-forward="false" selection-start-line="1097" selection-start-column="48" selection-end-line="1097" selection-end-column="48" />
           <folding>
-            <element signature="e#1083#1084#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
+            <marker date="1516089624809" expanded="false" signature="49509:49523" ph="..." />
+            <marker date="1516089624809" expanded="false" signature="49639:49652" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/LogTxService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/SkbMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        <state relative-caret-position="2450">
+          <caret line="235" column="25" lean-forward="false" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1515651218757" expanded="true" signature="1627:1730" ph="select from skb" />
+            <marker date="1515651218757" expanded="true" signature="1817:1874" ph="delete from " />
+            <marker date="1515651218757" expanded="true" signature="1950:2608" ph="insert into skb... " />
+            <marker date="1515651218757" expanded="true" signature="5286:6743" ph="update skb u... " />
+            <marker date="1515651218757" expanded="true" signature="6831:7524" ph="update skb s... " />
+            <marker date="1515651218757" expanded="true" signature="7596:7694" ph="SELECT * FRO... skb" />
+            <marker date="1515651218757" expanded="true" signature="7781:7844" ph="SELECT count... skb" />
+            <marker date="1515651218757" expanded="true" signature="8399:8462" ph="SELECT COUNT... skb" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/449b3e4e/8698bf43-5852-488e-ab29-4b7d0cea9863/boot_ptp.log_tx">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
+    <entry file="file://$PROJECT_DIR$/vm/Vue+axios.html.vm">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/LogTxMapper.xml">
+    <entry file="file://$PROJECT_DIR$/vm/表格分页/table.html.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="127" column="32" lean-forward="false" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
-          <folding>
-            <element signature="n#resultMap#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#sql#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#select#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#delete#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#insert#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#insert#1;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#update#0;n#mapper#0;n#!!top" expanded="false" />
-            <element signature="n#update#1;n#mapper#0;n#!!top" expanded="false" />
-            <marker date="1515478537341" expanded="true" signature="988:1104" ph="select from log_tx" />
-            <marker date="1515478537341" expanded="true" signature="1194:1254" ph="delete from " />
-            <marker date="1515478537341" expanded="true" signature="1333:1641" ph="insert into log_tx... " />
-            <marker date="1515478537341" expanded="true" signature="3299:4065" ph="update log_t... " />
-            <marker date="1515478537341" expanded="true" signature="4158:4475" ph="update log_t... " />
-            <marker date="1515478537341" expanded="true" signature="4577:4662" ph="select * FRO... log_tx" />
-            <marker date="1515478537341" expanded="true" signature="4765:4833" ph="select * FRO... log_tx" />
-            <marker date="1515478537341" expanded="true" signature="4910:4957" ph="select count... log_tx" />
-            <marker date="1515478537341" expanded="true" signature="5023:5053" ph="select count... log_tx" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/vo/TxRecordVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/jur-js/jur.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="49" column="22" lean-forward="true" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+        <state relative-caret-position="110">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="21" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/TxCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-478">
+        <state relative-caret-position="132">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#902#903#0" expanded="true" />
-            <element signature="e#946#947#0" expanded="true" />
-            <element signature="e#982#983#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="92" column="47" lean-forward="true" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/TxCheckService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/LogTxController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="212">
+          <caret line="44" column="17" lean-forward="false" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
           <folding>
-            <element signature="e#2691#2692#0" expanded="true" />
+            <element signature="e#2636#2637#0" expanded="false" />
+            <element signature="e#2691#2692#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/TxCheckService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/pojo/LogMoney.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="88">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/449b3e4e/8698bf43-5852-488e-ab29-4b7d0cea9863/boot_ptp.log_money">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/vo/TxCheckVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="text-editor">
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/BaseMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="30" column="48" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/dao/LogTxMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/LogTxServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="76" column="63" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="76" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.10.RELEASE/spring-aop-4.3.10.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="79" column="19" lean-forward="false" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/449b3e4e/8698bf43-5852-488e-ab29-4b7d0cea9863/boot_ptp.usermoney">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/LogTxMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="141" column="39" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
+          <folding>
+            <marker date="1516102655867" expanded="true" signature="988:1104" ph="select from log_tx" />
+            <marker date="1516102655867" expanded="true" signature="1194:1254" ph="delete from " />
+            <marker date="1516102655867" expanded="true" signature="1333:1641" ph="insert into log_tx... " />
+            <marker date="1516102655867" expanded="true" signature="3299:4065" ph="update log_t... " />
+            <marker date="1516102655867" expanded="true" signature="4158:4475" ph="update log_t... " />
+            <marker date="1516102655867" expanded="true" signature="4577:4662" ph="select * FRO... log_tx" />
+            <marker date="1516102655867" expanded="true" signature="4765:4833" ph="select * FRO... log_tx" />
+            <marker date="1516102655867" expanded="true" signature="4910:4957" ph="select count... log_tx" />
+            <marker date="1516102655867" expanded="true" signature="5023:5053" ph="select count... log_tx" />
+            <marker date="1516102655867" expanded="true" signature="5108:5175" ph="UPDATE SET l... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/controller/TxCheckController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="303">
+          <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UsermoneyMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="4" selection-end-line="144" selection-end-column="8" />
-          <folding>
-            <marker date="1515025838871" expanded="true" signature="1108:1217" ph="select from usermoney" />
-            <marker date="1515025838871" expanded="true" signature="1331:1413" ph="SELECT FROM usermoney" />
-            <marker date="1515025838871" expanded="true" signature="1500:1563" ph="delete from " />
-            <marker date="1515025838871" expanded="true" signature="1645:2047" ph="insert into usermoney... " />
-            <marker date="1515025838871" expanded="true" signature="3701:4518" ph="update userm... " />
-            <marker date="1515025838871" expanded="true" signature="4612:5021" ph="update userm... " />
-            <marker date="1515025838871" expanded="true" signature="5144:5186" ph="select * fro... usermoney" />
-          </folding>
+        <state relative-caret-position="203">
+          <caret line="76" column="28" lean-forward="true" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/animo/service/impl/TxCheckServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="76" column="32" lean-forward="false" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
-          <folding>
-            <element signature="e#1399#1400#0" expanded="true" />
-            <element signature="e#1451#1452#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="181">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrowapply/allBorrowapply.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4136">
+          <caret line="265" column="42" lean-forward="false" selection-start-line="265" selection-start-column="42" selection-end-line="265" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/txCheck.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="141" column="50" lean-forward="false" selection-start-line="141" selection-start-column="50" selection-end-line="141" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

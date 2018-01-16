@@ -12,14 +12,13 @@
     <title>Title</title>
 </head>
 <body>
+<div id="app1">
 <div class="wrap">
     <div class="top-left icon icon-phone">
         <span>客服热线：</span>400-606-2079 <span>（8:30～17:30）</span>
     </div>
     <div class="top-right cl">
         <ul class="top-list">
-            <li class="first"><a href="" class="icon icon-person">注册领红包</a></li>
-            <li><a href="" class="icon icon-inv">邀请有礼</a></li>
             <li><a href="">关于我们</a></li>
             <li><a href="">帮助中心</a></li>
             <c:if test="${sessionScope.user == null}">
@@ -35,21 +34,10 @@
                     <a href="/user/accountOverride" style="color:red">${sessionScope.user.phone }</a>
                 </li>
                 <li>
-                    <a href="/user/data/json/logout" style="color:red">退出</a>
+                    <a href="javaScript:;" @click="logout"  style="color:red">退出</a>
                 </li>
             </c:if>
-            <li><a href="javascript:;" class="icon icon-app" id="">APP下载</a></li>
         </ul>
-        <div id="qrCodeDiv" style="display: none;">
-            <div class="CodeDiv">
-                <img src="">
-                <p>IOS下载</p>
-            </div>
-            <div class="CodeDiv">
-                <img src="">
-                <p>Android下载</p>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -84,5 +72,27 @@
         </div>
     </div>
 </div>
+<div>
+</div>
 </body>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/axios.min.js"></script>
+<script>
+    new Vue({
+       el:'#app1',
+        methods:{
+           logout(){
+               axios.get('/user/data/json/logout').then((response) => {
+                   if(response.data.code==0){
+                       return window.location.href='/';
+                   }
+                   alert(response.data.message);
+               }, (error) => {
+
+               });
+           }
+        }
+    });
+</script>
 </html>

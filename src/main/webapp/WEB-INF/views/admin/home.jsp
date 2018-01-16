@@ -75,7 +75,7 @@
                         </dd>
                         <dd>
                             
-                            <a href="javascript:;" data-url="<%=path%>/back/user/tx" data-id="2">提现审核</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/user/tx" data-id="2">提现记录</a>
                         </dd>
                     </dl>
                 </li>
@@ -172,8 +172,7 @@
                             <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="19">借款类型</a>
                         </dd>
                         <dd>
-                           
-                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="20">标种</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="28">借款标种</a>
                         </dd>
                         <dd>
                           
@@ -181,7 +180,7 @@
                         </dd>
                         <dd>
                            
-                            <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="22">借款审核</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="29">所有借款</a>
                         </dd>
                     </dl>
                 </li>

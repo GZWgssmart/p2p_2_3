@@ -75,9 +75,17 @@ function logTx(value) {
     if(value==0){
         return"未受理"
     }else if(value==1){
-        return "提现失败"
+        return "提现成功"
     }else if(value==2){
-        return"提现成功"
+        return"提现失败"
+    }
+}
+
+function hkbStatus(value) {
+    if(value==0){
+        return"未还款";
+    }else{
+        return"已还款";
     }
 }
 

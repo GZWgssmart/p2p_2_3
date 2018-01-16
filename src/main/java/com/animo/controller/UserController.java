@@ -83,10 +83,13 @@ public class UserController {
 
     //退出
     @RequestMapping("logout")
-    public String logout(HttpSession session) {
-        User user = (User)session.getAttribute(Constant.SESSION_USER);
-        session.invalidate();
-        return "/";
+    public ServerResponse logout(HttpSession session) {
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object!=null){
+            session.invalidate();
+            return  ServerResponse.createBySuccess();
+        }
+        return ServerResponse.createByError("登录超时");
     }
 
     @PostMapping("updatePwd")

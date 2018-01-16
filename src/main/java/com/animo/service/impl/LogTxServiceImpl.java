@@ -70,12 +70,7 @@ public class LogTxServiceImpl extends AbstractServiceImpl implements LogTxServic
         logTx.setStatus(0);
         //保存用户提现记录
         logTxMapper.insertSelective(logTx);
-        LogMoney logMoney = new LogMoney();
-        logMoney.setUid(logTx.getUid());
-        logMoney.setType(1);
-        logMoney.setOutlay(logTx.getMoney());
-        logMoney.setCreatedTime(DateFormateUtils.Formate());
-        logMoneyMapper.insertSelective(logMoney);
+        //修改用户资金
         Usermoney usermoney = usermoneyMapper.selectByUid(logTx.getUid());
         usermoney.setZmoney(usermoney.getZmoney().subtract(logTx.getMoney()));
         usermoney.setKymoney(usermoney.getKymoney().subtract(logTx.getMoney()));

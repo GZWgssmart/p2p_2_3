@@ -1,5 +1,6 @@
 package com.animo.vo;
 
+import com.animo.pojo.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
@@ -14,6 +15,8 @@ public class TzbVo {
     private BigDecimal money;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date tztime;
+    private Integer uid;
+    private Integer baid;
 
     public String getRname() {
         return rname;
@@ -37,5 +40,21 @@ public class TzbVo {
 
     public void setTztime(Date tztime) {
         this.tztime = tztime;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Integer getBaid() {
+        return baid;
+    }
+
+    public void setBaid(Integer baid) {
+        this.baid = baid;
     }
 }

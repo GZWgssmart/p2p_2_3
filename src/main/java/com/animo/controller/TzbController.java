@@ -43,9 +43,16 @@ public class TzbController {
     }
 
 
+    /**
+     * 前台查看
+     * @param page
+     * @param limit
+     * @param baid
+     * @return
+     */
     @GetMapping("tzpager")
-    public Pager listPagerByBaid(Integer page, Integer limit,Integer baid){
-        return tzbService.listPagerByBaid(page,limit,baid);
+    public Pager listPagerByBaid(Integer page, Integer limit,Integer baid,Integer uid){
+        return tzbService.listPagerByBaid(page,limit,baid, uid);
     }
 
     //用户投资管理

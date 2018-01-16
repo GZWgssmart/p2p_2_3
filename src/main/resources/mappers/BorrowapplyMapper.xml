@@ -280,16 +280,17 @@
     and ckstatus=#{ckstatus}
   </select>
 
-  <select id="listPager" resultType="com.animo.pojo.Borrowapply">
-    <![CDATA[
-      SELECT * FROM borrowapply WHERE ckstatus='0' limit #{beginIndex}, #{pageSize}
-    ]]>
+  <select id="listPager" resultType="com.animo.vo.BorrowApplyDetail">
+    SELECT
+      <include refid="Base_column_list" />
+      from borrowapply ba, bz b, borrowdetail bd
+      where b.bzid = ba.bzid and bd.baid = ba.baid  limit #{beginIndex}, #{pageSize}
   </select>
 
   
   <select id="count" resultType="long">
     <![CDATA[
-      SELECT count(baid) FROM borrowapply WHERE ckstatus='0'
+      SELECT count(baid) FROM borrowapply
     ]]>
   </select>
 

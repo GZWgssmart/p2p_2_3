@@ -446,6 +446,7 @@
                                     <table class="layui-hide" id="tjglTable" lay-filter="tzglFilter"></table>
                                     <!--table工具栏-->
                                     <script type="text/html" id="barTzgl">
+                                        <%--<a class="layui-btn layui-btn-xs" lay-event="fenzi">投资分支</a>--%>
                                         <a class="layui-btn layui-btn-xs" lay-event="view">收款计划</a>
                                     </script>
                                     <!--收款计划窗口：开始-->
@@ -886,13 +887,14 @@
 </div>
 </body>
 <script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/vue.min.js"></script>
-<script src="/static/js/axios.min.js"></script>
 <script src="/static/js/qs.js"></script>
 <script src="/static/layui/layui.all.js"></script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="hkjh">还款计划</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="jkxq">借款详情</a>
+</script>
+<script type="text/html" id="hkjh">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="qrhk">确认还款</a>
 </script>
 <script>
     var vue = new Vue({
@@ -1086,8 +1088,16 @@
                             ,{field:'rfc', title:'已还罚息', width:60}
                             ,{field:'yucount', title:'逾期次数', width:60}
                             ,{field:'status', title:'还款状态', width:60,templet: '<div>{{hkbStatus(d.status) }}</div>'}
+                            ,{title:'操作',fixed: 'right', width: 165, align:'center', toolbar: '#hkjh'}
                         ]]
                         //表头
+                    });
+                    table.on('tool(huankuanjihua)', function(obj){
+                        var data = obj.data
+                            ,layEvent = obj.event;
+                        if(layEvent === 'qrhk'){
+                            layer.msg('确认还款');
+                        }
                     });
                 }else if(layEvent =='jkxq'){
                     window.location.href='/borrowapply/info/'+data.baid+'/'+data.bdid+'/'+data.bzname;
@@ -1302,6 +1312,8 @@
                 }, (error) => {
 
                 });
+            }else if(layEvent === 'fenzi'){
+                layer.msg('查看分支');
             }
         });
     }
