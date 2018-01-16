@@ -1,42 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html><head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/dynajs/xxpl/css/public.css">
-    <link rel="stylesheet" href="/static/dynajs/xxpl/css/about.css">
-    <link rel="stylesheet" href="/static/dynajs/css/shenluehao.css">
-    <link rel="stylesheet" href="/static/layui/css/layui.css">
-    <style>
-        body{ text-align:center}
-        #divcss5{margin:0 auto;border:1px ;width:860px;height:100px}
-
-    </style>
-
-</head>
-<body>
-<%--<div class="about-right">--%>
-<div id="monthData">
-    <div class="ptyy" id="ptyy">
-        <div class="details">
-            <div class="shissj" id="shissj">
-                <div class="about-right-nav">
-                    <div class="sub-a-nav">
-                        <a href="#shissj">实时数据</a><a href="#yunyjg">运营报告</a>
-                    </div>
-                    <em class="em-line" style="left: 0px;"></em>
+<div class="layui-tab layui-tab-brief" id="monthData" lay-filter="demo" style="float: left;">
+    <ul class="layui-tab-title">
+        <li class="layui-this">实时数据</li>
+        <li>运营报告</li>
+    </ul>
+    <div class="layui-tab-content" style="width: 900px">
+        <div class="layui-tab-item layui-show">
+            <div class="about-content">
+                <div class="content">
                 </div>
-                <div class="about-content" id="sssjDiv"  style="display: block;" >
+                <div class="about-content" id="sssjDiv" style="display: block;">
                     <div class="btnDiv">
                         撮合交易总额（元）
                     </div>
 
                     <div class="moneyDiv">
-                        <div  v-for="item in tmoneyList">
-                            <div class="marginLeft"> </div>
+                        <div v-for="item in tmoneyList">
+                            <div class="marginLeft"></div>
                             <div class="item_Div" id="allmoney7">{{item}}</div>
                         </div>
                         <div class="marginLeft">.</div>
                         <div class="item_Div" id="allmoney8">0</div>
-                        <div class="marginLeft"> </div>
+                        <div class="marginLeft"></div>
                         <div class="item_Div" id="allmoney9">0</div>
                     </div>
 
@@ -72,40 +57,31 @@
                     </div>
                 </div>
             </div>
-            <div class="yunyjg" id="yunyjg">
-                <div class="about-right-nav">
-                    <div class="sub-a-nav">
-                        <a href="#shissj">实时数据</a><a href="#yunyjg">运营报告</a>
-                    </div>
-                    <em class="em-line" style="left: 120px;"></em>
-                </div>
-                <div class="about-content" id="yybgDiv" style="display: block;">
-                    <!--月运营数据-->
+        </div>
+
+        <div class="layui-tab-item">
+            <div class="about-content" id="zdsxDiv">
+                <div class="content">
+                    <div class="yunyjg" id="yunyjg">
+                        <div class="about-right-nav">
+                            <em class="em-line" style="left: 120px;"></em>
+                        </div>
+                        <div class="about-content" id="yybgDiv" style="display: block;">
+                            <!--月运营数据-->
                             <div class="tableDiv">
-                                <a :href="'/ydata/data/json/downloadMonthData?longTime='+item.createdTime" v-for="item in ydatas">
+                                <a :href="'/ydata/data/json/downloadMonthData?longTime='+item.createdTime"
+                                   v-for="item in ydatas">
                                     <img class="yybgImg" title="点击下载统计报表" src="/static/js/font/images/defaultjpg.jpg">
                                     <span>{{item.createdTime | formatDate}}</span>
                                 </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-</body>
 <script type="text/javascript" src="/static/js/font/jquery.js"></script>
 <script src="/static/js/common.js"></script>
 <script src="/static/js/vue.min.js/"></script>
@@ -121,11 +97,10 @@
             el: '#monthData',
             data: {
                 ydatas: [],
-                list:{},
-                tmoneyList:[]
+                list: {},
+                tmoneyList: []
             },
-            methods: {
-            },
+            methods: {},
             filters: {
                 formatDate(time) {
                     var date = new Date(time);
@@ -150,11 +125,11 @@
 
         function listydata() {
             axios.post('/ydata/data/json/all').then((response) => {
-                vue.list =response.data;
-                var allMoney =vue.list.tmoney + "";
+                vue.list = response.data;
+                var allMoney = vue.list.tmoney + "";
                 var strList = "";
-                for(var i = allMoney.length - 1, len = 0;i >= len; i--){
-                    strList+= allMoney.charAt(i)+',';
+                for (var i = allMoney.length - 1, len = 0; i >= len; i--) {
+                    strList += allMoney.charAt(i) + ',';
                 }
                 vue.tmoneyList = strList.split(",");
                 console.log(vue.tmoneyList);
@@ -167,9 +142,4 @@
     })
 
 
-
-
 </script>
-<%--
-</div>--%>
-</html>
