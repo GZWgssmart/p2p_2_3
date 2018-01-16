@@ -11,6 +11,7 @@ import com.animo.service.LogMoneyService;
 import com.animo.service.LogTxService;
 import com.animo.service.UserMoneyService;
 import com.animo.utils.DateFormateUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,7 @@ public class LogTxController {
      * @return
      */
     @RequestMapping("withdraw")
+    @RequiresPermissions("logTx:withdraw")
     public ServerResponse<LogTx> withdraw(HttpSession session, BigDecimal money){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object!=null){
@@ -77,12 +79,14 @@ public class LogTxController {
      * @return
      */
     @RequestMapping("pager")
+    @RequiresPermissions("logTx:pager")
     public Pager pager(int page, int limit, HttpSession session) {
         User user = (User) session.getAttribute(Constant.SESSION_USER);
         return logTxService.listPagerByUid(page, limit,user.getUid());
     }
 
     @RequestMapping("listAll")
+    @RequiresPermissions("logTx:listAll")
     public Pager listAll(Integer page, Integer limit) {
         return logTxService.listAll(page,limit);
     }

@@ -4,6 +4,7 @@ import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.User;
 import com.animo.service.UserMoneyService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,7 @@ public class UserMoneyController {
      * @return
      */
     @RequestMapping("selectBanlance")
+    @RequiresPermissions("userMoney:selectBanlance")
     public ServerResponse selectBalance(User user, HttpSession session){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){

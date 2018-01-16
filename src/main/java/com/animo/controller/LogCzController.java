@@ -10,6 +10,7 @@ import com.animo.service.BankCardService;
 import com.animo.service.LogCzService;
 import com.animo.service.UserMoneyService;
 import com.animo.utils.DateFormateUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +45,7 @@ public class LogCzController {
      * @return
      */
     @RequestMapping("recharge")
+    @RequiresPermissions("logCz:recharge")
     public ServerResponse<LogCz> save(HttpSession session, BigDecimal money){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object!=null){
@@ -72,6 +74,7 @@ public class LogCzController {
      * @return
      */
     @RequestMapping("pager")
+    @RequiresPermissions("logCz:listRecord")
     public Pager listRecord(int page, int limit, HttpSession session){
         User user = (User) session.getAttribute(Constant.SESSION_USER);
         return logCzService.listPagerByUid(page,limit,user.getUid());
