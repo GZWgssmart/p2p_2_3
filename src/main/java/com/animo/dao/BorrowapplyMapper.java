@@ -3,6 +3,7 @@ package com.animo.dao;
 import com.animo.common.Pager;
 import com.animo.pojo.Borrowapply;
 import com.animo.vo.BorrowApplyDetail;
+import com.animo.vo.BorrowapplyVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -28,4 +29,8 @@ public interface BorrowapplyMapper extends BaseMapper{
     List<Borrowapply> list(Integer ckstatus);
 
     List<BorrowApplyDetail> getByCkstaus(Integer ckstatus);
+
+    List<Object> listByJuid(@Param("pager") Pager pager, @Param("juid") Integer juid);
+    Long  countByJuid(Integer juid);
+
 }

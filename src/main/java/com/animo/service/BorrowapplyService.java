@@ -25,4 +25,6 @@ public interface BorrowapplyService extends BaseService{
 
     List<BorrowApplyDetail> getByCkstaus(Integer ckstatus);
 
+    Pager listByJuid (Integer pageNo, Integer pageSize, Integer juid);
+
 }

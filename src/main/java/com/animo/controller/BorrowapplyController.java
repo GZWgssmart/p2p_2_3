@@ -105,6 +105,11 @@ public class BorrowapplyController {
         return borrowapplyService.listPager(page,limit);
     }
 
+    @GetMapping("pagerByJuid")
+    public Pager pagerByJuid(int page,  int limit,HttpSession session){
+        User user = (User)session.getAttribute(Constant.SESSION_USER);
+        return borrowapplyService.listByJuid(page,limit,user.getUid());
+    }
 
     /**
      * 首页查询标种随机三个标

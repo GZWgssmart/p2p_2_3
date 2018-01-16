@@ -1,6 +1,9 @@
 package com.animo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by Animo on 2017-12-25.
@@ -32,6 +35,8 @@ public class BorrowapplyVo {
     private Integer uid;
 
     private String way;
+
+    private Date deadline;
 
     public Integer getBzid() {
         return bzid;
@@ -127,5 +132,14 @@ public class BorrowapplyVo {
 
     public void setWay(String way) {
         this.way = way;
+    }
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 }

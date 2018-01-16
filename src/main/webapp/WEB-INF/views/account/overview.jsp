@@ -67,7 +67,7 @@
                 <div class="navbar icon icon-self">我的管理</div>
                 <ul class="sub-nav">
                     <li><a href="#invest" class="investTable">投资管理</a></li>
-                    <li><a href="#loan">借款管理</a></li>
+                    <li><a href="#loan" class="jkgl">借款管理</a></li>
                     <li><a href="#claimb">申请借款</a></li>
                 </ul>
                 <div class="navbar icon icon-settings">账户设置</div>
@@ -97,9 +97,9 @@
                                             <img src="./images/header.png" width="120" height="120">
                                         </div>
                                         <div class="center-self">
-                                            <p class="name">18296691307</p>
+                                            <p class="name">${sessionScope.user.phone}</p>
                                             <p class="safety">安全等级： <span id="safeLevel">高</span></p>
-                                            <p id="registpay"><a href="javascript:;">注册汇付</a></p>
+                                            <p id="registpay"><a href="javascript:;">绑定银行卡</a></p>
                                             <p id="reset"></p>
                                         </div>
                                         <div class="center-user">
@@ -451,6 +451,10 @@
                                     <!--收款计划窗口：开始-->
                                     <div id="viewWin" style="display: none">
                                         <table class="layui-hide" id="shoukuanjihua" lay-filter="demo"></table>
+                                        <!--table工具栏-->
+                                        <script type="text/html" id="qrsk">
+                                            <a class="layui-btn layui-btn-xs" lay-event="qrsk">确认收款</a>
+                                        </script>
                                     </div>
                                     <!--收款计划窗口：结束-->
                                 </div>
@@ -470,55 +474,10 @@
                                 </div>
                                 <em class="em-line"></em>
                             </div>
-                            1
+                            <table class="layui-hide" id="jkgl" lay-filter="jkgl"></table>
                         </div>
-
-                        <div class="hkgl " id="hkgl">
-                            <div class="account-right-nav">
-                                <div class="sub-a-nav">
-                                    <a href="#jggl">借款管理</a><a href="#hkgl">还款明细</a><a href="#zdhg">自动还款设置</a>
-                                </div>
-                                <em class="em-line" style="left: 120px;"></em>
-                            </div>
-                            <div class="account-content" style="display: block;">
-                                <div class="account-content" id="repay" style="display: block;">
-                                    <div class="sub-nav">
-                                        <a href="javascript:;" class="active" id="detail-h">还款中</a>
-                                        <a href="javascript:;" id="detail-y">已还款</a>
-                                        <a href="javascript:;" id="detail-m">还款明细</a>
-                                        <a href="javascript:;" id="detail-sm">七天内的还款明细</a>
-                                    </div>
-                                    <div class="account-form cl">
-                                        <lable class="lable-long">还款时间：</lable>
-                                        <input type="text" class="date icon icon-date" autocomplete="off"
-                                               id="d-startDate" readonly="readonly">
-                                        <p class="text">至</p>
-                                        <input type="text" class="date icon icon-date" autocomplete="off" id="d_endDate"
-                                               readonly="readonly">
-                                        <!-- <input type="text" placeholder="请输入关键字搜索" class="search icon icon-search" /> -->
-                                        <button type="button" class="search" id="detailSearch">搜索</button>
-                                    </div>
-                                    <div class="listTable1">
-                                        <ul class="detailData list-box">
-                                            <li class="title">
-                                                <div class="children0">标题</div>
-                                                <div class="children1">协议</div>
-                                                <div class="children2">借款类型</div>
-                                                <div class="children3">借款金额</div>
-                                                <div class="children4">年利率</div>
-                                                <div class="children5">还款期限</div>
-                                                <div class="children6">还款时间</div>
-                                                <div class="children7">应还本息</div>
-                                                <div class="children8">操作</div>
-                                            </li>
-                                        </ul>
-                                        <ul class="detailData listData">
-                                            <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                        </ul>
-                                        <ul class="paging detailPaging"></ul>
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="huankuanview" style="display: none">
+                            <table class="layui-hide" id="huankuanjihua" lay-filter="huankuanjihua"></table>
                         </div>
                     </div>
                 </div>
@@ -532,17 +491,17 @@
                         </div>
                     </div>
                     <div class="account-content" style="display: block;">
-                        <div id="card1" class="bank-card_1">
+                        <div v-if="bank!=null" id="card1" class="bank-card_1">
                             <div class="bank-top">
                                 <div class="bank-cardTitle">{{bank.type}}</div>
                                 <div class="bank-cardType">储蓄卡</div>
                             </div>
                             <div class="bank-center">
-                                <div class="bank-cardNumber">{{bank.idno}}</div>
-                                <div class="bank-userName">{{bank.rname}}</div>
+                                <div class="bank-cardNumber">{{bank.cardno}}</div>
+                                <div class="bank-userName">{{bank.rname}}</div><a href="javaScript:;" @click="unbind">解绑</a>
                             </div>
                         </div>
-                        <div v-if="bank==null" id="card3" class="bank-card_3" @click="addCard" style="cursor:pointer;">
+                        <div v-else id="card3" class="bank-card_3" @click="addCard" style="cursor:pointer;">
                             <div class="bank-addCard"><a href="/bankCard/add">添加银行卡</a>
                             </div>
                         </div>
@@ -820,9 +779,9 @@
                             </div>
                             <div class="account-content">
                                 <div class="tuiJianShow">
-                                    <img src="images/banner_t.png" width="896" height="260">
-                                    <p class="tj-tips">尊敬的用户,您的推荐号为：<span id="uid">${sessionScope.resstr1}</span></p>
-                                    <p class="tj-text">活动时间：<span>2017年12月15日—2018年1月15日；</span></p>
+                                    <img src="/static/images/account/banner_t.png" width="896" height="260">
+                                    <p class="tj-tips">尊敬的用户,您的推荐号为：<span id="uid">${sessionScope.user.resstr1}</span></p>
+                                    <p class="tj-text">活动时间：<span>2017年12月15日—2018年1月30日；</span></p>
                                     <p class="tj-text">活动对象：活动期间新注册用户的推荐人；</p>
                                     <p class="tj-text">活动说明：1. 活动期间邀请好友注册并累计投资满10000元，得50元现金券奖励；</p>
                                     <p class="tj-text" style="padding-left: 70px;">2.
@@ -831,9 +790,10 @@
                                         (满足活动条件的用户在活动结束后3个工作日内奖励将以现金券的形式发放至用户账户)</p>
                                     <p class="tj-text"><span>注：</span>需将自己的邀请链接地址或推荐号发给您的好友，这样您才能成为他的邀请者。</p>
                                     <div class="tj-clip" id="tj-clip">
-                                        <p class="tj-clip-text" id="tj-clip-text">
-                                            https://www.pujinziben.com/regist.html?useCode=${sessionScope.resstr1}</p>
-                                        <button type="button" class="tj-clip-btn" id="tj-clip-btn">复制链接</button>
+                                        <p class="tj-clip-text"  id="tj-clip-text">
+                                            http://localhost:8080/user/register?code=${sessionScope.user.resstr1}
+                                        </p>
+                                        <button type="button"  data-clipboard-target="#tj-clip-text" class="tj-clip-btn">复制链接</button>
                                     </div>
                                 </div>
                             </div>
@@ -854,58 +814,58 @@
                     </div>
                 </div>
 
-                <div class="tuijian-list" style="display: none;">
-                    <div class="account-form cl">
-                        <input type="text" class="date icon icon-date" id="startDate">
-                        <p class="text">至</p>
-                        <input type="text" class="date icon icon-date" id="endDate">
-                        <button type="button" class="search" id="cashSearch">搜索</button>
-                    </div>
-                    <!-- <div class="account-list"> -->
-                    <!-- <ul class="cash-list-box list-box"> -->
-                    <!-- <li class="title"> -->
-                    <!-- <div class="children01">用户名</div> -->
-                    <!-- <div class="children02">用户创建时间</div> -->
-                    <!-- <div class="children03">奖励金额</div> -->
-                    <!-- <div class="children04">操作</div> -->
-                    <!-- </li> -->
-                    <!-- </ul> -->
-                    <!-- <ul class="tuijian-list listData" style="display: none;"> -->
+                <%--<div class="tuijian-list" style="display: none;">--%>
+                    <%--<div class="account-form cl">--%>
+                        <%--<input type="text" class="date icon icon-date" id="startDate">--%>
+                        <%--<p class="text">至</p>--%>
+                        <%--<input type="text" class="date icon icon-date" id="endDate">--%>
+                        <%--<button type="button" class="search" id="cashSearch">搜索</button>--%>
+                    <%--</div>--%>
+                    <%--<!-- <div class="account-list"> -->--%>
+                    <%--<!-- <ul class="cash-list-box list-box"> -->--%>
+                    <%--<!-- <li class="title"> -->--%>
+                    <%--<!-- <div class="children01">用户名</div> -->--%>
+                    <%--<!-- <div class="children02">用户创建时间</div> -->--%>
+                    <%--<!-- <div class="children03">奖励金额</div> -->--%>
+                    <%--<!-- <div class="children04">操作</div> -->--%>
+                    <%--<!-- </li> -->--%>
+                    <%--<!-- </ul> -->--%>
+                    <%--<!-- <ul class="tuijian-list listData" style="display: none;"> -->--%>
 
-                    <!-- </ul> -->
-                    <!-- <ul class="paging"> -->
+                    <%--<!-- </ul> -->--%>
+                    <%--<!-- <ul class="paging"> -->--%>
 
-                    <!-- </ul> -->
-                    <!-- </div> -->
-                </div>
+                    <%--<!-- </ul> -->--%>
+                    <%--<!-- </div> -->--%>
+                <%--</div>--%>
 
-                <div class="investList" style="display: none;">
-                    <div class="account-form cl">
-                        <p class="text" style="width: 120px;">借款发布时间:</p>
-                        <input type="text" class="date icon icon-date" autocomplete="off" id="invest-startDate">
-                        <p class="text">至</p>
-                        <input type="text" class="date icon icon-date" autocomplete="off" id="invest-endDate">
-                        <!-- <input type="text" placeholder="请输入关键字搜索" class="search icon icon-search" /> -->
-                        <button type="button" class="search" id="investSearch">搜索</button>
-                    </div>
-                    <!-- <div class="invest-listData invest-listData1"> -->
-                    <!-- <ul class="investData list-box"> -->
-                    <!-- <li class="title"> -->
-                    <!-- <div class="children0">标题</div> -->
-                    <!-- <div class="children1">类型</div> -->
-                    <!-- <div class="children2">年利率</div> -->
-                    <!-- <div class="children3">期限</div> -->
-                    <!-- <div class="children4">还款方式</div> -->
-                    <!-- <div class="children5">投资金额</div> -->
-                    <!-- <div class="children6">投资时间</div> -->
-                    <!-- </li> -->
-                    <!-- </ul> -->
-                    <!-- <ul class="investData listData"> -->
-                    <!-- </ul> -->
-                    <!-- <ul class="paging"> -->
-                    <!-- </ul> -->
-                    <!-- </div> -->
-                </div>
+                <%--<div class="investList" style="display: none;">--%>
+                    <%--<div class="account-form cl">--%>
+                        <%--<p class="text" style="width: 120px;">借款发布时间:</p>--%>
+                        <%--<input type="text" class="date icon icon-date" autocomplete="off" id="invest-startDate">--%>
+                        <%--<p class="text">至</p>--%>
+                        <%--<input type="text" class="date icon icon-date" autocomplete="off" id="invest-endDate">--%>
+                        <%--<!-- <input type="text" placeholder="请输入关键字搜索" class="search icon icon-search" /> -->--%>
+                        <%--<button type="button" class="search" id="investSearch">搜索</button>--%>
+                    <%--</div>--%>
+                    <%--<!-- <div class="invest-listData invest-listData1"> -->--%>
+                    <%--<!-- <ul class="investData list-box"> -->--%>
+                    <%--<!-- <li class="title"> -->--%>
+                    <%--<!-- <div class="children0">标题</div> -->--%>
+                    <%--<!-- <div class="children1">类型</div> -->--%>
+                    <%--<!-- <div class="children2">年利率</div> -->--%>
+                    <%--<!-- <div class="children3">期限</div> -->--%>
+                    <%--<!-- <div class="children4">还款方式</div> -->--%>
+                    <%--<!-- <div class="children5">投资金额</div> -->--%>
+                    <%--<!-- <div class="children6">投资时间</div> -->--%>
+                    <%--<!-- </li> -->--%>
+                    <%--<!-- </ul> -->--%>
+                    <%--<!-- <ul class="investData listData"> -->--%>
+                    <%--<!-- </ul> -->--%>
+                    <%--<!-- <ul class="paging"> -->--%>
+                    <%--<!-- </ul> -->--%>
+                    <%--<!-- </div> -->--%>
+                <%--</div>--%>
             </div>
         </div>
     </div>
@@ -930,8 +890,11 @@
 <script src="/static/js/axios.min.js"></script>
 <script src="/static/js/qs.js"></script>
 <script src="/static/layui/layui.all.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="hkjh">还款计划</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="jkxq">借款详情</a>
+</script>
 <script>
-
     var vue = new Vue({
         el: '#app',
         data: {
@@ -971,6 +934,16 @@
             },
             addCard () {
                 window.location.href = "/bankCard/add";
+            },
+            unbind(){
+                axios.get('/bankcard/data/json/delete/'+this.bank.bcid).then((response) => {
+                    if(response.data.code!=0){
+                        return alert(response.data.message);
+                    }
+                    alert('解绑成功');
+                }, (error) => {
+
+                });
             }
         }
     });
@@ -988,7 +961,6 @@
         layer = layui.layer //弹层
             , table = layui.table //表格
             , element = layui.element; //元素操作
-        //执行一个 table 实例
         $(".czjl").on('click', function () {
             table.render({
                 elem: '#logcz'
@@ -1044,17 +1016,101 @@
                 //表头
             });
         });
-        //资金记录/logMoney/data/json/pager
+
+        <!--借款管理-->
+        $(".jkgl").on('click', function () {
+            table.render({
+                elem: '#jkgl'
+                , height: 332
+                , url: '/borrowapply/data/json/pagerByJuid'
+                    , page: true
+                    , limit: 10
+                    , response: {
+                        statusName: 'status'
+                        , statusCode: 0
+                        , msgName: 'message'
+                        , countName: 'total'
+                        , dataName: 'rows'
+                    }
+                    , cols: [[
+                        {field: 'cpname', title: '借款名称', width: 200}
+                        , {field: 'money', title: '申请金额', width: 200}
+                        , {field: 'ymoney', title: '已筹金额', width: 200, sort: true}
+                        , {field: 'term', title: '借款期限', width: 200, sort: true}
+                        , {field: 'deadline', title: '截止时间', width: 200}
+                        ,{title:'操作',fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                    ]]
+                });
+            table.on('tool(jkgl)', function(obj){
+                var data = obj.data
+                    ,layEvent = obj.event;
+                if(layEvent === 'hkjh'){
+                    layer.open({
+                        type: 1,
+                        title:'还款计划',
+                        offset:['100px'],
+                        area: ['700px', '450px'],
+                        fixed: false, //不固定
+                        maxmin: true,
+                        closeBtn: 1,
+                        skin: '',
+                        content: $("#huankuanview")
+                    });
+                    table.render({
+                        elem: '#huankuanjihua'
+                        , height: 500
+                        , url: '/hkb/data/json/pager'
+                        , where: {'baid':data.baid}
+                        , page: true
+                        , limit: 10
+                        , response: {
+                            statusName: 'status'
+                            , statusCode: 0
+                            , msgName: 'message'
+                            , countName: 'total'
+                            , dataName: 'rows'
+                        }
+                        ,cols: [[
+                             {field:'rname', title:'真实姓名', width:90}
+                            ,{field:'rnum', title:'已还期数', width:90}
+                            ,{field:'tnum', title:'总期数', width:90}
+                            ,{field:'ytime', title:'应还时间', width:120}
+                            ,{field:'rtime', title:'实还时间', width:90}
+                            ,{field:'ybx', title:'应还本息', width:90}
+                            ,{field:'rbx', title:'已还本息', width:60}
+                            ,{field:'ybj', title:'应还本金', width:60}
+                            ,{field:'rbj', title:'已还本金', width:60}
+                            ,{field:'ylx', title:'应还利息', width:60}
+                            ,{field:'rlx', title:'已还利息', width:60}
+                            ,{field:'yfc', title:'应还罚息', width:60}
+                            ,{field:'rfc', title:'已还罚息', width:60}
+                            ,{field:'yucount', title:'逾期次数', width:60}
+                            ,{field:'status', title:'还款状态', width:60,templet: '<div>{{hkbStatus(d.status) }}</div>'}
+                        ]]
+                        //表头
+                    });
+                }else if(layEvent =='jkxq'){
+                    window.location.href='/borrowapply/info/'+data.baid+'/'+data.bdid+'/'+data.bzname;
+                }
+            });
+        });
+        <!--借款管理-->
+
+
+        <!--资金记录-->
         $(".zjjl").on('click', function () {
             zjjl();
         });
-        //推荐管理
+        <!--资金记录-->
+
+
+        <!--推荐管理-->
         $(".tjgl").on('click', function () {
             table.render({
                 elem: '#tjgl'
                 , height: 332
                 , url: '/user/data/json/PagerCriteria' //数据接口
-                , where: {'resstr2': 713958}
+                , where: {'resstr2': ${sessionScope.user.resstr1}}
                 , page: true //开启分页
                 , limit: 10//每页显示多少个
                 //后台Pager响应对象 不要动
@@ -1077,6 +1133,7 @@
                 //表头
             });
         });
+        <!--推荐管理-->
 
         //投资管理
         $(".investTable").on('click', function () {
@@ -1117,7 +1174,16 @@
     function inout(value) {
         zjjl(value);
     }
+    
+    function hkbStatus(value) {
+        if(value==0){
+            return"未还款";
+        }else{
+            return"已还款";
+        }
+    }
 
+    <!--资金记录-->
     function zjjl(type) {
         table.render({
             elem: '#logMoney'
@@ -1145,14 +1211,15 @@
             //表头
         });
     }
+    <!--资金记录-->
 
-    //投资管理
+    <!--投资管理-->
     function invest() {
         table.render({
             elem: '#tjglTable'
             , height: 500
             , url: '/tzb/data/json/investPager' //数据接口
-            , where: {'uid': 1}
+            , where: {'uid': ${sessionScope.user.uid}}
             , page: true //开启分页
             , limit: 10//每页显示多少个
             //后台Pager响应对象 不要动
@@ -1212,25 +1279,32 @@
                             , countName: 'total'
                             , dataName: 'rows'
                         }
-                        //后台Pager响应对象 不要动
-                        //表头
                         , cols: [[
-                            //{field: 'cpname', title: '标题', width: 100, sort: true}
-//                            , {field: 'nprofit', title: '年利率（%）', width: 110}
-//                            , {field: 'bzname', title: '类型', width: 80}
-//                            , {field: 'term', title: '期限（月）', width: 80}
-//                            , {field: 'way', title: '还款方式', width: 150}
-//                            , {field: 'money', title: '投资金额（元）', width: 120}
-//                            , {field: 'tztime', title: '投资时间', width: 180}
-//                            , {title: '操作', fixed: 'right', width: 100, align: 'center', toolbar: '#barTzgl'}
+                             {field: 'ylx', title: '应收利息', width: 80}
+                            , {field: 'rlx', title: '已收利息', width: 80}
+                            , {field: 'ybj', title: '应收本金', width: 150}
+                            , {field: 'rbj', title: '已收本金', width: 120}
+                            ,{field: 'ybx', title: '应收本息', width: 100, sort: true}
+                            , {field: 'rbx', title: '已收本息', width: 110}
+                            , {field: 'sktime', title: '收款时间', width: 180}
+                            , {title: '操作',  width: 100, align: 'center', toolbar: '#qrsk'}
                         ]]
                         //表头
                     });
+                    table.on('tool(shoukuanjihua)', function (obj) {
+                        //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                        var data = obj.data //获得当前行数据
+                            , layEvent = obj.event; //获得 lay-event 对应的值
+                        if (layEvent === 'qrsk') {
+                                alert("确认收款");
+                            }
+                        });
                 }, (error) => {
 
                 });
             }
         });
     }
+    <!--投资管理-->
 </script>
 </html>

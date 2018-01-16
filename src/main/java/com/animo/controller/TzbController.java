@@ -27,16 +27,14 @@ public class TzbController {
 
     @PostMapping("save")
     public ServerResponse save(Tzb tzb, HttpSession session){
-//        Object object = session.getAttribute(Constant.SESSION_USER);
-//        if(object!=null){
-//            User user=(User)object;
-            //投资人id  即用户id
-//        user.getUid()
-            tzb.setUid(1);
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object!=null){
+            User user=(User)object;
+            tzb.setUid( user.getUid());
             tzb.setTztime(DateFormateUtils.Formate());
             return tzbService.save(tzb);
-//        }
-     // return ServerResponse.createByError("登录超时");
+        }
+      return ServerResponse.createByError("登录超时");
     }
 
     @GetMapping("pager")
@@ -44,9 +42,10 @@ public class TzbController {
         return tzbService.listPager(page,limit);
     }
 
+
     @GetMapping("tzpager")
-    public Pager listPagerByBaid(Integer pageNumber, Integer pageSize,Integer baid){
-        return tzbService.listPagerByBaid(pageNumber,pageSize,baid);
+    public Pager listPagerByBaid(Integer page, Integer limit,Integer baid){
+        return tzbService.listPagerByBaid(page,limit,baid);
     }
 
     //用户投资管理

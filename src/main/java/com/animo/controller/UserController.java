@@ -1,8 +1,6 @@
 package com.animo.controller;
 
-import com.animo.common.EncryptUtils;
-import com.animo.common.Pager;
-import com.animo.common.ServerResponse;
+import com.animo.common.*;
 import com.animo.constant.Constant;
 import com.animo.pojo.Rzvip;
 import com.animo.pojo.User;
@@ -14,7 +12,10 @@ import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -36,11 +37,9 @@ public class UserController {
     @Autowired
     private UserMoneyService userMoneyService;
 
-
     @RequestMapping(value="register", method = RequestMethod.POST)
-    public ServerResponse register(User user, HttpSession session){
+    public ServerResponse register(User user){
         user.setUpwd(EncryptUtils.md5(user.getUpwd()));
-        user.setResint1(new Date());
         user.setResstr1(getRandomFourNum());
         user.setResint1(DateFormateUtils.Formate());
        ServerResponse serverResponse = userService.save(user);
@@ -65,6 +64,7 @@ public class UserController {
             return ServerResponse.createByError("error");
         }
     }
+
 
     @RequestMapping(value="login", method = RequestMethod.POST)
     public ServerResponse login(String phone, String upwd, HttpSession session) {

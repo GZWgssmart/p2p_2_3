@@ -123,7 +123,7 @@
             <p class="title">借款人介绍：</p><p class="content" id="projectIntro">{{borrowdetail.suggest}}</p>
         </div>
         <div class="detail cl">
-            <p class="title">项目描述：</p><p class="content" id="projectDetail">{{borrowdetail.xmdescrip}}</p>
+            <p class="title">项目描述：</p><p class="content" id="projectDetail">{{borrowdetail.xmdes}}</p>
         </div>
         <div class="detail cl">
             <p class="title">保障措施：</p><p class="content" id="safeMeasures">{{borrowdetail.guarantee}}</p>
@@ -133,9 +133,30 @@
         <p class="icon icon-danger files-title">互联金融将以客观、公正的原则，最大程度地核实借入者信息的真实性，但不保证审核信息100%真实。如果借入者长期逾期，其提供的信息将被公布。</p>
         <ul class="files-box">
             <li class="">
-                <img alt="" width="320" height="200" src="http://pic.3h3.com/up/2015-9/201599991030063384.jpg">
+                <img alt="" width="320" height="200" :src="borrowdetail.fpic">
                 <p>
                     <span class="icon icon-true">法人身份认证</span>
+                </p>
+                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
+            </li>
+            <li class="">
+                <img alt="" width="320" height="200" :src="borrowdetail.ypic">
+                <p>
+                    <span class="icon icon-true">营业执照</span>
+                </p>
+                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
+            </li>
+            <li class="">
+                <img alt="" width="320" height="200" :src="borrowdetail.qpic">
+                <p>
+                    <span class="icon icon-true">企业银行</span>
+                </p>
+                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
+            </li>
+            <li class="">
+                <img alt="" width="320" height="200" :src="borrowdetail.tpic">
+                <p>
+                    <span class="icon icon-true">其他资料</span>
                 </p>
                 <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
             </li>
@@ -375,8 +396,8 @@
             },
             getJsonShang(laypage,url,demo){
                 $.getJSON(url, {
-                    pageNumber: 1,
-                    pageSize: 6,
+                    page: 1,
+                    limit: 6,
                     baid:this.tzb.baid
                 }, function(res){
                     laypage.render({
@@ -395,8 +416,8 @@
             },
             getJsonXia (e,url) {
                 $.getJSON(url, {
-                    pageNumber: e.curr,
-                    pageSize: e.limit,
+                    page: e.curr,
+                    limit: e.limit,
                     baid:this.tzb.baid
                 }, function (res) {
                     vue.rows= res.rows;

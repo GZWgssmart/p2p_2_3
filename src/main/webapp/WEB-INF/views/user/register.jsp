@@ -112,7 +112,7 @@
             }
         },
         created (){
-
+            this.user.resstr2=${requestScope.code};
         },
         methods:{
             register () {

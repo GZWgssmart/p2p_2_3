@@ -307,5 +307,16 @@
       SELECT * FROM borrowapply WHERE ckstatus=#{ckstatus}
     ]]>
   </select>
-  
+
+  <select id="listByJuid" resultType="com.animo.vo.BorrowapplyVo">
+    <![CDATA[
+      SELECT bbz.bzname,b.baid,b.uid,bd.bdid, bd.cpname,b.money,bd.money AS ymoney, b.term,b.deadline FROM borrowapply AS b,borrowdetail AS bd,bz AS bbz WHERE b.baid=bd.baid AND b.bzid=bbz.bzid AND uid=#{juid} limit #{pager.beginIndex}, #{pager.pageSize}
+    ]]>
+  </select>
+
+  <select id="countByJuid" resultType="long">
+    <![CDATA[
+      SELECT count(b.baid) FROM borrowapply AS b,borrowdetail AS bd WHERE b.baid=bd.baid AND uid=#{juid}
+    ]]>
+  </select>
 </mapper>

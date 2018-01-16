@@ -57,6 +57,14 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
     }
 
     @Override
+    public Pager listByJuid(Integer pageNo, Integer pageSize, Integer juid) {
+        Pager pager = new Pager(pageNo,pageSize);
+        pager.setRows(borrowapplyMapper.listByJuid(pager,juid));
+        pager.setTotal(borrowapplyMapper.countByJuid(juid));
+        return pager;
+    }
+
+    @Override
     public List<Borrowapply> list(Integer ckstatus) {
         return borrowapplyMapper.list(ckstatus);
     }

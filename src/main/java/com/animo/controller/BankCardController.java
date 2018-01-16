@@ -7,6 +7,7 @@ import com.animo.pojo.User;
 import com.animo.service.BankCardService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,15 +67,13 @@ public class BankCardController {
     /**
      * 用户对银行卡解除绑定
      * @param session
-     * @param bankcard
      * @return
      */
-    @RequestMapping("delete")
-    public ServerResponse<Bankcard> deleteBankCards(HttpSession session,Bankcard bankcard){
+    @RequestMapping("delete/{bcid}")
+    public ServerResponse<Bankcard> deleteBankCards(HttpSession session,@PathVariable("bcid") Integer bcid){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
-            User user = (User) object;
-            return bankCardService.removeById(bankcard.getBcid());
+            return bankCardService.removeById(bcid);
         }else {
             return ServerResponse.createByError("您的登录已经超时，请重新登录！");
         }

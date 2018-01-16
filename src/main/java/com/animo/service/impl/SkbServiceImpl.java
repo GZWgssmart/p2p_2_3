@@ -52,8 +52,6 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
     public ServerResponse saveSkb(Integer uid, Integer baid){
         //装载保存收款表的list
         List<Skb> skbList = new ArrayList<>();
-        //根据用户id 和借款id查出所有的金额
-        BorrowapplyMoneyVo borrowapplyMoneyVo = (BorrowapplyMoneyVo)borrowapplyMapper.getByIdVo(baid);
         //根据用户id和收款表的id去查询有没有记录
         Long count = skbMapper.getByUidAndBaid(uid, baid);
         //如果没有记录就生成
@@ -69,10 +67,11 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
             if(tzb.getResint2().equals(WayEnum.PAYOFF_ONCE.getCode())){
                 Skb skb = new Skb();
                 skb.setUid(uid);
+                skb.setBaid(tzb.getBaid());
                 skb.setJuid(tzb.getJuid());
-                skb.setYbx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100)).add(money));
+                skb.setYbx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100)).add(money).setScale(2, BigDecimal.ROUND_HALF_UP));
                 skb.setRbx(new BigDecimal(0));
-                skb.setYlx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100)));
+                skb.setYlx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100)).setScale(2, BigDecimal.ROUND_HALF_UP));
                 skb.setRlx(new BigDecimal(0));
                 skb.setYbj(money);
                 skb.setRbj(new BigDecimal(0));
@@ -86,17 +85,18 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
             }else if(tzb.getResint2().equals(WayEnum.XIAN_XI.getCode())){
                 List<Hkb> hkbs = hkbMapper.getSkTime(tzb.getBaid());
                 int suoyin = 0;
-                for(int i=0;i<=tzb.getResint1();i++){
+                for(int i=0;i<tzb.getResint1();i++){
                     Skb skb = new Skb();
                     skb.setUid(uid);
+                    skb.setBaid(tzb.getBaid());
                     skb.setJuid(tzb.getJuid());
                     skb.setTnum(tzb.getResint1());
                     skb.setSktime(hkbs.get(suoyin).getYtime());
                     skb.setRbx(new BigDecimal(0));
                     skb.setRlx(new BigDecimal(0));
-                    skb.setYlx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100/12)));
-                    if(i==tzb.getResint1()){
-                        skb.setYbx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100/12)).add(money));
+                    skb.setYlx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100/12)).setScale(2, BigDecimal.ROUND_HALF_UP));
+                    if(i==tzb.getResint1()-1){
+                        skb.setYbx(money.multiply(BigDecimal.valueOf(tzb.getNprofit()/100/12)).add(money).setScale(2, BigDecimal.ROUND_HALF_UP));
                         skb.setYbj(money);
                     }else{
                         skb.setYbx(new BigDecimal(0));

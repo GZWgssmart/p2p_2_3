@@ -18,8 +18,8 @@ public class HkbController {
     private HkbService hkbService;
 
     @GetMapping("pager")
-    public Pager pager(Integer pageNumber, Integer pageSize,Integer baid){
-        return hkbService.pager(pageNumber,pageSize,baid);
+    public Pager pager(Integer page, Integer limit,Integer baid){
+        return hkbService.pager(page,limit,baid);
     }
 
 }

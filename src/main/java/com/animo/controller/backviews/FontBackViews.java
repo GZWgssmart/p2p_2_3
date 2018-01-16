@@ -24,6 +24,7 @@ public class FontBackViews {
     public String information(){
         return "font/information";
     }
+
     @RequestMapping("cyjg")
     public String cyjg(){
         return "font/xxpl/cyjg";

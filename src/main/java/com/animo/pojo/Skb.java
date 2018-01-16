@@ -1,5 +1,7 @@
 package com.animo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -126,6 +128,7 @@ public class Skb {
         this.tnum = tnum;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getSktime() {
         return sktime;
     }
