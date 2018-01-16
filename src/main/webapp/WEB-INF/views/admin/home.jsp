@@ -51,7 +51,7 @@
                             <a href="javascript:;" class="edit-password">修改密码</a>
                         </dd>--%>
                         <dd>
-                            <a href="<%=path%>/admin/data/json/logout" >退出登录</a>
+                            <a href="<%=path%>/admin/logout" >退出登录</a>
                         </dd>
                     </dl>
                 </li>
@@ -87,7 +87,7 @@
                             <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="4">管理员列表</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="6">修改信息</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="6">修改密码</a>
                         </dd>
                     </dl>
                 </li>

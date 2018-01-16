@@ -3,6 +3,7 @@ package com.animo.realm;
 import com.animo.common.CustomToken;
 import com.animo.common.EncryptUtils;
 import com.animo.common.ServerResponse;
+import com.animo.constant.Constant;
 import com.animo.pojo.Huser;
 import com.animo.pojo.Roleuser;
 import com.animo.service.HuserService;
@@ -65,7 +66,7 @@ public class MyRealm extends AuthorizingRealm {
         if(huser == null) {
             throw new UnknownAccountException("账号或密码不正确");
         }else {
-            session.setAttribute("huser",huser);
+            session.setAttribute(Constant.SESSION_ADMIN, huser);
             return new SimpleAuthenticationInfo(username,password,"myRealm");
         }
     }
@@ -79,7 +80,7 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         Session session = SecurityUtils.getSubject().getSession();
-        Huser huser = (Huser) session.getAttribute("huser");
+        Huser huser = (Huser) session.getAttribute(Constant.SESSION_ADMIN);
         //查询用户的角色
 //        Set<Integer> roleSet = new HashSet<Integer>();
 //        List<Rolejur> rolejurList = new ArrayList<>();

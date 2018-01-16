@@ -66,13 +66,7 @@ public class AdminController {
         return huserService.listPager(page - 0, limit - 1);
     }
 
-    //退出
-    @GetMapping("logout")
-    public String logout(HttpSession session) {
-        //shiro完成退出
-        SecurityUtils.getSubject().logout();
-        return "/index";
-    }
+
 
     @PostMapping("updatePwd")
     public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
