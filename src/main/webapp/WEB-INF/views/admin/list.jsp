@@ -49,13 +49,13 @@
         姓名：<input v-model="adminupdate.huname"/><br/>
         性别：<input name="adminupdate.rname" v-model="adminupdate.sex" type="radio" value="男" />男
                 <input type="radio" v-model="adminupdate.sex" name="adminupdate.rname" value="女" />女<br/></li>
-        号码：<input  v-model="adminupdate.phone"><br/>
+        号码：<input disabled="disabled"  v-model="adminupdate.phone"><br/>
         邮箱：<input  v-model="adminupdate.email"><br/>
         状态：<select v-model="adminupdate.resstr2">
                     <option>可用</option>
                     <option>不可用</option>
                 </select><br/>
-        <button @click="update" class="up-btn">修改</button>
+        <input @click="update" class="up-btn" value="修改"/>
         </div>
     </div>
 </div>
@@ -72,26 +72,6 @@
 <script type="text/javascript" src="/static/js/qs.js"></script>
 <script>
 
-    var vue = new Vue({
-        el:'#upAdmin',//元素
-        data:{
-            adminupdate:[]//json格式
-        },
-        methods : {
-            update :function(){
-                axios.post('<%=path%>/admin/data/json/update',Qs.stringify(this.adminupdate)).then((response)=>{
-                    if(response.data.code == 0) {
-                        alert("更新成功");
-                        layer.closeAll();
-                    }else {
-                        alert("更新失败");
-                    }
-                },(error)=>{
-                    alert("服务器错误");
-                });
-            }
-        }
-    });
 
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function(){
         var laydate = layui.laydate //日期
@@ -105,6 +85,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#admin'
+            ,id:'admin'
             ,height: 465
             ,url: '<%=path%>/admin/data/json/list' //数据接口接口地址。默认会自动传递两个参数：?page=1&limit=30（该参数可通过 request 自定义）page 代表当前页码、limit 代表每页数据量
             ,page: true//开启分页
@@ -118,8 +99,8 @@
             }
             //后台Pager响应对象 不要动
             ,cols: [[//表头
-                {field: 'huid', title: 'ID', width:80, sort: true, fixed: 'left'}
-                ,{field: 'rname', title: '昵称', width:150}
+               /* {field: 'huid', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,*/{field: 'rname', title: '昵称', width:150}
                 ,{field: 'huname', title: '姓名', width:150}
                 ,{field: 'sex', title: '性别', width:150}
                 ,{field: 'phone', title: '手机号', width:150}
@@ -137,10 +118,10 @@
                layer.open({
                    type: 1
                    ,content: $("#test")
-                   ,btn: '关闭'
-                   ,area: ['400px', '450px'] //自定义文本域宽高
+                  /* ,btn: '关闭'*/
+                   ,area: ['320px', '360px'] //自定义文本域宽高
                    ,btnAlign: 'r' //按钮居中
-                   ,shade: 0 //不显示遮罩
+                   ,shade: 0.3 //不显示遮罩
                    ,yes: function(){
                        layer.closeAll();
                    }
@@ -148,6 +129,29 @@
                vue.adminupdate = data;
             }
         });
+    });
+
+
+    var vue = new Vue({
+        el:'#upAdmin',//元素
+        data:{
+            adminupdate:[]//json格式
+        },
+        methods : {
+            update :function(){
+                axios.post('<%=path%>/admin/data/json/update',Qs.stringify(this.adminupdate)).then((response)=>{
+                    if(response.data.code == 0) {
+                        /*layui.layer.msg('更新成功');*/
+                        layer.closeAll();
+                        layui.table.reload("admin");
+                    }else {
+                        layer.msg('更新失败');
+                    }
+                },(error)=>{
+                    layer.msg('服务器错误');
+                });
+            }
+        }
     });
 </script>
 

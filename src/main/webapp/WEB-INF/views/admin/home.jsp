@@ -89,12 +89,7 @@
                             <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="4">管理员列表</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="5">修改信息</a>
-<<<<<<< .mine
                             <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="6">修改密码</a>
-=======
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="7">修改信息</a>
->>>>>>> .theirs
                         </dd>
                     </dl>
                 </li>

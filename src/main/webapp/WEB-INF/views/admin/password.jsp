@@ -14,6 +14,7 @@
 <head>
     <title>修改密码</title>
     <link rel="stylesheet" href="<%=path%>/static/css/style.css"/>
+    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
 </head>
 <body>
 <div class="login">
@@ -35,6 +36,7 @@
     </ul>
 </div>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
 <script>
     //错误提示
     function showError(msg,obj){
@@ -66,7 +68,7 @@
             $("#updatePwd").serialize(),
             function (data) {
                 if (data.message === 'success') {
-                    alert("修改成功");
+                    alert('修改成功');
                     $(":text").val("");
                     $(":password").val("");
                 } else {

@@ -27,7 +27,7 @@
 <script type="text/html" id="barDemo">
     <%--    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>--%>
     <a class="layui-btn layui-btn-xs" lay-event="view">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+   <%-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>--%>
 </script>
 
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
@@ -35,7 +35,7 @@
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function(){
         var laydate = layui.laydate //日期
             ,laypage = layui.laypage //分页
-        layer = layui.layer //弹层
+            ,layer = layui.layer //弹层
             ,table = layui.table //表格
             ,carousel = layui.carousel //轮播
             ,upload = layui.upload //上传
@@ -57,8 +57,8 @@
             }
             //后台Pager响应对象 不要动
             ,cols: [[//表头
-                {field: 'rwsid', title: 'ID', width:80, sort: true,align:'center', fixed: 'left'}
-                ,{field: 'minmoney', title: '最小金额(元)', align:'center', width:200}
+                /*{field: 'rwsid', title: 'ID', width:80, sort: true,align:'center', fixed: 'left'}
+                ,*/{field: 'minmoney', title: '最小金额(元)', align:'center', width:200}
                 ,{field: 'maxmoney', title: '最大金额（元）',align:'center', width:200}
                 ,{field: 'percent', title: '奖励百分比%', align:'center', width:200}
                 ,{fixed: 'right',title:'操作', width: 250, align:'center', toolbar: '#barDemo'}
@@ -69,14 +69,7 @@
         table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
-            if(layEvent === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
-
-                });
-            } else if(layEvent === 'view'){
+            if(layEvent === 'view'){
                 layer.msg('修改操作');
             }
         });

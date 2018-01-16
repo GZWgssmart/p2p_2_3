@@ -36,7 +36,7 @@
                 <input type="password" name="upwd"  id="upwd" autocomplete="new-password" placeholder="输入登录密码"/>
             </div>
             <div class="from">
-                <div class="pull-box">
+                <div class="pull-box" id="slide">
                     <div class="pull-bg" style="width: 0px;"></div>
                     <div class="pull-default">请按住滑块，拖动到最右边</div>
                     <div class="pull-btn"></div>
@@ -64,8 +64,10 @@
         $('.error-msg').text(msg).addClass('show');
         obj.parent('.from').addClass('error');
         obj.focus(function(){
+            alert(1);
             obj.parent('.from').removeClass('error');
             $('.error-msg').removeClass('show');
+
         });
     }
 
@@ -86,11 +88,15 @@
     function login() {
         var phone = $("#phone").val();
         var upwd = $("#upwd").val();
+        var slide = $("#slide").val();
         if(phone==''){
             showError('请输入手机号',$(phone));
             return;
         }else if(phone.length != 11){
             showError('请输入正确手机号',$(phone));
+            return;
+        }else if(!pullTest){
+            showError('请拖动验证码到正确位置', $(slide));
             return;
         };
         if(upwd==''){
