@@ -114,9 +114,7 @@
             }
             //后台Pager响应对象 不要动
             , cols: [[//表头
-                {field: 'txid', title: 'ID', width: 60, sort: true, fixed: 'left'}
-                ,{field: 'uid', title: 'userID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'bankcard', title: '卡号', width: 193}
+                 {field: 'bankcard', title: '卡号', width: 193}
                 , {field: 'banktype', title: '所属银行', width: 140}
                 , {field: 'money', title: '金额', width: 120}
                 , {field: 'status', title: '状态', width: 120,templet:'<div>{{statusFormat(d.status)}}</div>'}
