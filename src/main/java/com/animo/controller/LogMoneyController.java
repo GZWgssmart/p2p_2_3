@@ -4,7 +4,6 @@ import com.animo.common.Pager;
 import com.animo.constant.Constant;
 import com.animo.pojo.User;
 import com.animo.service.LogMoneyService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +30,6 @@ public class LogMoneyController {
      * @return
      */
     @RequestMapping("pager")
-    @RequiresPermissions("logMoney:pager")
     public Pager pager(int page, int limit, Integer type, HttpSession session) {
         User user = (User)session.getAttribute(Constant.SESSION_USER);
         return logMoneyService.listPagerByTypeAndUid(page, limit, type,user.getUid());

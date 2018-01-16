@@ -66,7 +66,7 @@
         data:{
             txCheckData:[],
             txCheckVO:{
-               txid:'',
+                txid:'',
                 uid:'',
                 money:'',
                 status:'',
@@ -77,18 +77,6 @@
         created () {
         },
         methods:{
-            agreeCheck () {
-                vue.txCheckVO.txid=vue.txCheckData.txid;
-                vue.txCheckVO.money=vue.txCheckData.money;
-                vue.txCheckVO.uid=vue.txCheckData.uid;
-                axios.post('/txCheck/data/json/check', Qs.stringify(this.txCheckVO))
-                    .then((response)=>{
-                        layer.msg(response.data.message);
-                      table.reload('txcheck')
-                    },(error)=>{
-                        layer.msg("请求失败");
-                    });
-            }
         }
     });
     layui.use(['form','laydate', 'laypage', 'layer', 'table', 'element'], function () {
@@ -102,7 +90,6 @@
         //执行一个 table 实例
         table.render({
             elem: '#user'
-            ,id:'txcheck'
             , height: 465
             , url: '<%=path%>/LogTx/data/json/listAll' //数据接口接口地址。默认会自动传递两个参数：?page=1&limit=30（该参数可通过 request 自定义）page 代表当前页码、limit 代表每页数据量
             , page: true//开启分页
@@ -115,7 +102,7 @@
             }
             //后台Pager响应对象 不要动
             , cols: [[//表头
-                 {field: 'bankcard', title: '卡号', width: 193}
+                {field: 'bankcard', title: '卡号', width: 193}
                 , {field: 'banktype', title: '所属银行', width: 140}
                 , {field: 'money', title: '金额', width: 120}
                 , {field: 'status', title: '状态', width: 120,templet:'<div>{{statusFormat(d.status)}}</div>'}

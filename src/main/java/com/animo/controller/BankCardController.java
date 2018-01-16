@@ -6,7 +6,6 @@ import com.animo.pojo.Bankcard;
 import com.animo.pojo.User;
 import com.animo.service.BankCardService;
 import com.animo.utils.DateFormateUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +34,6 @@ public class BankCardController {
      * @return
      */
     @RequestMapping("save")
-    @RequiresPermissions("bank:add")
     public ServerResponse<Bankcard> bindBankCard(HttpSession session,Bankcard bankcard){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
@@ -56,7 +54,6 @@ public class BankCardController {
      * @return
      */
     @RequestMapping("list")
-    @RequiresPermissions("bank:list")
     public ServerResponse<Bankcard> listBankCards(HttpSession session){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
@@ -73,7 +70,6 @@ public class BankCardController {
      * @return
      */
     @RequestMapping("delete/{bcid}")
-    @RequiresPermissions("bank:delete")
     public ServerResponse<Bankcard> deleteBankCards(HttpSession session,@PathVariable("bcid") Integer bcid){
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){

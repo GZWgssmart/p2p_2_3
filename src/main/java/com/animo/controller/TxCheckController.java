@@ -38,34 +38,12 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("check")
-    @RequiresPermissions("txCheck:check")
-    public ServerResponse passCheck(HttpSession session, TxCheckVO txCheckVO, TxCheck txCheck, Usermoney usermoney, LogMoney logMoney){
-        Object object = session.getAttribute(Constant.SESSION_ADMIN);
-        txCheck.setTxid(txCheckVO.getTxid());
-        if (object != null){
-            Huser huser = (Huser) object;
-            txCheck.setHuid(1);
-            txCheck.setIsok(txCheckVO.getStatus());
-            txCheck.setExcuse(txCheckVO.getExcuse());
-            txCheck.setTxid(txCheckVO.getTxid());
-            txCheck.setCreatedTime(DateFormateUtils.Formate());
-            //同意提现
-            if(txCheck.getIsok()==1 && StringUtils.isNotBlank(txCheck.getExcuse())){
-                //生成提现记录
-                txCheckService.save(txCheck);
-                //更新用户资金
-                return txCheckService.updateUserMoneyAndLogMoney(usermoney,logMoney,txCheckVO);
-                //提现失败
-            }else if(txCheck.getIsok()==2 && StringUtils.isNotBlank(txCheck.getExcuse())){
-                //提现失败也要生成提现记录
-                return txCheckService.updateUserMoneyAndLogMoney(usermoney,logMoney,txCheckVO);
-            //理由不够充分
-            }else{
-                return ServerResponse.createByError("请填写审核理由");
-            }
-        }else {
-            return ServerResponse.createByError("您的登录已超时，审核失败!");
-        }
+    public ServerResponse passCheck(HttpSession session, TxCheckVO txCheckvo) {
+//        Object object = session.getAttribute(Constant.SESSION_ADMIN);
+//        if(object!=null){
+        return txCheckService.save(txCheckvo);
+//        }
+//        return  ServerResponse.createByError("登录超时");
     }
 
     /**
@@ -79,7 +57,6 @@ public class TxCheckController {
     public Pager listRecord(Integer page,Integer limit){
         return txCheckService.listPager(page,limit);
     }
-
 
     @RequestMapping("delete/{txid}")
     @RequiresPermissions("txCheck:check")
