@@ -38,6 +38,7 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("check")
+    @RequiresPermissions("txCheck:check")
     public ServerResponse passCheck(HttpSession session, TxCheckVO txCheckvo) {
 //        Object object = session.getAttribute(Constant.SESSION_ADMIN);
 //        if(object!=null){
@@ -53,7 +54,7 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("listRecord")
-    @RequiresPermissions("txCheck:check")
+    @RequiresPermissions("txCheck:listRecord")
     public Pager listRecord(Integer page,Integer limit){
         return txCheckService.listPager(page,limit);
     }
