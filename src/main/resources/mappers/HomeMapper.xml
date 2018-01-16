@@ -4,12 +4,18 @@
   <resultMap id="BaseResultMap" type="com.animo.pojo.Home" >
     <id column="hid" property="hid" jdbcType="INTEGER" />
     <result column="pic1" property="pic1" jdbcType="VARCHAR" />
+    <result column="pic2" property="pic2" jdbcType="VARCHAR" />
+    <result column="pic3" property="pic3" jdbcType="VARCHAR" />
+    <result column="ewm" property="ewm" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="url1" property="url1" jdbcType="VARCHAR" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="url2" property="url2" jdbcType="VARCHAR" />
+    <result column="url3" property="url3" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+
   </resultMap>
   <sql id="Base_Column_List" >
-    hid, pic1, url1, created_time, update_time
+    hid, pic1, pic2,pic3,ewm,phone,url1,url2,url3,status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,10 +28,10 @@
     where hid = #{hid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.animo.pojo.Home" >
-    insert into home (hid, pic1, url1, 
-      created_time, update_time)
-    values (#{hid,jdbcType=INTEGER}, #{pic1,jdbcType=VARCHAR}, #{url1,jdbcType=VARCHAR}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+     insert into home (hid, pic1, pic2,pic3, ewm, phone, url1,url2, url3,status)
+    values (#{hid,jdbcType=INTEGER}, #{pic1,jdbcType=VARCHAR}, #{pic2,jdbcType=VARCHAR},
+      #{pic3,jdbcType=VARCHAR}, #{ewm,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{url1,jdbcType=VARCHAR},
+      #{url2,jdbcType=VARCHAR}, #{url3,jdbcType=VARCHAR},#{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.Home" >
     insert into home
@@ -36,14 +42,29 @@
       <if test="pic1 != null" >
         pic1,
       </if>
+      <if test="pic2 != null" >
+        pic2,
+      </if>
+      <if test="pic3 != null" >
+        pic3,
+      </if>
+      <if test="ewm != null" >
+        ewm,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
       <if test="url1 != null" >
         url1,
       </if>
-      <if test="createdTime != null" >
-        created_time,
+      <if test="url2 != null" >
+        url2,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="url3 != null" >
+        url3,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -53,41 +74,79 @@
       <if test="pic1 != null" >
         #{pic1,jdbcType=VARCHAR},
       </if>
+      <if test="pic2 != null" >
+        #{pic2,jdbcType=VARCHAR},
+      </if>
+      <if test="pic3 != null" >
+        #{pic3,jdbcType=VARCHAR},
+      </if>
+      <if test="ewm != null" >
+        #{ewm,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
       <if test="url1 != null" >
         #{url1,jdbcType=VARCHAR},
       </if>
-      <if test="createdTime != null" >
-        #{createdTime,jdbcType=TIMESTAMP},
+      <if test="url2 != null" >
+        #{url2,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="url3 != null" >
+        #{url3,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.animo.pojo.Home" >
     update home
     <set >
+      <if test="hid != null" >
+        hid= #{hid,jdbcType=INTEGER},
+      </if>
       <if test="pic1 != null" >
-        pic1 = #{pic1,jdbcType=VARCHAR},
+        pic1= #{pic1,jdbcType=VARCHAR},
+      </if>
+      <if test="pic2 != null" >
+        pic2=#{pic2,jdbcType=VARCHAR},
+      </if>
+      <if test="pic3 != null" >
+        pic3=#{pic3,jdbcType=VARCHAR},
+      </if>
+      <if test="ewm != null" >
+        ewm=#{ewm,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone=#{phone,jdbcType=VARCHAR},
       </if>
       <if test="url1 != null" >
-        url1 = #{url1,jdbcType=VARCHAR},
+        url1=#{url1,jdbcType=VARCHAR},
       </if>
-      <if test="createdTime != null" >
-        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      <if test="url2 != null" >
+        url2=#{url2,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="url3 != null" >
+        url3=#{url3,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status=#{status,jdbcType=INTEGER},
       </if>
     </set>
     where hid = #{hid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Home" >
     update home
-    set pic1 = #{pic1,jdbcType=VARCHAR},
-      url1 = #{url1,jdbcType=VARCHAR},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    set pic1= #{pic1,jdbcType=VARCHAR},
+    pic2=#{pic2,jdbcType=VARCHAR},
+    pic3=#{pic3,jdbcType=VARCHAR},
+     ewm=#{ewm,jdbcType=VARCHAR},
+      phone=#{phone,jdbcType=VARCHAR},
+       url1=#{url1,jdbcType=VARCHAR},
+        url2=#{url2,jdbcType=VARCHAR},
+        url3=#{url3,jdbcType=VARCHAR},
+         status=#{status,jdbcType=INTEGER},
     where hid = #{hid,jdbcType=INTEGER}
   </update>
 </mapper>
