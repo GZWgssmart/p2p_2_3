@@ -70,10 +70,12 @@
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="2">用户列表</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="1">用户列表</a>
+                           
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/user/tx" data-id="33">提现审核</a>
+                            
+                            <a href="javascript:;" data-url="<%=path%>/back/user/tx" data-id="2">提现审核</a>
                         </dd>
                     </dl>
                 </li>
@@ -87,7 +89,12 @@
                             <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="4">管理员列表</a>
                         </dd>
                         <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="5">修改信息</a>
+<<<<<<< .mine
                             <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="6">修改密码</a>
+=======
+                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="7">修改信息</a>
+>>>>>>> .theirs
                         </dd>
                     </dl>
                 </li>
@@ -95,10 +102,12 @@
                     <a href="javascript:;">投资管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/add" data-id="7">投资奖励设置</a>
+                            
+                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/add" data-id="8">投资奖励设置</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/list" data-id="11">投资奖励列表</a>
+                        
+                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/list" data-id="9">投资奖励列表</a>
                         </dd>
                     </dl>
                 </li>
@@ -110,35 +119,43 @@
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="/back/dyna/pager" data-id="9">公司动态</a>
+                          
+                            <a href="javascript:;" data-url="/back/dyna/pager" data-id="10">公司动态</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="/back/med/pager" data-id="10">媒体报道</a>
+                         
+                            <a href="javascript:;" data-url="/back/med/pager" data-id="11">媒体报道</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="/back/not/pager" data-id="11">公司公告</a>
+                            
+                            <a href="javascript:;" data-url="/back/not/pager" data-id="12">公司公告</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="/back/dyna/save" data-id="12">添加公司动态</a>
+                            
+                            <a href="javascript:;" data-url="/back/dyna/save" data-id="13">添加公司动态</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="/back/med/save" data-id="13">添加媒体报道</a>
+                           
+                            <a href="javascript:;" data-url="/back/med/save" data-id="14">添加媒体报道</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="/back/not/save" data-id="14">添加公司公告</a>
+                         
+                            <a href="javascript:;" data-url="/back/not/save" data-id="15">添加公司公告</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="25">站内信</a>
+                          
+                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="16">站内信</a>
                         </dd>
 
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="26">短信模板</a>
+                        
+                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="17">短信模板</a>
                         </dd>
 
                     </dl>
@@ -147,7 +164,8 @@
                     <a href="javascript:;">合作伙伴管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="11">合作伙伴</a>
+                           
+                            <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="18">合作伙伴</a>
                         </dd>
                     </dl>
                 </li>
@@ -155,16 +173,20 @@
                     <a href="javascript:;">借款管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="27">借款类型</a>
+                            
+                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="19">借款类型</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="28">标种</a>
+                           
+                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="20">标种</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="29">还款方式</a>
+                          
+                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="21">还款方式</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="29">借款审核</a>
+                           
+                            <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="22">借款审核</a>
                         </dd>
                     </dl>
                 </li>
@@ -172,7 +194,8 @@
                     <a href="javascript:;">角色管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/role/pagerRole" data-id="26">所有角色</a>
+                           
+                            <a href="javascript:;" data-url="<%=path%>/back/role/pagerRole" data-id="23">所有角色</a>
                         </dd>
                     </dl>
                 </li>
@@ -180,7 +203,7 @@
                     <a href="javascript:;">权限管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/jur/pagerJur" data-id="27">所有权限</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/jur/pagerJur" data-id="24">所有权限</a>
                         </dd>
                     </dl>
                 </li>

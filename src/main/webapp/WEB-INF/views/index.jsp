@@ -268,23 +268,23 @@
     </div>
 <div id="ajaxFooter">
 
-   <%-- <div id="gzh" class="popup wechart-box show">
+    <div id="gzh" class="popup wechart-box show">
         <p class="title left">关注普金资本微信公众号</p>
-        <a href="javascript:void(0);" class="close icon icon-close"></a>
+        <a id="close" href="javascript:void(0);" onclick="close();" class="close icon icon-close"></a>
         <div class="popup-from">
             <img class="wechart" src="/static/images/index/wechart.jpg">
         </div>
-    </div>--%>
+    </div>
     <div class="mod-sidebar">
         <ul>
             <li><a target="_blank" href="http://web2.qq.com/"
                    class="sidebar-qq">
                 <img src="/static/images/index/qq1.png">
             </a></li>
-            <li><a href="javascript:;" class="sidebar-wx">
+            <li id="aaa"><a href="javascript:;" class="sidebar-wx">
                 <img src="/static/images/index/wx1.png">
             </a></li>
-            <li><a href="" class="sidebar-cl">
+            <li><a href="/calculator" class="sidebar-cl">
                 <img src="/static/images/index/sf.png">
             </a></li>
             <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券">
@@ -386,10 +386,18 @@
        $("#gzh").hide();
     });
 
-    /*$(document).ready(function(){
+    $(document).ready(function(){
         $("#aaa").click(function(){
             $("#gzh").show();
         });
-    });*/
+    });
+
+
+   $(document).ready(function(){
+     $("#close").click(function(){
+     $("#gzh").hide();
+     });
+     });
+
 </script>
 </html>
