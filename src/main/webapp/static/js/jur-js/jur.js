@@ -44,11 +44,12 @@ $(function () {
         }
     });
 
-    layui.use(['layer', 'laypage', 'table', 'element'], function(){
+    layui.use(['layer', 'laypage', 'table', 'upload','element'], function(){
         var layer = layui.layer
             ,laypage = layui.laypage //分页
             ,layer = layui.layer //弹层
             ,table = layui.table //表格
+            ,upload = layui.upload
             ,element = layui.element; //元素操作
         table.render({
             elem: '#jurs'
@@ -103,6 +104,28 @@ $(function () {
                 initDisTreeRole();
             }
         });
+        upload.render({ //允许上传的文件后缀
+            elem: '#uploadExcel'
+            ,url: ''
+            ,auto: false
+            ,accept: 'file' //普通文件
+            ,exts: 'xls|xlsx' //只允许上传压缩文件
+            ,before: function (obj) { //obj参数包含的信息
+                console.log(obj);
+            }
+        });
+        // upload.render({
+        //     elem: '#uploadExcel'
+        //     , url: ''
+        //     ,auto: false
+        //     , exts: 'xls|xlsx'
+        //     , before: function (obj) { //obj参数包含的信息
+        //         console.log(obj);
+        //     }
+        //     , error: function () {
+        //         //请求异常回调
+        //     }
+        // });
     });
 
     /**
@@ -160,6 +183,20 @@ $(function () {
         });
     }
 });
+
+//弹出页面：初始化权限
+function showInitJur() {
+    layer.open({
+        type: 1,
+        title:'初始化权限',
+        area: ['500px', '300px'],
+        fixed: false, //不固定
+        maxmin: true,
+        closeBtn: 1,
+        skin: '',
+        content: $("#jurInitWin")
+    });
+}
 
 /**
  * 获取选中的角色

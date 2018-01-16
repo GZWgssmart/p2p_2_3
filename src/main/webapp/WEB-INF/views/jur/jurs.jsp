@@ -17,6 +17,8 @@
 <body>
 <div id="appJur">
 
+    <button class="layui-btn" onclick="showInitJur()">权限初始化</button>
+
     <!--layui表格-->
     <table class="layui-hide" id="jurs" lay-filter="jur"></table>
 
@@ -43,7 +45,7 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" v-on:click="update">保存</button>
+                <button class="layui-btn" @click="update">保存</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -75,6 +77,20 @@
                 <button class="layui-btn" @click="saveRoleJur">保存</button>
             </div>
         </div>
+    </div>
+
+    <!--权限初始化-->
+    <div id="jurInitWin" style="display: none">
+        <form enctype="multipart/form-data" method="post">
+            <div class="layui-form-item">
+                <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel"><i class="layui-icon"></i>请选择权限初始化数据Excel表</button>
+                <%--<label class="layui-form-label">请选择权限初始化数据表</label>--%>
+                <%--<div class="layui-upload-drag" id="uploadExcel">--%>
+                    <%--<i class="layui-icon"></i>--%>
+                    <%--<p>点击上传，或将文件拖拽到此处</p>--%>
+                <%--</div>--%>
+            </div>
+        </form>
     </div>
 
 </div>

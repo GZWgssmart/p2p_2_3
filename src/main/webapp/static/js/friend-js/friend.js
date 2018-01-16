@@ -18,7 +18,7 @@ $(function () {
                     layer.msg(response.data.message);
                     vue.friend.fpic = '';
                     vue.friend.furl = '';
-                    layer.closeAll();
+                    window.location.reload();
                 }, (error) => {
                     layer.alert("请求失败");
                 });
@@ -28,6 +28,7 @@ $(function () {
                     layer.msg(response.data.message);
                     vue.friend.fpic = '';
                     vue.friend.furl = '';
+                    table.reload('friends');
                     layer.closeAll();
                 }, (error) => {
                     layer.alert("请求失败");
@@ -60,6 +61,7 @@ $(function () {
             , element = layui.element; //元素操作
         table.render({
             elem: '#friends'
+            ,id:'friends'
             , height: 332
             , url: '/friend/data/json/pager/' //数据接口
             , page: true //开启分页

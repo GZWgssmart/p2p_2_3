@@ -49,7 +49,7 @@ function showAddDep() {
     vue.role.content = ""
     layer.open({
         type: 1,
-        title:'添加角色',
+        title:'添加部门',
         area: ['700px', '450px'],
         fixed: false, //不固定
         maxmin: true,
