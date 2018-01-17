@@ -17,4 +17,13 @@ public class FriendBackViews {
        return "friend/friends";
    }
 
+   @GetMapping("addFriends")
+    public String addFriends(){
+       return "friend/addFriends";
+   }
+
+//   @GetMapping("updateFriend")
+//    public String updateFriend(){
+//        return "friend/Friends";
+//   }
 }

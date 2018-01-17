@@ -267,11 +267,9 @@
   </select>
 
   <!--BaseMapper中的分页-->
-  <select id="listPager" parameterType="com.animo.common.Pager" resultType="com.animo.vo.UserVO">
+  <select id="listPager" parameterType="com.animo.common.Pager" resultType="com.animo.pojo.User">
     <![CDATA[
-			select u.uid, u.tid, u.uname, u.phone, u.tzm, u.email, u.sex, u.rname, u.idtype, u.idno, u.isvip, rz.xl, rz.ism, rz.bschool, rz.addr, rz.work, rz.age, re.tname, re.created_time
-			from t_user u, rzvip rz, recommend re
-			 where u.uid = rz.uid and u.tid = re.tid and rz.uid = re.uid
+			select * FROM t_user
 			limit #{beginIndex}, #{pageSize}
 		]]>
   </select>
@@ -279,8 +277,7 @@
   <select id="count" resultType="long">
     <![CDATA[
 			select count(u.uid)
-			from t_user u, rzvip rz, recommend re
-			 where u.uid = rz.uid and u.tid = re.tid and rz.uid = re.uid
+			from t_user u
 		]]>
   </select>
 

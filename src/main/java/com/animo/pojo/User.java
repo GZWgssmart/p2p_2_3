@@ -153,6 +153,7 @@ public class User {
         this.isvip = isvip;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getResint1() {
         return resint1;
     }

@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>所有权限</title>
-    <%@include file="jur-head.jsp"%>
+    <%@include file="jur-head.jsp" %>
 </head>
 <body>
 <div id="appJur">
@@ -31,40 +31,44 @@
     <!--编辑窗口-->
     <div id="editWin" style="display: none">
         <form class="layui-form">
-        <div class="layui-form-item">
-            <label class="layui-form-label">权限url</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="jur.jurl" required  lay-verify="required" placeholder="请输入权限url" autocomplete="off" class="layui-input">
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限url</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="jur.jurl" required lay-verify="required" placeholder="请输入权限url"
+                           autocomplete="off" class="layui-input">
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">权限描述</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="jur.content" required  lay-verify="required" placeholder="请输入权限描述" autocomplete="off" class="layui-input">
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限描述</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="jur.content" required lay-verify="required" placeholder="请输入权限描述"
+                           autocomplete="off" class="layui-input">
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" @click="update">保存</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" @click="update">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
             </div>
-        </div>
         </form>
     </div>
 
     <!--权限分配-->
     <div id="distrWin" style="display: none">
-        <input type="hidden" v-model="jur.jid" required  lay-verify="required" autocomplete="off" class="layui-input">
+        <input type="hidden" v-model="jur.jid" required lay-verify="required" autocomplete="off" class="layui-input">
         <div class="layui-form-item">
             <label class="layui-form-label">当前权限url</label>
             <div class="layui-input-block">
-                <input type="text" disabled v-model="jur.jurl" required  lay-verify="required" placeholder="请输入权限url" autocomplete="off" class="layui-input">
+                <input type="text" disabled v-model="jur.jurl" required lay-verify="required" placeholder="请输入权限url"
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">权限描述</label>
             <div class="layui-input-block">
-                <input type="text" disabled v-model="jur.content" required  lay-verify="required" placeholder="请输入权限描述" autocomplete="off" class="layui-input">
+                <input type="text" disabled v-model="jur.content" required lay-verify="required" placeholder="请输入权限描述"
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -80,20 +84,17 @@
     </div>
 
     <!--权限初始化-->
-    <div id="jurInitWin" style="display: none">
-        <form enctype="multipart/form-data" method="post">
-            <div class="layui-form-item">
-                <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel"><i class="layui-icon"></i>请选择权限初始化数据Excel表</button>
-                <%--<label class="layui-form-label">请选择权限初始化数据表</label>--%>
-                <%--<div class="layui-upload-drag" id="uploadExcel">--%>
-                    <%--<i class="layui-icon"></i>--%>
-                    <%--<p>点击上传，或将文件拖拽到此处</p>--%>
-                <%--</div>--%>
-            </div>
-        </form>
+    <div id="jurInitWin" style="display: none;text-align:center;margin-top:15%;">
+        <div class="layui-form-item">
+            <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel"><i class="layui-icon"></i>添加Excel数据表
+            </button>
+        </div>
+        <div class="layui-form-item">
+            <button type="button" class="layui-btn" @click="getExcelPath">开始初始化</button>
+        </div>
     </div>
 
 </div>
 </body>
-<%@include file="jur-foot.jsp"%>
+<%@include file="jur-foot.jsp" %>
 </html>

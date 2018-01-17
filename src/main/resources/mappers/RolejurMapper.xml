@@ -76,4 +76,8 @@
     </foreach>
   </insert>
 
+  <delete id="deleteAll">
+    truncate table rolejur
+  </delete>
+
 </mapper>

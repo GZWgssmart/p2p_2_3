@@ -70,7 +70,7 @@
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="1">用户列表</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="99">用户列表</a>
                            
                         </dd>
                         <dd>
@@ -159,8 +159,10 @@
                     <a href="javascript:;">合作伙伴管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                           
                             <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="18">合作伙伴</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/friends/addFriends" data-id="188">添加合作伙伴</a>
                         </dd>
                     </dl>
                 </li>
