@@ -31,7 +31,7 @@
             </c:if>
             <c:if test="${sessionScope.user != null}">
                 <li>
-                    <a href="/user/accountOverride" style="color:red">${sessionScope.user.phone }</a>
+                    <a href="/user/accountOverride" style="color:red">${sessionScope.user.uname }</a>
                 </li>
                 <li>
                     <a href="javaScript:;" @click="logout"  style="color:red">退出</a>

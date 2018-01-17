@@ -16,4 +16,6 @@ public interface SkbMapper extends BaseMapper{
 
     Long getByUidAndBaid(@Param("uid") Integer uid,@Param("baid") Integer baid);
 
+    int updateByBaid(Object object);
+
 }

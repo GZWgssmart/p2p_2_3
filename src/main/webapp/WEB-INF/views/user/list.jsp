@@ -80,9 +80,9 @@
 
     function isvip(value) {
         if(value==0){
-            return'否';
+            return'<img src="/static/uploads/user/hui.png"/>';
         }else if(value==1){
-            return'是';
+            return'<img src="/static/uploads/user/liang.png"/>';
         }
     }
 

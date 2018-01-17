@@ -16,4 +16,6 @@ public interface HkbMapper extends BaseMapper{
     Long countByBaid(Integer baid);
 
     List<Hkb> getSkTime(Integer baid);
+
+    int updateByBaid(Object object);
 }

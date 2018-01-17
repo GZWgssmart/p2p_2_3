@@ -366,4 +366,80 @@
       SELECT h.ytime FROM hkb AS h  WHERE baid=#{baid}
     ]]>
   </select>
+
+  <update id="updateByBaid" parameterType="com.animo.pojo.Hkb">
+    update hkb
+    <set >
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        cpname = #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="rnum != null" >
+        rnum = #{rnum,jdbcType=INTEGER},
+      </if>
+      <if test="tnum != null" >
+        tnum = #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="ytime != null" >
+        ytime = #{ytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rtime != null" >
+        rtime = #{rtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bzname != null" >
+        bzname = #{bzname,jdbcType=VARCHAR},
+      </if>
+      <if test="ybx != null" >
+        ybx = #{ybx,jdbcType=DECIMAL},
+      </if>
+      <if test="rbx != null" >
+        rbx = #{rbx,jdbcType=DECIMAL},
+      </if>
+      <if test="ylx != null" >
+        ylx = #{ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="rlx != null" >
+        rlx = #{rlx,jdbcType=DECIMAL},
+      </if>
+      <if test="ybj != null" >
+        ybj = #{ybj,jdbcType=DECIMAL},
+      </if>
+      <if test="rbj != null" >
+        rbj = #{rbj,jdbcType=DECIMAL},
+      </if>
+      <if test="yfc != null" >
+        yfc = #{yfc,jdbcType=DECIMAL},
+      </if>
+      <if test="rfc != null" >
+        rfc = #{rfc,jdbcType=DECIMAL},
+      </if>
+      <if test="yucount != null" >
+        yucount = #{yucount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="yustartime != null" >
+        yustartime = #{yustartime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="huid != null" >
+        huid = #{huid,jdbcType=INTEGER},
+      </if>
+      <if test="resint1 != null" >
+        resint1 = #{resint1,jdbcType=INTEGER},
+      </if>
+      <if test="resint2 != null" >
+        resint2 = #{resint2,jdbcType=INTEGER},
+      </if>
+      <if test="resstr1 != null" >
+        resstr1 = #{resstr1,jdbcType=VARCHAR},
+      </if>
+      <if test="resstr2 != null" >
+        resstr2 = #{resstr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid=#{uid} and baid=#{baid}
+  </update>
 </mapper>

@@ -2,6 +2,7 @@ package com.animo.controller;
 
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
+import com.animo.pojo.Skb;
 import com.animo.service.SkbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,5 +28,14 @@ public class SkbController {
         return skbService.skblist(page,limit,uid,baid);
     }
 
+    /**
+     * 确认收款
+     * @param skid
+     * @return
+     */
+    @GetMapping("confirm")
+    public ServerResponse confirm(Integer skid){
+        return skbService.confirm((Skb)skbService.getById(skid).getData());
+    }
 
 }
