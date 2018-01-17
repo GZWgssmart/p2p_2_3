@@ -70,7 +70,7 @@
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="1">用户列表</a>
+                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="99">用户列表</a>
                            
                         </dd>
                         <dd>

@@ -27,8 +27,7 @@
 </table>
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="view">查看详情</a>
-   <%-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>--%>
+    <a class="layui-btn layui-btn-xs" lay-event="view">投资记录</a>
 </script>
 
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
@@ -41,19 +40,10 @@
             ,carousel = layui.carousel //轮播
             ,upload = layui.upload //上传
             ,element = layui.element; //元素操作
-
-
-        /*     //监听Tab切换
-         element.on('tab(demo)', function(data){
-         layer.msg('切换了：'+ this.innerHTML);
-         console.log(data);
-         });
-         */
-        //执行一个 table 实例
         table.render({
             elem: '#user'
             ,height: 465
-            ,url: '<%=path%>/user/data/json/list' //数据接口接口地址。默认会自动传递两个参数：?page=1&limit=30（该参数可通过 request 自定义）page 代表当前页码、limit 代表每页数据量
+            ,url: '<%=path%>/user/data/json/list'
             ,page: true//开启分页
             ,limit:10
             ,response: {
@@ -65,9 +55,15 @@
             }
             //后台Pager响应对象 不要动
             ,cols: [[//表头
-                {field: 'uname', title: '昵称', width:80}
-                ,{field: 'phone', title: '手机号', width:80}
-                ,{field: 'idno', title: '证件号', width:80}
+                {field: 'face', title: '头像', width:100,templet:'<div style="width: 80px;height: 80px;border-radius: 100%;">{{head(d.face)}}</div>'}
+                ,{field: 'uname', title: '昵称', width:100}
+                ,{field: 'phone', title: '手机号', width:130}
+                ,{field: 'email', title: '邮箱', width:130}
+                ,{field: 'idno', title: '证件号', width:180}
+                ,{field: 'resstr1', title: '推荐码', width:80}
+                ,{field: 'rname', title: '真实姓名', width:100}
+                ,{field: 'isvip', title: '是否VIP', width:80,templet:'<div>{{isvip(d.isvip)}}</div>'}
+                ,{field: 'resint1', title: '创建时间', width:200}
                 ,{fixed: 'right',title:'操作', width: 100, align:'center', toolbar: '#barDemo'}
             ]]
         });
@@ -76,18 +72,24 @@
         table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
-            /*if(layEvent === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
-
-                });
-            } else*/ if(layEvent === 'view'){
-                layer.msg('查看详情操作');
+                if(layEvent === 'view'){
+                layer.msg('用户记录');
             }
         });
     });
+
+    function isvip(value) {
+        if(value==0){
+            return'否';
+        }else if(value==1){
+            return'是';
+        }
+    }
+
+    function head(value) {
+        return '<img style="width: 80px;height: 80px;" src='+value+'/>'
+    }
+    
 </script>
 
 </body>
