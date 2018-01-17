@@ -17,7 +17,7 @@
 <body>
 <div id="appJur">
 
-    <button class="layui-btn" onclick="showInitJur()">权限初始化</button>
+    <button class="layui-btn layui-btn-danger" onclick="showInitJur()">权限初始化</button>
 
     <!--layui表格-->
     <table class="layui-hide" id="jurs" lay-filter="jur"></table>

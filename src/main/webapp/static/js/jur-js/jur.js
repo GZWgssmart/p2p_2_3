@@ -40,13 +40,27 @@ $(function () {
             },
             getExcelPath:function () {
                 vue.jur.jurl = $("input[name='file']").val();
-                layer.load();
-                axios.post('/jur/data/json/initJur', Qs.stringify(vue.jur)).then((response)=>{
-                    layer.msg(response.data.message);
-                    layer.closeAll();
-                    window.location.reload();
-                },(error)=>{
-                    layer.alert("请求失败");
+                if (vue.jur.jurl.length<=0){
+                    layer.alert("请选择文件");
+                    return;
+                }
+                layer.msg('初始化将清空当前所有信息，用户将失去相关权限，是否继续？10s后自动取消', {
+                    time: 10000, //10s后自动关闭
+                    btn: ['是的', '取消'],
+                    yes:function(){
+                        layer.msg('的确很重要');
+                        layer.load();
+                        axios.post('/jur/data/json/initJur', Qs.stringify(vue.jur)).then((response)=>{
+                            layer.msg(response.data.message);
+                            layer.closeAll();
+                            window.location.reload();
+                        },(error)=>{
+                            layer.alert("请求失败");
+                        });
+                    },
+                    btn2: function () {
+                        layer.msg('已取消');
+                    }
                 });
             }
         }

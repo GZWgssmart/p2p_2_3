@@ -74,9 +74,8 @@ $(function () {
                 , dataName: 'rows'
             }
             , cols: [[ //表头
-                {field: 'fid', title: 'ID', width: 80, sort: true}
-                , {field: 'furl', title: '伙伴网站地址', width: 150}
-                , {field: 'fpic', title: '伙伴图标', width: 150}
+                {field: 'furl', title: '伙伴网站地址', width: 150}
+                , {field: 'fpic', title: '伙伴图标', width: 150,templet:'<div style="width: 80px;height: 80px;border-radius: 100%;">{{head(d.fpic)}}</div>'}
                 , {title: '操作', fixed: 'right', width: 165, align: 'center', toolbar: '#barFriend'}
             ]]
         });
@@ -157,3 +156,6 @@ $(function () {
     });
 
 });
+function head(value) {
+    return '<img style="width: 80px;height: 80px;" src='+value+'/>'
+}
