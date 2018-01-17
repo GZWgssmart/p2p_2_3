@@ -295,12 +295,17 @@
   </select>
 
   <update id="updateStatusAndTime">
-
     <![CDATA[
       UPDATE borrowapply SET ckstatus=#{status},cktime=#{ckTime}
       where baid=#{id}
     ]]>
+  </update>
 
+  <update id="updateStatus">
+      <![CDATA[
+      UPDATE borrowapply SET ckstatus=#{status}
+      where baid=#{baid}
+    ]]>
   </update>
 
   <select id="list" resultType="com.animo.pojo.Borrowapply">

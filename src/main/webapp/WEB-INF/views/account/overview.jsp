@@ -97,9 +97,10 @@
                                             <img src="${sessionScope.user.face}" width="120" height="120">
                                         </div>
                                         <div class="center-self">
-                                            <p class="name">${sessionScope.user.phone}</p>
+                                            <p class="name">${sessionScope.user.uname}</p>
                                             <p class="safety">安全等级： <span id="safeLevel">高</span></p>
-                                            <p id="registpay"><a href="javascript:;">绑定银行卡</a></p>
+                                            <img v-if="${sessionScope.user.isvip==0}" src="/static/uploads/user/hui.png"/>
+                                            <img v-else src="/static/uploads/user/liang.png"/>
                                             <p id="reset"></p>
                                         </div>
                                         <div class="center-user">
@@ -451,10 +452,10 @@
                                     </script>
                                     <!--收款计划窗口：开始-->
                                     <div id="viewWin" style="display: none">
-                                        <table class="layui-hide" id="shoukuanjihua" lay-filter="demo"></table>
+                                        <table class="layui-hide" id="shoukuanjihua" lay-filter="shoukuanjihua"></table>
                                         <!--table工具栏-->
                                         <script type="text/html" id="qrsk">
-                                            <a class="layui-btn layui-btn-xs" lay-event="qrsk">确认收款</a>
+                                            <a class="layui-btn layui-btn-xs" lay-event="querenshoukuan">确认收款</a>
                                         </script>
                                     </div>
                                     <!--收款计划窗口：结束-->
@@ -1096,7 +1097,17 @@
                         var data = obj.data
                             ,layEvent = obj.event;
                         if(layEvent === 'qrhk'){
-                            layer.msg('确认还款');
+                            if(data.rtime!=null){
+                                return alert('已还款');
+                            }
+                            axios.get('/hkb/data/json/confirm', {params: {hkid: data.hkid}}).then((response)=>{
+                                if(response.data.code==0){
+                                    return alert(response.data.message);
+                                }
+                                alert(response.data.message)
+                            },(error)=>{
+
+                            });
                         }
                     });
                 }else if(layEvent =='jkxq'){
@@ -1296,6 +1307,8 @@
                             , {field: 'rbj', title: '已收本金', width: 120}
                             ,{field: 'ybx', title: '应收本息', width: 100, sort: true}
                             , {field: 'rbx', title: '已收本息', width: 110}
+                            , {field: 'rnum', title: '已收期数', width: 110}
+                            , {field: 'tnum', title: '总期数', width: 110}
                             , {field: 'sktime', title: '收款时间', width: 180}
                             , {title: '操作',  width: 100, align: 'center', toolbar: '#qrsk'}
                         ]]
@@ -1305,9 +1318,19 @@
                         //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
                         var data = obj.data //获得当前行数据
                             , layEvent = obj.event; //获得 lay-event 对应的值
-                        if (layEvent === 'qrsk') {
-                                alert("确认收款");
+                        if (layEvent === 'querenshoukuan') {
+                            if(data.sktime!=null){
+                                alert("已收款");
                             }
+//                            axios.get('/skb/data/json/confirm', {params: {skid: data.skid}}).then((response)=>{
+//                                if(response.data.code==0){
+//                                    return alert(response.data.message);
+//                                }
+//                                alert(response.data.message)
+//                            },(error)=>{
+//
+//                            });
+                        }
                         });
                 }, (error) => {
 

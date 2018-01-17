@@ -33,4 +33,6 @@ public interface BorrowapplyMapper extends BaseMapper{
     List<Object> listByJuid(@Param("pager") Pager pager, @Param("juid") Integer juid);
     Long  countByJuid(Integer juid);
 
+    int updateStatus(@Param("baid") Integer baid,@Param("ckstatus") Integer ckstatus);
+
 }

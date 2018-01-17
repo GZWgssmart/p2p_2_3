@@ -13,6 +13,7 @@
 <link rel="icon" href="<%=path%>/static/images/login/logo_title.jpg" type="image/x-icon" />
 <body>
 <div id="app">
+    <input value="${requestScope.code}" id="code"/>
 <div class="nav-out">
     <div class="wrap cl">
         <div class="logo"><a href="https://www.pujinziben.com/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
@@ -112,7 +113,6 @@
             }
         },
         created (){
-            this.user.resstr2=${requestScope.code};
         },
         methods:{
             register () {
@@ -124,6 +124,9 @@
                     showError('请输入登录密码',$('#upwd'));
                     return;
                 };
+                if($('#code').val()!=null){
+                    this.user.resstr2 = $('#code').val();
+                }
                 this.user.phone = this.phone;
                 axios.post('/user/data/json/register', Qs.stringify(this.user)).then((response) => {
                     if(response.data.code==1){
