@@ -63,3 +63,7 @@ function dangger(obj){
 function getinfo(baid,bdid) {
     return axios.get('/borrowapply/data/json/infoplus/'+baid+'/'+bdid);
 }
+
+function getmoney() {
+    return axios.get('/userMoney/data/json/selectBanlance');
+}

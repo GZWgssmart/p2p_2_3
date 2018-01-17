@@ -48,9 +48,10 @@
                 <div class="subject-submit-b-r">
                     <div class="line">
                         <p>投资进度：</p>
-                        <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
-                            <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="borrowapply.money/borrowdetail.money*100 + '%'"></div>
+                        <div class="layui-progress" style="float: left;width: 100px;margin-top: 13px" >
+                            <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="borrowdetail.money/borrowapply.money*100 + '%'" ></div>
                         </div>
+                        {{borrowdetail.money/borrowapply.money*100 |formatNumber}}%
                     </div>
                     <p>截止时间：<span id="publishTime">{{borrowapply.deadline | formatDate}}</span></p>
                 </div>
@@ -62,14 +63,12 @@
             </div>
             <div class="subject-s-r-c">
                 <p>可用余额：<span id="canUseSum">
-                    <p v-if="${sessionScope.get("USER")!=null}">可用余额</p>
+                <p v-if="${sessionScope.user!=null}" >{{money}}元</p>
                 <p v-else>登录后查看余额</p>
                 </span></p>
-                <p class="rate">预期收益：<span class="color" id="reckon">0.00</span></p>
             </div>
             <div class="subject-s-r-c">
                 <p>剩余可投：<span id="investAmount">{{borrowapply.money-borrowdetail.money}}元</span></p>
-                <p class="rate active" id="increaseP">加息收益：<span class="color" id="increase">0.00</span></p>
             </div>
             <div class="input">
                 <input type="text" placeholder="请输入投资金额" v-model="tzb.money">
@@ -332,6 +331,7 @@
     var vue = new Vue({
         el:'#app',
         data:{
+            money:'',
             interval:'interval',
             borrowapply:[],
             borrowdetail:[],
@@ -366,16 +366,26 @@
                 }else if(value==2){
                     return "已逾期";
                 }
+            },
+            formatNumber(value){
+                if(value==Infinity){
+                    return 0;
+                }
+                return value.toFixed(2);
             }
         },
         created (){
-            axios.all([getinfo(this.tzb.baid,this.bdid)]).then(axios.spread((borrowapplyDetail)=>{
+            axios.all([getinfo(this.tzb.baid,this.bdid),getmoney()]).then(axios.spread((borrowapplyDetail,money)=>{
                  this.borrowapply = borrowapplyDetail.data.data.borrowapply;
                  this.borrowdetail = borrowapplyDetail.data.data.borrowdetail;
+                 this.money = money.data.data.kymoney;
             }));
         },
         methods:{
             touzi () {
+                if(${sessionScope.user.idno==null}){
+                    return alert('请到个人中心完善信息');
+                }
                 if(this.borrowapply.money ==this.borrowdetail.money){
                     alert("已投满");
                 }else if(this.tzb.money<100){
@@ -388,7 +398,13 @@
                     this.tzb.resint1 = this.borrowapply.term;
                     this.tzb.resint2 = this.borrowdetail.way;
                     axios.post('/tzb/data/json/save', Qs.stringify(this.tzb)).then((response) => {
-                        alert(response.data.message);
+                        if(response.data.code==0){
+                            this.money =parseInt(this.money) - parseInt(this.tzb.money);
+                            this.borrowdetail.money=parseInt(this.borrowdetail.money)+parseInt(this.tzb.money);
+                            console.log( this.borrowdetail.money+this.tzb.money);
+                            return alert(response.data.message);
+                        }
+                        alert(response.data.message)
                     }, (error) => {
 
                     });

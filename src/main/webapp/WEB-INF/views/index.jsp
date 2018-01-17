@@ -102,9 +102,10 @@
                         <div class="bottom">
                             <div class="line icon icon-progress">
                                 <p style="float: left;">募集进度：</p>
-                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                <div class="layui-progress" style="float: left;width: 100px;margin-top: 13px" lay-showPercent="yes">
                                     <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
                                 </div>
+                                {{item.ymoney/item.money*100 |formatNumber}}%
                             </div>
                             <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
                             <p class="icon icon-time">投资期限：{{item.term}}个月</p>
@@ -141,9 +142,10 @@
                         <div class="bottom">
                             <div class="line icon icon-progress">
                                 <p style="float: left;">募集进度：</p>
-                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                <div class="layui-progress" style="float: left;width: 100px;margin-top: 13px" lay-showPercent="yes">
                                     <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
                                 </div>
+                                {{item.ymoney/item.money*100 |formatNumber}}%
                             </div>
                             <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
                             <p class="icon icon-time">投资期限：{{item.term}}个月</p>
@@ -182,9 +184,10 @@
                         <div class="bottom">
                             <div class="line icon icon-progress">
                                 <p style="float: left;">募集进度：</p>
-                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                <div class="layui-progress" style="float: left;width: 100px;margin-top: 13px" lay-showPercent="yes">
                                     <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
                                 </div>
+                                {{item.ymoney/item.money*100 |formatNumber}}%
                             </div>
                             <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
                             <p class="icon icon-time">投资期限：{{item.term}}个月</p>
@@ -268,9 +271,9 @@
     </div>
 <div id="ajaxFooter">
 
-    <div id="gzh" class="popup wechart-box show">
+    <div id="gzh" v-show="tanchaung" class="popup wechart-box show">
         <p class="title left">关注普金资本微信公众号</p>
-        <a id="close" href="javascript:void(0);" onclick="close();" class="close icon icon-close"></a>
+        <a id="close" href="javascript:void(0);"@click="close" class="close icon icon-close"></a>
         <div class="popup-from">
             <img class="wechart" src="/static/images/index/wechart.jpg">
         </div>
@@ -345,6 +348,7 @@
     new Vue({
         el:'#app',
         data:{
+            tanchaung:true,
             djb:[],
             xsb:[],
             pjb:[],
@@ -358,6 +362,12 @@
             formatDate(time) {
                 var date = new Date(time);
                 return formatDate(date, 'yyyy-MM-dd');
+            },
+            formatNumber(value){
+                if(value==Infinity){
+                    return 0;
+                }
+                return value.toFixed(2);
             }
         },
         created () {
@@ -375,29 +385,14 @@
         methods: {
             detail (baid,bdid,bzname) {
                 window.location.href='/borrowapply/info/'+baid+'/'+bdid+'/'+bzname
+            },
+            close () {
+               this.tanchaung=false;
             }
         },
         computed: {
 
         },
     });
-
-    $(function(){
-       $("#gzh").hide();
-    });
-
-    $(document).ready(function(){
-        $("#aaa").click(function(){
-            $("#gzh").show();
-        });
-    });
-
-
-   $(document).ready(function(){
-     $("#close").click(function(){
-     $("#gzh").hide();
-     });
-     });
-
 </script>
 </html>

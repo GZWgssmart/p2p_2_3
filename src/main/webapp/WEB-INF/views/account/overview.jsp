@@ -94,11 +94,11 @@
                                 <div class="all-view">
                                     <div class="center-view">
                                         <div class="center-header">
-                                            <img src="${sessionScope.user.face}" width="120" height="120">
+                                            <img :src="user.face" width="120" height="120">
                                         </div>
                                         <div class="center-self">
-                                            <p class="name">${sessionScope.user.uname}</p>
-                                            <p class="safety">安全等级： <span id="safeLevel">高</span></p>
+                                            <p class="name">{{user.uname}}</p>
+                                            <p style="color: black"><a href="javaScript:;" @click="updateInfo">修改信息</a></p>
                                             <img v-if="${sessionScope.user.isvip==0}" src="/static/uploads/user/hui.png"/>
                                             <img v-else src="/static/uploads/user/liang.png"/>
                                             <p id="reset"></p>
@@ -443,7 +443,6 @@
                                 <em class="em-line"></em>
                             </div>
                             <div class="account-content" id="invest" style="display: block;">
-                                <div class="invest-listData invest-listData1">
                                     <table class="layui-hide" id="tjglTable" lay-filter="tzglFilter"></table>
                                     <!--table工具栏-->
                                     <script type="text/html" id="barTzgl">
@@ -458,8 +457,6 @@
                                             <a class="layui-btn layui-btn-xs" lay-event="querenshoukuan">确认收款</a>
                                         </script>
                                     </div>
-                                    <!--收款计划窗口：结束-->
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -681,28 +678,47 @@
                                         <div class="safe-list-1">
                                             <p class="icon icon-true" id="cellPhone-icon">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</p>
                                         </div>
-                                        <div class="safe-list-2" id="cellPhone-text">1829****307</div>
+                                        <div class="safe-list-2" id="cellPhone-text">{{user.phone | phone}}</div>
                                         <div class="safe-list-3">
                                             <a href="javascript:;" id="cellPhone" class="on">已绑定</a>
                                             <a href="javascript:;" id="changePhone">修改</a>
                                         </div>
                                     </li>
-                                    <li>
+                                    <li v-if="user.email==null">
                                         <div class="safe-list-1">
-                                            <p class="icon icon-wrong" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
+                                            <p class="icon icon-wrong" >邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
                                         </div>
-                                        <div class="safe-list-2" id="email-text">获取最新的投资讯息和账户信息变动通知</div>
+                                        <div class="safe-list-2" >获取最新的投资讯息和账户信息变动通知</div>
                                         <div class="safe-list-3">
                                             <a href="javascript:;" id="email">进行绑定</a>
                                         </div>
                                     </li>
-                                    <li>
+                                    <li v-else>
+                                    <div class="safe-list-1">
+                                        <p class="icon icon-true" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
+                                    </div>
+                                    <div class="safe-list-2" id="email-text">{{user.email | email}}</div>
+                                    <div class="safe-list-3">
+                                        <a href="javascript:;" id="cellEmail" class="on">已绑定</a>
+                                        <a href="javascript:;" id="changeEmail">修改</a>
+                                    </div>
+                                    </li>
+                                    <li v-if="user.idno!=null">
                                         <div class="safe-list-1">
                                             <p class="icon icon-true" id="realName-icon">身份认证</p>
                                         </div>
-                                        <div class="safe-list-2" id="realName-text">**胜 ****311***********</div>
+                                        <div class="safe-list-2" id="realName-text">{{user.idno | idno}}</div>
                                         <div class="safe-list-3">
-                                            <a href="javascript:;" id="realName" class="on">已认证</a>
+                                            <a href="javascript:;"  class="on">已认证</a>
+                                        </div>
+                                    </li>
+                                    <li v-else>
+                                        <div class="safe-list-1">
+                                            <p class="icon icon-wrong" >身份认证</p>
+                                        </div>
+                                        <div class="safe-list-2" >一旦实名认证通过将不能修改</div>
+                                        <div class="safe-list-3">
+                                            <a href="javascript:;" >去认证</a>
                                         </div>
                                     </li>
                                     <li>
@@ -710,22 +726,10 @@
                                             <p class="icon icon-true">登录密码</p>
                                         </div>
                                         <div class="safe-list-2">
-                                            ******
+                                            {{user.upwd | pwd}}
                                         </div>
                                         <div class="safe-list-3">
-                                            <a href="javascript:;" id="password-btn">修改</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="safe-list-1">
-                                            <p class="icon icon-true">交易密码</p>
-                                        </div>
-                                        <div class="safe-list-2">
-                                            ******
-                                        </div>
-                                        <div class="safe-list-3">
-                                            <a href="javascript:;" id="dealpwd"></a>
-                                            <a href="recoverpwd.html#deal" id="forgetpwd">忘记密码</a>
+                                            <a href="javascript:;" id="password-btn">忘记密码</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -815,61 +819,63 @@
 
                     </div>
                 </div>
-
-                <%--<div class="tuijian-list" style="display: none;">--%>
-                    <%--<div class="account-form cl">--%>
-                        <%--<input type="text" class="date icon icon-date" id="startDate">--%>
-                        <%--<p class="text">至</p>--%>
-                        <%--<input type="text" class="date icon icon-date" id="endDate">--%>
-                        <%--<button type="button" class="search" id="cashSearch">搜索</button>--%>
-                    <%--</div>--%>
-                    <%--<!-- <div class="account-list"> -->--%>
-                    <%--<!-- <ul class="cash-list-box list-box"> -->--%>
-                    <%--<!-- <li class="title"> -->--%>
-                    <%--<!-- <div class="children01">用户名</div> -->--%>
-                    <%--<!-- <div class="children02">用户创建时间</div> -->--%>
-                    <%--<!-- <div class="children03">奖励金额</div> -->--%>
-                    <%--<!-- <div class="children04">操作</div> -->--%>
-                    <%--<!-- </li> -->--%>
-                    <%--<!-- </ul> -->--%>
-                    <%--<!-- <ul class="tuijian-list listData" style="display: none;"> -->--%>
-
-                    <%--<!-- </ul> -->--%>
-                    <%--<!-- <ul class="paging"> -->--%>
-
-                    <%--<!-- </ul> -->--%>
-                    <%--<!-- </div> -->--%>
-                <%--</div>--%>
-
-                <%--<div class="investList" style="display: none;">--%>
-                    <%--<div class="account-form cl">--%>
-                        <%--<p class="text" style="width: 120px;">借款发布时间:</p>--%>
-                        <%--<input type="text" class="date icon icon-date" autocomplete="off" id="invest-startDate">--%>
-                        <%--<p class="text">至</p>--%>
-                        <%--<input type="text" class="date icon icon-date" autocomplete="off" id="invest-endDate">--%>
-                        <%--<!-- <input type="text" placeholder="请输入关键字搜索" class="search icon icon-search" /> -->--%>
-                        <%--<button type="button" class="search" id="investSearch">搜索</button>--%>
-                    <%--</div>--%>
-                    <%--<!-- <div class="invest-listData invest-listData1"> -->--%>
-                    <%--<!-- <ul class="investData list-box"> -->--%>
-                    <%--<!-- <li class="title"> -->--%>
-                    <%--<!-- <div class="children0">标题</div> -->--%>
-                    <%--<!-- <div class="children1">类型</div> -->--%>
-                    <%--<!-- <div class="children2">年利率</div> -->--%>
-                    <%--<!-- <div class="children3">期限</div> -->--%>
-                    <%--<!-- <div class="children4">还款方式</div> -->--%>
-                    <%--<!-- <div class="children5">投资金额</div> -->--%>
-                    <%--<!-- <div class="children6">投资时间</div> -->--%>
-                    <%--<!-- </li> -->--%>
-                    <%--<!-- </ul> -->--%>
-                    <%--<!-- <ul class="investData listData"> -->--%>
-                    <%--<!-- </ul> -->--%>
-                    <%--<!-- <ul class="paging"> -->--%>
-                    <%--<!-- </ul> -->--%>
-                    <%--<!-- </div> -->--%>
-                <%--</div>--%>
             </div>
         </div>
+    </div>
+
+    <div id="updateInfo" style="display: none;">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-inline">
+                    <input type="text" v-model="user.uname"  autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">身份证</label>
+                    <div class="layui-input-inline">
+                        <input type="text" v-model="user.idno" autocomplete="off" placeholder="请输入身份证" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">支付密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" v-model="user.zpwd"   autocomplete="off" placeholder="请输入支付密码" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="text" v-model="user.email"  placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">真实姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" v-model="user.rname"  placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="男" title="男" checked>
+                    <input type="radio" name="sex" value="女" title="女">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" @click="update">修改</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 
@@ -887,9 +893,9 @@
     </div>
 </div>
 </body>
-<script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/qs.js"></script>
-<script src="/static/layui/layui.all.js"></script>
+<script src="/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/user/province.js"></script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="hkjh">还款计划</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="jkxq">借款详情</a>
@@ -902,19 +908,73 @@
         el: '#app',
         data: {
             bank:[],
+            user:[],
             dataRows: [],
             czmoney: '',
             txmoney: '',
             uid:${sessionScope.user.uid}
         },
+        filters: {
+            phone (value) {
+                if(value!=null){
+                    return value.slice(0,5)+'****'+value.slice(9,11)
+                }
+            },
+            email(value){
+                if(value!=null){
+                    return value.slice(0,5)+'*****'+value.slice(10,value.length)
+                }
+            },
+            idno(value){
+                if(value!=null){
+                    return value.slice(0,5)+'******'+value.slice(10,value.length)
+                }
+            },
+            pwd(value){
+                if(value!=null){
+                    return '******';
+                }
+            },
+        },
         created() {
             this.getUserMoney();
+            this.getUserInfo();
         },
         methods: {
+            updateInfo () {
+                this.showInfoEadit();
+            },
+            update () {
+                this.user.sex = $('input:radio[name="sex"]:checked').val();
+                axios.post('/user/data/json/updateInfo',Qs.stringify(this.user)).then((response) => {
+                    alert(response.data.message);
+                });
+            },
+            getUserInfo(){
+                axios.get('/user/data/json/byiddync?id='+${sessionScope.user.uid}).then((response) => {
+                    this.user = response.data.data;
+                });
+            },
+            showInfoEadit(){
+                layer.open({
+                    type: 1,
+                    title:'修改信息',
+                    offset:['100px'],
+                    area: ['350px', '450px'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    skin: '',
+                    content: $("#updateInfo")
+                });
+            },
             getUserMoney() {
                 usermoney();
             },
             chongzhi() {
+                if(this.user.idno==null){
+                    alert("信息不完善");
+                    return this.showInfoEadit();
+                }
                 axios.get('/logCz/data/json/recharge?money=' + this.czmoney).then((response) => {
                     alert(response.data.message);
                 }, (error) => {
@@ -922,6 +982,10 @@
                 });
             },
             tixian() {
+                if(this.user.idno==null){
+                    alert("信息不完善");
+                    return this.showInfoEadit();
+                }
                 if (this.txmoney > this.dataRows.kymoney) {
                     alert("提现大于可用");
                     return;
@@ -936,6 +1000,10 @@
                 });
             },
             addCard () {
+                if(this.user.idno==null){
+                    alert("信息不完善");
+                    return this.showInfoEadit();
+                }
                 window.location.href = "/bankCard/add";
             },
             unbind(){

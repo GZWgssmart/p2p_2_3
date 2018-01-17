@@ -53,6 +53,8 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
 
     private TicketMapper ticketMapper;
 
+    private UserMapper userMapper;
+
     @Override
     @Transactional
     public ServerResponse save(Object obj) {
@@ -126,6 +128,12 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
         Double percent = rewardSettingMapper.selectpercent(userMoney.getTzmoney());
         //添加投资奖励记录
         Reward reward = (Reward)rewardMapper.selectByUid(tzb.getUid());
+        if(userMoney.getTzmoney().compareTo(new BigDecimal(10000))==1){
+            User user = new User();
+            user.setUid(userMoney.getUid());
+            user.setIsvip(1);
+            userMapper.updateByPrimaryKeySelective(user);
+        }
         if(reward == null) {
             reward = new Reward();
             reward.setTmoney(tzb.getMoney());
@@ -260,6 +268,11 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
     @Override
     public List<Tzb> getByBaid(Integer baid) {
         return tzbMapper.getByBaid(baid);
+    }
+
+    @Autowired
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
     @Override

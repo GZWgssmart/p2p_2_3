@@ -10,12 +10,16 @@ import com.animo.service.UserMoneyService;
 import com.animo.service.UserService;
 import com.animo.utils.DateFormateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -53,6 +57,11 @@ public class UserController {
            return ServerResponse.createBySuccess("success");
        }
         return ServerResponse.createByError("error");
+    }
+
+    @PostMapping("updateInfo")
+    public ServerResponse updateInfo(User user){
+        return userService.update(user);
     }
 
     @RequestMapping(value="getByPhone/{phone}", method = RequestMethod.GET)
@@ -168,4 +177,12 @@ public class UserController {
     public Pager PagerCriteria(int page, int limit,String resstr2){
         return userService.listPagerCriteria(page,limit,resstr2);
     }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
 }

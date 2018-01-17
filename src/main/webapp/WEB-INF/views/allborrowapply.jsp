@@ -76,9 +76,10 @@
                             <li class="row4"><p class="row-top">可投金额 / 募集总额</p><p class="row-bottom">{{item.money-item.ymoney}}万元 / {{item.money}}万元</p></li>
                             <li class="row5">
                                 <p class="row-top">募集进度</p>
-                                <div class="layui-progress" style="float: left;width: 150px;margin-top: 13px" lay-showPercent="yes">
+                                <div class="layui-progress" style="float: left;width: 100px;margin-top: 13px" lay-showPercent="yes">
                                     <div class="layui-progress layui-progress-bar layui-bg-red" v-bind:lay-percent="item.ymoney/item.money*100 + '%'"></div>
                                 </div>
+                                {{item.ymoney/item.money*100 |formatNumber}}%
                             </li>
                             <li class="row6">
                                 <button v-if="item.ckstatus==2" type="button" class="btn" @click="detail(item.baid,item.bdid,item.bzname)">立即投标</button>
