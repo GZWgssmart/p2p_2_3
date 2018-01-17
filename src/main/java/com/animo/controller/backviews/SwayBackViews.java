@@ -16,4 +16,9 @@ public class SwayBackViews {
     public String pagerSway() {
         return "sway/allSway";
     }
+
+    @RequestMapping("swayAdd")
+    public String swayAdd() {
+        return "sway/sway_add";
+    }
 }

@@ -12,62 +12,57 @@
 
 <body>
 <div id="app">
-
     <section class="larry-grid">
-        <div class="larry-personal">
-            <div class="layui-tab">
+        <table class="layui-hide" id="test" lay-filter="demo">
 
-                <div class="larry-separate"></div>
-                <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
-                    <!-- 操作日志 -->
-                    <div class="layui-tab-item layui-field-box layui-show">
-                        <table class="layui-hide" id="test" lay-filter="demo">
-                           <%-- <ul class="layui-tab-title">
-                                <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
-                                <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
-                                <a class="layui-btn layui-btn-small larry-log-del">
-                                    <i class="iconfont icon-huishouzhan1">
-                                    </i>
-                                    清空日志
-                                </a>
-                            </ul>--%>
-
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        </table>
     </section>
 
+
     <div id="testLetter" style="display: none">
-        </BR>
+        <div class="layui-form-item">
+            </br></br>
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
                     <input style="width: 200px;" type="text" v-model="letter.title" autocomplete="on" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item layui-form-text" style="width: 500px;height: 150px;">
-                <label class="layui-form-label">内容</label>
-                <div class="layui-input-block">
-                    <textarea name="desc" v-model="letter.content" class="layui-textarea"></textarea>
+            <label class="layui-form-label">输入框</label>
+            <div class="layui-input-block">
+                <textarea name="desc" v-model="letter.content" class="layui-textarea"></textarea>
+
+
+                </br></br>
+
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        <div class="layui-col-sm6">
+                            <div class="grid-demo grid-demo-bg1">
+                                <div class="layui-btn-group">
+                                    <button class="layui-btn" @click="update">修改</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-sm6">
+                            <div class="grid-demo">
+                                <div class="layui-btn-group">
+                                    <button class="layui-btn" @click="close">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-           <div>
-               <button class="layui-btn layui-col-md-offset5" @click="close">关闭</button>
-           </div>
-    </div>
-
+        </div>
+        </div>
 </div>
 
 <script type="text/html" id="barDemo">
-    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
-
+    <a id="test2" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-<script type="text/html" id="status">
+<script type="text/html" id="aa">
     {{# if(d.status==0){ }}
     <span>可用</span>
     {{#   }else{ }}
@@ -79,33 +74,33 @@
 <script src="/static/layui/layui.js"></script>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
-
-<script src="/static/js/axios.min.js"></script>
 <script src="/static/js/qs.js"></script>
+<script src="/static/js/axios.min.js"></script>
 <script>
 
-    /*$(function () {
-        layui.use(['layer'], function(){
+
+    $(function () {
+        layui.use(['layer'], function () {
             var layer = layui.layer;
         });
-    })*/
+    })
     var vue = new Vue({
         el: '#app',
         data: {
             letter: []
         },
-        methods:{
-            /*update:function () {
+        methods: {
+            update: function () {
                 axios.post('/letter/data/json/update', Qs.stringify(this.letter))
-                    .then((response)=>{
+                    .then((response) => {
                         layer.msg(response.data.message);
-                        window.location.reload();
-                        /!*layer.closeAll();*!/
-                    },(error)=>{
+                        table.reload('letter');
+                        layer.closeAll();
+                    }, (error) => {
                         layer.alert("请求失败");
                     });
             },
-*/
+
             close: function () {
                 layer.closeAll();
             }
@@ -120,6 +115,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#test'
+            ,id:'letter'
             , height: 332
             , url: '/letter/data/json/pager' //数据接口
             , page: true //开启分页
@@ -132,11 +128,11 @@
                 , dataName: 'rows'
             }
             , cols: [[ //表头
-                {field: 'lid', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'title', title: '名称', width: 120}
-                , {field: 'content', title: '内容', width: 120}
-                , {field: 'createdTime', title: '创建时间', width: 120}
-                , {field: 'status', title: '状态', width: 120, templet: "#status"}
+               /* {field: 'lid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
+                 {field: 'title', title: '名称', width: 120}
+                , {field: 'content', title: '内容', width: 180}
+                , {field: 'createdTime', title: '创建时间', width: 150}
+                , {field: 'status', title: '状态', width: 120, templet: "#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 

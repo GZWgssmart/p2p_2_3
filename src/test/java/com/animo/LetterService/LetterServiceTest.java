@@ -8,6 +8,9 @@ import com.animo.utils.DateFormateUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+
 /**
  * Created by CHEN JX on 2017/12/26.
  */
@@ -31,5 +34,15 @@ public class LetterServiceTest extends BaseServiceTest {
 
         Pager pager = letterService.listPager(1, 2);
         System.out.println(pager);
+    }
+    @Test
+    public void update() {
+        Letter letter = new Letter();
+        letter.setLid(1);
+        letter.setTitle("哎呦不错哦");
+        letter.setContent("再次修改了站内信");
+        letter.setCreatedTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
+        letterService.update(letter);
+
     }
 }

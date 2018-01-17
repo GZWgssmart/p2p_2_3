@@ -16,4 +16,9 @@ public class DxmodelBackViews {
     public String pagerSway() {
         return "dxmodel/allDxmodel";
     }
+
+    @GetMapping("add")
+    public String add(){
+        return "dxmodel/dxmodel_add";
+    }
 }

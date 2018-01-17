@@ -13,22 +13,9 @@
 <body>
 <div id="app">
     <section class="larry-grid">
-        <div class="larry-personal">
-            <div class="layui-tab">
+        <table class="layui-hide" id="test" lay-filter="demo">
 
-                <div class="larry-separate"></div>
-                <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
-                    <!-- 操作日志 -->
-                    <div class="layui-tab-item layui-field-box layui-show">
-                        <table class="layui-hide" id="test" lay-filter="demo">
-
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        </table>
     </section>
 
 
@@ -38,23 +25,21 @@
             <label class="layui-form-label">输入框</label>
             <div class="layui-input-block">
                 <input type="text" v-model="bz.bzname" autocomplete="on" class="layui-input"/>
-                <%--<input type="button" class="layui-btn" @click="update">更新</input>--%>
-                </br></br></br> </br></br></br></br>
-
+                </br></br>
 
                 <div class="layui-fluid">
                     <div class="layui-row">
                         <div class="layui-col-sm6">
                             <div class="grid-demo grid-demo-bg1">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="update">修改</button>
+                                    <button class="layui-btn" @click="update">修改</button>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-col-sm6">
                             <div class="grid-demo">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn"@click="close">关闭</button>
+                                    <button class="layui-btn" @click="close">关闭</button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +72,7 @@
 
 
     $(function () {
-        layui.use(['layer'], function(){
+        layui.use(['layer'], function () {
             var layer = layui.layer;
         });
     })
@@ -96,14 +81,15 @@
         data: {
             bz: []
         },
-        methods:{
-            update:function () {
+        methods: {
+            update: function () {
                 axios.post('/bz/data/json/update', Qs.stringify(this.bz))
-                    .then((response)=>{
+                    .then((response) => {
                         layer.msg(response.data.message);
-                        window.location.reload();
-                        /*layer.closeAll();*/
-                    },(error)=>{
+                        table.reload('bz');
+                        /*window.location.reload();*/
+                        layer.closeAll();
+                    }, (error) => {
                         layer.alert("请求失败");
                     });
             },
@@ -122,6 +108,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#test'
+            ,id:'bz'
             , height: 332
             , url: '/bz/data/json/pager' //数据接口
             , page: true //开启分页
@@ -134,8 +121,8 @@
                 , dataName: 'rows'
             }
             , cols: [[ //表头
-                {field: 'bzid', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'bzname', title: '标种名称', width: 120}
+                /*{field: 'bzid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
+                {field: 'bzname', title: '标种名称', width: 120}
                 , {field: 'status', title: '状态', width: 120, templet: "#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]

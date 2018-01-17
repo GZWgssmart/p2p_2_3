@@ -13,57 +13,41 @@
 <body>
 <div id="app">
     <section class="larry-grid">
-        <div class="larry-personal">
-            <div class="layui-tab">
+        <table class="layui-hide" id="test" lay-filter="demo">
 
-                <div class="larry-separate"></div>
-                <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
-                    <!-- 操作日志 -->
-                    <div class="layui-tab-item layui-field-box layui-show">
-                        <table class="layui-hide" id="test" lay-filter="demo">
-                            <%--<ul class="layui-tab-title">
-                                <li class="layui-btn-warm "><i class="layui-icon">&#xe63c;</i>我的操作日志
-                                <li class="layui-btn "><i class="layui-icon">&#xe63c;</i>我的登录日志</li>
-                                <a class="layui-btn layui-btn-small larry-log-del">
-                                    <i class="iconfont icon-huishouzhan1">
-                                    </i>
-                                    清空日志
-                                </a>
-                            </ul>--%>
-
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        </table>
     </section>
 
 
     <div id="testJklx" style="display: none">
-        </BR>
         <div class="layui-form-item">
+            </br></br>
             <label class="layui-form-label">借款名称</label>
             <div class="layui-input-block">
-                <input style="width: 200px;" type="text" v-model="jklx.lxname" autocomplete="on" class="layui-input">
+                <input type="text" v-model="jklx.lxname" autocomplete="on" class="layui-input"/>
+                </br></br>
+
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        <div class="layui-col-sm6">
+                            <div class="grid-demo grid-demo-bg1">
+                                <div class="layui-btn-group">
+                                    <button class="layui-btn" @click="update">修改</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-sm6">
+                            <div class="grid-demo">
+                                <div class="layui-btn-group">
+                                    <button class="layui-btn" @click="close">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        <div>
-
-            <button class="layui-btn layui-col-md-offset2" @click="update">修改</button>
-            <button class="layui-btn" style="display:inline;margin-left: 110px;" @click="close">关闭</button>
-        </div>
-
-
     </div>
-
 </div>
 
 <script type="text/html" id="barDemo">
@@ -82,10 +66,10 @@
 <script src="/static/layui/layui.js"></script>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/vue.min.js"></script>
-
-<script src="/static/js/axios.min.js"></script>
 <script src="/static/js/qs.js"></script>
+<script src="/static/js/axios.min.js"></script>
 <script>
+
 
     $(function () {
         layui.use(['layer'], function () {
@@ -102,12 +86,13 @@
                 axios.post('/jklx/data/json/update', Qs.stringify(this.jklx))
                     .then((response) => {
                         layer.msg(response.data.message);
-                        window.location.reload();
-                        /!*layer.closeAll();*!/
+                        table.reload('jklx');
+                        layer.closeAll();
                     }, (error) => {
                         layer.alert("请求失败");
                     });
             },
+
             close: function () {
                 layer.closeAll();
             }
@@ -122,6 +107,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#test'
+            ,id:'jklx'
             , height: 332
             , url: '/jklx/data/json/pager' //数据接口
             , page: true //开启分页
@@ -134,8 +120,8 @@
                 , dataName: 'rows'
             }
             , cols: [[ //表头
-                {field: 'lxid', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'lxname', title: '名称', width: 120}
+                /*{field: 'lxid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
+                {field: 'lxname', title: '借款名称', width: 120}
                 , {field: 'status', title: '状态', width: 120, templet: "#status"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
@@ -167,6 +153,10 @@
         });
 
     });
+
+    /**
+     * 监听点击工具
+     */
 
 
 </script>

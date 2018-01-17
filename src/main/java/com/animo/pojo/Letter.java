@@ -2,9 +2,10 @@ package com.animo.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Letter {
+public class Letter  {
     private Integer lid;
 
     private String title;

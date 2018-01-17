@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/back/letter")
 public class LetterBackViews {
 
-    @GetMapping("pagerLetter")
+    @GetMapping("letterAdd")
     public String listRoles(){
-        return "letter/letterAdd";
+        return "letter/letter_add";
     }
 
     @RequestMapping("pageAllLitter")
     public String pagerAllLitter() {
         return "letter/allLitter";
     }
+
+
 }

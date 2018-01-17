@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 借款类型
  */
 @RestController
-@RequestMapping("jklx/data/json")
+@RequestMapping("/jklx/data/json")
 public class JklxController {
 
     @Autowired
@@ -33,11 +33,14 @@ public class JklxController {
     }
 
     /**
-     * 更新借款类型
-     * @param lxid
-     * @param status
+     * 修改借款类型
+     * @param jklx
      * @return
      */
+    @RequestMapping("update")
+    public ServerResponse update(Jklx jklx) {
+        return jklxService.update(jklx);
+    }
     @GetMapping("updateStatus/{lxid}/{status}")
     public ServerResponse updateStatus(Integer lxid,Integer status){
         return jklxService.updateStatus(lxid,status);

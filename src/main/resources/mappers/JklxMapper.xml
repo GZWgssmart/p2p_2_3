@@ -60,7 +60,7 @@
         status = #{status,jdbcType=INTEGER},
       </if>
     </set>
-    where lxid = #{id,jdbcType=INTEGER}
+    where lxid = #{lxid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.animo.pojo.Jklx" >
     <![CDATA[
@@ -75,7 +75,7 @@
   <![CDATA[
     UPDATE jklx
     SET status = #{status}
-    where lxid = #{id}
+    where lxid = #{lxid}
     ]]>
   </update>
 
