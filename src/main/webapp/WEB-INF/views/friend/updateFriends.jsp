@@ -11,24 +11,11 @@
 %>
 <html>
 <head>
-    <title>合作伙伴</title>
+    <title>编辑合作伙伴</title>
     <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
 </head>
-<body>
-<div id="appFriend">
-    <%--<div id="btn">--%>
-        <%--<button class="layui-btn" @click="showAddWin">添加</button>--%>
-    <%--</div>--%>
-    <!--layui表格-->
-    <table class="layui-hide" id="friends" lay-filter="friend"></table>
-
-    <!--table工具栏-->
-    <script type="text/html" id="barFriend">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-xs" lay-event="bigPic">查看大图</a>
-    </script>
-
-    <div id="editFriendWin" style="display: none">
+<div>
+    <div id="appFriend">
         <!--修改合作伙伴-->
         <div class="layui-form-item">
             <label class="layui-form-label">合作伙伴url</label>
@@ -57,24 +44,11 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" @click="updateFriend">保存</button>
+                <a href="<%=path%>/back/friends/pagerFriend"><button class="layui-btn">返回列表</button></a>
             </div>
         </div>
     </div>
 
-    <div id="bigPicWin" style="display: none">
-        <!--查看大图-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">图标来源</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="friend.fpic" disabled required lay-verify="required" placeholder="图标来源"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item" v-model="friend">
-            <label class="layui-form-label">图标</label>
-                <img id="imgSrc3">
-        </div>
-    </div>
 </div>
 </body>
 <script src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>

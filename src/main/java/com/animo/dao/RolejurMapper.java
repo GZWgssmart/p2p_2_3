@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface RolejurMapper extends BaseMapper{
     int saveRolejur(List<Rolejur> rolejurList);
+    int deleteAll();
 }

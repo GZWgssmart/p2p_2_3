@@ -8,7 +8,8 @@ $(function () {
     var vue = new Vue({
         el:"#appJur",
         data:{
-            jur:[]
+            jur:[],
+            filePath:''
         },
         created () {
         },
@@ -17,11 +18,7 @@ $(function () {
                 axios.post('/jur/data/json/updateJur', Qs.stringify(this.jur))
                     .then((response)=>{
                         layer.msg(response.data.message);
-                        table.reload('tbReload', {
-                            page: {
-                                curr: 1 //重新从第 1 页开始
-                            }
-                        });
+                        table.reload('jurTB');
                     },(error)=>{
                         layer.alert("请求失败");
                     });
@@ -35,11 +32,22 @@ $(function () {
                     params.append('nodeList', list);
                     axios.post('/roleJur/data/json/saveRoleJur',params).then((response)=>{
                         layer.msg(response.data.message);
-                        layer.closeAll();
+                        table.reload('jurTB');
                     },(error)=>{
                         layer.alert("请求失败");
                     });
                 }
+            },
+            getExcelPath:function () {
+                vue.jur.jurl = $("input[name='file']").val();
+                layer.load();
+                axios.post('/jur/data/json/initJur', Qs.stringify(vue.jur)).then((response)=>{
+                    layer.msg(response.data.message);
+                    layer.closeAll();
+                    window.location.reload();
+                },(error)=>{
+                    layer.alert("请求失败");
+                });
             }
         }
     });
@@ -53,6 +61,7 @@ $(function () {
             ,element = layui.element; //元素操作
         table.render({
             elem: '#jurs'
+            ,id:'jurTB'
             ,height: 332
             ,url: '/jur/data/json/pager/' //数据接口
             ,page: true //开启分页
@@ -65,12 +74,10 @@ $(function () {
                 ,dataName: 'rows'
             }
             ,cols: [[ //表头
-                {field: 'jid', title: 'ID', width:80, sort: true}
-                ,{field: 'jurl', title: '权限url', width:150}
+                {field: 'jurl', title: '权限url', width:150}
                 ,{field: 'content', title: '描述', width:150}
                 ,{title:'操作', fixed: 'right', width: 165, align:'center', toolbar: '#barJur'}
-            ]],
-            id:'tbReload'
+            ]]
         });
         table.on('tool(jur)', function(obj){
             //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
@@ -110,22 +117,7 @@ $(function () {
             ,auto: false
             ,accept: 'file' //普通文件
             ,exts: 'xls|xlsx' //只允许上传压缩文件
-            ,before: function (obj) { //obj参数包含的信息
-                console.log(obj);
-            }
         });
-        // upload.render({
-        //     elem: '#uploadExcel'
-        //     , url: ''
-        //     ,auto: false
-        //     , exts: 'xls|xlsx'
-        //     , before: function (obj) { //obj参数包含的信息
-        //         console.log(obj);
-        //     }
-        //     , error: function () {
-        //         //请求异常回调
-        //     }
-        // });
     });
 
     /**

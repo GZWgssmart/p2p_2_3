@@ -84,4 +84,15 @@
   <select id="listByRid" resultType="com.animo.vo.RoleJurVO" parameterType="java.lang.Integer">
     select r.rid,rj.jid,rj.rjid,j.content,j.jurl from role r join rolejur rj on r.rid = rj.rid JOIN jur j on rj.jid = j.jid where r.rid = #{rid, jdbcType=INTEGER};
   </select>
+
+  <insert id="saveJurList" parameterType="com.animo.pojo.Jur">
+    insert into jur (jurl, content) VALUES
+    <foreach collection="list" item="item" separator=",">
+      (#{item.jurl},#{item.content})
+    </foreach>
+  </insert>
+
+  <delete id="deleteAll">
+    truncate table jur
+  </delete>
 </mapper>

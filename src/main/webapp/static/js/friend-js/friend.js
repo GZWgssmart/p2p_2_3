@@ -28,8 +28,8 @@ $(function () {
                     layer.msg(response.data.message);
                     vue.friend.fpic = '';
                     vue.friend.furl = '';
-                    table.reload('friends');
                     layer.closeAll();
+                    window.location.reload();
                 }, (error) => {
                     layer.alert("请求失败");
                 });

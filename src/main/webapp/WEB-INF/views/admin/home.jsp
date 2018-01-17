@@ -159,8 +159,10 @@
                     <a href="javascript:;">合作伙伴管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                           
                             <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="18">合作伙伴</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/friends/addFriends" data-id="188">添加合作伙伴</a>
                         </dd>
                     </dl>
                 </li>
