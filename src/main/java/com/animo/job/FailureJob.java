@@ -73,8 +73,9 @@ public class FailureJob {
                 juserMoney.setDjmoney(juserMoney.getDjmoney().subtract(zmoney));
                 juserMoney.setZmoney(juserMoney.getZmoney().subtract(zmoney));
                 userMoneyService.update(juserMoney);
+
             }
         }
-
+        System.out.println("流标任务");
     }
 }

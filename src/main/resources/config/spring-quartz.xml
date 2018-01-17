@@ -45,18 +45,36 @@
     </bean>
 
 
+    <bean id="cronJobFailure" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="FailureJob"/>
+        </property>
+        <property name="targetMethod" value="execute"/>
+    </bean>
+
+    <bean id="cronTriggerFailure" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="cronTriggerFailure" />
+        <property name="group" value="group1" />
+        <property name="jobDetail" ref="cronJobFailure" />
+        <property name="cronExpression" value="0 0 23 L * ?" />
+        <!--测试阶段， 0 * 8-22 * * ? *每分钟发放一次-->
+        <!--实际阶段，0 0 23 L * ?每月月末发放一次-->
+    </bean>
+
     <!--调度器-->
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
                 <ref bean="cronDetailMoney"/>
                 <ref bean="cronJobMonthData"/>
+                <ref bean="cronJobFailure"/>
             </list>
         </property>
         <property name="triggers">
             <list>
                 <ref bean="cronTriggerMoney"/>
                 <ref bean="cronTriggerMonthData"/>
+                <ref bean="cronTriggerFailure"/>
             </list>
         </property>
     </bean>
