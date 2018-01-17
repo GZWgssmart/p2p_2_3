@@ -103,7 +103,7 @@ public class UserController {
 
     @PostMapping("updatePwd")
     public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
-        User user = (User) session.getAttribute(Constant.SESSION_ADMIN);
+        User user = (User) session.getAttribute(Constant.SESSION_USER);
         if(EncryptUtils.md5(pwd).equals(user.getUpwd())) {
             if(EncryptUtils.md5(nowPwd).equals(EncryptUtils.md5(rePwd))) {
                 user.setUpwd(EncryptUtils.md5(nowPwd));

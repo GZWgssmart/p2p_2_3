@@ -690,18 +690,21 @@
                                         </div>
                                         <div class="safe-list-2" >获取最新的投资讯息和账户信息变动通知</div>
                                         <div class="safe-list-3">
-                                            <a href="javascript:;" id="email">进行绑定</a>
+                                           <%-- <a href="javascript:;" id="email">进行绑定</a>--%>
+                                               <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                                                   <button data-method="upEmail" data-type="c" class="layui-btn layui-btn-normal">进行绑定</button>
+                                               </div>
                                         </div>
                                     </li>
                                     <li v-else>
-                                    <div class="safe-list-1">
-                                        <p class="icon icon-true" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
-                                    </div>
-                                    <div class="safe-list-2" id="email-text">{{user.email | email}}</div>
-                                    <div class="safe-list-3">
-                                        <a href="javascript:;" id="cellEmail" class="on">已绑定</a>
-                                        <a href="javascript:;" id="changeEmail">修改</a>
-                                    </div>
+                                        <div class="safe-list-1">
+                                            <p class="icon icon-true" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
+                                        </div>
+                                        <div class="safe-list-2" id="email-text">{{user.email | email}}</div>
+                                        <div class="safe-list-3">
+                                            <a href="javascript:;" id="cellEmail" class="on">已绑定</a>
+                                            <a href="javascript:;" id="changeEmail">修改</a>
+                                        </div>
                                     </li>
                                     <li v-if="user.idno!=null">
                                         <div class="safe-list-1">
@@ -729,7 +732,10 @@
                                             {{user.upwd | pwd}}
                                         </div>
                                         <div class="safe-list-3">
-                                            <a href="javascript:;" id="password-btn">忘记密码</a>
+                                           <%-- <a href="javascript:;" id="password-btn">忘记密码</a>--%>
+                                               <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                                                   <button data-method="updatePwd" data-type="c" class="layui-btn layui-btn-normal">修改</button>
+                                               </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -895,6 +901,12 @@
 </body>
 <script src="/static/js/qs.js"></script>
 <script src="/static/layui/layui.js"></script>
+
+<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
+
+
 <script type="text/javascript" src="<%=path%>/static/js/user/province.js"></script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="hkjh">还款计划</a>
@@ -1409,5 +1421,44 @@
         });
     }
     <!--投资管理-->
+</script>
+
+<script>
+    layui.use('layer', function(){ //独立版的layer无需执行这一句
+        var $ = layui.jquery,
+            layer = layui.layer; //独立版的layer无需执行这一句
+
+        var active = {
+            updatePwd: function(othis){
+                var type = othis.data('type'),
+                    text = othis.text();
+                layer.open({
+                    type: 2
+                    ,offset:type
+                    ,content:'<%=path%>/back/user/upPwd'
+                    ,area: ['430px', '300px'] //自定义文本域宽高
+                    ,title:'修改密码'
+                });
+            },
+
+            upEmail: function(othis){
+                var type = othis.data('type');
+                layer.open({
+                    type: 2
+                    ,offset:type
+                    ,content:'<%=path%>/back/user/upEmail'
+                    ,area: ['430px', '180px'] //自定义文本域宽高
+                    ,title:'修改邮箱'
+                });
+            }
+        };
+
+        $('#layerDemo .layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+    });
+
 </script>
 </html>

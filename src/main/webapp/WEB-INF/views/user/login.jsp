@@ -64,12 +64,11 @@
         $('.error-msg').text(msg).addClass('show');
         obj.parent('.from').addClass('error');
         obj.focus(function(){
-            alert(1);
             obj.parent('.from').removeClass('error');
             $('.error-msg').removeClass('show');
-
         });
     }
+
 
     function checkPhone(phone) {
         var phone = $("#phone").val();

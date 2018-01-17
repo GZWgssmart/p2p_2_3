@@ -91,7 +91,7 @@
                 if (data.message === 'success') {
                     window.location.href = "/back/admin/home";
                 } else {
-                    ahowError(data.message, $(phone));
+                    showError(data.message, $(phone));
                 }
             },
             'json'
