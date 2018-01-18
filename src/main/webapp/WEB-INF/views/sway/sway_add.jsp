@@ -88,20 +88,19 @@
 
 
     var vue = new Vue({
-        el: '#sway-app',
+        el: '#sway_app',
         data: {
             sway: []
         },
         methods: {
             save: function () {
+                var options = $("#way option:selected");
+                var status = $('#status input[name="status"]:checked ').val();
+                /* vue.sway.way = options;*/
+                vue.sway.way = options.val();
+                vue.sway.status = status;
                 //监听提交
                 form.on('submit(swaySave)', function (data) {
-                    var options = $("#way option:selected");
-
-                    var status = $('#status input[name="status"]:checked ').val();
-                   /* vue.sway.way = options;*/
-                    vue.sway.way = options.val();
-                    vue.sway.status = status;
                     axios.post('/sway/data/json/save', Qs.stringify(vue.sway))
                         .then((response) => {
                             /* layer.msg(response.data.message);*/
