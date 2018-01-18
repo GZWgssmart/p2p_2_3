@@ -16,7 +16,7 @@
     <input value="${requestScope.code}" id="code"/>
 <div class="nav-out">
     <div class="wrap cl">
-        <div class="logo"><a href="https://www.pujinziben.com/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
+        <div class="logo"><a href="<%=path%>/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
         <p class="to-login">已有账号，<a href="<%=path%>/user/login">立即登录</a></p>
     </div>
 </div>
@@ -122,6 +122,10 @@
                 };
                 if(this.user.upwd==''){
                     showError('请输入登录密码',$('#upwd'));
+                    return;
+                };
+                if(!$('#agree').is(':checked')){
+                    showError('请勾选服务协议', $('#agree'));
                     return;
                 };
                 if($('#code').val()!=null){

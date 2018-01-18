@@ -110,7 +110,6 @@ public class UserController {
                 userService.update(user);
                 return ServerResponse.createBySuccess("success");
             }else{
-                System.out.println(EncryptUtils.md5(nowPwd));
                 return ServerResponse.createByError("两次密码不一致");
             }
         }else {

@@ -82,22 +82,22 @@
     function upEmail() {
         var email = $("#email").val();
         if(email == '') {
-            showError("请输入邮箱", $(email));
+            showError("请输入邮箱", $("#email"));
             return;
         }else if(!$("input[name='email']").val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
-            showError("邮箱格式不正确", $(email));
+            showError("邮箱格式不正确", $("#email"));
             return false;
         }
         $.post('/user/data/json/saveEmail',
             $("#upEmail").serialize(),
             function (data) {
                 if (data.code === 0) {
-                    parent.layer.close(index); //再执行关闭
                     layer.msg("修改成功");
+                    parent.layer.close(index); //再执行关闭
                     $(":text").val("");
 
                 } else {
-                    showError(data.message, $(email));
+                    showError(data.message, $("#email"));
                 }
             },
             'json'

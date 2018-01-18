@@ -14,8 +14,8 @@
 <body>
 <div class="nav-out">
     <div class="wrap cl">
-        <div class="logo"><a href="https://www.pujinziben.com/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
-        <p class="index"><a href="https://www.pujinziben.com/" class="icon icon-home">普金资本首页</a></p>
+        <div class="logo"><a href="<%=path%>/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
+        <p class="index"><a href="<%=path%>/" class="icon icon-home">普金资本首页</a></p>
     </div>
 </div>
 <div class="login-content">
@@ -67,16 +67,21 @@
             obj.parent('.from').removeClass('error');
             $('.error-msg').removeClass('show');
         });
+        /*obj.onfocus = function () {
+            obj.parent('.from').removeClass('error');
+            $('.error-msg').removeClass('show');
+        }*/
+
     }
 
 
     function checkPhone(phone) {
         var phone = $("#phone").val();
         if(phone == ''){
-            showError('请输入手机号码',$(phone));
+            showError('请输入手机号码',$("#phone"));
             return;
         }else if(phone.length != 11){
-            showError('请输入正确手机号',$(phone));
+            showError('请输入正确手机号',$("#phone"));
             return;
         }else{
 
@@ -89,17 +94,17 @@
         var upwd = $("#upwd").val();
         var slide = $("#slide").val();
         if(phone==''){
-            showError('请输入手机号',$(phone));
+            showError('请输入手机号',$("#phone"));
             return;
         }else if(phone.length != 11){
-            showError('请输入正确手机号',$(phone));
+            showError('请输入正确手机号',$("#phone"));
             return;
         }else if(!pullTest){
-            showError('请拖动验证码到正确位置', $(slide));
+            showError('请拖动验证码到正确位置', $("#slide"));
             return;
         };
         if(upwd==''){
-            showError('请输入登录密码',$(upwd));
+            showError('请输入登录密码',$("#upwd"));
             return;
         };
         $.post('/user/data/json/login',
@@ -108,7 +113,7 @@
                 if (data.message === 'success') {
                     window.location.href = "/user/accountOverride";
                 } else {
-                    showError("账号或密码错误", $(phone));
+                    showError("账号或密码错误", $("#phone"));
                 }
             },
             'json'

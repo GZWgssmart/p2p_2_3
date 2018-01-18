@@ -47,7 +47,7 @@
     <div class="wrap cl">
         <div class="logo"><img src="/static/images/index/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
-            <ul id="ulli">
+            <ul>
                 <c:if test="${sessionScope.user == null}">
                     <li class="icon icon-acc"><a href="/user/login">我的账户</a></li>
                 </c:if>

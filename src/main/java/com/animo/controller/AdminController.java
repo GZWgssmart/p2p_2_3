@@ -35,7 +35,6 @@ public class AdminController {
             subject.login(token);
             return ServerResponse.createBySuccess("success");
         } catch (AccountException e) {
-            System.out.println("登陆失败:"+e.getMessage());
             return ServerResponse.createByError("登陆失败:"+e.getMessage());
         }
     }
@@ -71,14 +70,11 @@ public class AdminController {
     @PostMapping("updatePwd")
     public ServerResponse updatePwd(String pwd, String nowPwd, String rePwd, HttpSession session) {
         Huser huser = (Huser) session.getAttribute(Constant.SESSION_ADMIN);
-        System.out.println("原密码：" + huser.getResstr1());
-        System.out.println("输入的原密码" + EncryptUtils.md5(pwd));
         if (EncryptUtils.md5(pwd).equals(huser.getResstr1())) {
             if (EncryptUtils.md5(nowPwd).equals(EncryptUtils.md5(rePwd))) {
                 huserService.updatePwd(EncryptUtils.md5(nowPwd), huser.getHuid());
                 return ServerResponse.createBySuccess("success");
             } else {
-                System.out.println(EncryptUtils.md5(nowPwd));
                 return ServerResponse.createByError("两次密码不一致");
             }
         } else {

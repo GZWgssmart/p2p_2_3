@@ -59,13 +59,13 @@
             var nowPwd = $("#nowPwd").val();
             var rePwd = $("#rePwd").val();
             if(pwd=='') {
-                showError('请输密码',$(pwd));
+                showError('请输密码',$("#pwd"));
                 return;
             }else if(nowPwd==''){
-                showError('请输入现密码',$(nowPwd));
+                showError('请输入现密码',$("#nowPwd"));
                 return;
             }else if(rePwd==''){
-                showError('请确认密码',$(rePwd));
+                showError('请确认密码',$("#rePwd"));
                 return;
             };
         $.post('/admin/data/json/updatePwd',
@@ -76,7 +76,7 @@
                     $(":text").val("");
                     $(":password").val("");
                 } else {
-                    showError(data.message, $(pwd));
+                    showError(data.message, $("#pwd"));
                 }
             },
             'json'

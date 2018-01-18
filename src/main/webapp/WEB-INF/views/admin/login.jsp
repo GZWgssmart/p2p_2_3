@@ -55,10 +55,10 @@
     function checkPhone(phone) {
         var phone = $("#phone").val();
         if(phone == ''){
-            showError('请输入手机号码',$(phone));
+            showError('请输入手机号码',$("#phone"));
             return;
         }else if(phone.length != 11){
-            showError('请输入正确手机号',$(phone));
+            showError('请输入正确手机号',$("#phone"));
             return;
         }else{
 
@@ -71,18 +71,18 @@
         var pwd = $("#pwd").val();
         var code = $("#code").val();
         if(phone==''){
-            showError('请输入手机号',$(phone));
+            showError('请输入手机号',$("#phone"));
             return;
         }else if(phone.length != 11){
-            showError('请输入正确手机号',$(phone));
+            showError('请输入正确手机号',$("#phone"));
             return;
         };
         if(pwd==''){
-            showError('请输入登录密码',$(pwd));
+            showError('请输入登录密码',$("#pwd"));
             return;
         };
         if(code==''){
-            showError('请输入验证码',$(code));
+            showError('请输入验证码',$("#code"));
             return;
         };
         $.post('/admin/data/json/login',
@@ -91,7 +91,7 @@
                 if (data.message === 'success') {
                     window.location.href = "/back/admin/home";
                 } else {
-                    showError(data.message, $(phone));
+                    showError(data.message, $("#phone"));
                 }
             },
             'json'
