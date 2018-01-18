@@ -24,7 +24,7 @@ public class SwayController {
      * @return
      */
     @RequestMapping("save")
-    public ServerResponse<Sway> save(Sway sway) {
+    public ServerResponse save(Sway sway) {
         return swayService.save(sway);
     }
 

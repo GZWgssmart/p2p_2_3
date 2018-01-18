@@ -32,18 +32,17 @@
             </div>
         </div>
 
-       <div class="layui-form-item">
-            <label class="layui-form-label">是否可用</label>
-            <div class="layui-input-block">
-                <input type="radio" v-model="letter.status" value="0" title="是">
-                <input type="radio" v-model="letter.status" value="1" title="否" checked>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block" id="status">
+                <input type="radio" v-model="letter.status" name="status" value="0" title="男" checked="">
+                <input type="radio" v-model="letter.status" name="status" value="1" title="女">
             </div>
         </div>
 
-
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" @click="save">添加站内信</button>
+                <button class="layui-btn" lay-submit lay-filter="letterSave" @click="save">添加站内信</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -55,14 +54,11 @@
 <script src="/static/js/vue.min.js"></script>
 <script src="/static/js/qs.js"></script>
 <script src="/static/js/axios.min.js"></script>
-<script type="text/javascript" src="/static/layui/layui.all.js"></script>
 <script>
-    layui.use(['form', 'layedit', 'laydate'], function () {
-        var form = layui.form
-            , layer = layui.layer
-            , layedit = layui.layedit
-            , laydate = layui.laydate;
-
+    var form;
+    layui.use(['form', 'layer'], function () {
+        var layer = layui.layer;
+        form = layui.form;
         //自定义验证规则
         form.verify({
             title: function (value) {
@@ -82,26 +78,9 @@
                 }
             },
         });
-
-        //创建一个编辑器
-        /*layedit.build('LAY_demo_editor');*/
-
-        //监听提交
-        /*form.on('submit(demo1)', function (data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
-        });*/
-
     });
 
 
-    $(function () {
-        layui.use(['layer'], function () {
-            var layer = layui.layer;
-        });
-    })
     var vue = new Vue({
         el: '#letter-app',
         data: {
@@ -109,18 +88,22 @@
         },
         methods: {
             save: function () {
-                alert(123);
-                /*axios.post('/letter/data/json/save', Qs.stringify(this.letter))
-                    .then((response) => {
-                        layer.msg(response.data.message);
-                        /!*table.reload('letter');*!/
-                        layer.closeAll();
-                    }, (error) => {
-                        layer.alert("请求失败");
-                    });*/
-            },
+                //监听提交
+                form.on('submit(letterSave)', function (data) {
+                    var status = $('#status input[name="status"]:checked ').val();
+                    vue.letter.status = status;
+                    axios.post('/letter/data/json/save', Qs.stringify(vue.letter))
+                        .then((response) => {
+                           /* layer.msg(response.data.message);*/
+                            layer.closeAll();
+                        }, (error) => {
+                        });
+                });
+
+            }
         }
     });
+
 </script>
 
 </html>
