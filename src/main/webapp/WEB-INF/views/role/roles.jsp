@@ -17,7 +17,7 @@
             <div>
                 <%--<shiro:hasPermission name="role:add">--%>
                 <button class="layui-btn" @click="showAddRole">添加角色</button>
-                    <%--</shiro:hasPermission>--%>
+                <%--</shiro:hasPermission>--%>
                 <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
                 <button class="layui-btn" @click="showRoleJur">角色分配</button>
             </div>
@@ -33,12 +33,14 @@
                 <form class="layui-form">
                     <div class="layui-form-item">
                         <label class="layui-form-label">角色名称：</label>
-                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.rname}}</label>
+                        <label class="layui-form-label" v-model="roleDel"
+                               style="color: #00a0e9">{{roleDel.rname}}</label>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">角色描述：</label>
-                        <label class="layui-form-label" v-model="roleDel" style="color: #00a0e9">{{roleDel.content}}</label>
+                        <label class="layui-form-label" v-model="roleDel"
+                               style="color: #00a0e9">{{roleDel.content}}</label>
                     </div>
 
                     <div class="layui-form-item">
@@ -49,7 +51,8 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">权限配置：</label>
                         <!--权限树的显示容器-->
-                        <ul id="roleDelJurTree" disabled="true" class="ztree" style="width:auto; height: 100px; overflow:auto;"></ul>
+                        <ul id="roleDelJurTree" disabled="true" class="ztree"
+                            style="width:auto; height: 100px; overflow:auto;"></ul>
                     </div>
                 </form>
                 <div>
@@ -60,15 +63,13 @@
     </div>
 
 
-
-
     <!--添加角色窗口-->
     <div id="addWin" style="display: none">
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">角色名称</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.rname" required lay-verify="required" placeholder="请输入角色名称"
+                    <input type="text" v-model="role.rname" lay-verify="required" placeholder="请输入角色名称"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -76,7 +77,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">角色描述</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入角色描述"
+                    <input type="text" v-model="role.content" lay-verify="required" placeholder="请输入角色描述"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -95,7 +96,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-filter="formDemo" @click="save">保存</button>
+                    <button class="layui-btn" lay-submit lay-filter="save" @click="save">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -111,7 +112,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.rname" required lay-verify="required" placeholder="请输入角色名称"
+                    <input type="text" v-model="role.rname" lay-verify="required|title" placeholder="请输入角色名称"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -126,7 +127,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-filter="formDemo" @click="saveDep">保存</button>
+                    <button class="layui-btn" lay-submit lay-filter="saveDep" @click="saveDep">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -140,7 +141,8 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <input type="hidden" v-model="roleUserVO.roleString" required lay-verify="required" placeholder="请输入角色名称"
+                    <input type="hidden" v-model="roleUserVO.roleString" required lay-verify="required"
+                           placeholder="请输入角色名称"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -153,7 +155,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-filter="formDemo" @click="saveRoleUser">保存</button>
+                    <button class="layui-btn" lay-submit lay-filter="saveRoleUser" @click="saveRoleUser">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -175,7 +177,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">角色描述</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.content" required lay-verify="required" placeholder="请输入角色描述"
+                    <input type="text" v-model="role.content" lay-verify="required" placeholder="请输入角色描述"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -205,7 +207,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-filter="formDemo" @click="updateRole">保存</button>
+                    <button class="layui-btn" lay-submit lay-filter="updateRole" @click="updateRole">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -227,6 +229,10 @@
 <!--引入js文件-->
 <%@include file="role-foot.jsp" %>
 <script type="text/javascript">
+    var form;
+    layui.use(['form'], function () {
+        form = layui.form;
+    });
     var vue = new Vue({
         el: "#app",
         data: {
@@ -236,25 +242,26 @@
                 content: '',
                 pid: ''
             },
-            roleDel:{
-                rid:'',
+            roleDel: {
+                rid: '',
                 rname: '',
                 content: '',
-                dep:'',
-                jur:''
+                dep: '',
+                jur: ''
             },
-            roleJurVO:{
+            roleJurVO: {
                 rid: '',
                 rname: '',
                 content: '',
                 pid: '',
-                jurString:''
+                jurString: ''
             },
-            roleUserVO:{
-                roleString:'',
-                userString:''
+            roleUserVO: {
+                roleString: '',
+                userString: ''
             },
-            jurIds:''
+            jurIds: '',
+            isok:''
         },
         created() {
             //初始化树
@@ -266,10 +273,12 @@
                 this.roleJurVO.content = this.role.content;
                 this.roleJurVO.rname = this.role.rname;
                 if (this.role.pid.length != 0) {
-                    axios.post('/role/data/json/save', Qs.stringify(this.roleJurVO)).then((response) => {
-                        alert(response.data.message);
-                    }, (error) => {
-                        layer.alert("请求失败");
+                    form.on('submit(save)', function(data){
+                        axios.post('/role/data/json/save', Qs.stringify(vue.roleJurVO)).then((response) => {
+                            alert(response.data.message);
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
                     });
                 } else {
                     layer.alert("请选择部门");
@@ -278,77 +287,85 @@
             showAddRole: function () {
                 showAddRole();
             },
-            showAddRoleDep:function() {
+            showAddRoleDep: function () {
                 showAddDep();
             },
-            saveDep:function () {
+            saveDep: function () {
                 this.role.rid = 0;
-                axios.post('/role/data/json/save', Qs.stringify(this.role)).then((response) => {
-                    layer.msg(response.data.message);
-                }, (error) => {
-                    layer.alert("请求失败");
+                form.on('submit(saveDep)', function(data){
+                    axios.post('/role/data/json/save', Qs.stringify(vue.role)).then((response) => {
+                        layer.msg(response.data.message);
+                    }, (error) => {
+                        layer.alert("请求失败");
+                    });
                 });
             },
-            showRoleJur:function () {
+            showRoleJur: function () {
                 var nodesRole = nodeOnCheck();
                 var roleString = '';
-                console.log(nodesRole);
-                if ( nodesRole.length> 0){
-                    for (var i = 0; i < nodesRole.length; i++){
-                        if (nodesRole[i].pid != ''){
-                            roleString+= nodesRole[i].rid + ',';
+                if (nodesRole.length > 0) {
+                    for (var i = 0; i < nodesRole.length; i++) {
+                        if (nodesRole[i].pid != '') {
+                            roleString += nodesRole[i].rid + ',';
                         }
                     }
                     this.roleUserVO.roleString = roleString;
                     showRoleUser();
-                }else {
+                } else {
                     layer.alert('请选择一个或多个角色');
                 }
             },
-            saveRoleUser:function () {
+            saveRoleUser: function () {
                 var userString = '';
                 var nodesUser = userOnCheck();
-                if ( nodesUser.length> 0){
-                    for (var i = 0; i < nodesUser.length; i++){
-                        userString+= nodesUser[i].huid + ',';
+                if (nodesUser.length > 0) {
+                    for (var i = 0; i < nodesUser.length; i++) {
+                        userString += nodesUser[i].huid + ',';
                     }
                     this.roleUserVO.userString = userString;
-                    axios.post('/roleUser/data/json/saveRoleUser', Qs.stringify(this.roleUserVO)).then((response) => {
-                        layer.msg("添加成功");
-                    }, (error) => {
-                        layer.alert("请求失败");
+                    //验证通过
+                    form.on('submit(saveRoleUser)', function(data){
+                        axios.post('/roleUser/data/json/saveRoleUser', Qs.stringify(vue.roleUserVO)).then((response) => {
+                            layer.msg("添加成功");
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
                     });
-                }else {
-                   layer.alert('请选择一个或多个用户');
+                } else {
+                    layer.alert('请选择一个或多个用户');
                 }
             },
-            showEditRole:function () {
-                if (this.role.rid == ''){
+            showEditRole: function () {
+                if (this.role.rid == '') {
                     layer.alert("请点击某个角色");
-                }else {
+                } else {
                     showEditRole();
                 }
             },
-            updateRole:function () {
-                this.roleJurVO.rid = this.role.rid;
-                this.roleJurVO.pid = this.role.pid;
-                this.roleJurVO.content = this.role.content;
-                this.roleJurVO.rname = this.role.rname;
-                this.roleJurVO.jurString = this.jurIds;
-                axios.post('/role/data/json/update', Qs.stringify(this.roleJurVO))
-                    .then((response)=>{
-                        layer.msg(response.data.message);
-                    },(error)=>{
-                        layer.alert("请求失败");
-                    });
+            updateRole: function () {
+                vue.roleJurVO.rid = this.role.rid;
+                vue.roleJurVO.pid = this.role.pid;
+                vue.roleJurVO.content = this.role.content;
+                vue.roleJurVO.rname = this.role.rname;
+                vue.roleJurVO.jurString = this.jurIds;
+                //监听提交，一致通过验证
+                form.on('submit(updateRole)', function (data) {
+                    axios.post('/role/data/json/update', Qs.stringify(vue.roleJurVO))
+                        .then((response) => {
+                            layer.msg(response.data.message);
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                });
             },
-            showJur:function () {
+            showJur: function () {
                 showJur();
             },
-            saveJurIds:function () {
-               layer.close(2);
+            saveJurIds: function () {
+                layer.close(2);
             }
         }
     });
+
 </script>
 </html>

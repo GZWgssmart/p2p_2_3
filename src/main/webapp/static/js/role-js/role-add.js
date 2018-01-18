@@ -3,8 +3,8 @@
  */
 //初始化layui
 $(function () {
-    layui.use(['layer'], function(){
-        var layer = layui.layer;
+    layui.use(['layer','form'], function(){
+        var layer = layui.layer, form = layui.form;
     });
 })
 

@@ -14,24 +14,28 @@ $(function () {
         },
         methods: {
             updateFriend:function () {
-                axios.post('/friend/data/json/update', Qs.stringify(vue.friend)).then((response) => {
-                    layer.msg(response.data.message);
-                    vue.friend.fpic = '';
-                    vue.friend.furl = '';
-                    window.location.reload();
-                }, (error) => {
-                    layer.alert("请求失败");
+                form.on('submit(updateFriend)', function(data){
+                    axios.post('/friend/data/json/update', Qs.stringify(vue.friend)).then((response) => {
+                        layer.msg(response.data.message);
+                        vue.friend.fpic = '';
+                        vue.friend.furl = '';
+                        window.location.reload();
+                    }, (error) => {
+                        layer.alert("请求失败");
+                    });
                 });
             },
             saveFriend: function () {
-                axios.post('/friend/data/json/save', Qs.stringify(vue.friend)).then((response) => {
-                    layer.msg(response.data.message);
-                    vue.friend.fpic = '';
-                    vue.friend.furl = '';
-                    layer.closeAll();
-                    window.location.reload();
-                }, (error) => {
-                    layer.alert("请求失败");
+                form.on('submit(saveFriend)', function(data){
+                    axios.post('/friend/data/json/save', Qs.stringify(vue.friend)).then((response) => {
+                        layer.msg(response.data.message);
+                        vue.friend.fpic = '';
+                        vue.friend.furl = '';
+                        layer.closeAll();
+                        window.location.reload();
+                    }, (error) => {
+                        layer.alert("请求失败");
+                    });
                 });
             },
             showAddWin: function () {
@@ -62,7 +66,7 @@ $(function () {
         table.render({
             elem: '#friends'
             ,id:'friends'
-            , height: 332
+            , height: 450
             , url: '/friend/data/json/pager/' //数据接口
             , page: true //开启分页
             , limit: 5//每页显示多少个

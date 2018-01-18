@@ -18,3 +18,4 @@
 <!--自定义js文件-->
 <script type="text/javascript" src="<%=path%>/static/js/role-js/role.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/role-js/role-add.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/layui-formVerify.js"></script>

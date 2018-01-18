@@ -5,6 +5,7 @@
 //初始化layui,Vue
 var nodesList;
 $(function () {
+    var form;
     var vue = new Vue({
         el:"#appJur",
         data:{
@@ -15,13 +16,15 @@ $(function () {
         },
         methods:{
             update:function () {
-                axios.post('/jur/data/json/updateJur', Qs.stringify(this.jur))
-                    .then((response)=>{
-                        layer.msg(response.data.message);
-                        table.reload('jurTB');
-                    },(error)=>{
-                        layer.alert("请求失败");
-                    });
+                form.on('submit(update)', function(data){
+                    axios.post('/jur/data/json/updateJur', Qs.stringify(vue.jur))
+                        .then((response)=>{
+                            layer.msg(response.data.message);
+                            window.location.reload();
+                        },(error)=>{
+                            layer.alert("请求失败");
+                        });
+                });
             },
             saveRoleJur:function () {
                 if (nodeOnCheck().length == 0){
@@ -30,12 +33,12 @@ $(function () {
                     var list = this.jur.jid+","+nodeOnCheck();
                     var params = new URLSearchParams();
                     params.append('nodeList', list);
-                    axios.post('/roleJur/data/json/saveRoleJur',params).then((response)=>{
-                        layer.msg(response.data.message);
-                        table.reload('jurTB');
-                    },(error)=>{
-                        layer.alert("请求失败");
-                    });
+                        axios.post('/roleJur/data/json/saveRoleJur',params).then((response)=>{
+                            layer.msg(response.data.message);
+                            window.location.reload();
+                        },(error)=>{
+                            layer.alert("请求失败");
+                        });
                 }
             },
             getExcelPath:function () {
@@ -66,13 +69,14 @@ $(function () {
         }
     });
 
-    layui.use(['layer', 'laypage', 'table', 'upload','element'], function(){
+    layui.use(['layer', 'laypage', 'table', 'upload','element','form'], function(){
         var layer = layui.layer
             ,laypage = layui.laypage //分页
             ,layer = layui.layer //弹层
             ,table = layui.table //表格
             ,upload = layui.upload
             ,element = layui.element; //元素操作
+        form = layui.form;
         table.render({
             elem: '#jurs'
             ,id:'jurTB'

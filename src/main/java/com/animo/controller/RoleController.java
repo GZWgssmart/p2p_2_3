@@ -48,6 +48,7 @@ public class RoleController extends ShiroExecptionController{
      * @return
      */
     @RequestMapping("update")
+//    @RequiresPermissions("role:update")
     public ServerResponse updateRole(RoleJurVO roleJurVO){
         String jurString = roleJurVO.getJurString();
         Role role = new Role();
@@ -76,6 +77,7 @@ public class RoleController extends ShiroExecptionController{
      * @return
      */
     @RequestMapping("delete")
+//    @RequiresPermissions("role:delete")
     public ServerResponse deleteRole(Role role){
         ShiroAuthorizationUtil.clearAuthAndCache();
         return roleService.deleteByRoleKey(role.getRid());

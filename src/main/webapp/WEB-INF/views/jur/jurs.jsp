@@ -47,7 +47,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" @click="update">保存</button>
+                    <button class="layui-btn" lay-submit lay-filter="update" @click="update">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -60,14 +60,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">当前权限url</label>
             <div class="layui-input-block">
-                <input type="text" disabled v-model="jur.jurl" required lay-verify="required" placeholder="请输入权限url"
+                <input type="text" disabled v-model="jur.jurl" lay-verify="required" placeholder="请输入权限url"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">权限描述</label>
             <div class="layui-input-block">
-                <input type="text" disabled v-model="jur.content" required lay-verify="required" placeholder="请输入权限描述"
+                <input type="text" disabled v-model="jur.content" lay-verify="required" placeholder="请输入权限描述"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" @click="saveRoleJur">保存</button>
+                <button class="layui-btn" lay-submit lay-filter="saveRoleJur" @click="saveRoleJur">保存</button>
             </div>
         </div>
     </div>

@@ -15,3 +15,4 @@
 <script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
 <!--自定义js-->
 <script type="text/javascript" src="<%=path%>/static/js/jur-js/jur.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/layui-formVerify.js"></script>

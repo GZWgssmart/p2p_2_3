@@ -17,7 +17,7 @@
 <body>
 <div id="appFriend">
     <%--<div id="btn">--%>
-        <%--<button class="layui-btn" @click="showAddWin">添加</button>--%>
+    <%--<button class="layui-btn" @click="showAddWin">添加</button>--%>
     <%--</div>--%>
     <!--layui表格-->
     <table class="layui-hide" id="friends" lay-filter="friend"></table>
@@ -30,21 +30,21 @@
 
     <div id="editFriendWin" style="display: none">
         <!--修改合作伙伴-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">合作伙伴url</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="friend.furl" required lay-verify="required" placeholder="合作伙伴url"
-                       autocomplete="off" class="layui-input">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">合作伙伴url</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="friend.furl" lay-verify="required|url" placeholder="合作伙伴url"
+                           autocomplete="off" class="layui-input">
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">图标来源</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="friend.fpic" disabled required lay-verify="required" placeholder="图标来源"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-form-item">
+                <label class="layui-form-label">图标来源</label>
+                <div class="layui-input-block">
+                    <input type="text" v-model="friend.fpic" disabled required lay-verify="required" placeholder="图标来源"
+                           autocomplete="off" class="layui-input">
+                </div>
             </div>
-        </div>
-        <form enctype="multipart/form-data" method="post">
             <div class="layui-form-item" v-model="friend">
                 <label class="layui-form-label">图标</label>
                 <div class="layui-upload-drag" id="uploadPic2">
@@ -53,13 +53,14 @@
                     <img id="imgSrc2">
                 </div>
             </div>
-        </form>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" @click="updateFriend">保存</button>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="updateFriend" @click="updateFriend">保存</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
+
 
     <div id="bigPicWin" style="display: none">
         <!--查看大图-->
@@ -72,7 +73,7 @@
         </div>
         <div class="layui-form-item" v-model="friend">
             <label class="layui-form-label">图标</label>
-                <img id="imgSrc3">
+            <img id="imgSrc3">
         </div>
     </div>
 </div>
@@ -84,4 +85,5 @@
 <script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
 <!--自定义js文件-->
 <script type="text/javascript" src="<%=path%>/static/js/friend-js/friend.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/layui-formVerify.js"></script>
 </html>
