@@ -57,15 +57,7 @@
                 <li><a href="/back/font/information">信息披露 </a></li>
                 <li><a href="/back/font/security">安全保障</a></li>
                 <li id="touzilicai">
-                    <a href="/back/font/investment">投资理财</a>
-                    <div id="list" class="sub-nav">
-                        <a href="/borrowapply/all/1">恒金保</a>
-                        <a href="/borrowapply/all/4">普金保</a>
-                        <a href="/borrowapply/all/2">多金宝</a>
-                        <a href="investlist.html#005">新手标</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
-                    </div>
+                    <a href="/borrowapply/add">申请借款</a>
                 </li>
                 <li><a href="/">首页</a></li>
             </ul>

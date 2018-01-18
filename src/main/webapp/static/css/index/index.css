@@ -1358,10 +1358,10 @@
     width: 120px;
     height: 1px;
     position: absolute;
-    top: 60px;
-    left: 40px;
+    /*top: 60px;*/
+    /*left: 40px;*/
     z-index: 1;
-    background-color: #e62538;
+    /*background-color: #e62538;*/
 }
 
 

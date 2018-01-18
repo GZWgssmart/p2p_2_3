@@ -1,5 +1,6 @@
 package com.animo.service.impl;
 
+import com.animo.common.ServerResponse;
 import com.animo.dao.FriendMapper;
 import com.animo.dao.JurMapper;
 import com.animo.pojo.Jur;
@@ -22,4 +23,8 @@ public class FriendServiceImpl extends AbstractServiceImpl implements FriendServ
         this.friendMapper = friendMapper;
     }
 
+    @Override
+    public ServerResponse list() {
+        return ServerResponse.createBySuccess(friendMapper.list());
+    }
 }

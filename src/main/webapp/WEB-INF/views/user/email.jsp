@@ -56,6 +56,7 @@
         </form>
     </ul>
 </div>
+
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script src="<%=path%>/static/js/user/jquery-latest.js"></script>
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>

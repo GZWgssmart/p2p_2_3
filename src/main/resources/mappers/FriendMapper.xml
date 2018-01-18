@@ -76,4 +76,8 @@
   <select id="count" resultType="long">
     select count(fid) from friend
   </select>
+
+  <select id="list" resultType="com.animo.pojo.Friend">
+    SELECT * FROM friend
+  </select>
 </mapper>

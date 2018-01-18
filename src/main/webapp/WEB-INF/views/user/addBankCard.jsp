@@ -148,14 +148,19 @@
                 var options=$("#type option:selected"); //获取选中的项
                 this.bankcard.type = options.val();
                 console.log(this.bankcard);
-//                this.bankcard.cardno =$("#cardno").val();
+               if(this.bankcard.cardno!=''){
                 axios.post('/bankcard/data/json/save', Qs.stringify(this.bankcard))
                     .then((response) => {
-                        layer.msg(response.data.message);
-                        window.location.href="/user/accountOverride";
+                        if(response.data.code==0){
+                            alert('绑定成功');
+                           return window.location.href="/user/accountOverride";
+                        }
+                        alert(response.data.message);
                     }, (error) => {
-                        layer.msg("请求失败");
+                        alert('服务器错误');
                     });
+
+               }
             }
         }
     })

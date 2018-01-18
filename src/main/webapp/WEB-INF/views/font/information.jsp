@@ -228,57 +228,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item" id="app">
                         <div class="about-content" id="hzhbDiv">
                             <div class="content">
-                                <div class="logoDiv">
-                                    <a href="https://www.fadada.com/">
-                                        <img alt="logo" src="/static/images/index/fdd.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv">
-                                    <a href="http://www.evergrande.com/">
-                                        <img alt="logo" src="/static/images/index/hddc.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv logoDiv2">
-                                    <a href="http://www.erongtu.com/">
-                                        <img alt="logo" src="/static/images/index/rtw.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv">
-                                    <a href="http://www.gzctgroup.cn/">
-                                        <img alt="logo" src="/static/images/index/gzct.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv">
-                                    <a href="http://www.chinapnr.com/">
-                                        <img alt="logo" src="/static/images/index/hftx.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv logoDiv2">
-                                    <a href="http://www.heimadc.com/">
-                                        <img alt="logo" src="/static/images/index/hmdc.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv">
-                                    <a href="http://www.cgfae.cn/">
-                                        <img alt="logo" src="/static/images/index/jxsgyjrd.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv">
-                                    <a href="http://www.chinacsfl.cn/">
-                                        <img alt="logo" src="/static/images/index/zggyl.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv logoDiv2">
-                                    <a href="http://www.wdzj.com/">
-                                        <img alt="logo" src="/static/images/index/wdzj.png">
-                                    </a>
-                                </div>
-                                <div class="logoDiv">
-                                    <a href="http://www.jxifa.org.cn/">
-                                        <img alt="logo" src="/static/images/index/jxshlwjrxh.png">
+                                <div v-for="item in friends" class="logoDiv">
+                                    <a :href="item.furl">
+                                        <img alt="logo" :src="item.fpic">
                                     </a>
                                 </div>
                             </div>
@@ -328,6 +283,8 @@
 <script charset="utf-8" type="text/javascript" src="<%=path%>/static/js/font/wpa.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/font/countup.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
 <%--<script type="text/javascript" src="/static/js/font/about.js"></script>--%>
 <script>
     layui.use('element', function(){
@@ -336,6 +293,18 @@
         element.on('tab(demo)', function(data){
             console.log(data);
         });
+    });
+
+    new Vue({
+        el:'#app',
+        data:{
+            friends:[]
+        },
+        created () {
+            axios.get('/friend/data/json/list').then((response)=>{
+                this.friends = response.data.data;
+            });
+        }
     });
 
 </script>

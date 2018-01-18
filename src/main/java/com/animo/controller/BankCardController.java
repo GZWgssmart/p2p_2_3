@@ -1,11 +1,15 @@
 package com.animo.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.animo.common.BankResult;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.Bankcard;
 import com.animo.pojo.User;
 import com.animo.service.BankCardService;
 import com.animo.utils.DateFormateUtils;
+import com.animo.utils.HttpSendUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,12 +42,21 @@ public class BankCardController {
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;
-            bankcard.setUid(user.getUid());
-            bankcard.setRname(user.getRname());
-            bankcard.setIdno(user.getIdno());
-            bankcard.setStatus(0);
-            bankcard.setBktime(DateFormateUtils.Formate());
-            return bankCardService.save(bankcard);
+           Object object1 = JSON.parseObject(HttpSendUtils.sendPost("http://localhost:8081/bind",
+                    "realName="+user.getRname()+"&bankCardNo="+bankcard.getIdno()+"&bank="+bankcard.getType()+"&phone="+user.getPhone()), new TypeReference<BankResult>(){});
+           if(object1!=null){
+               BankResult bankResult = (BankResult) object1;
+               if(bankResult.getCode()==1000){
+                   bankcard.setUid(user.getUid());
+                   bankcard.setRname(user.getRname());
+                   bankcard.setIdno(user.getIdno());
+                   bankcard.setStatus(0);
+                   bankcard.setBktime(DateFormateUtils.Formate());
+                   return bankCardService.save(bankcard);
+               }
+               return ServerResponse.createByError(bankResult.getMessage());
+           }
+
         }
         return ServerResponse.createByError("您的登录已经超时,绑定失败！");
     }

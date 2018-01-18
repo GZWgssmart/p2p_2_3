@@ -136,28 +136,24 @@
                 <p>
                     <span class="icon icon-true">法人身份认证</span>
                 </p>
-                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
             </li>
             <li class="">
                 <img alt="" width="320" height="200" :src="borrowdetail.ypic">
                 <p>
                     <span class="icon icon-true">营业执照</span>
                 </p>
-                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
             </li>
             <li class="">
                 <img alt="" width="320" height="200" :src="borrowdetail.qpic">
                 <p>
                     <span class="icon icon-true">企业银行</span>
                 </p>
-                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
             </li>
             <li class="">
                 <img alt="" width="320" height="200" :src="borrowdetail.tpic">
                 <p>
                     <span class="icon icon-true">其他资料</span>
                 </p>
-                <a href="javascript:;" onclick="" style="display: inline;">点击查看大图</a>
             </li>
         </ul>
     </div>

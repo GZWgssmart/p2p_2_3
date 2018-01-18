@@ -38,7 +38,7 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("check")
-    @RequiresPermissions("txCheck:check")
+    //@RequiresPermissions("txCheck:check")
     public ServerResponse passCheck(HttpSession session, TxCheckVO txCheckvo) {
 //        Object object = session.getAttribute(Constant.SESSION_ADMIN);
 //        if(object!=null){

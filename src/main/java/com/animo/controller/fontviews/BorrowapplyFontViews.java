@@ -29,4 +29,10 @@ public class BorrowapplyFontViews {
         request.setAttribute("bzname",bzname);
         return "borrowapplyInfo";
     }
+
+    @GetMapping("add")
+    public String add(){
+        return "borrowapply/addBorrowapply";
+    }
+
 }

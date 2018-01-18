@@ -68,7 +68,6 @@
                 <ul class="sub-nav">
                     <li><a href="#invest" class="investTable">投资管理</a></li>
                     <li><a href="#loan" class="jkgl">借款管理</a></li>
-                    <li><a href="#claimb">申请借款</a></li>
                 </ul>
                 <div class="navbar icon icon-settings">账户设置</div>
                 <ul class="sub-nav">
@@ -490,7 +489,7 @@
                         </div>
                     </div>
                     <div class="account-content" style="display: block;">
-                        <div v-if="bank!=null" id="card1" class="bank-card_1">
+                        <div v-if="bankstatus" id="card1" class="bank-card_1">
                             <div class="bank-top">
                                 <div class="bank-cardTitle">{{bank.type}}</div>
                                 <div class="bank-cardType">储蓄卡</div>
@@ -507,157 +506,6 @@
                     </div>
                 </div>
 
-                <div class="claimb" id="claimb" style="overflow-y:auto;">
-                    <div class="account cl">
-                        <div class="account-right">
-                            <h1>申请借款</h1>
-                            <hr/>
-                            <form class="layui-form" id="borrowApplyDetail">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">真实姓名</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="rname" lay-verify="title" autocomplete="off" placeholder="请输入真实姓名" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">申请金额</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="money" lay-verify="title" autocomplete="off" placeholder="请输入申请金额" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">借款类型</label>
-                                    <div class="layui-input-block">
-                                        <select name="type" lay-filter="jkqx">
-                                            <option value="1">个人</option>
-                                            <option value="2">企业</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">标种</label>
-                                    <div class="layui-input-block">
-                                        <select name="bzid" lay-filter="jkqx">
-                                            <option value="1">普金宝</option>
-                                            <option value="2">恒金宝</option>
-                                            <option value="3">多金宝</option>
-                                            <option value="4">新手标</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">借款期限</label>
-                                    <div class="layui-input-block">
-                                        <select name="term" lay-filter="month">
-                                            <option value="3">3个月</option>
-                                            <option value="6" selected="">6个月</option>
-                                            <option value="12">12个月</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">截止时间</label>
-                                    <div class="layui-input-inline">
-                                        <input type="text" name="deadline" class="layui-input" id="deadline" placeholder="yyyy-MM-dd">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">年化收益</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="nprofit" lay-verify="title" autocomplete="off" placeholder="请输入年化收益" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">收益方式</label>
-                                    <div class="layui-input-block">
-                                        <select name="way" lay-filter="jkqx">
-                                            <option value="1">等额本息</option>
-                                            <option value="2">等额本金</option>
-                                            <option value="3">先息后本</option>
-                                            <option value="4">一次还清</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">资金用途</label>
-                                    <div class="layui-input-block">
-                                        <textarea name="mpurpose" placeholder="请输入资金用途" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">还款来源</label>
-                                    <div class="layui-input-block">
-                                        <textarea name="hksource" placeholder="请输入还款来源" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">借款人介绍</label>
-                                    <div class="layui-input-block">
-                                        <textarea name="suggest" placeholder="请输入借款人介绍" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item layui-form-text">
-                                    <label class="layui-form-label">项目描述</label>
-                                    <div class="layui-input-block">
-                                        <textarea name="xmdescrip" placeholder="请输入保障措施" class="layui-textarea"></textarea>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <div class="layui-row">
-                                        <label class="layui-form-label">相关文件</label>
-                                        <div class="layui-col-md2">
-                                            <div class="layui-upload">
-                                                <button type="button" class="layui-btn" id="fpic">法人身份证</button>
-                                                <div class="layui-upload-list">
-                                                    <img class="layui-upload-img" id="fpicDemo" style="width:120px;height:120px">
-                                                    <p id="fpicText"></p>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="fpic" id="fpicImg"/>
-                                        </div>
-                                        <div class="layui-col-md2">
-                                            <div class="layui-upload">
-                                                <button type="button" class="layui-btn" id="ypic">营业执照</button>
-                                                <div class="layui-upload-list">
-                                                    <img class="layui-upload-img" id="ypicDemo" style="width:120px;height:120px">
-                                                    <p id="ypicText"></p>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="ypic" id="ypicImg"/>
-                                        </div>
-                                        <div class="layui-col-md2">
-                                            <div class="layui-upload">
-                                                <button type="button" class="layui-btn" id="qpic">银行卡</button>
-                                                <div class="layui-upload-list">
-                                                    <img class="layui-upload-img" id="qpicDemo" style="width:120px;height:120px">
-                                                    <p id="qpicText"></p>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="qpic" id="qpicImg"/>
-                                        </div>
-                                        <div class="layui-col-md2">
-                                            <div class="layui-upload">
-                                                <button type="button" class="layui-btn" id="tpic">其他资料</button>
-                                                <div class="layui-upload-list">
-                                                    <img class="layui-upload-img" id="tpicDemo" style="width:120px;height:120px">
-                                                    <p id="tpicText"></p>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="tpic" id="tpicImg"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label"></label>
-                                    <div class="layui-input-block">
-                                        <a href="javascript:void(0);" class="layui-btn" onclick="saveBorrow();">提交申请</a>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="safe" id="safe">
                     <div class="account-right-nav">
                         <div class="sub-a-nav">
@@ -667,11 +515,6 @@
                     </div>
                     <div class="account-content" style="display: block;">
                         <div class="safe">
-                            <div class="safe-top">
-                                <p class="safe-t-text">您的资料完善度</p>
-                                <p class="safe-t-line"><em style="width: 50%;"></em></p>
-                                <p class="safe-t-r">中</p>
-                            </div>
                             <div class="safe-content">
                                 <ul class="safe-list">
                                     <li>
@@ -681,22 +524,9 @@
                                         <div class="safe-list-2" id="cellPhone-text">{{user.phone | phone}}</div>
                                         <div class="safe-list-3">
                                             <a href="javascript:;" id="cellPhone" class="on">已绑定</a>
-                                            <a href="javascript:;" id="changePhone">修改</a>
                                         </div>
                                     </li>
-                                    <li v-if="user.email==null">
-                                        <div class="safe-list-1">
-                                            <p class="icon icon-wrong" >邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
-                                        </div>
-                                        <div class="safe-list-2" >获取最新的投资讯息和账户信息变动通知</div>
-                                        <div class="safe-list-3">
-                                           <%-- <a href="javascript:;" id="email">进行绑定</a>--%>
-                                               <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-                                                   <button data-method="upEmail" data-type="c" class="layui-btn layui-btn-normal">进行绑定</button>
-                                               </div>
-                                        </div>
-                                    </li>
-                                    <li v-else>
+                                    <li v-if="user.email!=null">
                                         <div class="safe-list-1">
                                             <p class="icon icon-true" id="email-icon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
                                         </div>
@@ -706,6 +536,34 @@
                                             <a href="javascript:;" id="changeEmail">修改</a>
                                         </div>
                                     </li>
+                                    <li v-else>
+                                        <div class="safe-list-1">
+                                            <p class="icon icon-wrong" >邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</p>
+                                        </div>
+                                        <div class="safe-list-2" >获取最新的投资讯息和账户信息变动通知</div>
+                                        <div class="safe-list-3">
+                                            <%--<a href="javascript:;" @click="bindEmail">进行绑定</a>--%>
+                                                <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                                                    <button data-method="upEmail" data-type="c" class="layui-btn layui-btn-normal">进行绑定</button>
+                                                </div>
+
+                                        </div>
+                                    </li>
+
+                                    <div id="updateEmail" style="display: none">
+                                        <div class="login">
+                                            <ul class="login-list">
+                                                <p class="error-msg icon icon-error"></p>
+                                                <form>
+                                                    <div class="from">
+                                                        <li><input type="email" v-model="user.email" placeholder="请输入邮箱"></li>
+                                                    </div>
+                                                </form>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
                                     <li v-if="user.idno!=null">
                                         <div class="safe-list-1">
                                             <p class="icon icon-true" id="realName-icon">身份认证</p>
@@ -884,7 +742,6 @@
         </form>
     </div>
 
-
     <div id="ajaxFooter">
         <div class="mod-sidebar">
             <ul>
@@ -916,6 +773,7 @@
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="qrhk">确认还款</a>
 </script>
 <script>
+
     var vue = new Vue({
         el: '#app',
         data: {
@@ -924,17 +782,19 @@
             dataRows: [],
             czmoney: '',
             txmoney: '',
-            uid:${sessionScope.user.uid}
+            uid:${sessionScope.user.uid},
+            bankstatus:false,
+            emailstatus:false
         },
         filters: {
             phone (value) {
                 if(value!=null){
-                    return value.slice(0,5)+'****'+value.slice(9,11)
+                    return value.slice(0,3)+'****'+value.slice(9,11)
                 }
             },
             email(value){
                 if(value!=null){
-                    return value.slice(0,5)+'*****'+value.slice(10,value.length)
+                    return value.slice(0,3)+'*****'+value.slice(10,value.length)
                 }
             },
             idno(value){
@@ -987,6 +847,9 @@
                     alert("信息不完善");
                     return this.showInfoEadit();
                 }
+                if(this.czmoney==''){
+                    return alert("请输入充值金额");
+                }
                 axios.get('/logCz/data/json/recharge?money=' + this.czmoney).then((response) => {
                     alert(response.data.message);
                 }, (error) => {
@@ -1007,6 +870,8 @@
                 }
                 axios.get('/LogTx/data/json/withdraw?money=' + this.txmoney).then((response) => {
                     alert(response.data.message);
+                    this.dataRows.kymoney = parseInt(this.dataRows.kymoney)-parseInt(this.txmoney);
+                    this.txmoney=0;
                 }, (error) => {
 
                 });
@@ -1024,6 +889,7 @@
                         return alert(response.data.message);
                     }
                     alert('解绑成功');
+                    this.bankstatus=false;
                 }, (error) => {
 
                 });
@@ -1089,10 +955,10 @@
                 //表头
                 , cols: [[
                     {field: 'bankcard', title: '提现卡号', width: 200}
-                    , {field: 'banktype', title: '所属银行', width: 200}
+                    , {field: 'banktype', title: '所属银行', width: 180}
                     , {field: 'money', title: '提现金额', width: 200, sort: true}
                     , {field: 'createdTime', title: '提现时间', width: 200, sort: true}
-                    , {field: 'status', title: '提现状态', width: 200, templet: '<div>{{ statusGe(d.status)}}</div>'}
+                    , {field: 'status', title: '提现状态', width: 100, templet: '<div>{{ statusGe(d.status)}}</div>'}
 
 
                 ]]
@@ -1249,6 +1115,11 @@
     $(".mybank").on('click', function () {
         axios.get(' /bankcard/data/json/list').then((response) => {
             vue.bank = response.data.data
+            if(vue.bank!=null){
+                vue.bankstatus = true
+            }else{
+               vue.bankstatus=false
+            }
         }, (error) => {
 
         });
@@ -1275,7 +1146,7 @@
     function inout(value) {
         zjjl(value);
     }
-    
+
     function hkbStatus(value) {
         if(value==0){
             return"未还款";
@@ -1399,17 +1270,18 @@
                         var data = obj.data //获得当前行数据
                             , layEvent = obj.event; //获得 lay-event 对应的值
                         if (layEvent === 'querenshoukuan') {
-                            if(data.sktime!=null){
+                            if(data.ylx==data.rlx){
                                 alert("已收款");
+                            }else{
+                                axios.get('/skb/data/json/confirm', {params: {skid: data.skid}}).then((response)=>{
+                                if(response.data.code==0){
+                                    return alert(response.data.message);
+                                }
+                                alert(response.data.message)
+                                },(error)=>{
+
+                                });
                             }
-//                            axios.get('/skb/data/json/confirm', {params: {skid: data.skid}}).then((response)=>{
-//                                if(response.data.code==0){
-//                                    return alert(response.data.message);
-//                                }
-//                                alert(response.data.message)
-//                            },(error)=>{
-//
-//                            });
                         }
                         });
                 }, (error) => {

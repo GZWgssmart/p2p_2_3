@@ -13,7 +13,7 @@
 <link rel="icon" href="<%=path%>/static/images/login/logo_title.jpg" type="image/x-icon" />
 <body>
 <div id="app">
-    <input value="${requestScope.code}" id="code"/>
+    <input value="${requestScope.code}" hidden id="code"/>
 <div class="nav-out">
     <div class="wrap cl">
         <div class="logo"><a href="<%=path%>/"><img src="<%=path%>/static/images/login/logopu.png" alt=""></a></div>
@@ -36,13 +36,6 @@
                 <label class="icon icon-pwd"></label>
                 <input type="password" v-model="user.upwd" id="upwd"  autocomplete="new-password" placeholder="输入密码" maxlength="18"/>
             </div>
-            <!--<div class="from from-msg">
-                <label for="msgcode" class="icon icon-msg"></label>
-                <input type="text" name="" id="msgcode" maxlength="6" placeholder="输入短信验证码"/>
-                <div class="msg-btn">
-                    <button type="button" id="getMsgCode">获取验证码</button>
-                </div>
-            </div>-->
             <div class="from-text">
                 <p class="code icon icon-bottom">推荐码(选填)</p>
             </div>
@@ -55,22 +48,6 @@
         </form>
     </div>
 </div>
-
-<!--<div class="popup claimm-from" style="height: 350px;top: 20%;left: 35%;">
-    <p class="title left">输入验证码获取短信</p>
-    <a href="javascript:void(0);" class="close icon icon-close"></a>
-    <div class="popup-from">
-        <center>
-            <img id="imgCode" title="点击换个验证码" src="imageCode.do?pageId=reg" width="120px" style="clear: both;" onClick="getCode()">
-        </center>
-        <div class="label cl">
-            <label class="long">验证码：</label><input type="text" autocomplete="off" maxlength="16"  id="claimm-price" placeholder="输入图形验证码"/>
-        </div>
-    </div>
-    <center>
-        <button type="button" class="btn" style="width: 30%;margin:30px;" id="claimm-submit">确定</button>
-    </center>
-</div>-->
 
 <div id="popup-captcha"></div>
 <div class="popup AgreeMent">
@@ -113,6 +90,7 @@
             }
         },
         created (){
+            this.user.resstr2 = $("#code").val();
         },
         methods:{
             register () {
