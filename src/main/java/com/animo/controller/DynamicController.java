@@ -6,6 +6,7 @@ import com.animo.pojo.Dynamic;
 import com.animo.service.DynamicService;
 import com.animo.utils.ImageUtils;
 import com.animo.utils.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class DynamicController {
      * 说明：动态中可能包含多张图片，选择一张图片作为封面
      */
     @RequestMapping("save")
+//    @RequiresPermissions("dynamic:save")
     public ServerResponse save (Dynamic dynamic){
         List<String> stringList = ImageUtils.getImageSrc(dynamic.getContent());
         if(stringList.size()!=0) {
@@ -47,6 +49,7 @@ public class DynamicController {
 * 修改
 * */
     @RequestMapping("updatedync")
+//    @RequiresPermissions("dynamic:updatedync")
     public ServerResponse updatedync (Dynamic dynamic)throws  Exception{
         List<String> stringList = ImageUtils.getImageSrc(dynamic.getContent());
         if(stringList.size()!=0) {
@@ -61,6 +64,7 @@ public class DynamicController {
 * 删除
 * */
     @RequestMapping("removedyna")
+//    @RequiresPermissions("dynamic:removedyna")
     public ServerResponse removedyna(Integer id){
 
         return dynamicService.removeById(id);
@@ -80,6 +84,7 @@ public class DynamicController {
 * 表格查询分页
 * */
     @RequestMapping("pager")
+    //    @RequiresPermissions("dynamic:pager")
     public Pager pagerRole(Integer page, Integer limit){
         System.out.print(page);System.out.print(limit);
 
@@ -90,6 +95,7 @@ public class DynamicController {
 * 根据id查
 * */
     @RequestMapping("byiddync")
+    //    @RequiresPermissions("dynamic:byiddync")
     public ServerResponse byIddync(Integer id)throws Exception{
         System.out.println(id);
         return  dynamicService.getById(id);
@@ -99,14 +105,8 @@ public class DynamicController {
 * 前台分页查询
 * */
     @GetMapping("PagerCriteria")
+    //    @RequiresPermissions("dynamic:PagerCriteria")
     public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
         return dynamicService.listPagers(pageNumber,pageSize);
     }
-
-
-
-
-
-
-
 }

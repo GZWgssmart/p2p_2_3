@@ -24,13 +24,20 @@ import java.util.Date;
 public class YdataController {
     @Autowired
     private YdataService ydataService;
-
+/*
+*
+* 查询平台运营数据
+* */
     @RequestMapping("all")
+    //    @RequiresPermissions("ydata:all")
     public StatisticalReportVO all(){
         return ydataService.all();
     }
-
+/*
+* 平台运营分页
+* */
     @RequestMapping("pager")
+    //    @RequiresPermissions("ydata:pager")
     public Pager listStatisticalReport(){
         return ydataService.listPager(1,24);
     }
@@ -43,6 +50,7 @@ public class YdataController {
      * @throws IOException
      */
     @RequestMapping("downloadMonthData")
+    //    @RequiresPermissions("ydata:downloadMonthData")
     public ServerResponse excelDownload(HttpServletResponse response, Long longTime) throws IOException {
         return ydataService.downloadMonthData(response, longTime);
     }

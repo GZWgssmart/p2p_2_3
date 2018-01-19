@@ -26,8 +26,11 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-
+/*
+* 首页轮播图片上传
+* */
     @RequestMapping("upload")
+    //    @RequiresPermissions("home:upload")
     public Object upload(MultipartFile file, HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
         String path = PathUtils.mkUploads();
@@ -50,6 +53,7 @@ public class HomeController {
      *
      */
     @RequestMapping("save")
+    //    @RequiresPermissions("home:save")
     public ServerResponse save (Home home){
         home.setEwm("kong");
         home.setPhone("000");
@@ -62,24 +66,36 @@ public class HomeController {
 * 表格查询分页
 * */
     @RequestMapping("pager")
+    //    @RequiresPermissions("home:pager")
     public Pager pagerRole(Integer page, Integer limit){
         System.out.print(page);System.out.print(limit);
 
         return homeService.listPager(page,limit);
     }
 
-
+/*
+* 首页图片修改
+* */
     @RequestMapping("update")
+    //    @RequiresPermissions("home:update")
     public ServerResponse updateFriend(Home home){
         return homeService.update(home);
     }
-
+/*
+* 首页图片前台查询
+*
+* */
     @RequestMapping("listhome")
+    //    @RequiresPermissions("home:listhome")
     public Home listhome(){
         return homeService.listhome();
     }
-
+/*
+*
+* 首页图片修改状态可用或不可用
+* */
     @RequestMapping("updhid")
+    //    @RequiresPermissions("home:updhid")
     public Integer updhid(Integer id){
         homeService.updhid(id);
         homeService.updhids(id);

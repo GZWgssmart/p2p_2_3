@@ -25,8 +25,11 @@ import java.util.List;
 public class NoticeController {
     @Autowired
     private NoticeService noticeService;
-
+/*
+* 平台公告保存
+* */
     @RequestMapping("save")
+    //    @RequiresPermissions("notice:save")
     public ServerResponse save(Notice notice) throws Exception {
         notice.setCreatedTime(new Date());
         return noticeService.save(notice);
@@ -36,6 +39,7 @@ public class NoticeController {
     * 修改
     * */
     @RequestMapping("updatenotice")
+    //    @RequiresPermissions("notice:updatenotice")
     public ServerResponse updatenotice(Notice notice) throws Exception {
         notice.setCreatedTime(new Date());
         return noticeService.update(notice);
@@ -45,6 +49,7 @@ public class NoticeController {
     * 删除
     * */
     @RequestMapping("removenotice")
+    //    @RequiresPermissions("notice:removenotice")
     public ServerResponse removenotice(Integer id) {
         return noticeService.removeById(id);
     }
@@ -54,6 +59,7 @@ public class NoticeController {
     * 查询分页
     * */
     @RequestMapping("pager")
+    //    @RequiresPermissions("notice:pager")
     public Pager pagerRole(Integer page, Integer limit) {
         System.out.print(page);
         System.out.print(limit);
@@ -65,12 +71,14 @@ public class NoticeController {
     * 根据id查
     * */
     @RequestMapping("byiddync")
+    //    @RequiresPermissions("notice:byiddync")
     public ServerResponse byIddync(Integer id) throws Exception {
         System.out.println(id);
         return noticeService.getById(id);
 
     }
     @GetMapping("PagerCriteria")
+    //    @RequiresPermissions("notice:PagerCriteria")
     public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
         return noticeService.listPagers(pageNumber,pageSize);
     }

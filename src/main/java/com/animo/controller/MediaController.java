@@ -25,8 +25,11 @@ import java.util.List;
 public class MediaController {
     @Autowired
     private MediaService mediaService;
-
+/*
+* 媒体报道保存
+* */
     @RequestMapping("save")
+    //    @RequiresPermissions("media:save")
     public ServerResponse save(Media media) throws Exception {
         List<String> stringList = ImageUtils.getImageSrc(media.getContent());
        if(stringList.size()!=0){
@@ -43,6 +46,7 @@ public class MediaController {
     * 修改
     * */
     @RequestMapping("updatemedia")
+    //    @RequiresPermissions("media:updatemedia")
     public ServerResponse updatemedia(Media media) throws Exception {
         List<String> stringList = ImageUtils.getImageSrc(media.getContent());
         if(stringList.size()!=0) {
@@ -58,6 +62,7 @@ public class MediaController {
     * 删除
     * */
     @RequestMapping("removemedia")
+    //    @RequiresPermissions("media:removemedia")
     public ServerResponse removemedia(Integer id) {
 
         return mediaService.removeById(id);
@@ -71,9 +76,10 @@ public class MediaController {
     }
 
     /*
-    * 查询分页
+    * 表格查询分页
     * */
     @RequestMapping("pager")
+    //    @RequiresPermissions("media:pager")
     public Pager pagerRole(Integer page, Integer limit) {
         System.out.print(page);
         System.out.print(limit);
@@ -86,6 +92,7 @@ public class MediaController {
     * 根据id查
     * */
     @RequestMapping("byiddync")
+    //    @RequiresPermissions("media:byiddync")
     public ServerResponse byIddync(Integer id) throws Exception {
         System.out.println(id);
         return mediaService.getById(id);
@@ -93,6 +100,7 @@ public class MediaController {
     }
 
     @GetMapping("PagerCriteria")
+    //    @RequiresPermissions("media:PagerCriteria")
     public Pager PagerCriteria(Integer pageNumber, Integer pageSize){
         return mediaService.listPagers(pageNumber,pageSize);
     }

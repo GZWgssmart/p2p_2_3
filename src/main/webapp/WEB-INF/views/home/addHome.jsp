@@ -16,12 +16,12 @@
 </head>
 <div>
     <div id="appHome">
-
+<div class="layui-form">
         <!--添加轮播图一-->
         <div class="layui-form-item">
             <label class="layui-form-label">轮播图第一</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url1" required lay-verify="required" placeholder="轮播图一"
+                <input type="text" v-model="home.url1" lay-verify="required" placeholder="轮播图一"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -94,11 +94,11 @@
         </form>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" @click="saveHome">保存</button>
+                <button class="layui-btn" lay-submit lay-filter="saveHome" @click="saveHome">保存</button>
             </div>
         </div>
     </div>
-
+    </div>
 </div>
 </body>
 <script src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>
@@ -106,6 +106,8 @@
 <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
+<script type="text/javascript" src="/static/js/layui-formVerify.js"></script>
+
 <!--自定义js文件-->
 <script type="text/javascript" src="<%=path%>/static/js/home-js/home.js"></script>
 </html>

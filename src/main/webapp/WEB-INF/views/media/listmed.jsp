@@ -128,20 +128,25 @@
             }
             if(layEvent === 'updmed'){
                 window.location.href = "/back/med/updmed?id=" + data.mid;
-            }
-            else if(layEvent === 'delmed'){
-                var params = new URLSearchParams();
-                params.append('id', data.mid);
-                layer.confirm('真的删除行么', function(index){
-                    axios.post('/media/data/json/removemedia', params).then((response) => {
-                        layer.msg(response.data.message);
-                    }, (error) => {
-                        alert(error);
-                    });
-                    console.log(data.mid)
-                    obj.del(data.mid); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
+            }else if(layEvent === 'delmed'){
+                layer.msg('是否删除当前首页图片10s后自动取消', {
+                    time: 10000, //10s后自动关闭
+                    btn: ['是的', '取消'],
+                    yes:function(){
+                        var params = new URLSearchParams();
+                        params.append('id', data.mid);
+                        axios.post('/media/data/json/removemedia', params).then((response) => {
+                            layer.msg(response.data.message);
+                        }, (error) => {
+                            alert(error);
+                        });
+                        console.log(data.mid)
+                        obj.del(data.mid); //删除对应行（tr）的DOM结构
+                        layer.close(index);
+                    },
+                    btn2: function () {
+                        layer.msg('已取消');
+                    }
                 });
             }
         });

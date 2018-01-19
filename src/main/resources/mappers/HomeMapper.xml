@@ -153,7 +153,7 @@
 
   <select id="listPager" resultType="com.animo.pojo.Home" parameterType="com.animo.common.Pager">
     <![CDATA[
-            select h.hid , h.pic1 , h.pic2 , h.pic3 , h.ewm , h.phone , h.url1 , h.url2 , h.url3 , h.status from home AS h limit #{beginIndex}, #{pageSize}
+            select h.hid , h.pic1 , h.pic2 , h.pic3 , h.ewm , h.phone , h.url1 , h.url2 , h.url3 , h.status from home AS h order by h.hid desc limit #{beginIndex}, #{pageSize}
         ]]>
   </select>
 

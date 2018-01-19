@@ -36,19 +36,24 @@ $(function () {
                 });
             },
             saveHome: function () {
-                axios.post('/home/data/json/save', Qs.stringify(vue.home)).then((response) => {
-                    layer.msg(response.data.message);
-                    vue.home.pic1 = '';
-                    vue.home.url1 = '';
-                    vue.home.pic2 = '';
-                    vue.home.url2 = '';
-                    vue.home.pic3 = '';
-                    vue.home.url3 = '';
-                    layer.closeAll();
-                    window.location.href="/back/home/list";
-                }, (error) => {
-                    layer.alert("请求失败");
+
+                form.on('submit(saveHome)', function(data){
+                    axios.post('/home/data/json/save', Qs.stringify(vue.home)).then((response) => {
+                        layer.msg(response.data.message);
+                        vue.home.pic1 = '';
+                        vue.home.url1 = '';
+                        vue.home.pic2 = '';
+                        vue.home.url2 = '';
+                        vue.home.pic3 = '';
+                        vue.home.url3 = '';
+                        layer.closeAll();
+                        window.location.href="/back/home/list";
+                    }, (error) => {
+                        layer.alert("请求失败");
+                    });
                 });
+
+
             },
             showAddWin: function () {
                 vue.home.url1 = '';

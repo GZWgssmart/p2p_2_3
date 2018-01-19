@@ -58,7 +58,7 @@
                 saveMedia:function () {
                     vue.media.content = getContent();
                     vue.media.url = getContentTxt();
-                    if (vue.dynamic.content.length > 0) {
+                    if (vue.media.content.length > 0) {
                         axios.post('/media/data/json/save', Qs.stringify(this.media)).then((response) => {
                             layer.msg(response.data.message);
                             window.location.href = "/back/med/pager";

@@ -111,7 +111,7 @@
 
   <select id="listPager" resultType="com.animo.pojo.Media" parameterType="com.animo.common.Pager">
     <![CDATA[
-            select m.mid, m.title,m.content, m.created_time,m.pic,m.url from media AS m limit #{beginIndex}, #{pageSize}
+            select m.mid, m.title,m.content, m.created_time,m.pic,m.url from media AS m order by m.mid desc limit #{beginIndex}, #{pageSize}
         ]]>
   </select>
 
@@ -123,7 +123,7 @@
 
   <select id="listPagers" resultType="com.animo.pojo.Dynamic">
     <![CDATA[
-        select m.mid, m.title,m.content, m.created_time,m.pic,m.url from media AS m
+        select m.mid, m.title,m.content, m.created_time,m.pic,m.url from media AS m order by m.mid desc
     ]]>
     limit #{pager.beginIndex}, #{pager.pageSize}
   </select>

@@ -96,7 +96,7 @@
 
   <select id="listPager" resultType="com.animo.pojo.Notice" parameterType="com.animo.common.Pager">
     <![CDATA[
-            select n.nid, n.title,n.content, n.created_time from notice AS n limit #{beginIndex}, #{pageSize}
+            select n.nid, n.title,n.content, n.created_time from notice AS n order by n.nid desc limit #{beginIndex}, #{pageSize}
         ]]>
   </select>
 
@@ -108,7 +108,7 @@
 
   <select id="listPagers" resultType="com.animo.pojo.Notice">
     <![CDATA[
-         select n.nid, n.title,n.content, n.created_time from notice AS n
+         select n.nid, n.title,n.content, n.created_time from notice AS n order by n.nid desc
     ]]>
     limit #{pager.beginIndex}, #{pager.pageSize}
   </select>
