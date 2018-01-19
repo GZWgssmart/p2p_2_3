@@ -35,16 +35,9 @@
     <div id="editFriendWin" style="display: none">
         <!--修改合作伙伴-->
         <div class="layui-form-item">
-            <label class="layui-form-label">轮播图一链接</label>
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url1" required lay-verify="required" placeholder="轮播图一链接"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图一</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="home.pic1" disabled required lay-verify="required" placeholder="轮播图一"
+                <input type="text" v-model="home.url1" required lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -62,16 +55,9 @@
 
 
         <div class="layui-form-item">
-            <label class="layui-form-label">轮播图二链接</label>
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url2" required lay-verify="required" placeholder="轮播图二链接"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图二</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="home.pic2" disabled required lay-verify="required" placeholder="轮播图二"
+                <input type="text" v-model="home.url2" required lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -87,16 +73,9 @@
         </form>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">轮播图三链接</label>
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url3" required lay-verify="required" placeholder="轮播图三链接"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图三</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="home.pic3" disabled required lay-verify="required" placeholder="轮播图三"
+                <input type="text" v-model="home.url3" required lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -121,14 +100,6 @@
 
 
     <div id="bigPicWin" style="display: none">
-        <!--查看大图-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图一</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="home.pic1" disabled required lay-verify="required" placeholder="图标来源"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
         <div class="layui-form-item" v-model="home">
             <label class="layui-form-label">图片</label>
             <img id="imgSrc7">
@@ -136,28 +107,12 @@
     </div>
 
     <div id="bigPicWin2" style="display: none">
-        <!--查看大图-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图二</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="home.pic2" disabled required lay-verify="required" placeholder="图标来源"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
         <div class="layui-form-item" v-model="home">
             <label class="layui-form-label">图片</label>
             <img id="imgSrc4">
         </div>
     </div>
     <div id="bigPicWin3" style="display: none">
-        <!--查看大图-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图三</label>
-            <div class="layui-input-block">
-                <input type="text" v-model="home.pic3" disabled required lay-verify="required" placeholder="图标来源"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
         <div class="layui-form-item" v-model="home">
             <label class="layui-form-label">图片</label>
             <img id="imgSrc5">

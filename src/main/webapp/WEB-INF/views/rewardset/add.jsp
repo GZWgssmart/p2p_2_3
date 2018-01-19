@@ -51,7 +51,7 @@
         },
         methods:{
            add(){
-               if(this.rewardSetting.minmoney>this.rewardSetting.maxmoney){
+               if(parseInt(this.rewardSetting.minmoney)>parseInt(this.rewardSetting.maxmoney)){
                    return alert('最小值不能大于最大值');
                }
                axios.post('/rewardset/data/json/save',Qs.stringify(this.rewardSetting)).then((response)=>{

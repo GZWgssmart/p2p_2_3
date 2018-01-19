@@ -19,22 +19,22 @@
 <div class="layui-form">
         <!--添加轮播图一-->
         <div class="layui-form-item">
-            <label class="layui-form-label">轮播图第一</label>
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url1" lay-verify="required" placeholder="轮播图一"
+                <input type="text" v-model="home.url1" lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item"  style="display: none">
             <label class="layui-form-label">轮播图路径</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.pic1" disabled required lay-verify="required" placeholder="轮播图路径"
+                <input  type="text" v-model="home.pic1" disabled required lay-verify="required" placeholder="轮播图路径"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
         <form enctype="multipart/form-data" method="post">
             <div class="layui-form-item" v-model="home">
-                <label class="layui-form-label">图片</label>
+                <label class="layui-form-label">轮播图1</label>
                 <div class="layui-upload-drag" id="uploadPic">
                     <i class="layui-icon"></i>
                     <p>点击上传，或将文件拖拽到此处</p>
@@ -43,14 +43,14 @@
             </div>
         </form>
         <!--添加轮播图二-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图第二</label>
+        <div class="layui-form-item" >
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url2" required lay-verify="required" placeholder="轮播图二"
+                <input type="text" v-model="home.url2" required lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="display: none">
             <label class="layui-form-label">轮播图路径</label>
             <div class="layui-input-block">
                 <input type="text" v-model="home.pic2" disabled required lay-verify="required" placeholder="轮播图路径"
@@ -59,7 +59,7 @@
         </div>
         <form enctype="multipart/form-data" method="post">
             <div class="layui-form-item" v-model="home">
-                <label class="layui-form-label">图片</label>
+                <label class="layui-form-label">轮播图2</label>
                 <div class="layui-upload-drag" id="uploadPic2">
                     <i class="layui-icon"></i>
                     <p>点击上传，或将文件拖拽到此处</p>
@@ -68,23 +68,23 @@
             </div>
         </form>
         <!--添加轮播图三-->
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图第三</label>
+        <div class="layui-form-item" >
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.url3" required lay-verify="required" placeholder="轮播图三"
+                <input type="text" v-model="home.url3" required lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">轮播图路径</label>
+        <div class="layui-form-item"  style="display: none">
+            <label class="layui-form-label">跳转地址</label>
             <div class="layui-input-block">
-                <input type="text" v-model="home.pic3" disabled required lay-verify="required" placeholder="轮播图路径"
+                <input type="text" v-model="home.pic3" disabled required lay-verify="required" placeholder="请输入跳转地址"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
         <form enctype="multipart/form-data" method="post">
             <div class="layui-form-item" v-model="home">
-                <label class="layui-form-label">图片</label>
+                <label class="layui-form-label">轮播图3</label>
                 <div class="layui-upload-drag" id="uploadPic3">
                     <i class="layui-icon"></i>
                     <p>点击上传，或将文件拖拽到此处</p>

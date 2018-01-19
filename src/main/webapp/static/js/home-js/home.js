@@ -156,7 +156,7 @@ $(function () {
                     skin: '',
                     content: $("#bigPicWin2")
                 });
-                $("#imgSrc4").attr('src',vue.home.pic2)
+                 $("#imgSrc4").attr('src',vue.home.pic2)
                 $("#imgSrc4").attr('style','width: 500px;height: 300px;');
             }else if (layEvent === 'bigPic3') {
                 layer.open({
