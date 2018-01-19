@@ -580,9 +580,11 @@ DROP TABLE IF EXISTS `ticket`;
 CREATE TABLE `ticket` (
   `kid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT '券名称',
-  `type` int(11) NOT NULL,
+  `type` int(11) NOT NULL DEFAULT '0',
   `tkmoney` decimal(7,2) NOT NULL,
-  `tktime` datetime NOT NULL,
+  `tktime` datetime DEFAULT '0000-00-00 00:00:00',
+  `tnum` int(11) DEFAULT '0',
+  `isvip` int(11) DEFAULT '0',
   PRIMARY KEY (`kid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
