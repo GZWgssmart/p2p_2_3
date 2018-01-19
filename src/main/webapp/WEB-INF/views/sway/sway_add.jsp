@@ -20,10 +20,10 @@
         <div class="layui-input-block" style="width: 200px;">
             <select id="way" name="way" lay-verify="way">
                 <option v-model="sway.way" name="way" value="">请选择一个还款方式</option>
-                <option v-model="sway.way" name="way" value="debx">等额本息</option>
-                <option v-model="sway.way" name="way" value="debj">等额本金</option>
-                <option v-model="sway.way" name="way" value="fxdq">每月付息到期还本</option>
-                <option v-model="sway.way" name="way" value="hbfx">一次性还本付息</option>
+                <option v-model="sway.way" name="way" value="等额本息">等额本息</option>
+                <option v-model="sway.way" name="way" value="等额本金">等额本金</option>
+                <option v-model="sway.way" name="way" value="每月付息到期还本">每月付息到期还本</option>
+                <option v-model="sway.way" name="way" value="一次性还本付息">一次性还本付息</option>
             </select>
         </div>
         </br>
@@ -38,8 +38,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">是否可用</label>
             <div class="layui-input-block" id="status" lay-verify="status">
-                <input type="radio" v-model="sway.status" name="status" value="0" title="是">
-                <input type="radio" v-model="sway.status" name="status" value="1" title="否">
+                <input type="radio" v-model="sway.status" lay-verify="status" name="status" value="0" title="是">
+                <input type="radio" v-model="sway.status" lay-verify="status" name="status" value="1" title="否">
             </div>
         </div>
 
@@ -76,13 +76,17 @@
                 else if (value.length < 10) {
                     return '算法至少得10个字符';
                 }
+                else if (/^\d+\d+\d$/.test(value)) {
+                    return '算法不能全是数字';
+                }
             },
 
-            /* status: function (value) {
-             if (value.length <= 0) {
-             return '请选择是否可用！';
-             }
-             },*/
+            status: function () {
+                var status = $('input:radio[name="status"]:checked').val();
+                if (status == null) {
+                    return '请选择一个状态！';
+                }
+            },
         });
     });
 
@@ -101,12 +105,29 @@
                 vue.sway.status = status;
                 //监听提交
                 form.on('submit(swaySave)', function (data) {
-                    axios.post('/sway/data/json/save', Qs.stringify(vue.sway))
+                   /* axios.post('/sway/data/json/save', Qs.stringify(vue.sway))
                         .then((response) => {
-                            /* layer.msg(response.data.message);*/
-                            layer.closeAll();
+                             layer.msg('添加成功');
+                           /!* layer.closeAll();*!/
                         }, (error) => {
-                        });
+                        });*/
+                    layer.msg('确认删除该条数据？10s后自动取消...', {
+                        time: 10000, //10s后自动关闭
+                        btn: ['YES', 'NO'],
+                        yes: function () {
+                            axios.post('/sway/data/json/save', Qs.stringify(vue.sway)).then((response) => {
+                                layer.msg('删除成功');
+                                time: 800,
+                                   /* table.reload('sway');*/
+                            }, (error) => {
+                                layer.alert("请求失败");
+                            });
+                        },
+                        no: function () {
+                            layer.msg('已取消');
+                        }
+                    });
+
                 });
 
             }

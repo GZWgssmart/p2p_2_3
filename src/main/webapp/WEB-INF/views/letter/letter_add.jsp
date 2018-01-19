@@ -33,10 +33,10 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">单选框</label>
+            <label class="layui-form-label">是否可用</label>
             <div class="layui-input-block" id="status">
-                <input type="radio" v-model="letter.status" name="status" value="0" title="男" checked="">
-                <input type="radio" v-model="letter.status" name="status" value="1" title="女">
+                <input type="radio" lay-verify="status" v-model="letter.status" name="status" value="0" title="是" checked="">
+                <input type="radio" lay-verify="status" v-model="letter.status" name="status" value="1" title="否">
             </div>
         </div>
 
@@ -61,12 +61,21 @@
         form = layui.form;
         //自定义验证规则
         form.verify({
-            title: function (value) {
+            title: function (value,item) {
                 if (value.length == 0) {
                     return '标题不能为空！';
                 }
                 else if (value.length < 5) {
                     return '标题至少得5个字符';
+                }
+                else if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                    return '标题不能有特殊字符';
+                }
+                else if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+                    return '用户名首尾不能出现下划线\'_\'';
+                }
+                else if (/^\d+\d+\d$/.test(value)) {
+                    return '标题不能全是数字';
                 }
             },
             content: function (value) {
@@ -75,6 +84,18 @@
                 }
                 else if (value.length < 10) {
                     return '内容至少得10个字符';
+                }
+                else if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                    return '内容不能有特殊字符';
+                }
+                else if (/^\d+\d+\d$/.test(value)) {
+                    return '内容不能全是数字';
+                }
+            },
+            status: function () {
+                var value = $('input:radio[name="status"]:checked').val();
+                if (value == null) {
+                    return '请选择一个状态！';
                 }
             },
         });
@@ -90,13 +111,16 @@
             save: function () {
                 //监听提交
                 form.on('submit(letterSave)', function (data) {
+                    /*var layEvent = data.event;*/
                     var status = $('#status input[name="status"]:checked ').val();
                     vue.letter.status = status;
                     axios.post('/letter/data/json/save', Qs.stringify(vue.letter))
                         .then((response) => {
-                           /* layer.msg(response.data.message);*/
-                            layer.closeAll();
+                            layer.msg('添加成功！！！');
+                            time: 800,
+                                table.reload('letter');
                         }, (error) => {
+                            layer.msg('添加失败');
                         });
                 });
 

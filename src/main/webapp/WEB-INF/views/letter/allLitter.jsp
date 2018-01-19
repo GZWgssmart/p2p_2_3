@@ -18,36 +18,40 @@
         </table>
     </section>
 
-
-    <div id="testLetter" style="display: none">
-        <div class="layui-form-item">
-            </br></br>
+    <form id="signupForm" class="layui-form">
+        <div id="testLetter" style="display: none">
             <div class="layui-form-item">
-                <label class="layui-form-label">标题</label>
-                <div class="layui-input-block">
-                    <input style="width: 200px;" type="text" v-model="letter.title" autocomplete="on" class="layui-input">
-                </div>
-            </div>
-            <label class="layui-form-label">输入框</label>
-            <div class="layui-input-block">
-                <textarea name="desc" v-model="letter.content" class="layui-textarea"></textarea>
-
-
                 </br></br>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" v-model="letter.title" style="width: 260px;"
+                               lay-verify="title" placeholder="请输入标题"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <label class="layui-form-label">输入框</label>
+                <div class="layui-input-block">
+                    <textarea name="desc" v-model="letter.content" style="width:380px;"
+                              class="layui-textarea" lay-verify="content"></textarea>
+                    </br></br>
 
-                <div class="layui-fluid">
-                    <div class="layui-row">
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo grid-demo-bg1">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn" @click="update">修改</button>
+                    <div class="layui-fluid">
+                        <div class="layui-row">
+                            <div class="layui-col-sm6">
+                                <div class="grid-demo grid-demo-bg1">
+                                    <div class="layui-btn-group">
+                                        <button class="layui-btn" lay-submit lay-filter="letterUpdate" @click="update">
+                                            修改
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="layui-col-sm6">
-                            <div class="grid-demo">
-                                <div class="layui-btn-group">
-                                    <button class="layui-btn" @click="close">关闭</button>
+                            <div class="layui-col-sm6">
+                                <div class="grid-demo">
+                                    <div class="layui-btn-group">
+                                        <button class="layui-btn" @click="close">关闭</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +59,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </form>
 </div>
 
 <script type="text/html" id="barDemo">
@@ -77,13 +81,34 @@
 <script src="/static/js/qs.js"></script>
 <script src="/static/js/axios.min.js"></script>
 <script>
+    var form;
+    layui.use(['form', 'layer'], function () {
+        var layer = layui.layer;
+        form = layui.form;
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length == 0) {
+                    return '标题不能为空！';
+                }
+                else if (value.length < 5) {
+                    return '标题至少得5个字符';
+                }
+            },
+            content: function (value) {
+                if (value.length == 0) {
+                    return '内容不能为空！';
+                }
+                else if (value.length < 10) {
+                    return '内容至少得10个字符';
+                }
+            },
 
-
-    $(function () {
-        layui.use(['layer'], function () {
-            var layer = layui.layer;
         });
-    })
+    });
+
+
+
     var vue = new Vue({
         el: '#app',
         data: {
@@ -91,14 +116,21 @@
         },
         methods: {
             update: function () {
-                axios.post('/letter/data/json/update', Qs.stringify(this.letter))
-                    .then((response) => {
-                        layer.msg(response.data.message);
-                        table.reload('letter');
-                        layer.closeAll();
-                    }, (error) => {
-                        layer.alert("请求失败");
-                    });
+
+
+                //监听修改
+                form.on('submit(letterUpdate)', function (data) {
+                    //请求修改url
+                    axios.post('/letter/data/json/update', Qs.stringify(vue.letter))
+                        .then((response) => {
+                            layer.msg(response.data.message);
+                            table.reload('letter');
+                            layer.closeAll();
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                });
+
             },
 
             close: function () {
@@ -115,7 +147,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#test'
-            ,id:'letter'
+            , id: 'letter'
             , height: 332
             , url: '/letter/data/json/pager' //数据接口
             , page: true //开启分页
@@ -128,11 +160,10 @@
                 , dataName: 'rows'
             }
             , cols: [[ //表头
-               /* {field: 'lid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
-                 {field: 'title', title: '名称', width: 120}
-                , {field: 'content', title: '内容', width: 180}
-                , {field: 'createdTime', title: '创建时间', width: 150}
-                , {field: 'status', title: '状态', width: 120, templet: "#aa"}
+                {field: 'title', title: '名称', width: 230}
+                , {field: 'content', title: '内容', width: 300}
+                , {field: 'createdTime', title: '创建时间', width: 200}
+                , {field: 'status', title: '状态', width: 206, templet: "#aa"}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
@@ -141,13 +172,25 @@
         table.on('tool(demo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
+            vue.letter = data;
             if (layEvent === 'detail') {
                 layer.msg('查看操作');
             } else if (layEvent === 'del') {
-                layer.confirm('真的删除行么', function (index) {
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
+                layer.msg('确认删除该条数据？10s后自动取消...', {
+                    time: 10000, //10s后自动关闭
+                    btn: ['YES', 'NO'],
+                    yes: function () {
+                        axios.post('/letter/data/json/remove', Qs.stringify(vue.letter)).then((response) => {
+                            layer.msg('删除成功');
+                            time: 800,
+                                table.reload('letter');
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                    },
+                    no: function () {
+                        layer.msg('已取消');
+                    }
                 });
             } else if (layEvent === 'edit') {
                 layer.open({
@@ -158,12 +201,11 @@
                     maxmin: true
 
                 });
-                vue.letter = data;
+
             }
         });
 
     });
-
 
 
 </script>

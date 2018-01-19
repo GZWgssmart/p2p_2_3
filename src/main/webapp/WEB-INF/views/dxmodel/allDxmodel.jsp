@@ -23,14 +23,14 @@
         </table>
 
     </section>
-
+    <form id="signupForm" class="layui-form">
     <div id="testDxmodel" style="display: none">
         <div class="layui-form-item">
             </br></br>
             <div class="layui-form-item layui-form-text" style="width: 500px;height: 150px;">
                 <label class="layui-form-label">内容</label>
                 <div class="layui-input-block">
-                    <textarea name="desc" v-model="dxmodel.content" class="layui-textarea"></textarea>
+                    <textarea name="desc" v-model="dxmodel.content" lay-verify="content" class="layui-textarea"></textarea>
 
 
                     </br></br>
@@ -40,7 +40,7 @@
                             <div class="layui-col-sm6">
                                 <div class="grid-demo grid-demo-bg1">
                                     <div class="layui-btn-group">
-                                        <button class="layui-btn" @click="update">修改</button>
+                                        <button class="layui-btn" lay-submit lay-filter="dxmodelUpdate" @click="update">修改</button>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
         </div>
 
     </div>
-
+    </form>
 </div>
 
 <script type="text/html" id="barDemo">
@@ -73,11 +73,31 @@
 <script src="/static/js/qs.js"></script>
 <script src="/static/js/axios.min.js"></script>
 <script>
+    var form;
+
     $(function () {
         layui.use(['layer'], function () {
             var layer = layui.layer;
         });
     })
+    layui.use(['form', 'layer'], function () {
+        var layer = layui.layer;
+        form = layui.form;
+        //自定义验证规则
+        form.verify({
+            content: function (value) {
+                if (value.length == 0) {
+                    return '内容不能为空！';
+                }
+                else if (value.length < 10) {
+                    return '内容至少得10个字符';
+                }
+            },
+        });
+    });
+
+
+
     var vue = new Vue({
         el: '#app',
         data: {
@@ -85,14 +105,20 @@
         },
         methods: {
             update: function () {
-                axios.post('/dxmodel/data/json/update', Qs.stringify(this.dxmodel))
+
+
+                //监听修改
+                form.on('submit(dxmodelUpdate)', function (data) {
+                        //请求修改url
+                axios.post('/dxmodel/data/json/update', Qs.stringify(vue.dxmodel))
                     .then((response) => {
                         layer.msg(response.data.message);
                         table.reload('dxmodel');
                         layer.closeAll();
                     }, (error) => {
-                        layer.alert("请求失败");
                     });
+                });
+
             },
 
             close: function () {
@@ -100,6 +126,7 @@
             }
         }
     });
+
 
     layui.use(['laypage', 'layer', 'table', 'element'], function () {
         var laypage = layui.laypage //分页
@@ -123,7 +150,7 @@
             }
             , cols: [[ //表头
                /* {field: 'dxid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
-                 {field: 'content', title: '内容', width: 120}
+                 {field: 'content', title: '内容', width: 940}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
@@ -132,13 +159,25 @@
         table.on('tool(demo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
+            vue.dxmodel = data;
             if (layEvent === 'detail') {
                 layer.msg('查看操作');
             } else if (layEvent === 'del') {
-                layer.confirm('真的删除行么', function (index) {
-                    obj.del(); //删除对应行（tr）的DOM结构
-                    layer.close(index);
-                    //向服务端发送删除指令
+                layer.msg('确认删除该条数据？10s后自动取消...', {
+                    time: 10000, //10s后自动关闭
+                    btn: ['YES', 'NO'],
+                    yes: function () {
+                        axios.post('/dxmodel/data/json/remove', Qs.stringify(vue.dxmodel)).then((response) => {
+                            layer.msg('删除成功');
+                            time: 800,
+                                table.reload('dxmodel');
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                    },
+                    no: function () {
+                        layer.msg('已取消');
+                    }
                 });
             } else if (layEvent === 'edit') {
                 layer.open({
@@ -149,7 +188,7 @@
                     maxmin: true
 
                 });
-                vue.dxmodel = data;
+
             }
         });
 
