@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
+<%
+    String path=request.getContextPath();
+%>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/dynajs/xxpl/css/public.css">
@@ -29,34 +32,41 @@
 
 <body>
 <div id="app">
-<div class="ptgg" id="ptgg">
+    <div class="ptgg" id="ptgg">
 
-    <div class="about-right-nav">
-        <div class="sub-a-nav">
-            <a href="javascript:void(0);" class="active" id="">平台公告</a>
+        <div class="about-right-nav">
+            <div class="sub-a-nav">
+                <a href="javascript:void(0);" class="active" id="">平台公告</a>
+            </div>
+            <em class="em-line"></em>
         </div>
-        <em class="em-line"></em>
-    </div>
-    <%--公告--%>
-    <div class="about-content">
-        <div id="notice">
-            <ul class="notice-list listData">
-                <li class="interval"  v-for="item in rows">
-                    <div class="children0">
-                        <a :href="'/dynaxq?id='+item.nid" target="_blank" class="title">{{item.title}}</a>
-                        <span class="time">{{item.createdTime}}</span>
-                    </div>
-                </li>
-            </ul>
-            <ul>
-                <div id="demo5"></div>
-            </ul>
+        <%--公告--%>
+        <div class="about-content">
+            <div id="notice">
+                <ul class="notice-list listData">
+                    <li class="interval"  v-for="item in rows">
+                        <div class="children0">
+                            <a :href="'/qdynaxq?id='+item.nid" target="_blank" class="title">{{item.title}}</a>
+                            <span class="time">{{item.createdTime}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <ul>
+                    <div id="demo5"></div>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>
+<script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/layui/lay/modules/laypage.js"></script>
+<script src="/static/dynajs/xxpl/js/json2.js"></script>
+<script src="<%=path%>/static/js/vue.min.js/"></script>
+<script src="<%=path%>/static/js/axios.min.js/"></script>
+<script src="<%=path%>/static/js/common.js"></script>
+
 <script >
 
     var laypage = layui.laypage;

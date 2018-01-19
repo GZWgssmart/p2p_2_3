@@ -44,8 +44,6 @@
           {{lists.content}}
       </script>
 </div>
-
-
 <script>
 
     var list = new Vue({

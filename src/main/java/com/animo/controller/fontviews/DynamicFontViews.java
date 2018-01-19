@@ -50,4 +50,18 @@ public class DynamicFontViews {
         return mav;
     }
 
+    @GetMapping("qdynaxq")
+    public ModelAndView qdynaxq(Integer id){
+        ModelAndView mav = new ModelAndView("dynamic/quplistdynamicxq");
+        mav.addObject("id",id);
+        return mav;
+    }
+
+    @GetMapping("upl")
+    public String upl(){
+        return "UploadText";
+    }
+
+
+
 }

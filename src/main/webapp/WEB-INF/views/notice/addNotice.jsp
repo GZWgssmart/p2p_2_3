@@ -17,10 +17,14 @@
 <body>
 <div id="app" style="width: 1140px; margin: 0;">
     <br/>
-    <button style="width: 1140px; margin: 0;" class="layui-btn" @click="saveNotice">保存</button>
-    <br/><br/>
+    <button style="width: 1144px; margin: 0;" class="layui-btn" @click="saveNotice">保存</button>
+    <br/>
+    <br/>
+    <a href="/back/not/pager"><button  style="width: 1144px; margin: 0;" class="layui-btn layui-btn-normal" >返回列表</button></a>
+    <br/>
+    <br/>
     <input type="text"  v-model="notice.title" required  lay-verify="required" placeholder="请输入公司公告" autocomplete="off" class="layui-input">
-    <br/    >
+    <br/>
     <!-- 加载编辑器的容器 -->
     <script id="container" name="content"  type="text/plain">
 
@@ -52,12 +56,16 @@
             methods:{
                 saveNotice:function () {
                     vue.notice.content = getContent();
-                    axios.post('/notice/data/json/save', Qs.stringify(this.notice)).then((response) => {
-                        layer.msg(response.data.message);
-                        window.location.href="/back/not/pager";
-                    }, (error) => {
-                        layer.alert("请求失败");
-                    });
+                    if (vue.notice.content.length > 0) {
+                        axios.post('/notice/data/json/save', Qs.stringify(this.notice)).then((response) => {
+                            layer.msg(response.data.message);
+                            window.location.href = "/back/not/pager";
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                    }else {
+                        layer.alert("请输入内容！")
+                    }
                 }
             }
         });

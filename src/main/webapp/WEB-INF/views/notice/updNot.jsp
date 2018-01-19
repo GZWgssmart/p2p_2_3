@@ -44,9 +44,6 @@
           {{lists.content}}
       </script>
 </div>
-
-
-
 <script>
 
     var list = new Vue({
@@ -63,7 +60,6 @@
         methods: {
             tofindone: function () {
                 var id = $("#id").val();
-
                 var params = new URLSearchParams();
                 params.append('id', id);
 

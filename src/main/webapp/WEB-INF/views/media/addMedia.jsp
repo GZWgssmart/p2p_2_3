@@ -17,8 +17,12 @@
 <body>
 <div id="app" style="width: 1140px; margin: 0;">
     <br/>
-    <button style="width: 1140px; margin: 0;" class="layui-btn" @click="saveMedia">保存</button>
-    <br/><br/>
+    <button style="width: 1144px; margin: 0;" class="layui-btn" @click="saveMedia">保存</button>
+    <br/>
+    <br/>
+    <a href="/back/med/pager"><button  style="width: 1144px; margin: 0;" class="layui-btn layui-btn-normal" >返回列表</button></a>
+    <br/>
+    <br/>
     <input type="text"  v-model="media.title" required  lay-verify="required" placeholder="请输入媒体报道标题" autocomplete="off" class="layui-input">
     <br/>
     <!-- 加载编辑器的容器 -->
@@ -54,12 +58,17 @@
                 saveMedia:function () {
                     vue.media.content = getContent();
                     vue.media.url = getContentTxt();
-                    axios.post('/media/data/json/save', Qs.stringify(this.media)).then((response) => {
-                        layer.msg(response.data.message);
-                        window.location.href="/back/med/pager";
-                    }, (error) => {
-                        layer.alert("请求失败");
-                    });
+                    if (vue.dynamic.content.length > 0) {
+                        axios.post('/media/data/json/save', Qs.stringify(this.media)).then((response) => {
+                            layer.msg(response.data.message);
+                            window.location.href = "/back/med/pager";
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                    }else {
+                            layer.alert("请输入内容！")
+                    }
+
                 }
             }
         });

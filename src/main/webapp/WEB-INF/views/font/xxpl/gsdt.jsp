@@ -50,7 +50,7 @@
                                 <div class="children0">
                                     <img :src="item.pic" class="news-img"  width="200" height="120">
                                     <div class="news-content">
-                                        <a :href="'/dynaxq?id='+item.dyid"  class="news-title">{{item.title}}</a>
+                                        <a :href="'/qdynaxq?id='+item.dyid"  class="news-title">{{item.title}}</a>
                                         <p class="news-about line-limit-length"  >{{item.url}}</p>
                                         <p class="news-time">{{item.createdTime}}</p>
                                     </div>
@@ -80,7 +80,7 @@
                                 <div class="children0">
                                     <img :src="item.pic" class="news-img"  width="200" height="120">
                                     <div class="news-content">
-                                        <a :href="'/dynaxq?id='+item.mid" class="news-title">{{item.title}}</a>
+                                        <a :href="'/qdynaxq?id='+item.mid" class="news-title">{{item.title}}</a>
                                         <p class="news-about line-limit-length"  >{{item.url}}</p>
                                         <p class="news-time">{{item.createdTime}}</p>
                                     </div>

@@ -35,8 +35,9 @@
 <div class="banner">
     <div class="layui-carousel" id="test1">
         <div carousel-item>
-            <div><img style="width: 100%;height: 100%" src="http://b.zol-img.com.cn/desk/bizhi/start/1/1388973662507.jpg"></div>
-            <div><img style="width: 100%;height: 100%" src="http://b.zol-img.com.cn/desk/bizhi/start/1/1388973662507.jpg"></div>
+            <div><img style="width: 100%;height: 100%" :src="home.pic1"></div>
+            <div><img style="width: 100%;height: 100%" :src="home.pic2"></div>
+            <div><img style="width: 100%;height: 100%" :src="home.pic3"></div>
         </div>
     </div>
 </div>
@@ -349,6 +350,10 @@
         return axios.get('/friend/data/json/pager?page=1&limit=10');
     }
 
+    function home() {
+        return axios.get('/home/data/json/listhome');
+    }
+
     new Vue({
         el:'#app',
         data:{
@@ -362,7 +367,8 @@
             dynamic:[],
             friends:[],
             touzi:[],
-            numberPeople:''
+            numberPeople:'',
+            home:{}
         },
         filters: {
             formatDate(time) {
@@ -377,15 +383,16 @@
             }
         },
         created () {
-            axios.all([three(),Media(),notice(),dynamic(),friends()]).then(axios.spread((threes,media,notice,dynamic,friends)=>{
-                this.djb = threes.data.data['多金宝'].data;
-                this.xsb = threes.data.data['新手标'].data;
-                this.pjb = threes.data.data['普金保'].data;
-                this.hjb = threes.data.data['恒金保'].data;
+            axios.all([three(),Media(),notice(),dynamic(),friends(),home()]).then(axios.spread((threes,media,notice,dynamic,friends,home)=>{
+//                this.djb = threes.data.data['多金宝'].data;
+//                this.xsb = threes.data.data['新手标'].data;
+//                this.pjb = threes.data.data['普金保'].data;
+//                this.hjb = threes.data.data['恒金保'].data;
                 this.media = media.data.rows;
                 this.notice = notice.data.rows;
                 this.dynamic = dynamic.data.rows;
                 this.friends = friends.data.rows;
+                this.home = home.data;
             }));
         },
         methods: {

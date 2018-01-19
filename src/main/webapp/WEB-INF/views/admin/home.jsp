@@ -118,8 +118,10 @@
                     <a href="javascript:;">运营管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="" data-id="8">首页轮播图</a>
-                        </dd>
+                            <a href="javascript:;" data-url="/back/home/list" data-id="8">首页轮播图</a>
+                        </dd><dd>
+                        <a href="javascript:;" data-url="/back/home/save" data-id="9">添加轮播图</a>
+                    </dd>
 
                         <dd>
                           

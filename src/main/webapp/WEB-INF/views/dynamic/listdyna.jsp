@@ -133,7 +133,7 @@
         //执行一个 table 实例
         table.render({
             elem: '#test'
-            ,height: 332
+            ,height: 440
             ,url: '/dyna/data/json/pager' //数据接口
             ,page: true //开启分页
             ,limit:10//每页显示多少个
@@ -148,9 +148,8 @@
             //后台Pager响应对象 不要动
             //表头
             ,cols: [[
-                {field: 'dyid', title: 'ID', width:80, sort: true, fixed: 'left'}
-                ,{field: 'title', title: '标题', width:680}
-                ,{field: 'createdTime', title: '添加时间', width:189}
+                {field: 'title', title: '标题', width:680}
+                ,{field: 'createdTime', title: '添加时间', width:289}
                 ,{fixed: 'right',title: '操作', width: 171, align:'center', toolbar: '#barDemo'}
             ]]
             //表头
@@ -161,12 +160,10 @@
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'listdyna'){
-                layer.msg('查看操作');
                 console.log(data.dyid);
                 window.location.href = "/back/dyna/byiddync?id=" + data.dyid;
             }
             if(layEvent === 'upddyna'){
-                layer.msg('修改');
                 console.log(data);
                 window.location.href = "/back/dyna/upddync?id=" + data.dyid;
             }

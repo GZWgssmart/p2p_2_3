@@ -17,10 +17,13 @@
 <body>
 <div id="app" style="width: 1140px; margin: 0;">
     <br/>
-    <button  style="width: 1140px; margin: 0;" class="layui-btn layui-btn-fluid" @click="saveDynamic">保存</button>
+    <button  style="width: 1144px; margin: 0;" class="layui-btn" @click="saveDynamic">保存</button>
     <br/>
     <br/>
-    <input type="text"  v-model="dynamic.title" required  lay-verify="required" placeholder="请输入公司动态" autocomplete="off" class="layui-input">
+    <a href="/back/dyna/pager"><button style="width: 1144px; margin: 0;" class="layui-btn layui-btn-warm" >返回列表</button></a>
+    <br/>
+    <br/>
+        <input type="text"  v-model="dynamic.title" required  lay-verify="required" placeholder="请输入公司动态标题" autocomplete="off" class="layui-input">
     <br/>
     <!-- 加载编辑器的容器 -->
         <script id="container" name="content" type="text/plain">
@@ -56,12 +59,16 @@
                 saveDynamic:function () {
                     vue.dynamic.content = getContent();
                     vue.dynamic.url = getContentTxt();
+                    if(vue.dynamic.content.length > 0){
                     axios.post('/dyna/data/json/save', Qs.stringify(this.dynamic)).then((response) => {
                         layer.msg(response.data.message);
                         window.location.href="/back/dyna/pager";
                     }, (error) => {
                         layer.alert("请求失败");
                     });
+                    }else {
+                        layer.alert("请输入内容！")
+                    }
                 }
             }
         });
