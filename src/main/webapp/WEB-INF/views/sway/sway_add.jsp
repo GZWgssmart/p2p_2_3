@@ -105,29 +105,12 @@
                 vue.sway.status = status;
                 //监听提交
                 form.on('submit(swaySave)', function (data) {
-                   /* axios.post('/sway/data/json/save', Qs.stringify(vue.sway))
+                    axios.post('/sway/data/json/save', Qs.stringify(vue.sway))
                         .then((response) => {
                              layer.msg('添加成功');
-                           /!* layer.closeAll();*!/
+                             layer.closeAll();
                         }, (error) => {
-                        });*/
-                    layer.msg('确认删除该条数据？10s后自动取消...', {
-                        time: 10000, //10s后自动关闭
-                        btn: ['YES', 'NO'],
-                        yes: function () {
-                            axios.post('/sway/data/json/save', Qs.stringify(vue.sway)).then((response) => {
-                                layer.msg('删除成功');
-                                time: 800,
-                                   /* table.reload('sway');*/
-                            }, (error) => {
-                                layer.alert("请求失败");
-                            });
-                        },
-                        no: function () {
-                            layer.msg('已取消');
-                        }
-                    });
-
+                        });
                 });
 
             }
