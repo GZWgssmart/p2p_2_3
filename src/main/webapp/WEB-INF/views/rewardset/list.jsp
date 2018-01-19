@@ -24,14 +24,53 @@
 
 <table class="layui-hide" id="user" lay-filter="demo"></table>
 
-<script type="text/html" id="barDemo">
-    <%--    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>--%>
-    <a class="layui-btn layui-btn-xs" lay-event="view">修改</a>
-   <%-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>--%>
-</script>
+<div class="login" id="app" style="display: none">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="text" v-model="rewardSetting.minmoney"  placeholder="请输入最小金额"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="text"  v-model="rewardSetting.maxmoney"  placeholder="请输入最大金额"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="text" v-model="rewardSetting.percent"  placeholder="请输入奖励百分比"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </form>
+</div>
 
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="view">修改</a>
+</script>
+<script src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/layui/layui.js"></script>
+<script src="<%=path%>/static/js/vue.min.js"></script>
+<script src="<%=path%>/static/js/axios.min.js"></script>
+<script src="<%=path%>/static/js/qs.js"></script>
 <script>
+
+    var vue = new Vue({
+        el:'#app',
+        data:{
+            rewardSetting:{
+                minmoney:'',
+                maxmoney:'',
+                percent:'',
+                rwsid:''
+            }
+        },
+        methods:{
+
+        }
+    });
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function(){
         var laydate = layui.laydate //日期
             ,laypage = layui.laypage //分页
@@ -45,6 +84,7 @@
         table.render({
             elem: '#user'
             ,height: 465
+            ,id:'rewardSetting'
             ,url: '<%=path%>/rewardset/data/json/list' //数据接口接口地址。默认会自动传递两个参数：?page=1&limit=30（该参数可通过 request 自定义）page 代表当前页码、limit 代表每页数据量
             ,page: true//开启分页
             ,limit:10
@@ -57,11 +97,10 @@
             }
             //后台Pager响应对象 不要动
             ,cols: [[//表头
-                /*{field: 'rwsid', title: 'ID', width:80, sort: true,align:'center', fixed: 'left'}
-                ,*/{field: 'minmoney', title: '最小金额(元)', align:'center', width:200}
-                ,{field: 'maxmoney', title: '最大金额（元）',align:'center', width:200}
-                ,{field: 'percent', title: '奖励百分比%', align:'center', width:200}
-                ,{fixed: 'right',title:'操作', width: 250, align:'center', toolbar: '#barDemo'}
+                {field: 'minmoney', title: '最小金额(元)', align:'center', width:265}
+                ,{field: 'maxmoney', title: '最大金额（元）',align:'center', width:265}
+                ,{field: 'percent', title: '奖励百分比%', align:'center', width:265}
+                ,{fixed: 'right',title:'操作', width: 310, align:'center', toolbar: '#barDemo'}
             ]]
         });
 
@@ -70,7 +109,30 @@
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'view'){
-                layer.msg('修改操作');
+                vue.rewardSetting = data;
+                layer.open({
+                    type: 1,
+                    title:'修改',
+                    offset:['100px'],
+                    area: ['350px', '250px'],
+                    fixed: false, //不固定
+                    skin: '',
+                    btn:['修改'],
+                    content: $("#app"),
+                    yes:function (index) {
+                        axios.post('/rewardset/data/json/update',Qs.stringify(vue.rewardSetting)).then((response)=>{
+                            if(response.data.code ==0){
+                               alert('修改成功');
+                               layer.close(index);
+                               return table.reload("rewardSetting");
+                            }
+                            alert('修改失败');
+                        },(error)=>{
+
+                        });
+                    }
+                });
+
             }
         });
     });

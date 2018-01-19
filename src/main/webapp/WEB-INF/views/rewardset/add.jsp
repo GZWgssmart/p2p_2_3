@@ -17,35 +17,58 @@
 
 </head>
 <body>
-<div class="login">
+<div class="login" id="app">
     <ul class="login-list">
         <p class="error-msg icon icon-error"></p>
-        <form id="addAdmin" method="post">
+        <form id="addAdmin" >
             <div class="from">
-                <li><input type="text" id="minmoney" name="minmoney" placeholder="请输入最小金额"></li>
+                <li><input type="text" v-model="rewardSetting.minmoney" placeholder="请输入最小金额"></li>
             </div>
             <div class="from">
-                <li><input type="text" id="maxmoney" name="maxmoney" placeholder="请输入最小最大"></li>
+                <li><input type="text"  v-model="rewardSetting.maxmoney" placeholder="请输入最大金额"></li>
             </div>
             <div class="from">
-                <li><input type="text" id="percent" name="percent" placeholder="请输入奖励百分比"></li>
+                <li><input type="text" v-model="rewardSetting.percent"  placeholder="请输入奖励百分比"></li>
             </div>
 
-            <li><input type="button" class="btn" value="添加"></li>
+            <li><input type="button" class="btn" @click="add" value="添加"></li>
         </form>
     </ul>
 </div>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
+<script src="<%=path%>/static/js/vue.min.js"></script>
+<script src="<%=path%>/static/js/axios.min.js"></script>
+<script src="<%=path%>/static/js/qs.js"></script>
 <script>
-    //错误提示
-    function showError(msg,obj){
-        $('.error-msg').text(msg).addClass('show');
-        obj.parent('.from').addClass('error');
-        obj.focus(function(){
-            obj.parent('.from').removeClass('error');
-            $('.error-msg').removeClass('show');
-        });
-    }
+    new Vue({
+       el:'#app',
+        data:{
+            rewardSetting:{
+                minmoney:'',
+                maxmoney:'',
+                percent:''
+            }
+        },
+        methods:{
+           add(){
+               if(this.rewardSetting.minmoney>this.rewardSetting.maxmoney){
+                   return alert('最小值不能大于最大值');
+               }
+               axios.post('/rewardset/data/json/save',Qs.stringify(this.rewardSetting)).then((response)=>{
+                   if(response.data.code ==0){
+                        alert('添加成功');
+                       this.rewardSetting.minmoney = '';
+                       this.rewardSetting.maxmoney = '';
+                       this.rewardSetting.percent = '';
+                       return;
+                   }
+                   alert('添加失败');
+               },(error)=>{
+
+               });
+           }
+        }
+    });
 </script>
 </body>
 </html>
