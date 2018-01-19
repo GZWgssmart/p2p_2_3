@@ -47,11 +47,11 @@
                                             <dd>
                                                 <div class="form-group">
                                                     <label class="label">真实姓名:</label>
-                                                    <span class="form-text">${sessionScope.user.rname}</span>
+                                                    <span class="form-text">{{user.rname}}</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="label">证件号码:</label>
-                                                    <span class="form-text">${sessionScope.user.idno}</span>
+                                                    <span class="form-text">{{user.idno}}</span>
                                                 </div>
                                             </dd>
                                             <dd>
@@ -139,9 +139,12 @@
                 type: '',
                 cardno: ''
             },
+            user:[]
         },
         created () {
-            
+            axios.get('/user/data/json/byiddync?id='+${sessionScope.user.uid}).then((response) => {
+                this.user = response.data.data;
+            });
         },
         methods: {
             save: function () {

@@ -97,7 +97,7 @@
         $.post('/admin/data/json/add',
             $("#addAdmin").serialize(),
             function (data) {
-                if (data.message === 'success') {
+                if (data.code === 0 ){
                     layer.msg("添加成功");
                     $(":text").val("");
                     $(":password").val("");

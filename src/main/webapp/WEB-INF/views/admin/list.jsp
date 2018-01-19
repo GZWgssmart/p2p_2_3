@@ -51,10 +51,10 @@
                 <input type="radio" v-model="adminupdate.sex" name="adminupdate.rname" value="女" />女<br/></li>
         号码：<input disabled="disabled"  v-model="adminupdate.phone"><br/>
         邮箱：<input  v-model="adminupdate.email"><br/>
-        状态：<select v-model="adminupdate.resstr2">
-                    <option>可用</option>
-                    <option>不可用</option>
-                </select><br/>
+        <%--状态：<select v-model="adminupdate.resstr2">--%>
+                    <%--<option>可用</option>--%>
+                    <%--<option>不可用</option>--%>
+                <%--</select><br/>--%>
         <input @click="update" class="up-btn" value="修改"/>
         </div>
     </div>
@@ -100,12 +100,11 @@
             //后台Pager响应对象 不要动
             ,cols: [[//表头
                /* {field: 'huid', title: 'ID', width:80, sort: true, fixed: 'left'}
-                ,*/{field: 'rname', title: '昵称', width:150}
-                ,{field: 'huname', title: '姓名', width:150}
+                ,*/{field: 'rname', title: '昵称', width:200}
+                ,{field: 'huname', title: '姓名', width:200}
                 ,{field: 'sex', title: '性别', width:150}
-                ,{field: 'phone', title: '手机号', width:150}
-                ,{field: 'email', title: '邮箱', width: 150}
-                ,{field: 'resstr2', title: '状态', width: 150}
+                ,{field: 'phone', title: '手机号', width:200}
+                ,{field: 'email', title: '邮箱', width: 200}
                 ,{fixed: 'right',title:'操作', width: 150, align:'center', toolbar: '#barDemo'}
             ]]
         });

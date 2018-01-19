@@ -52,12 +52,7 @@ public class AdminController {
     @PostMapping("add")
     public ServerResponse add(Huser huser) {
         huser.setResstr1(EncryptUtils.md5(huser.getResstr1()));
-        int hu = huserService.saveHuser(huser);
-        if (hu == 1) {
-            return ServerResponse.createBySuccess("success");
-        } else {
-            return ServerResponse.createByError("error");
-        }
+        return huserService.save(huser);
     }
 
     @GetMapping(value = "list")

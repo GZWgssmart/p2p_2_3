@@ -89,23 +89,18 @@
                             <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="5">管理员列表</a>
                         </dd>
                         <dd>
-
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="6">修改信息</a>
-
                             <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="7">修改密码</a>
-
-
-
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="8">修改信息</a>
-
                         </dd>
+                        <%--<dd>--%>
+                            <%--<a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="8">修改信息</a>--%>
+
+                        <%--</dd>--%>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">投资管理</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            
                             <a href="javascript:;" data-url="<%=path%>/back/rewardset/add" data-id="9">投资奖励设置</a>
                         </dd>
                         <dd>
