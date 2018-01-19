@@ -23,7 +23,7 @@ $(function () {
 
                  }, (error) => {
                  alert(error);
-                 },);
+                 });
 
             },
         updateHome:function () {

@@ -30,12 +30,12 @@ public class SwayController {
 
     /**
      * 还款方式删除
-     * @param sid
+     * @param sway
      * @return
      */
     @RequestMapping("remove")
-    public ServerResponse<Sway> removeById(Integer sid){
-     return swayService.removeById(sid);
+    public ServerResponse<Sway> removeById(Sway sway){
+     return swayService.removeById(sway.getSid());
     }
 
 

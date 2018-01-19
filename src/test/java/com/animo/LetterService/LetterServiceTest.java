@@ -24,10 +24,12 @@ public class LetterServiceTest extends BaseServiceTest {
     public void LetteSave() {
 
         Letter letter = new Letter();
-        letter.setTitle("站nei");
-        letter.setContent("又有活动啦");
-        letter.setCreatedTime(DateFormateUtils.Formate());
-        letterService.save(letter);
+        for(int i=0; i<100;i++) {
+            letter.setTitle("站nei"+i);
+            letter.setContent("又有活动啦"+i);
+            letter.setCreatedTime(DateFormateUtils.Formate());
+            letterService.save(letter);
+        }
     }
     @Test
     public void pager() {

@@ -35,12 +35,12 @@ public class DxmodelController {
 
     /**
      * 短信模板移除
-     * @param dxid
+     * @param dxmodel
      * @return
      */
     @RequestMapping("remove")
-    public ServerResponse removeById(Integer dxid) {
-        return dxmodelService.removeById(dxid);
+    public ServerResponse removeById(Dxmodel dxmodel) {
+        return dxmodelService.removeById(dxmodel.getDxid());
     }
 
     /**

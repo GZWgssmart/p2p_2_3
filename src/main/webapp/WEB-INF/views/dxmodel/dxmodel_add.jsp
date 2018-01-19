@@ -51,6 +51,12 @@
                 else if (value.length < 10) {
                     return '内容至少得10个字符';
                 }
+                else if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                    return '内容不能有特殊字符';
+                }
+                else if (/^\d+\d+\d$/.test(value)) {
+                    return '内容不能全是数字';
+                }
             },
         });
     });
@@ -70,7 +76,6 @@
                     axios.post('/dxmodel/data/json/save', Qs.stringify(vue.dxmodel))
                         .then((response) => {
                             layer.closeAll();
-                            layry.message();
                         }, (error) => {
                         });
                 });

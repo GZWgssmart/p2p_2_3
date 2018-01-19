@@ -83,18 +83,6 @@
 						<span>信息工作先进单位</span>
 					</span>
                 </p>
-                <!-- <p class="credit-pic">
-                    <img src="resources/front/v01/src/images/about/ptzz_01.jpg"  width="279" height="182">
-                    <span style="display: none;">
-                        <span>赣州50强企业</span>
-                    </span>
-                </p>
-                <p class="credit-pic">
-                    <img src="resources/front/v01/src/images/about/ptzz_03.jpg"  width="279" height="182">
-                    <span style="display: none;">
-                        <span>理事单位</span>
-                    </span>
-                </p> -->
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
             <div class="invest-top-left">
                 <div class="invest-top-list">
                     <p>项目期限：</p>
-                    <ul class="cl">
+                    <ul class="cl" id="term">
                         <li class="active"><a href="javascript:;" @click="month()">全部</a></li>
                         <li><a href="javascript:;" @click="month(1,3)">1-3个月</a></li>
                         <li><a href="javascript:;" @click="month(3,6)">3-6个月</a></li>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="invest-top-list">
                     <p>年化收益：</p>
-                    <ul>
+                    <ul id="nprofit">
                         <li class="active"><a href="javascript:;" @Click="earnings()">全部</a></li>
                         <li><a href="javascript:;" @Click="earnings(0,10)"><=10%</a></li>
                         <li><a href="javascript:;" @Click="earnings(10,15)">10%-15%</a></li>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="invest-top-list">
                     <p>项目类型：</p>
-                    <ul>
+                    <ul id="bz">
                         <li><a href="javascript:;" @Click="bz()">全部</a></li>
                         <li><a href="javascript:;" @Click="bz(2)">多金宝</a></li>
                         <li><a href="javascript:;" @Click="bz(4)">普金保</a></li>
@@ -73,7 +73,7 @@
                             <li class="row1"><p class="row-top">预期年化收益率</p><p class="row-bottom color">{{item.nprofit}}<span>%</span></p></li>
                             <li class="row2"><p class="row-top">项目期限</p><p class="row-bottom">{{item.term}}个月</p></li>
                             <li class="row3"><p class="row-top">还款方式</p><p class="row-bottom">{{item.way | wayFilter}}</p></li>
-                            <li class="row4"><p class="row-top">可投金额 / 募集总额</p><p class="row-bottom">{{item.money-item.ymoney}}万元 / {{item.money}}万元</p></li>
+                            <li class="row4"><p class="row-top">可投金额 / 募集总额</p><p class="row-bottom">{{item.money-item.ymoney | money}}元 / {{item.money | money}}元</p></li>
                             <li class="row5">
                                 <p class="row-top">募集进度</p>
                                 <div class="layui-progress" style="float: left;width: 100px;margin-top: 13px" lay-showPercent="yes">
@@ -163,6 +163,15 @@
             vue.getJsonShang(laypage);
     });
 
+    function searchBorrow(demoId) {
+        if(demoId !== '') {
+            $('#'+ demoId +' li').removeClass('active');
+            $('a').click(
+                function(){
+                    $(this).parent().attr('class','active');
+                });
+        }
+    }
 
     var vue = new Vue({
         el:"#app",
@@ -178,6 +187,9 @@
         filters: {
             wayFilter(way){
                 return sway(way);
+            },
+            money (value) {
+                return formatMoney(value,2);
             }
         },
         created () {
@@ -190,15 +202,18 @@
                 this.qterm=qterm;
                 this.hterm=hterm;
                 this.getJsonShang(laypage);
+                searchBorrow('term');
             },
             earnings (qprofit,hprofit) {
                 this.qprofit = qprofit;
                 this.hprofit = hprofit;
                 this.getJsonShang(laypage);
+                searchBorrow('nprofit');
             },
             bz (bzid) {
                 this.bzid=bzid;
                 this.getJsonShang(laypage);
+                searchBorrow('bz');
             },
             search () {
                 this.getJsonShang(laypage);

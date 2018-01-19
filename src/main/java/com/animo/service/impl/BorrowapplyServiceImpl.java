@@ -2,14 +2,20 @@ package com.animo.service.impl;
 
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
+import com.animo.common.ValidationResult;
 import com.animo.dao.BorrowapplyMapper;
+import com.animo.dao.BorrowdetailMapper;
 import com.animo.pojo.Borrowapply;
+import com.animo.pojo.Borrowdetail;
 import com.animo.service.BorrowapplyService;
+import com.animo.utils.ValidationUtils;
 import com.animo.vo.BorrowApplyDetail;
 import com.animo.vo.BorrowapplyMoneyVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,10 +28,17 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
 
     private BorrowapplyMapper borrowapplyMapper;
 
+    private BorrowdetailMapper borrowdetailMapper;
+
     @Autowired
     public void setBorrowapplyMapper(BorrowapplyMapper borrowapplyMapper) {
         super.setBaseMapper(borrowapplyMapper);
         this.borrowapplyMapper = borrowapplyMapper;
+    }
+
+    @Autowired
+    public void setBorrowdetailMapper(BorrowdetailMapper borrowdetailMapper) {
+        this.borrowdetailMapper = borrowdetailMapper;
     }
 
     @Override
@@ -65,6 +78,28 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
     }
 
     @Override
+    public ServerResponse saveBorrow(Borrowapply borrowApply, Borrowdetail borrowDetail) {
+        ValidationResult validationResult = ValidationUtils.validateEntity(borrowApply);
+        if(validationResult.isHasErrors()) {
+            return ServerResponse.createByError("保存失败");
+        }
+        validationResult = ValidationUtils.validateEntity(borrowDetail);
+        if(validationResult.isHasErrors()) {
+            return ServerResponse.createByError("保存失败");
+        }
+        if(borrowapplyMapper.insertSelective(borrowApply) == 0) {
+            return ServerResponse.createByError("保存失败");
+        }
+        borrowDetail.setBaid(borrowApply.getBaid());
+        borrowDetail.setMoney(BigDecimal.valueOf(0));
+        borrowDetail.setCpname("PJ" + Calendar.getInstance().get(Calendar.YEAR) + "BZ" + getCpName(borrowApply.getBaid()));
+        if(borrowdetailMapper.insertSelective(borrowDetail) == 0){
+            return ServerResponse.createByError("保存失败");
+        }
+        return ServerResponse.createBySuccess("保存成功");
+    }
+
+    @Override
     public List<Borrowapply> list(Integer ckstatus) {
         return borrowapplyMapper.list(ckstatus);
     }
@@ -72,5 +107,22 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
     @Override
     public List<BorrowApplyDetail> getByCkstaus(Integer ckstatus) {
         return borrowapplyMapper.getByCkstaus(ckstatus);
+    }
+
+
+    private String getCpName(Integer baid) {
+        if(baid / 1000 % 10 > 0) {
+            return "" + baid;
+        }
+        if(baid / 100 % 10 > 0) {
+            return "0" + baid;
+        }
+        if(baid / 10 > 0) {
+            return "00" + baid;
+        }
+        if(baid % 10 > 0) {
+            return "000" + baid;
+        }
+        return getCpName(Math.round(baid / 10));
     }
 }

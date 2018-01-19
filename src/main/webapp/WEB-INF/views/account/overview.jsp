@@ -692,7 +692,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">昵称</label>
                 <div class="layui-input-inline">
-                    <input type="text" v-model="user.uname"  autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                    <input type="text" v-model="user.uname"  autocomplete="off"   placeholder="请输入昵称" class="layui-input">
                 </div>
             </div>
 
@@ -700,7 +700,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">身份证</label>
                     <div class="layui-input-inline">
-                        <input type="text" v-model="user.idno" autocomplete="off" placeholder="请输入身份证" class="layui-input">
+                        <input type="text" v-model="user.idno" autocomplete="off"  placeholder="请输入身份证" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -717,7 +717,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">邮箱</label>
                 <div class="layui-input-inline">
-                    <input type="text" v-model="user.email"  placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                    <input type="text" v-model="user.email"  placeholder="请输入邮箱"  autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -729,14 +729,14 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">性别</label>
-                <div class="layui-input-block">
+                <div class="layui-input-block" v-model="user.sex">
                     <input type="radio" name="sex" value="男" title="男" checked>
                     <input type="radio" name="sex" value="女" title="女">
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" @click="update">修改</button>
+                    <button class="layui-btn"   @click="update">修改</button>
                 </div>
             </div>
         </form>
@@ -756,15 +756,15 @@
     </div>
 </div>
 </body>
-<script src="/static/js/qs.js"></script>
-<script src="/static/layui/layui.js"></script>
-
 <script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
+<script src="/static/js/qs.js"></script>
+<script src="/static/layui/layui.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/layui-formVerify.js"></script>
 
 
-<script type="text/javascript" src="<%=path%>/static/js/user/province.js"></script>
+<%--<script type="text/javascript" src="<%=path%>/static/js/user/province.js"></script>--%>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="hkjh">还款计划</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="jkxq">借款详情</a>
@@ -773,6 +773,8 @@
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="qrhk">确认还款</a>
 </script>
 <script>
+
+    var layer;
 
     var vue = new Vue({
         el: '#app',
@@ -818,9 +820,9 @@
             },
             update () {
                 this.user.sex = $('input:radio[name="sex"]:checked').val();
-                axios.post('/user/data/json/updateInfo',Qs.stringify(this.user)).then((response) => {
-                    alert(response.data.message);
-                });
+                    axios.post('/user/data/json/updateInfo',Qs.stringify(this.user)).then((response) => {
+                        alert(response.data.message);
+                    })
             },
             getUserInfo(){
                 axios.get('/user/data/json/byiddync?id='+${sessionScope.user.uid}).then((response) => {
@@ -913,7 +915,7 @@
         $(".czjl").on('click', function () {
             table.render({
                 elem: '#logcz'
-                , height: 332
+                , height: 480
                 , url: '/logCz/data/json/pager' //数据接口
                 , page: true //开启分页
                 , limit: 10//每页显示多少个
@@ -930,8 +932,8 @@
                 , cols: [[
                     {field: 'bankcard', title: '充值卡号', width: 220}
                     , {field: 'banktype', title: '所属银行', width: 220}
-                    , {field: 'money', title: '充值金额', width: 220, sort: true}
-                    , {field: 'createdTime', title: '充值时间', width: 235, sort: true}
+                    , {field: 'money', title: '充值金额', width: 200, sort: true}
+                    , {field: 'createdTime', title: '充值时间', width: 254, sort: true}
                 ]]
                 //表头
             });
@@ -939,7 +941,7 @@
         $(".txjl").on('click', function () {
             table.render({
                 elem: '#logtx'
-                , height: 332
+                , height: 480
                 , url: '/LogTx/data/json/pager' //数据接口
                 , page: true //开启分页
                 , limit: 10//每页显示多少个
@@ -958,7 +960,7 @@
                     , {field: 'banktype', title: '所属银行', width: 180}
                     , {field: 'money', title: '提现金额', width: 200, sort: true}
                     , {field: 'createdTime', title: '提现时间', width: 200, sort: true}
-                    , {field: 'status', title: '提现状态', width: 100, templet: '<div>{{ statusGe(d.status)}}</div>'}
+                    , {field: 'status', title: '提现状态', width: 115, templet: '<div>{{ statusGe(d.status)}}</div>'}
 
 
                 ]]
@@ -1189,7 +1191,7 @@
     function invest() {
         table.render({
             elem: '#tjglTable'
-            , height: 500
+            , height: 480
             , url: '/tzb/data/json/investPager' //数据接口
             , where: {'uid': ${sessionScope.user.uid}}
             , page: true //开启分页
@@ -1206,7 +1208,7 @@
             //表头
             , cols: [[
                 {field: 'cpname', title: '标题', width: 100, sort: true}
-                , {field: 'nprofit', title: '年利率（%）', width: 110}
+                , {field: 'nprofit', title: '年利率（%）', width: 80}
                 , {field: 'bzname', title: '类型', width: 80}
                 , {field: 'term', title: '期限（月）', width: 80}
                 , {field: 'way', title: '还款方式', width: 150}

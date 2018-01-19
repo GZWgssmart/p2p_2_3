@@ -3,6 +3,7 @@ package com.animo.service;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Borrowapply;
+import com.animo.pojo.Borrowdetail;
 import com.animo.vo.BorrowApplyDetail;
 
 import java.util.Date;
@@ -26,5 +27,7 @@ public interface BorrowapplyService extends BaseService{
     List<BorrowApplyDetail> getByCkstaus(Integer ckstatus);
 
     Pager listByJuid (Integer pageNo, Integer pageSize, Integer juid);
+
+    ServerResponse saveBorrow(Borrowapply borrowApply, Borrowdetail borrowDetail);
 
 }

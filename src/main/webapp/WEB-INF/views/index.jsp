@@ -108,7 +108,7 @@
                                 </div>
                                 {{item.ymoney/item.money*100 |formatNumber}}%
                             </div>
-                            <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{item.money | money}}元</p>
                             <p class="icon icon-time">投资期限：{{item.term}}个月</p>
                         </div>
                         <div class="submit">
@@ -148,7 +148,7 @@
                                 </div>
                                 {{item.ymoney/item.money*100 |formatNumber}}%
                             </div>
-                            <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{item.money | money}}元</p>
                             <p class="icon icon-time">投资期限：{{item.term}}个月</p>
                         </div>
                         <div class="submit">
@@ -190,7 +190,7 @@
                                 </div>
                                 {{item.ymoney/item.money*100 |formatNumber}}%
                             </div>
-                            <p class="icon icon-doll">项目金额：{{item.money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{item.money | money}}元</p>
                             <p class="icon icon-time">投资期限：{{item.term}}个月</p>
                         </div>
                         <div class="submit">
@@ -219,7 +219,7 @@
                         :href="'/dynaxq?id='+item.mid" target="_blank" class="list-main">
                    <dd class="line-limit-length" style="color: black"> {{item.title}}</dd>
                    </a>
-                    <dd style="height: 150px;color: #999999"  > {{item.url}}</dd>
+                    <dd style="height: 160px;color: #999999"  > {{item.url}}</dd>
                 </li>
             </ul>
         </div>
@@ -271,14 +271,6 @@
         </div>
     </div>
 <div id="ajaxFooter">
-
-    <div id="gzh" v-show="tanchaung" class="popup wechart-box show">
-        <p class="title left">关注普金资本微信公众号</p>
-        <a id="close" href="javascript:void(0);"@click="close" class="close icon icon-close"></a>
-        <div class="popup-from">
-            <img class="wechart" src="/static/images/index/wechart.jpg">
-        </div>
-    </div>
     <div class="mod-sidebar">
         <ul>
             <li><a target="_blank" href="http://web2.qq.com/"
@@ -330,7 +322,7 @@
     }
 
     function Media() {
-        return axios.get('/media/data/json/pager?page=1&limit=5');
+        return axios.get('/media/data/json/pager?page=1&limit=3');
     }
 
     function notice() {
@@ -357,7 +349,6 @@
     new Vue({
         el:'#app',
         data:{
-            tanchaung:true,
             djb:[],
             xsb:[],
             pjb:[],
@@ -380,14 +371,17 @@
                     return 0;
                 }
                 return value.toFixed(2);
+            },
+            money(value){
+                return formatMoney(value,2);
             }
         },
         created () {
             axios.all([three(),Media(),notice(),dynamic(),friends(),home()]).then(axios.spread((threes,media,notice,dynamic,friends,home)=>{
-//                this.djb = threes.data.data['多金宝'].data;
-//                this.xsb = threes.data.data['新手标'].data;
-//                this.pjb = threes.data.data['普金保'].data;
-//                this.hjb = threes.data.data['恒金保'].data;
+                this.djb = threes.data.data['多金宝'].data;
+                this.xsb = threes.data.data['新手标'].data;
+                this.pjb = threes.data.data['普金保'].data;
+                this.hjb = threes.data.data['恒金保'].data;
                 this.media = media.data.rows;
                 this.notice = notice.data.rows;
                 this.dynamic = dynamic.data.rows;
@@ -398,9 +392,6 @@
         methods: {
             detail (baid,bdid,bzname) {
                 window.location.href='/borrowapply/info/'+baid+'/'+bdid+'/'+bzname
-            },
-            close () {
-               this.tanchaung=false;
             }
         },
         computed: {

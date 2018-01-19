@@ -28,7 +28,7 @@
     ]]>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from swayrecommend
+    delete from sway
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.animo.pojo.Sway" >

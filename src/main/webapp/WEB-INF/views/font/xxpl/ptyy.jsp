@@ -15,14 +15,11 @@
                     </div>
 
                     <div class="moneyDiv">
-                        <div v-for="item in tmoneyList">
+                        <div v-for="item in tmoneyList" >
                             <div class="marginLeft"></div>
-                            <div class="item_Div" id="allmoney7">{{item}}</div>
+                            <div v-if="item!=','" class="item_Div">{{item}}</div>
+                            <div v-else class="marginLeft">,</div>
                         </div>
-                        <div class="marginLeft">.</div>
-                        <div class="item_Div" id="allmoney8">0</div>
-                        <div class="marginLeft"></div>
-                        <div class="item_Div" id="allmoney9">0</div>
                     </div>
 
 
@@ -126,14 +123,7 @@
         function listydata() {
             axios.post('/ydata/data/json/all').then((response) => {
                 vue.list = response.data;
-                var allMoney = vue.list.tmoney + "";
-                var strList = "";
-                for (var i = allMoney.length - 1, len = 0; i >= len; i--) {
-                    strList += allMoney.charAt(i) + ',';
-                }
-                vue.tmoneyList = strList.split(",");
-                console.log(vue.tmoneyList);
-                vue.tmoneyList.pop();
+                vue.tmoneyList = formatMoney(response.data.tmoney,2);
             }, (error) => {
                 alert(error);
             });

@@ -42,12 +42,12 @@ public class LetterController {
 
     /**
      * 站内信删除
-     * @param lid
+     * @param letter
      * @return
      */
     @RequestMapping("remove")
-    public ServerResponse<Letter> removById(Integer lid){
-        return letterService.removeById(lid);
+    public ServerResponse<Letter> removById(Letter letter){
+        return letterService.removeById(letter.getLid());
     }
 
     /**

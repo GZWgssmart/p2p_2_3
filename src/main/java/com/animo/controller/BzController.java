@@ -29,12 +29,12 @@ public class BzController {
 
     /**
      * 标种移除
-     * @param bzid
+     * @param bz
      * @return
      */
     @RequestMapping("remove")
-    public ServerResponse removeById(Integer bzid) {
-        return bzService.removeById(bzid);
+    public ServerResponse removeById(Bz bz) {
+        return bzService.removeById(bz.getBzid());
     }
 
     /**
