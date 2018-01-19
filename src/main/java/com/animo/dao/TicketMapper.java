@@ -1,5 +1,12 @@
 package com.animo.dao;
 
-public interface TicketMapper extends BaseMapper{
+import com.animo.pojo.Ticket;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
+public interface TicketMapper extends BaseMapper{
+    List<Ticket> selectByIsVip(@Param("isvip") Integer isvip);
 }

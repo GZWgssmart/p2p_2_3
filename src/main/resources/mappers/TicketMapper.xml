@@ -7,9 +7,11 @@
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="tkmoney" property="tkmoney" jdbcType="DECIMAL" />
     <result column="tktime" property="tktime" jdbcType="TIMESTAMP" />
+    <result column="tnum" property="tnum" jdbcType="INTEGER" />
+    <result column="isvip" property="isvip" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    kid, name, type, tkmoney, tktime
+    kid, name, type, tkmoney, tktime, tnum, isvip
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +25,9 @@
   </delete>
   <insert id="insert" parameterType="com.animo.pojo.Ticket" >
     insert into ticket (kid, name, type, 
-      tkmoney, tktime)
+      tkmoney, tktime, tnum, isvip)
     values (#{kid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-      #{tkmoney,jdbcType=DECIMAL}, #{tktime,jdbcType=TIMESTAMP})
+      #{tkmoney,jdbcType=DECIMAL}, #{tktime,jdbcType=TIMESTAMP}, #{tnum,jdbcType=INTEGER}, #{isvip,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.animo.pojo.Ticket" >
     insert into ticket
@@ -45,6 +47,12 @@
       <if test="tktime != null" >
         tktime,
       </if>
+      <if test="tnum != null" >
+        tnum,
+      </if>
+      <if test="isvip != null" >
+        isvip
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="kid != null" >
@@ -61,6 +69,12 @@
       </if>
       <if test="tktime != null" >
         #{tktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tnum != null" >
+        #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="isvip != null" >
+        #{isvip,jdbcType=INTEGER}
       </if>
     </trim>
   </insert>
@@ -79,6 +93,12 @@
       <if test="tktime != null" >
         tktime = #{tktime,jdbcType=TIMESTAMP},
       </if>
+      <if test="tnum != null" >
+        tnum = #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="isvip != null" >
+        isvip = #{isvip,jdbcType=INTEGER}
+      </if>
     </set>
     where kid = #{kid,jdbcType=INTEGER}
   </update>
@@ -87,7 +107,21 @@
     set name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       tkmoney = #{tkmoney,jdbcType=DECIMAL},
-      tktime = #{tktime,jdbcType=TIMESTAMP}
+      tktime = #{tktime,jdbcType=TIMESTAMP},
+      tnum = #{tnum,jdbcType=INTEGER},
+      isvip = #{isvip,jdbcType=INTEGER}
     where kid = #{kid,jdbcType=INTEGER}
   </update>
+
+  <select id="listPager" parameterType="com.animo.common.Pager" resultType="com.animo.pojo.Ticket">
+    select * from ticket limit #{beginIndex}, #{pageSize}
+  </select>
+
+  <select id="count" resultType="long">
+    select count(kid) from ticket
+  </select>
+
+  <select id="selectByIsVip" parameterType="java.lang.Integer" resultType="com.animo.pojo.Ticket">
+    select * from ticket where  isvip = #{isvip}
+  </select>
 </mapper>

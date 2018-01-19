@@ -59,6 +59,9 @@
                 <li id="touzilicai">
                     <a href="/borrowapply/add">申请借款</a>
                 </li>
+                <li id="tickets">
+                    <a href="/ticket/pager">优惠券</a>
+                </li>
                 <li><a href="/">首页</a></li>
             </ul>
         </div>

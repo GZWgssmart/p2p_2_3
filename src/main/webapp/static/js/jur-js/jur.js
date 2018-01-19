@@ -51,7 +51,6 @@ $(function () {
                     time: 10000, //10s后自动关闭
                     btn: ['是的', '取消'],
                     yes:function(){
-                        layer.msg('的确很重要');
                         layer.load();
                         axios.post('/jur/data/json/initJur', Qs.stringify(vue.jur)).then((response)=>{
                             layer.msg(response.data.message);
@@ -83,7 +82,7 @@ $(function () {
             ,height: 332
             ,url: '/jur/data/json/pager/' //数据接口
             ,page: true //开启分页
-            ,limit:5//每页显示多少个
+            ,limit:10//每页显示多少个
             ,response: {
                 statusName: 'status'
                 ,statusCode: 0
@@ -92,9 +91,9 @@ $(function () {
                 ,dataName: 'rows'
             }
             ,cols: [[ //表头
-                {field: 'jurl', title: '权限url', width:150}
-                ,{field: 'content', title: '描述', width:150}
-                ,{title:'操作', fixed: 'right', width: 165, align:'center', toolbar: '#barJur'}
+                {field: 'jurl', title: '权限url', width:500}
+                ,{field: 'content', title: '描述', width:300}
+                ,{title:'操作', fixed: 'right', width: 335, align:'center', toolbar: '#barJur'}
             ]]
         });
         table.on('tool(jur)', function(obj){

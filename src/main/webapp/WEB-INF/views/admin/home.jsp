@@ -221,6 +221,17 @@
                         </dd>
                     </dl>
                 </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">券管理</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/ticket/pager" data-id="30">所有券</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="<%=path%>/back/ticket/add" data-id="31">添加券</a>
+                        </dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>

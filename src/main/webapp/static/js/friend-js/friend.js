@@ -69,7 +69,7 @@ $(function () {
             , height: 450
             , url: '/friend/data/json/pager/' //数据接口
             , page: true //开启分页
-            , limit: 5//每页显示多少个
+            , limit: 10//每页显示多少个
             , response: {
                 statusName: 'status'
                 , statusCode: 0
@@ -78,9 +78,9 @@ $(function () {
                 , dataName: 'rows'
             }
             , cols: [[ //表头
-                {field: 'furl', title: '伙伴网站地址', width: 150}
-                , {field: 'fpic', title: '伙伴图标', width: 150,templet:'<div style="width: 80px;height: 80px;border-radius: 100%;">{{head(d.fpic)}}</div>'}
-                , {title: '操作', fixed: 'right', width: 165, align: 'center', toolbar: '#barFriend'}
+                {field: 'furl', title: '伙伴网站地址', width: 500}
+                , {field: 'fpic', title: '伙伴图标', width: 300,templet:'<div style="width: 80px;height: 80px;border-radius: 100%;">{{head(d.fpic)}}</div>'}
+                , {title: '操作', fixed: 'right', width: 320, align: 'center', toolbar: '#barFriend'}
             ]]
         });
         table.on('tool(friend)', function (obj) {
