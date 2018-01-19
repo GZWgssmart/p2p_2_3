@@ -33,7 +33,7 @@
                 </div>
                 <div class="subject-submit-amt">
                     <p class="title_amt">募集总金额</p>
-                    <p class="text"><span id="amt">{{borrowapply.money}}</span>元</p>
+                    <p class="text"><span id="amt">{{borrowapply.money | money}}</span>元</p>
                 </div>
             </div>
             <div class="subject-submit-bottom">
@@ -63,12 +63,12 @@
             </div>
             <div class="subject-s-r-c">
                 <p>可用余额：<span id="canUseSum">
-                <p v-if="${sessionScope.user!=null}" >{{money}}元</p>
+                <p v-if="${sessionScope.user!=null}" >{{money |money}}元</p>
                 <p v-else>登录后查看余额</p>
                 </span></p>
             </div>
             <div class="subject-s-r-c">
-                <p>剩余可投：<span id="investAmount">{{borrowapply.money-borrowdetail.money}}元</span></p>
+                <p>剩余可投：<span id="investAmount">{{borrowapply.money-borrowdetail.money | money}}元</span></p>
             </div>
             <div class="input">
                 <input type="text" placeholder="请输入投资金额" v-model="tzb.money">
@@ -101,7 +101,7 @@
             <p class="title">产品名称：</p><p class="content" id="projectTitle">{{borrowdetail.cpname}}</p>
         </div>
         <div class="detail cl">
-            <p class="title">募集资金：</p><p class="content" id="projectAmount">{{borrowapply.money}}元</p>
+            <p class="title">募集资金：</p><p class="content" id="projectAmount">{{borrowapply.money |money}}元</p>
         </div>
         <div class="detail cl">
             <p class="title">预期年化收益：</p><p class="content" id="projectRate">{{borrowdetail.nprofit}}%</p>
@@ -368,6 +368,9 @@
                     return 0;
                 }
                 return value.toFixed(2);
+            },
+            money(value){
+                return formatMoney(value,2);
             }
         },
         created (){

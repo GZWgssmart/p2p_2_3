@@ -60,8 +60,12 @@ public class UserController {
     }
 
     @PostMapping("updateInfo")
-    public ServerResponse updateInfo(User user){
-        return userService.update(user);
+    public ServerResponse updateInfo(User user,HttpSession session){
+        Object object = session.getAttribute(Constant.SESSION_USER);
+        if(object!=null){
+            return userService.update(user);
+        }
+        return ServerResponse.createByError("登录超时");
     }
 
     @RequestMapping(value="getByPhone/{phone}", method = RequestMethod.GET)

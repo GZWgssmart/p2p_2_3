@@ -11,10 +11,17 @@ import com.animo.query.BorrowapplyQuery;
 import com.animo.service.BorrowapplyService;
 import com.animo.service.BorrowdetailService;
 import com.animo.service.BzService;
+import com.animo.utils.BeanCopyUtils;
+import com.animo.utils.PathUtils;
+import com.animo.utils.UploadUtil;
+import com.animo.vo.BorrowApplyDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,24 +48,40 @@ public class BorrowapplyController {
 
     /**
      * 借款申请保存
-     * @param borrowapply
-     * @param borrowdetail
      * @return
      */
     @PostMapping("save")
-    public ServerResponse save(Borrowapply borrowapply, Borrowdetail borrowdetail, HttpSession session){
+    public ServerResponse save(HttpSession session ,BorrowApplyDetail borrowApplyDetail) {
+        Borrowapply borrowApply = new Borrowapply();
+        Borrowdetail borrowDetail = new Borrowdetail();
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object!=null){
             User user = (User) object;
-            borrowapply.setUid(user.getUid());
-            serverResponse = borrowapplyService.save(borrowapply);
-            if(serverResponse.isSuccess()){
-                borrowdetail.setBaid(borrowapply.getBaid());
-                return  borrowdetailService.save(borrowdetail);
+            try {
+                BeanCopyUtils.copy(borrowApply, borrowApplyDetail);
+                BeanCopyUtils.copy(borrowDetail, borrowApplyDetail);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            return serverResponse;
+            borrowApply.setUid(user.getUid());
+            return borrowapplyService.saveBorrow(borrowApply, borrowDetail);
         }
         return ServerResponse.createByError("登录超时");
+    }
+
+    @PostMapping("upload")
+    public Object upload(MultipartFile file){
+        Map<String, Object> map = new HashMap<>();
+        String path = PathUtils.mkUploads1()+"/borrowdetail";
+        try {
+            String image = UploadUtil.uploadFile(file,path);
+            map.put("code",0);
+            map.put("image","/static/uploads/borrowdetail/"+image);
+        } catch (IOException e) {
+            map.put("code",1);
+            e.printStackTrace();
+        }
+        return map;
     }
 
     /**
@@ -74,6 +97,8 @@ public class BorrowapplyController {
         Map.put("borrowdetail",borrowdetailService.getById(bdid).getData());
         return ServerResponse.createBySuccess(Map);
     }
+
+
 
     /**
      * 借款申请修改 查询了基本信息和详情

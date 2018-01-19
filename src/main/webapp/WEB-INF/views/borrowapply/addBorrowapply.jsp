@@ -13,44 +13,13 @@
     <link rel="stylesheet" href="<%=path%>/static/css/user/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/user/account.css">
     <style>
-        .account .account-right {
-            width: 900px;
-            height: 1000px;
-            overflow: hidden;
-            display: inline-block;
-        }
         .layui-upload-img{width: 92px; height: 92px; margin: 0 10px 10px 0;}
-        .account-right, .myCount, .safe {
-            width: 900px;
-            height: 600px;
-        }
 
-        .sub-a-nav {
-            width: 899px;
-            height: 45px;
-            border-bottom: 1px solid #e4e4e4;
-        }
-        .box1,.safe {
-
-            width: 900px;
-            height: 1250px;
-        }
-
-        .safe {
-            padding-top: 30px;
-        }
-
-    </style>
-    <style>
-        body{padding: 20px;}
-        .demo-input{padding-left: 10px; height: 38px; min-width: 262px; line-height: 38px; border: 1px solid #e6e6e6;  background-color: #fff;  border-radius: 2px;}
-        .demo-footer{padding: 50px 0; color: #999; font-size: 14px;}
-        .demo-footer a{padding: 0 5px; color: #01AAED;}
     </style>
 </head>
 <body>
 <div>
-
+    <%@include file="../common/top.jsp"%>
     <div id="app">
         <div class="account cl">
             <div class="account-right">
@@ -67,15 +36,15 @@
                             <div class="cash-pay">
                                 <div class="pay-from layui-form">
                                     <div class="label cl">
-                                        <label class="long">真实姓名：</label><input v-model="borrowApplyDetail.rname" type="text" maxlength="10" placeholder="请输入真实姓名">
+                                        <label class="long">真实姓名：</label><input v-model="borrowApplyDetail.rname" type="text"  placeholder="请输入真实姓名">
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">申请金额：</label><input v-model="borrowApplyDetail.money" type="text" maxlength="10" placeholder="请输入申请金额">
+                                        <label class="long">申请金额：</label><input v-model="borrowApplyDetail.money" type="text"  placeholder="请输入申请金额">
                                     </div>
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">借款类型：</label>
                                         <div class="layui-input-block" style="width: 295px;">
-                                            <select v-model="borrowApplyDetail.type" name="interest" lay-filter="aihao">
+                                            <select  lay-filter="type">
                                                 <option value="0" >个人</option>
                                                 <option value="1">企业</option>
                                             </select>
@@ -84,7 +53,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">标种：</label>
                                         <div class="layui-input-block" style="width: 295px;">
-                                            <select borrowApplyDetail.bzid name="interest" lay-filter="aihao">
+                                            <select  lay-filter="bzid">
                                                 <option value="1">恒金保</option>
                                                 <option value="2">多金宝</option>
                                                 <option value="3">新手标</option>
@@ -95,7 +64,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">借款期限：</label>
                                         <div class="layui-input-block" style="width: 295px;">
-                                            <select v-model="borrowApplyDetail.term" name="interest" lay-filter="aihao">
+                                            <select   lay-filter="term">
                                                 <option value="3">3</option>
                                                 <option value="6">6</option>
                                                 <option value="9">9</option>
@@ -104,15 +73,15 @@
                                     </div>
                                     <div class="label cl label-msg">
                                         <label class="long">截止时间：</label>
-                                        <input type="text" v-model="borrowApplyDetail.deadline" class="demo-input" placeholder="请选择日期" id="tests">
+                                        <input type="text"  class="demo-input" placeholder="请选择日期" id="tests">
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">年化收益：</label><input v-model="borrowApplyDetail.nprofit" type="text" maxlength="10"  placeholder="请输入年化收益">
+                                        <label class="long">年化收益：</label><input v-model="borrowApplyDetail.nprofit" type="text"   placeholder="请输入年化收益">
                                     </div>
                                     <div class="layui-form-item" >
                                         <label class="layui-form-label">收益方式：</label>
                                         <div class="layui-input-block" style="width: 295px;">
-                                            <select v-model="borrowApplyDetail.way" name="interest" lay-filter="aihao">
+                                            <select  lay-filter="way">
                                                 <option value="1">等额本息</option>
                                                 <option value="2">等额本金</option>
                                                 <option value="3">每月付息到账还本</option>
@@ -121,19 +90,19 @@
                                         </div>
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">资金用途：</label><input v-model="borrowApplyDetail.mpurpose" type="text" maxlength="80" placeholder="请输入资金用途">
+                                        <label class="long">资金用途：</label><input v-model="borrowApplyDetail.mpurpose" type="text"  placeholder="请输入资金用途">
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">还款来源：</label><input v-model="borrowApplyDetail.hksource" type="text" maxlength="80" placeholder="请输入还款来源">
+                                        <label class="long">还款来源：</label><input v-model="borrowApplyDetail.hksource" type="text"  placeholder="请输入还款来源">
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">借款人介绍：</label><input v-model="borrowApplyDetail.suggest" type="text" maxlength="10" placeholder="请输借款人">
+                                        <label class="long">借款人介绍：</label><input v-model="borrowApplyDetail.suggest" type="text"  placeholder="请输借款人">
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">项目描述：</label><input v-model="borrowApplyDetail.xmdes" type="text" maxlength="80" placeholder="请输项目描述">
+                                        <label class="long">项目描述：</label><input v-model="borrowApplyDetail.xmdes" type="text"  placeholder="请输项目描述">
                                     </div>
                                     <div class="label cl">
-                                        <label class="long">保障措施：</label><input v-model="borrowApplyDetail.guarantee" type="text" maxlength="80" placeholder="请输项目描述">
+                                        <label class="long">保障措施：</label><input v-model="borrowApplyDetail.guarantee" type="text"  placeholder="请输项目描述">
                                     </div>
                                     <div class="layui-upload">
                                         <ui class="layui-tab-title">
@@ -183,7 +152,9 @@
             </div>
         </div>
 
-    </div></div>
+    </div>
+    <%@include file="../common/footer.jsp"%>
+</div>
 </body>
 <script src="<%=path%>/static/layui/layui.js"></script>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
@@ -192,80 +163,132 @@
 <script src="<%=path%>/static/js/qs.js"></script>
 <script>
 
+
+   var vue =  new Vue({
+        el:'#app' ,
+        data:{
+            borrowApplyDetail:{
+                rname:'',
+                money:'',
+                type:0,
+                bzid:1,
+                term:3,
+                deadline:'',
+                nprofit:'',
+                way:1,
+                mpurpose:'',
+                hksource:'',
+                suggest:'',
+                xmdes:'',
+                guarantee:'',
+                fpic:'',
+                ypic:'',
+                qpic:'',
+                tpic:''
+            }
+        },
+        methods:{
+            add () {
+                console.log(this.borrowApplyDetail);
+                axios.post('/borrowapply/data/json/save', Qs.stringify(this.borrowApplyDetail)).then((response) => {
+                    alert(response.data.message);
+                });
+            }
+        }
+    });
+
     layui.use(['form', 'upload','laydate'], function(){  //如果只加载一个模块，可以不填数组。如：layui.use('form')
         var form = layui.form //获取form模块
             ,upload = layui.upload //获取upload模块
         ,laydate = layui.laydate;
 
+        form.on('select(term)', function(data){
+            vue.borrowApplyDetail.term = data.value;
+        });
+        form.on('select(type)', function(data){
+            vue.borrowApplyDetail.type = data.value;
+        });
+        form.on('select(bzid)', function(data){
+            vue.borrowApplyDetail.bzid = data.value;
+        });
+        form.on('select(way)', function(data){
+            vue.borrowApplyDetail.way = data.value;
+        });
+
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: '/upload/'
+            ,url: '/borrowapply/data/json/upload'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo1').attr('src', result); //图片链接（base64）
                 });
             }
+            ,done:function (res) {
+                if(res>0){
+                    return alert('失败');
+                }else{
+                    return vue.borrowApplyDetail.fpic=res.image;
+                }
+            }
         });
         var uploadInst = upload.render({
             elem: '#test2'
-            ,url: '/upload/'
+            ,url: '/borrowapply/data/json/upload'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo2').attr('src', result); //图片链接（base64）
                 });
             }
+            ,done:function (res) {
+                if(res>0){
+                    return alert('失败');
+                }else{
+                    return vue.borrowApplyDetail.ypic=res.image;
+                }
+            }
         });
         var uploadInst = upload.render({
             elem: '#test3'
-            ,url: '/upload/'
+            ,url: '/borrowapply/data/json/upload'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo3').attr('src', result); //图片链接（base64）
                 });
             }
+            ,done:function (res) {
+                if(res>0){
+                    return alert('失败');
+                }else{
+                    return vue.borrowApplyDetail.qpic=res.image;
+                }
+            }
         });
         var uploadInst = upload.render({
             elem: '#test4'
-            ,url: '/upload/'
+            ,url: '/borrowapply/data/json/upload'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo4').attr('src', result); //图片链接（base64）
                 });
             }
+            ,done:function (res) {
+                if(res>0){
+                    return alert('失败');
+                }else{
+                    return vue.borrowApplyDetail.tpic=res.image;
+                }
+            }
         });
         laydate.render({
             elem: '#tests' //指定元素
+            ,done: function(value, date){
+               vue.borrowApplyDetail.deadline  = value;
+            }
         });
-    });
-
-    new Vue({
-        el:'#app' ,
-        data:{
-            borrowApplyDetail:{
-                rname:'',
-                money:0,
-                type:0,
-                bzid:1,
-                term:3,
-                deadline:'',
-                nprofit:0,
-                way:1,
-                mpurpose:'',
-                hksource:'',
-                suggest:'',
-                xmdes:'',
-                guarantee:''
-            }
-        },
-        methods:{
-            add () {
-                console.log(this.borrowApplyDetail);
-            }
-        }
     });
 </script>
 
