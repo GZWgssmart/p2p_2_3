@@ -78,6 +78,7 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+
     <!-- 配置静态文件的路径 -->
     <mvc:resources location="/static/" mapping="/static/**"/>
 
@@ -86,9 +87,9 @@
 
     <!-- 处理Request请求 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-<!--
-    <pojo class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+
+    <!-- 自定义异常处理-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="defaultErrorView" value="error" />
-    </pojo>
-    -->
+    </bean>
 </beans>

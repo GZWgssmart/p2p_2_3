@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/role/data/json")
-public class RoleController extends ShiroExecptionController{
+public class RoleController {
 
     @Autowired
     private RoleService roleService;

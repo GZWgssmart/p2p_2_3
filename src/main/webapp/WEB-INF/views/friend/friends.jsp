@@ -25,6 +25,7 @@
     <!--table工具栏-->
     <script type="text/html" id="barFriend">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
         <a class="layui-btn layui-btn-xs" lay-event="bigPic">查看大图</a>
     </script>
 

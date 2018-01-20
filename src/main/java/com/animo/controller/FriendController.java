@@ -28,6 +28,10 @@ public class FriendController {
     @Autowired
     private FriendService friendService;
 
+    @RequestMapping("delete")
+    public ServerResponse deleteById(Friend friend){
+        return friendService.removeById(friend.getFid());
+    }
 
     @RequestMapping("pager")
     public Pager pagerFriend(Integer page, Integer limit){

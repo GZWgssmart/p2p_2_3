@@ -87,6 +87,7 @@ $(function () {
             //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
+            vue.friend = data;
             if (layEvent === 'edit') {
                 layer.open({
                     type: 1,
@@ -98,7 +99,6 @@ $(function () {
                     skin: '',
                     content: $("#editFriendWin")
                 });
-                vue.friend = data;
                 $("#imgSrc2").attr('src',vue.friend.fpic)
                 $("#imgSrc2").attr('style','width: 258px;height: 135px;');
             } else if (layEvent === 'bigPic') {
@@ -112,9 +112,24 @@ $(function () {
                     skin: '',
                     content: $("#bigPicWin")
                 });
-                vue.friend = data;
                 $("#imgSrc3").attr('src',vue.friend.fpic)
                 $("#imgSrc3").attr('style','width: 500px;height: 300px;');
+            }else if (layEvent === 'del'){
+                layer.msg('您确定要删除吗？10s后自动取消', {
+                    time: 10000, //10s后自动关闭
+                    btn: ['是的', '取消'],
+                    yes:function(){
+                        axios.post('/friend/data/json/delete', Qs.stringify(vue.friend)).then((response) => {
+                            layer.msg(response.data.message);
+                            window.location.reload();
+                        }, (error) => {
+                            layer.alert("请求失败");
+                        });
+                    },
+                    btn2: function () {
+                        layer.msg('已取消');
+                    }
+                });
             }
         });
         upload.render({

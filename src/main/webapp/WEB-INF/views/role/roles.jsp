@@ -112,7 +112,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">部门名称</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.rname" lay-verify="required|title" placeholder="请输入角色名称"
+                    <input type="text" v-model="role.rname" lay-verify="required" placeholder="请输入角色名称"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -169,7 +169,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">角色名称</label>
                 <div class="layui-input-block">
-                    <input type="text" v-model="role.rname" required lay-verify="required" placeholder="请输入角色名称"
+                    <input type="text" v-model="role.rname" lay-verify="required" placeholder="请输入角色名称"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -185,7 +185,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">当前所属部门</label>
                 <div class="layui-input-block">
-                    <input type="text" disabled v-model="roleDel.dep" required lay-verify="required" placeholder=""
+                    <input type="text" disabled v-model="roleDel.dep" lay-verify="required" placeholder=""
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -229,10 +229,6 @@
 <!--引入js文件-->
 <%@include file="role-foot.jsp" %>
 <script type="text/javascript">
-    var form;
-    layui.use(['form'], function () {
-        form = layui.form;
-    });
     var vue = new Vue({
         el: "#app",
         data: {
@@ -275,7 +271,7 @@
                 if (this.role.pid.length != 0) {
                     form.on('submit(save)', function(data){
                         axios.post('/role/data/json/save', Qs.stringify(vue.roleJurVO)).then((response) => {
-                            alert(response.data.message);
+                            layer.msg(response.data.message);
                         }, (error) => {
                             layer.alert("请求失败");
                         });
