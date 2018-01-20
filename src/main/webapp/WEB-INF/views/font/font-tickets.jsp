@@ -63,7 +63,7 @@
                                                     <li class="row11"><p class="row-bottom color">{{item.tkmoney}}	元</p></li>
                                                     <li class="row12"><p class="row-top">有效时间：{{item.tktime}}前可使用</p></li>
                                                     <li class="row12"><p class="row-top"><span>剩余：</span>{{item.tnum}}</p></li>
-                                                    <li class="row6"><button type="button" class="btn " onclick="toInvest(411,2)">免费领取</button>
+                                                    <li class="row6"><button type="button" class="btn " @click="neck(item.kid,item.tnum,0)">免费领取</button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -88,7 +88,7 @@
                                                     <li class="row11"><p class="row-bottom color">{{item.tkmoney}}	元</p></li>
                                                     <li class="row12"><p class="row-top">有效时间：{{item.tktime}}前可使用</p></li>
                                                     <li class="row12"><p class="row-top"><span>剩余：</span>{{item.tnum}}</p></li>
-                                                    <li class="row6"><button type="button" class="btn " onclick="toInvest(411,2)">免费领取</button>
+                                                    <li class="row6"><button type="button" class="btn " @click="neck(item.kid,item.tnum,1)">免费领取</button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-
+<input id="uid" value="${sessionScope.user.uid}"/>
             <%--尾部部--%>
         <%@include file="../common/footer.jsp"%>
     </div>
@@ -111,20 +111,52 @@
 <script src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
 <script type="text/javascript">
-    $(function () {
         var vue = new Vue({
             el:'#ticket-app'
             ,data:{
                 notVipTickets:[]
                 ,isVipTickets:[]
+                ,ticket:{
+                    tnum:'',
+                    kid:''
+                }
+                ,user:[]
             }
             ,created () {
                 getNotVipTickets();
                 getIsVipTickets();
             }
             ,methods:{
-
+                neck(kid,tnum,isvip){
+                    getUserInfo();
+                if(isvip==1){
+                    if(this.user.isvip==1){
+                        this.ticket.tnum=parseInt(tnum)-1;
+                        this.ticket.kid = kid;
+                        axios.post('/ticket/data/json/neck',Qs.stringify(this.ticket)).then((response)=>{
+                            if(response.data.code==0){
+                                return alert('领取成功');
+                            }
+                            return alert(response.data.message);
+                        },(error)=>{
+                        });
+                    }
+                    return alert('您不是vip');
+                }
+                if(isvip==0){
+                    this.ticket.tnum=parseInt(tnum)-1;
+                    this.ticket.kid = kid;
+                    axios.post('/ticket/data/json/neck',Qs.stringify(this.ticket)).then((response)=>{
+                        if(response.data.code==0){
+                            return alert('领取成功');
+                        }
+                        return alert(response.data.message);
+                    },(error)=>{
+                    });
+                    }
+                },
             }
             ,filters:{
                 formattkType(type){
@@ -146,6 +178,12 @@
             });
         }
 
+        function getUserInfo() {
+            axios.get('/user/data/json/byiddync?id='+$("#uid").val()).then((response) => {
+                this.user = response.data.data;
+            });
+        }
+
         function tkTypeFormat(value) {
             if (value == 0){
                 return '代金券';
@@ -153,6 +191,5 @@
                 return '现金券';
             }
         }
-    })
 </script>
 </html>

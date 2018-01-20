@@ -36,7 +36,6 @@
             </li>
         </div>
     <li><input type="button" class="btn" onclick="login();" value="登录"></li>
-    <li class="tar"><a href="">忘记密码？</a></li>
     </form>
 </ul>
 </div>

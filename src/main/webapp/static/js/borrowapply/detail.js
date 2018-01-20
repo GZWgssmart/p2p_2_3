@@ -67,3 +67,7 @@ function getinfo(baid,bdid) {
 function getmoney() {
     return axios.get('/userMoney/data/json/selectBanlance');
 }
+
+function getTicket() {
+    return axios.get('/userTicket/data/json/list');
+}

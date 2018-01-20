@@ -137,7 +137,9 @@
         data: {
             bankcard: {
                 type: '',
-                cardno: ''
+                cardno: '',
+                rname:'',
+                idno:''
             },
             user:[]
         },
@@ -149,10 +151,12 @@
         methods: {
             save: function () {
                 var options=$("#type option:selected"); //获取选中的项
-                this.bankcard.type = options.val();
-                console.log(this.bankcard);
-               if(this.bankcard.cardno!=''){
-                axios.post('/bankcard/data/json/save', Qs.stringify(this.bankcard))
+                vue.bankcard.type = options.val();
+                vue.bankcard.rname=vue.user.rname;
+                vue.bankcard.idno=vue.user.idno;
+                console.log(vue.bankcard);
+               if(vue.bankcard.cardno!=''){
+                axios.post('/bankcard/data/json/save', Qs.stringify(vue.bankcard))
                     .then((response) => {
                         if(response.data.code==0){
                             alert('绑定成功');

@@ -75,9 +75,9 @@
                 <button type="button" @click="touzi">投资</button>
             </div>
             <div class="quan">
-                <select id="selectQuan">
-
-                    <option value="0">当前没有可用的优惠券</option></select>
+                <%--<select>--%>
+                    <%--<option v-for="item in tickets" value="item.kid">价值:{{item.tkmoney}}</option>--%>
+                <%--</select>--%>
                 <a href="calculator.html?repayWay=3&amp;showRate=9+1&amp;time=6" class="icon icon-cal" id="calculator">详细收益明细</a>
             </div>
             <button v-if="borrowapply.ckstatus==2" class="btn"  type="button">投标中</button>
@@ -339,7 +339,8 @@
                 baid:${requestScope.get("baid")},
                 resint1:'',
                 resint2:''
-            }
+            },
+            tickets:[]
         },
         filters: {
             formatDate(time) {
@@ -374,10 +375,11 @@
             }
         },
         created (){
-            axios.all([getinfo(this.tzb.baid,this.bdid),getmoney()]).then(axios.spread((borrowapplyDetail,money)=>{
+            axios.all([getinfo(this.tzb.baid,this.bdid),getmoney(),getTicket]).then(axios.spread((borrowapplyDetail,money,tickets)=>{
                  this.borrowapply = borrowapplyDetail.data.data.borrowapply;
                  this.borrowdetail = borrowapplyDetail.data.data.borrowdetail;
                  this.money = money.data.data.kymoney;
+//                this.tickets =tickets.data.data;
             }));
         },
         methods:{

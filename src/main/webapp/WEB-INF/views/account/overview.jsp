@@ -822,6 +822,8 @@
                 this.user.sex = $('input:radio[name="sex"]:checked').val();
                     axios.post('/user/data/json/updateInfo',Qs.stringify(this.user)).then((response) => {
                         alert(response.data.message);
+                        var index = parent.layer.getFrameIndex(window.name);
+                        layer.close(index);
                     })
             },
             getUserInfo(){

@@ -1,8 +1,11 @@
 package com.animo.controller.backviews;
 
+import com.animo.constant.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Animo on 2017-12-21.
@@ -13,8 +16,12 @@ public class AdminBackViews {
 
 
     @GetMapping("home")
-    public String home(){
-        return "admin/home";
+    public String home(HttpSession session){
+//        Object object = session.getAttribute(Constant.SESSION_ADMIN);
+//        if(object!=null){
+            return "admin/home";
+//        }
+//        return "admin/login";
     }
 
     @GetMapping("index")

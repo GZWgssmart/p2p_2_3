@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TicketMapper extends BaseMapper{
     List<Ticket> selectByIsVip(@Param("isvip") Integer isvip);
+
 }

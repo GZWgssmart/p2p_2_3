@@ -1,11 +1,12 @@
 package com.animo.service;
 
-import com.animo.common.Pager;
+import com.animo.common.ServerResponse;
 import com.animo.pojo.Ticket;
-import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface TicketService extends BaseService {
     List<Ticket> selectByIsVip(Integer isvip);
+    ServerResponse neck(Ticket ticket, HttpSession session);
 }

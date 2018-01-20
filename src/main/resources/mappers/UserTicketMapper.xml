@@ -79,4 +79,13 @@
       tktime = #{tktime,jdbcType=TIMESTAMP}
     where ukid = #{ukid,jdbcType=INTEGER}
   </update>
+
+  <select id="getByUid" resultType="com.animo.pojo.UserTicket">
+    SELECT  * FROM user_ticket WHERE uid=#{uid}
+  </select>
+  
+  <select id="getByUidAndKid" resultType="com.animo.pojo.UserTicket">
+    SELECT * FROM user_ticket WHERE uid=#{uid} and kid=#{kid}
+  </select>
+
 </mapper>

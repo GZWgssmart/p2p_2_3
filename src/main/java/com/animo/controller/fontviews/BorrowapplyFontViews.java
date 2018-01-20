@@ -1,11 +1,13 @@
 package com.animo.controller.fontviews;
 
+import com.animo.constant.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Animo on 2017-12-26.
@@ -31,7 +33,10 @@ public class BorrowapplyFontViews {
     }
 
     @GetMapping("add")
-    public String add(){
+    public String add(HttpSession session){
+        if(session.getAttribute(Constant.SESSION_USER)==null){
+            return "user/login";
+        }
         return "borrowapply/addBorrowapply";
     }
 

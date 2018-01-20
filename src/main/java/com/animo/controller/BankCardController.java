@@ -42,20 +42,20 @@ public class BankCardController {
         Object object = session.getAttribute(Constant.SESSION_USER);
         if(object != null){
             User user = (User) object;
-           Object object1 = JSON.parseObject(HttpSendUtils.sendPost("http://localhost:8081/bind",
-                    "realName="+user.getRname()+"&bankCardNo="+bankcard.getIdno()+"&bank="+bankcard.getType()+"&phone="+user.getPhone()), new TypeReference<BankResult>(){});
-           if(object1!=null){
-               BankResult bankResult = (BankResult) object1;
-               if(bankResult.getCode()==1000){
+//           Object object1 = JSON.parseObject(HttpSendUtils.sendPost("http://localhost:8081/bind",
+//                    "realName="+user.getRname()+"&bankCardNo="+bankcard.getIdno()+"&bank="+bankcard.getType()+"&phone="+user.getPhone()), new TypeReference<BankResult>(){});
+//           if(object1!=null){
+//               BankResult bankResult = (BankResult) object1;
+//               if(bankResult.getCode()==1000){
                    bankcard.setUid(user.getUid());
                    bankcard.setRname(user.getRname());
                    bankcard.setIdno(user.getIdno());
                    bankcard.setStatus(0);
                    bankcard.setBktime(DateFormateUtils.Formate());
                    return bankCardService.save(bankcard);
-               }
-               return ServerResponse.createByError(bankResult.getMessage());
-           }
+//               }
+//               return ServerResponse.createByError(bankResult.getMessage());
+//           }
 
         }
         return ServerResponse.createByError("您的登录已经超时,绑定失败！");
