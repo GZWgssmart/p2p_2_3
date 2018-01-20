@@ -63,6 +63,7 @@
 
                 axios.post('/dyna/data/json/byiddync', params).then((response) => {
                     this.code = response.data.data.content;
+
                     this.lists = response.data.data;
 
                     $("#code").append(this.code)
@@ -89,6 +90,9 @@
 
         return ue.getContent();
     }
+    function getContentTxt() {
+        return ue.getContentTxt()
+    }
 
 </script>
 
@@ -105,7 +109,8 @@
             'dyid':dyid,
             'title':title,
             'pic' :pic,
-            'content':getContent()
+            'content':getContent(),
+            'url':getContentTxt()
 
         },function(data) {
             $("#success").html(data);

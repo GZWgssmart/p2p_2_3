@@ -106,7 +106,6 @@
             'nid':nid,
             'title':title,
             'content':getContent()
-
         },function(data) {
             $("#success").html(data);
             window.location.href="/back/not/pager";

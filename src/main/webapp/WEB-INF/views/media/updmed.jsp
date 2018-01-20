@@ -92,6 +92,9 @@
 
         return ue.getContent();
     }
+    function getContentTxt() {
+        return ue.getContentTxt()
+    }
 
 </script>
 
@@ -108,7 +111,8 @@
             'mid':mid,
             'title':title,
             'pic' :pic,
-            'content':getContent()
+            'content':getContent(),
+            'url':getContentTxt()
 
         },function(data) {
             $("#success").html(data);
