@@ -108,7 +108,6 @@
     </div>
     <!-- invest list -->
 </body>
-<script src="<%=path%>/static/js/jquery-js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/vue.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/axios.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/qs.js"></script>
@@ -130,24 +129,25 @@
             }
             ,methods:{
                 neck(kid,tnum,isvip){
-                if(isvip==1){
-                    getUserInfo();
+                    axios.get('/user/data/json/byiddync?id='+$("#uid").val()).then((response) => {
+                        vue.user = response.data.data;
+                    });
                     console.log(vue.user);
+                if(isvip==1){
                     if(this.user==null || this.user==undefined){
                         return alert('请登录');
                     }
-                    if(this.user.isvip==1){
-                        this.ticket.tnum=parseInt(tnum)-1;
+                    if(this.user.isvip==1) {
+                        this.ticket.tnum = parseInt(tnum) - 1;
                         this.ticket.kid = kid;
-                        axios.post('/ticket/data/json/neck',Qs.stringify(this.ticket)).then((response)=>{
-                            if(response.data.code==0){
+                        axios.post('/ticket/data/json/neck', Qs.stringify(this.ticket)).then((response) => {
+                            if (response.data.code == 0) {
                                 return alert('领取成功');
                             }
                             return alert(response.data.message);
                         });
-                    }else{
-                        return alert('您不是vip');
                     }
+                    return alert('您不是vip');
                 }
                 if(isvip==0){
                     this.ticket.tnum=parseInt(tnum)-1;
@@ -178,13 +178,6 @@
             axios.get('/ticket/data/json/ticketsByIsVip?isvip=1').then((response)=>{
                 vue.isVipTickets = response.data;
             },(error)=>{
-            });
-        }
-
-        function getUserInfo() {
-            axios.get('/user/data/json/byiddync?id='+$("#uid").val()).then((response) => {
-                vue.user = response.data.data;
-                console.log(vue.user);
             });
         }
 

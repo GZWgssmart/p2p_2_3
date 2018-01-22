@@ -45,14 +45,14 @@
 <!-- nav -->
 <div class="nav" style="height: 140px;">
     <div class="wrap cl">
-        <div class="logo"><img src="/static/images/index/logo.png" alt="普金资本"></div>
+        <div class="logo"><a href="/"><img src="/static/images/index/logo.png" alt="普金资本"></a></div>
         <div class="nav-bar">
             <ul>
                 <c:if test="${sessionScope.user == null}">
                     <li class="icon icon-acc"><a href="/user/login">我的账户</a></li>
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
-                <li class="icon icon-acc"><a href="/user/accountOverride">我的账户</a></li
+                <li class="icon icon-acc"><a href="/user/accountOverride">我的账户</a></li>
                 </c:if>
                 <li><a href="/back/font/information">信息披露 </a></li>
                 <li><a href="/back/font/security">安全保障</a></li>
@@ -62,7 +62,9 @@
                 <li id="tickets">
                     <a href="/ticket/pager">优惠券</a>
                 </li>
-                <li><a href="/">首页</a></li>
+                <li>
+                    <a href="/borrowapply/all/2">投资理财</a>
+                </li>
             </ul>
         </div>
     </div>

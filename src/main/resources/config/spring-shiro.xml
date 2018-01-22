@@ -62,7 +62,7 @@
                 /back/admin/home = authc,perms[admin:view]
                 <!--所有前台用户页面必须登录，且必须为用户身份-->
                 <!--/user/accountOverride/** = authc-->
-                /borrowapply/add = authc
+                /borrowapply/add = anon
             </value>
         </property>
     </bean>

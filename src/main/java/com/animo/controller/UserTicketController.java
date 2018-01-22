@@ -31,4 +31,10 @@ public class UserTicketController {
         return ServerResponse.createBySuccess(null);
     }
 
+
+    @GetMapping("getMoney")
+    public ServerResponse getMoney(Integer ukid){
+        return userTicketService.getByUkid(ukid);
+    }
+
 }

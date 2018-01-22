@@ -32,25 +32,8 @@
             <!-- 头部右侧操作 -->
             <ul class="layui-nav operate">
                 <li class="layui-nav-item">
-                    <!-- 进入商城首页    -->
-                    <a href="javascript:;">商品首页</a>
-                </li>
-                <li class="layui-nav-item">
-                    <!-- 进入移动端首页    -->
-                    <a href="javascript:;" class="wap">商城WAP</a>
+                    <a href="javascript:;">${sessionScope.admin.phone}</a>
                     <dl class="layui-nav-child">
-                        <dd class="p10">
-                            <%--<img src="img/pic.png" width="150px" height="150px" alt="">--%>
-                            <p class="tac" style="color:#333;">扫一扫进入商城WAP</p>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">137****6116</a>
-                    <dl class="layui-nav-child">
-                        <%-- <dd>
-                             <a href="javascript:;" class="edit-password">修改密码</a>
-                         </dd>--%>
                         <dd>
                             <a href="<%=path%>/admin/logout">退出登录</a>
                         </dd>

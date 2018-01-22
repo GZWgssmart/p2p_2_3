@@ -6,6 +6,7 @@ import com.animo.dao.UserTicketMapper;
 import com.animo.pojo.Ticket;
 import com.animo.pojo.UserTicket;
 import com.animo.service.UserTicketService;
+import com.animo.vo.TicketVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.util.resources.cldr.kea.TimeZoneNames_kea;
@@ -46,5 +47,10 @@ public class UserTicketServiceImpl  extends AbstractServiceImpl implements UserT
             tickets.add(ticket1);
         }
         return ServerResponse.createBySuccess(tickets);
+    }
+
+    @Override
+    public ServerResponse getByUkid(Integer ukid) {
+        return ServerResponse.createBySuccess(userTicketMapper.getByUkid(ukid));
     }
 }

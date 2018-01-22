@@ -190,7 +190,13 @@
             },
             money (value) {
                 return formatMoney(value,2);
-            }
+            },
+            formatNumber(value){
+                if(value==Infinity){
+                    return 0;
+                }
+                return value.toFixed(2);
+            },
         },
         created () {
         },

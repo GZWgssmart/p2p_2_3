@@ -33,4 +33,6 @@ public interface BorrowapplyService extends BaseService{
 
     List<BorrowingVO> borrowingList();
 
+    Pager listPager(int pageNo, int pageSize);
+
 }

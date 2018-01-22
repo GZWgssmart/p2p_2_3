@@ -15,6 +15,7 @@
     <link rel="icon" href="<%=path%>/static/images/index/logo_title.jpg" type="image/x-icon"/>
 </head>
 <body class="w960">
+<%@include file="../common/top.jsp"%>
 <div class="wrapper">
     <div class="min-width-out">
         <div class="min-width-in">

@@ -66,7 +66,7 @@ public class BorrowapplyController {
             borrowApply.setUid(user.getUid());
             return borrowapplyService.saveBorrow(borrowApply, borrowDetail);
         }
-        return ServerResponse.createByError("登录超时");
+        return ServerResponse.createByError("请登录");
     }
 
     @PostMapping("upload")

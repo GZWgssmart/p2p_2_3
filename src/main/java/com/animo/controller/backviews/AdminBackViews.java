@@ -17,11 +17,11 @@ public class AdminBackViews {
 
     @GetMapping("home")
     public String home(HttpSession session){
-//        Object object = session.getAttribute(Constant.SESSION_ADMIN);
-//        if(object!=null){
+        Object object = session.getAttribute(Constant.SESSION_ADMIN);
+        if(object!=null){
             return "admin/home";
-//        }
-//        return "admin/login";
+        }
+        return "admin/login";
     }
 
     @GetMapping("index")

@@ -335,7 +335,9 @@
                 resint2:'',
                 resint3:'0'
             },
-            tickets:[]
+            tickets:[],
+            tkmoney:0,
+            userTicket:[]
         },
         filters: {
             formatDate(time) {
@@ -404,16 +406,19 @@
                     if(this.tzb.resint3=='0'){
                         this.tzb.resint3=null;
                     }
+                    if(this.tzb.resint3!=null && this.tzb.resint3!='0') {
+                        axios.get('/userTicket/data/json/getMoney?ukid=' + this.tzb.resint3).then((response) => {
+                            this.userTicket= response.data.data;
+                        });
+                    }
                     axios.post('/tzb/data/json/save', Qs.stringify(this.tzb)).then((response) => {
                         if(response.data.code==0){
-                            this.money =parseInt(this.money) - parseInt(this.tzb.money);
+                            this.money =parseInt(this.money) - parseInt(this.tzb.money)+this.userTicket.tkmoney;
                             this.borrowdetail.money=parseInt(this.borrowdetail.money)+parseInt(this.tzb.money);
                             this.tzb.resint3="0";
                             return alert(response.data.message);
                         }
                         alert(response.data.message)
-                    }, (error) => {
-
                     });
                 }
             },

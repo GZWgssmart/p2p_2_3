@@ -88,4 +88,9 @@
     SELECT * FROM user_ticket WHERE uid=#{uid} and kid=#{kid}
   </select>
 
+
+  <select id="getByUkid" resultType="com.animo.vo.TicketVo">
+      SELECT t.type,ut.ukid,ut.tktime,t.tktime AS ttime,t.isvip,t.tkmoney  FROM ticket AS t,user_ticket AS ut WHERE t.kid=ut.kid and  ut.kid=#{ukid}
+  </select>
+
 </mapper>

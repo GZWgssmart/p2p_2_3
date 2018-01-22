@@ -260,21 +260,21 @@
   </select>
 
 
-  <sql id="Base_column_list">
+  <sql id="Base_column_list1">
     ba.baid, ba.rname, ba.money, b.bzname, ba.uid, ba.ckstatus, ba.cktime, ba.type, ba.term,
     ba.deadline, bd.cpname, bd.way, bd.nprofit, bd.money as moneyCount,
     bd.fpic, bd.ypic, bd.qpic, bd.tpic, bd.mpurpose, bd.hksource, bd.suggest, bd.xmdes, bd.guarantee
   </sql>
   <select id="getByIdVo" parameterType="java.lang.Integer" resultType="com.animo.vo.BorrowApplyDetail">
     select
-    <include refid="Base_column_list" />
+    <include refid="Base_column_list1" />
     from borrowapply ba, bz b, borrowdetail bd
     where b.bzid = ba.bzid and bd.baid = ba.baid and ba.baid = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="getByCkstaus" parameterType="integer" resultType="com.animo.vo.BorrowApplyDetail">
     select
-    <include refid="Base_column_list" />
+    <include refid="Base_column_list1" />
     from borrowapply ba, bz b, borrowdetail bd
     where b.bzid = ba.bzid and bd.baid = ba.baid and ba.baid = #{id,jdbcType=INTEGER}
     and ckstatus=#{ckstatus}
@@ -282,15 +282,15 @@
 
   <select id="listPager" resultType="com.animo.vo.BorrowApplyDetail">
     SELECT
-      <include refid="Base_column_list" />
+      <include refid="Base_column_list1" />
       from borrowapply ba, bz b, borrowdetail bd
-      where b.bzid = ba.bzid and bd.baid = ba.baid  limit #{beginIndex}, #{pageSize}
+      where b.bzid = ba.bzid and bd.baid = ba.baid AND ba.ckstatus in (2,4,5)  limit #{beginIndex}, #{pageSize}
   </select>
 
   
   <select id="count" resultType="long">
     <![CDATA[
-      SELECT count(baid) FROM borrowapply
+      SELECT count(baid) FROM borrowapply WHERE   ckstatus in (2,4,5)
     ]]>
   </select>
 

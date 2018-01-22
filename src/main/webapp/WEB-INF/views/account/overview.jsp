@@ -404,7 +404,6 @@
                                         <div class="safe-list-2" id="email-text">{{user.email | email}}</div>
                                         <div class="safe-list-3">
                                             <a href="javascript:;" id="cellEmail" class="on">已绑定</a>
-                                            <a href="javascript:;" id="changeEmail">修改</a>
                                         </div>
                                     </li>
                                     <li v-else>

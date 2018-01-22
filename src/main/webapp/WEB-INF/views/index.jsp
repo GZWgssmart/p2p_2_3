@@ -50,7 +50,7 @@
                 <li class="center"><p>累计投资金额：<span id="investAmount">31,768,031.00</span><span class="small">元</span>
                 </p></li>
                 <!--<li class="center"><p>累计赚取收益：<span id="hasInterest">0</span><span class="small">元</span></p></li>-->
-                <li class="last"><p>累计注册投资人：<span id="userTotal">{{numberPeople}}</span><span class="small">人</span></p></li>
+                <li class="last"><p>累计注册投资人：<span id="userTotal">9894</span><span class="small">人</span></p></li>
             </ul>
             <div class="explian cl">
                 <a href="" class="first">
