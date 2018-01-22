@@ -13,4 +13,7 @@ public interface UserService extends BaseService {
     User getByPhonePwd(String phone, String upwd);
 
     Pager listPagerCriteria(Integer beginIndex,Integer pageSize,String resstr2);
+
+    int getByEmail(String email);
+
 }

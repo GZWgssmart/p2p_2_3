@@ -97,8 +97,8 @@
                     parent.layer.close(index); //再执行关闭
                     $(":text").val("");
 
-                } else {
-                    showError(data.message, $("#email"));
+                } else if(data.message == 'error'){
+                    showError("该邮箱已存在", $("#email"));
                 }
             },
             'json'

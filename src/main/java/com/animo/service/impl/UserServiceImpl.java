@@ -45,4 +45,9 @@ public class UserServiceImpl extends AbstractServiceImpl implements UserService 
         return pager;
     }
 
+    @Override
+    public int getByEmail(String email) {
+        return userMapper.getByEmail(email);
+    }
+
 }

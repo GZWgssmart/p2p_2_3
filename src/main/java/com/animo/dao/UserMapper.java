@@ -19,6 +19,6 @@ public interface UserMapper extends BaseMapper{
 
     Long countCriteria(@Param("resstr2") String resstr2);
 
-
+    int getByEmail(String email);
 
 }

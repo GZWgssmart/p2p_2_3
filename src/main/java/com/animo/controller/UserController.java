@@ -123,7 +123,14 @@ public class UserController {
 
     @PostMapping("saveEmail")
     public ServerResponse saveEmail(User user) {
-        return userService.update(user);
+        int a = userService.getByEmail(user.getEmail());
+        if(a == 0) {
+            userService.update(user);
+            return ServerResponse.createBySuccess("success");
+        }else{
+            return ServerResponse.createByError("error");
+        }
+
     }
 
     /**

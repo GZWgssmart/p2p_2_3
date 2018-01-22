@@ -296,4 +296,8 @@
   </select>
 
 
+  <select id="getByEmail" resultType="Integer">
+    select count(uid) from t_user where email = #{email}
+  </select>
+
 </mapper>
