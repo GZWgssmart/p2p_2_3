@@ -364,7 +364,7 @@
                 showJur();
             },
             saveJurIds: function () {
-                layer.close(2);
+//                layer.msg(1);
             }
         }
     });

@@ -67,121 +67,131 @@
                 <li class="layui-nav-item layui-this">
                     <a href="javascript:;" data-url="" data-id="1">后台首页</a>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">用户管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="2">用户列表</a>
+                <shiro:hasPermission name="user:mannager">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">用户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/user/list" data-id="2">用户列表</a>
 
-                        </dd>
-                        <dd>
+                            </dd>
+                            <dd>
 
-                            <a href="javascript:;" data-url="<%=path%>/back/user/tx" data-id="3">提现记录</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">管理员管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/add" data-id="4">添加管理员</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="5">管理员列表</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="7">修改密码</a>
-                        </dd>
-                        <%--<dd>--%>
-                        <%--<a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="8">修改信息</a>--%>
-                        <%--</dd>--%>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">投资管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/add" data-id="9">投资奖励设置</a>
-                        </dd>
-                        <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/user/tx" data-id="3">提现记录</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="admin:mannager">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">管理员管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/admin/add" data-id="4">添加管理员</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/admin/list" data-id="5">管理员列表</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/admin/password" data-id="7">修改密码</a>
+                            </dd>
+                                <%--<dd>--%>
+                                <%--<a href="javascript:;" data-url="<%=path%>/back/admin/upInfo" data-id="8">修改信息</a>--%>
+                                <%--</dd>--%>
+                        </dl>
+                    </li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="tz:mannager">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">投资管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/rewardset/add" data-id="9">投资奖励设置</a>
+                            </dd>
+                            <dd>
 
-                            <a href="javascript:;" data-url="<%=path%>/back/rewardset/list" data-id="10">投资奖励列表</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">运营管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="/back/home/save" data-id="9">添加轮播图</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/home/list" data-id="8">首页轮播图</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/dyna/save" data-id="14">添加公司动态</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/dyna/pager" data-id="11">公司动态</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/med/save" data-id="15">添加媒体报道</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/med/pager" data-id="12">媒体报道</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/not/save" data-id="16">添加公司公告</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="/back/not/pager" data-id="13">公司公告</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/letter/letterAdd" data-id="18">添加站内信</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="17">站内信</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/add" data-id="20">添加短信模板</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="19">短信模板</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/friends/addFriends" data-id="22">添加合作伙伴</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="21">合作伙伴</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/ticket/add" data-id="31">添加券</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/ticket/pager" data-id="30">所有券</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">借款管理</a>
-                    <dl class="layui-nav-child">
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="23">借款类型</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="24">标种</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="25">还款方式</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/sway/swayAdd" data-id="26">添加还款方式</a>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="27">所有借款</a>
-                        </dd>
-                    </dl>
-                </li>
+                                <a href="javascript:;" data-url="<%=path%>/back/rewardset/list" data-id="10">投资奖励列表</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="yy:mannager">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">运营管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="/back/home/save" data-id="9">添加轮播图</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/home/list" data-id="8">首页轮播图</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/dyna/save" data-id="14">添加公司动态</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/dyna/pager" data-id="11">公司动态</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/med/save" data-id="15">添加媒体报道</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/med/pager" data-id="12">媒体报道</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/not/save" data-id="16">添加公司公告</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="/back/not/pager" data-id="13">公司公告</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/letter/letterAdd" data-id="18">添加站内信</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/letter/pageAllLitter" data-id="17">站内信</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/dxmodel/add" data-id="20">添加短信模板</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/dxmodel/pagerDxmodel" data-id="19">短信模板</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/friends/addFriends" data-id="22">添加合作伙伴</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/friends/pagerFriend" data-id="21">合作伙伴</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/ticket/add" data-id="31">添加券</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="<%=path%>/back/ticket/pager" data-id="30">所有券</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </shiro:hasPermission>
+               <shiro:hasPermission name="jk:mannager">
+                   <li class="layui-nav-item">
+                       <a href="javascript:;">借款管理</a>
+                       <dl class="layui-nav-child">
+                           <dd>
+                               <a href="javascript:;" data-url="<%=path%>/back/jklx/pagerJklx" data-id="23">借款类型</a>
+                           </dd>
+                           <dd>
+                               <a href="javascript:;" data-url="<%=path%>/back/bz/pagerBz" data-id="24">标种</a>
+                           </dd>
+                           <dd>
+                               <a href="javascript:;" data-url="<%=path%>/back/sway/pagerSway" data-id="25">还款方式</a>
+                           </dd>
+                           <dd>
+                               <a href="javascript:;" data-url="<%=path%>/back/sway/swayAdd" data-id="26">添加还款方式</a>
+                           </dd>
+                           <dd>
+                               <a href="javascript:;" data-url="<%=path%>/back/borrowapply/all" data-id="27">所有借款</a>
+                           </dd>
+                       </dl>
+                   </li>
+               </shiro:hasPermission>
                 <shiro:hasPermission name="role:pager">
                     <li class="layui-nav-item">
                         <a href="javascript:;">角色管理</a>
