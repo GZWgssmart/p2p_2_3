@@ -20,47 +20,42 @@
 <body>
 <%@include file="./common/top.jsp"%>
 </div>
-<div class="calculator">
+<div class="calculator" id="app">
     <div class="calculator-top">
         <h3>收益计算器</h3>
         <ul class="calculator-from">
             <li>
                 <p class="top">投资金额（元）</p>
-                <p class="bottom"><input type="text" maxlength="10" class="input-text" id="money"/></p>
+                <p class="bottom"><input type="text" v-model.number="calcQuery.totalMoney"  class="input-text" /></p>
             </li>
             <li>
                 <p class="top">年化收益率（%）</p>
-                <p class="bottom"><input type="text" maxlength="5" class="input-text" id="annualRate"/></p>
-            </li>
-
-            <li>
-                <p class="top">投资类型</p>
-                <p class="bottom">
-                    <select class="input-text" id="isDayThe"/>
-                    <option value="1">月标</option>
-                    <option value="2">天标</option>
-                    </select>
-                </p>
+                <p class="bottom"><input type="text" v-model.number="calcQuery.nprofit" class="input-text" /></p>
             </li>
 
             <li>
                 <p class="top">还款期限<span id="repayTime">（月）</span></p>
-                <p class="bottom"><input type="text" maxlength="2" class="input-text" id="time"/>&nbsp;
+                <p class="bottom">
+                    <select class="input-text" v-model="calcQuery.month" />
+                        <option value="12" selected>12月</option>
+                        <option value="6">6月</option>
+                        <option value="3">3月</option>
+                    </select>
+                </p>
             </li>
             <li>
                 <p class="top">还款方式</p>
                 <p class="bottom">
-                    <select class="input-text" id="repayWay"/>
-                    <option value="1">等额本息还款</option>
-                    <option value="2">一次还本付息</option>
-                    <option value="3">先息后本</option>
+                    <select class="input-text" v-model="calcQuery.type"/>
+                    <option value="1" selected>等额本息</option>
+                    <option value="0">等额本金</option>
                     </select>
                 </p>
             </li>
             <li>
                 <p class="top"></p>
                 <p class="bottom">
-                    <button type="button" class="btn">开始计算</button>
+                    <button type="button" class="btn" @click="add">开始计算</button>
                 </p>
             </li>
         </ul>
@@ -71,14 +66,22 @@
         </div>
         <ul class="list-box" id="qishu1">
             <li class="title">
-                <div class="children0" id="qishu">期数</div>
-                <div class="children1">月还本息</div>
-                <div class="children2">月还本金</div>
-                <div class="children3">月还利息</div>
-                <div class="children4">本息余额</div>
+                <div class="children0" >期数</div>
+                <div class="children1">月还金额</div>
+                <div class="children2">支付本金</div>
+                <div class="children3">利息</div>
+                <div class="children4">剩余本金</div>
             </li>
         </ul>
-        <ul class="list-box listData" id="qishu2"></ul>
+        <ul class="list-box listData" id="qishu2">
+            <li v-for="(item,index) in calcs" class="interval">
+                <div class="children0">{{index + 1}}</div>
+                <div class="children1">{{item.repayment}}</div>
+                <div class="children2">{{item.payPrincipal}}</div>
+                <div class="children3">{{item.interest}}</div>
+                <div class="children4">{{item.remainTotal}}</div>
+            </li>
+        </ul>
     </div>
 </div>
 <div id="ajaxFooter"></div>
@@ -87,6 +90,30 @@
 <script type="text/javascript" src="/static/js/font/public.js"></script>
 <!-- 客服QQ -->
 <script charset="utf-8" type="text/javascript" src="/static/js/font/wpa.js"></script>
-<script type="text/javascript" src="/static/js/font/calculator.js"></script>
+<%--<script type="text/javascript" src="/static/js/font/calculator.js"></script>--%>
+<script type="text/javascript" src="/static/js/qs.js"></script>
 </body>
+<script>
+    new Vue({
+       el:"#app",
+        data:{
+            calcQuery:{
+                totalMoney:0,
+                nprofit:0,
+                type:1,
+                month:12
+            },
+            calcs:[]
+        },
+        methods:{
+            add () {
+                axios.post('/data/calc/calc',Qs.stringify(this.calcQuery)).then((response)=>{
+                    this.calcs = response.data.data
+                },(error)=>{
+
+                });
+            }
+        }
+    });
+</script>
 </html>

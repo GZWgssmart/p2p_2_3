@@ -40,4 +40,8 @@ public class BorrowapplyFontViews {
         return "borrowapply/addBorrowapply";
     }
 
+    @GetMapping("calc")
+    public String calc(){
+        return "calculator";
+    }
 }

@@ -11,6 +11,7 @@ import com.animo.service.BorrowapplyService;
 import com.animo.utils.ValidationUtils;
 import com.animo.vo.BorrowApplyDetail;
 import com.animo.vo.BorrowapplyMoneyVo;
+import com.animo.vo.BorrowingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -109,6 +110,11 @@ public class BorrowapplyServiceImpl extends AbstractServiceImpl implements Borro
         return borrowapplyMapper.getByCkstaus(ckstatus);
     }
 
+
+    @Override
+    public List<BorrowingVO> borrowingList() {
+        return borrowapplyMapper.borrowingList();
+    }
 
     private String getCpName(Integer baid) {
         if(baid / 1000 % 10 > 0) {

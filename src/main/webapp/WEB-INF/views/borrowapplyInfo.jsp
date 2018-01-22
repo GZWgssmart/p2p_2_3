@@ -79,7 +79,7 @@
                     <option value="0" selected>请选择优惠券</option>
                     <option v-for="item in tickets" :value="item.ukid">{{item.type |type}} 价值:{{item.tkmoney}}</option>
                 </select>
-                <a href="calculator.html?repayWay=3&amp;showRate=9+1&amp;time=6" class="icon icon-cal" id="calculator">详细收益明细</a>
+                <a href="javaScript:;" class="icon icon-cal" @click="calc">详细收益明细</a>
             </div>
             <button v-if="borrowapply.ckstatus==2" class="btn"  type="button">投标中</button>
             <button v-else class="btn disabled"  type="button">还款中</button>
@@ -446,6 +446,9 @@
                     vue.rows= res.rows;
                 });
             },
+            calc () {
+                window.location.href = "/borrowapply/calc"
+            }
         }
     })
 </script>

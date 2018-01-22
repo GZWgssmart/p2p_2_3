@@ -4,6 +4,7 @@ import com.animo.common.Pager;
 import com.animo.pojo.Borrowapply;
 import com.animo.vo.BorrowApplyDetail;
 import com.animo.vo.BorrowapplyVo;
+import com.animo.vo.BorrowingVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -34,5 +35,7 @@ public interface BorrowapplyMapper extends BaseMapper{
     Long  countByJuid(Integer juid);
 
     int updateStatus(@Param("baid") Integer baid,@Param("ckstatus") Integer ckstatus);
+
+    List<BorrowingVO> borrowingList();
 
 }

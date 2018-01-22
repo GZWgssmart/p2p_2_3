@@ -325,4 +325,9 @@
       SELECT count(b.baid) FROM borrowapply AS b,borrowdetail AS bd WHERE b.baid=bd.baid AND uid=#{juid}
     ]]>
   </select>
+  <select id="borrowingList" resultType="com.animo.vo.BorrowingVO">
+    select ba.baid, ba.uid as juid, ba.cktime, ba.term,
+    ba.deadline, bd.way, bd.nprofit, bd.money as moneyCount from borrowapply ba, borrowdetail bd
+    where bd.baid = ba.baid and ba.ckstatus = 2
+  </select>
 </mapper>

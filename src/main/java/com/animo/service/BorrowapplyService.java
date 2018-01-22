@@ -5,6 +5,7 @@ import com.animo.common.ServerResponse;
 import com.animo.pojo.Borrowapply;
 import com.animo.pojo.Borrowdetail;
 import com.animo.vo.BorrowApplyDetail;
+import com.animo.vo.BorrowingVO;
 
 import java.util.Date;
 import java.util.List;
@@ -29,5 +30,7 @@ public interface BorrowapplyService extends BaseService{
     Pager listByJuid (Integer pageNo, Integer pageSize, Integer juid);
 
     ServerResponse saveBorrow(Borrowapply borrowApply, Borrowdetail borrowDetail);
+
+    List<BorrowingVO> borrowingList();
 
 }

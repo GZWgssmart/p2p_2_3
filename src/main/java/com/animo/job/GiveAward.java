@@ -35,9 +35,9 @@ public class GiveAward {
     public void execute() {
         logger.info("give award...");
         try{
-            List<Reward> rewards = rewardService.selectByStatus("未发放");
+            List<Reward> rewards = rewardService.selectByStatus("0");
             for (Reward r : rewards) {
-                r.setStatus("已发放");
+                r.setStatus("1");
                 r.setRewardTime((Date) Calendar.getInstance().getTime());
                 serverResponse = userMoneyService.selectByUid(r.getUid());//通过uid查出对应的用户资金表数据
                 Usermoney usermoney = (Usermoney) serverResponse.getData();
