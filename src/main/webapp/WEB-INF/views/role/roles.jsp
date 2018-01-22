@@ -15,11 +15,15 @@
     <div class="layui-row">
         <div class="layui-col-xs6">
             <div>
-                <%--<shiro:hasPermission name="role:add">--%>
-                <button class="layui-btn" @click="showAddRole">添加角色</button>
-                <%--</shiro:hasPermission>--%>
-                <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
-                <button class="layui-btn" @click="showRoleJur">角色分配</button>
+                <shiro:hasPermission name="role:add">
+                    <button class="layui-btn" @click="showAddRole">添加角色</button>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="role:add">
+                    <button class="layui-btn" @click="showAddRoleDep">添加部门</button>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="roleJur:saveRoleJur">
+                    <button class="layui-btn" @click="showRoleJur">角色分配</button>
+                </shiro:hasPermission>
             </div>
             <!--角色zTree的显示容器-->
             <div>
@@ -56,7 +60,9 @@
                     </div>
                 </form>
                 <div>
-                    <button class="layui-btn" @click="showEditRole">修改详情</button>
+                    <shiro:hasPermission name="role:update">
+                        <button class="layui-btn" @click="showEditRole">修改详情</button>
+                    </shiro:hasPermission>
                 </div>
             </div>
         </div>

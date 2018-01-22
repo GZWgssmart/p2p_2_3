@@ -48,7 +48,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping("update")
-//    @RequiresPermissions("role:update")
+    @RequiresPermissions("role:update")
     public ServerResponse updateRole(RoleJurVO roleJurVO){
         String jurString = roleJurVO.getJurString();
         Role role = new Role();
@@ -77,7 +77,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping("delete")
-//    @RequiresPermissions("role:delete")
+    @RequiresPermissions("role:delete")
     public ServerResponse deleteRole(Role role){
         ShiroAuthorizationUtil.clearAuthAndCache();
         return roleService.deleteByRoleKey(role.getRid());
@@ -88,11 +88,17 @@ public class RoleController {
      * @return
      */
     @RequestMapping("pager")
+    @RequiresPermissions("role:pager")
     public Pager pagerRole(Integer pageNo, Integer pageSize){
         return roleService.listPager(pageNo,pageSize);
     }
 
+    /**
+     * 所有角色，分配权限时
+     * @return
+     */
     @RequestMapping("all")
+    @RequiresPermissions("role:all")
     public List<Role> listAll(){
         return roleService.listAll();
     }
@@ -105,6 +111,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping("dep")
+    @RequiresPermissions("role:dep")
     public List<Role> listByPid(Role role) {
         return roleService.listByPid(role.getPid());
     }

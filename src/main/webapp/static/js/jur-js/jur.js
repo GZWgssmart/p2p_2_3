@@ -79,7 +79,7 @@ $(function () {
         table.render({
             elem: '#jurs'
             ,id:'jurTB'
-            ,height: 332
+            ,height: 450
             ,url: '/jur/data/json/pager/' //数据接口
             ,page: true //开启分页
             ,limit:10//每页显示多少个
@@ -93,7 +93,7 @@ $(function () {
             ,cols: [[ //表头
                 {field: 'jurl', title: '权限url', width:500}
                 ,{field: 'content', title: '描述', width:300}
-                ,{title:'操作', fixed: 'right', width: 335, align:'center', toolbar: '#barJur'}
+                ,{title:'操作', fixed: 'right', width: 305, align:'center', toolbar: '#barJur'}
             ]]
         });
         table.on('tool(jur)', function(obj){

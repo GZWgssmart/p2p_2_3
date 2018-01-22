@@ -6,8 +6,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/global.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/common.css" media="all">
     <style>
         button {
             margin-right: 100px;

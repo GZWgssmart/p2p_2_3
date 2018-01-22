@@ -105,7 +105,7 @@
                 ,{field: 'sex', title: '性别', width:150}
                 ,{field: 'phone', title: '手机号', width:200}
                 ,{field: 'email', title: '邮箱', width: 200}
-                ,{fixed: 'right',title:'操作', width: 150, align:'center', toolbar: '#barDemo'}
+                ,{fixed: 'right',title:'操作', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
         });
 

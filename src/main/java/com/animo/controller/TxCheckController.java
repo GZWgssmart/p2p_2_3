@@ -54,13 +54,13 @@ public class TxCheckController {
      * @return
      */
     @RequestMapping("listRecord")
-    @RequiresPermissions("txCheck:listRecord")
+//    @RequiresPermissions("txCheck:listRecord")
     public Pager listRecord(Integer page,Integer limit){
         return txCheckService.listPager(page,limit);
     }
 
     @RequestMapping("delete/{txid}")
-    @RequiresPermissions("txCheck:check")
+//    @RequiresPermissions("txCheck:check")
     public ServerResponse<TxCheck> deleteRecord(@PathVariable Integer txid){
         return txCheckService.removeById(txid);
     }

@@ -6,8 +6,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/global.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/common.css" media="all">
 </head>
 
 <body>
@@ -169,7 +167,7 @@
                 {field: 'way', title: '还款方式', width: 230}
                 , {field: 'fw', title: '计算', width: 500}
                 , {field: 'status', title: '状态', width: 208, templet: "#status"}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right', width: 185, align: 'center', toolbar: '#barDemo'}
             ]]
 
         });

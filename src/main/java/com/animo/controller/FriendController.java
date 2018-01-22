@@ -6,6 +6,7 @@ import com.animo.pojo.Friend;
 import com.animo.service.FriendService;
 import com.animo.utils.PathUtils;
 import com.animo.utils.UploadUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +29,25 @@ public class FriendController {
     @Autowired
     private FriendService friendService;
 
+    /**
+     * 删除合作伙伴
+     * @param friend
+     * @return
+     */
     @RequestMapping("delete")
+//    @RequiresPermissions("friend:delete")
     public ServerResponse deleteById(Friend friend){
         return friendService.removeById(friend.getFid());
     }
 
+    /**
+     * 合作伙伴分页查看
+     * @param page
+     * @param limit
+     * @return
+     */
     @RequestMapping("pager")
+//    @RequiresPermissions("friend:pager")
     public Pager pagerFriend(Integer page, Integer limit){
         return friendService.listPager(page, limit);
     }
@@ -59,12 +73,24 @@ public class FriendController {
         return map;
     }
 
+    /**
+     * 添加合作伙伴
+     * @param friend
+     * @return
+     */
     @RequestMapping("save")
+//    @RequiresPermissions("friend:save")
     public ServerResponse saveFriend(Friend friend){
         return friendService.save(friend);
     }
 
+    /**
+     * 修改合作伙伴
+     * @param friend
+     * @return
+     */
     @RequestMapping("update")
+//    @RequiresPermissions("friend:update")
     public ServerResponse updateFriend(Friend friend){
         return friendService.update(friend);
     }

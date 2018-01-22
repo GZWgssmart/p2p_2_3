@@ -6,8 +6,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/global.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/common.css" media="all">
 </head>
 <body>
 <div id="app">
@@ -138,7 +136,7 @@
                 /*{field: 'bzid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
                 {field: 'bzname', title: '标种名称', width: 300}
                 , {field: 'status', title: '状态', width: 638, templet: "#aa"}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right',title:'操作' , width: 190, align: 'center', toolbar: '#barDemo'}
             ]]
 
         });

@@ -36,7 +36,7 @@
 
     </table>--%>
     <br/>
-    <button style="width: 1144px; margin: 0;"  class="layui-btn" v-on:click="save">添加</button>
+    <button style="width: 1125px; margin: 0;"  class="layui-btn" v-on:click="save">添加</button>
 
        <table class="layui-hide" id="test" lay-filter="demo"></table>
 
@@ -149,7 +149,7 @@
             //表头
             ,cols: [[
                 {field: 'title', title: '标题', width:680}
-                ,{field: 'createdTime', title: '添加时间', width:289}
+                ,{field: 'createdTime', title: '添加时间', width:270}
                 ,{fixed: 'right',title: '操作', width: 171, align:'center', toolbar: '#barDemo'}
             ]]
             //表头

@@ -4,6 +4,7 @@ import com.animo.common.ServerResponse;
 import com.animo.service.RoleuserService;
 import com.animo.utils.ShiroAuthorizationUtil;
 import com.animo.vo.RoleUserVO;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class RoleUserController {
      * @return
      */
     @RequestMapping("saveRoleUser")
+    @RequiresPermissions("roleUser:saveRoleUser")
     public ServerResponse saveRoleUser(RoleUserVO roleUserVO){
         ShiroAuthorizationUtil.clearAuthAndCache();
         return roleuserService.save(roleUserVO.getRoleString(),roleUserVO.getUserString());

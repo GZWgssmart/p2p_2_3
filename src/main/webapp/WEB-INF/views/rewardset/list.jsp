@@ -100,7 +100,7 @@
                 {field: 'minmoney', title: '最小金额(元)', align:'center', width:265}
                 ,{field: 'maxmoney', title: '最大金额（元）',align:'center', width:265}
                 ,{field: 'percent', title: '奖励百分比%', align:'center', width:265}
-                ,{fixed: 'right',title:'操作', width: 310, align:'center', toolbar: '#barDemo'}
+                ,{fixed: 'right',title:'操作', width: 320, align:'center', toolbar: '#barDemo'}
             ]]
         });
 
