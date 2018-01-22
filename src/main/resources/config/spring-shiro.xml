@@ -50,8 +50,10 @@
                 /admin/data/json/logout = logout
                 <!--用户登录-->
                 /user/login = anon
+                /user/data/json/login = anon
                 <!--用户注册-->
                 /user/register = anon
+                /user/data/json/register = anon
                 <!--用户退出-->
                 user/data/json/logout = logout
                 <!--所有静态资源可匿名访问-->
@@ -59,7 +61,8 @@
                 <!--所有后台页面必须登录，且必须为管理员身份-->
                 /back/admin/home = authc,perms[admin:view]
                 <!--所有前台用户页面必须登录，且必须为用户身份-->
-                /user/** = authc
+                <!--/user/accountOverride/** = authc-->
+                /borrowapply/add = authc
             </value>
         </property>
     </bean>
