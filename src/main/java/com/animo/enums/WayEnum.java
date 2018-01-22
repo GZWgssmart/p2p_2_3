@@ -6,24 +6,24 @@ package com.animo.enums;
  */
 public enum WayEnum {
 
-    EQUAL_BX(1, "等额本息"),
-    EQUAL_BJ(2, "等额本金"),
-    XIAN_XI(3, "先息后本"),
-    PAYOFF_ONCE(4, "一次还清");
+    EQUAL_BX("1", "等额本息"),
+    EQUAL_BJ("2", "等额本金"),
+    XIAN_XI("3", "先息后本"),
+    PAYOFF_ONCE("4", "一次还清");
 
-    private Integer code;
+    private String code;
     private String way;
 
-    WayEnum(Integer code, String way) {
+    WayEnum(String code, String way) {
         this.code = code;
         this.way = way;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

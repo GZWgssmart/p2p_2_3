@@ -65,7 +65,7 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
                 money = money.add(tzb.getMoney());
             }
             Tzb tzb = tzbList.get(0);
-            if(tzb.getResint2().equals(WayEnum.PAYOFF_ONCE.getCode())){
+            if(tzb.getResint2().equals(Integer.valueOf(WayEnum.PAYOFF_ONCE.getCode()))){
                 Skb skb = new Skb();
                 skb.setUid(uid);
                 skb.setBaid(tzb.getBaid());
@@ -83,7 +83,7 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
                 skbList.add(skb);
                 skbMapper.saveList(skbList);
                 return ServerResponse.createBySuccess();
-            }else if(tzb.getResint2().equals(WayEnum.XIAN_XI.getCode())){
+            }else if(tzb.getResint2().equals(Integer.valueOf(WayEnum.XIAN_XI.getCode()))){
                 List<Hkb> hkbs = hkbMapper.getSkTime(tzb.getBaid());
                 int suoyin = 0;
                 for(int i=0;i<tzb.getResint1();i++){
@@ -108,7 +108,7 @@ public class SkbServiceImpl extends AbstractServiceImpl implements SkbService{
                 }
                 skbMapper.saveList(skbList);
                 return ServerResponse.createBySuccess();
-            }else  if(tzb.getResint2().equals(WayEnum.EQUAL_BX.getCode())) {
+            }else  if(tzb.getResint2().equals(Integer.valueOf(WayEnum.EQUAL_BX.getCode()))) {
                 ACPIMLoanCalculator calculator = new ACPIMLoanCalculator();
                 loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, 0), tzb.getResint1(), LoanUtil.rate(tzb.getNprofit(), 1), LoanUtil.RATE_TYPE_YEAR);
             }else if(tzb.getResint2().equals(WayEnum.EQUAL_BJ.getCode())){

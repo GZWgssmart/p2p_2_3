@@ -9,4 +9,5 @@ import java.util.List;
 public interface TicketService extends BaseService {
     List<Ticket> selectByIsVip(Integer isvip);
     ServerResponse neck(Ticket ticket, HttpSession session);
+    ServerResponse list(Integer uid);
 }

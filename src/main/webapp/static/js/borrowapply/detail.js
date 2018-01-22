@@ -69,5 +69,5 @@ function getmoney() {
 }
 
 function getTicket() {
-    return axios.get('/userTicket/data/json/list');
+    return axios.get('/ticket/data/json/list');
 }

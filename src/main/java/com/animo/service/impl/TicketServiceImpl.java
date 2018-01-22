@@ -67,4 +67,9 @@ public class TicketServiceImpl extends AbstractServiceImpl implements TicketServ
         }
         return ServerResponse.createByError("登录超时");
     }
+
+    @Override
+    public ServerResponse list(Integer uid) {
+        return ServerResponse.createBySuccess(ticketMapper.list(uid));
+    }
 }

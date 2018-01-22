@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-<input id="uid" value="${sessionScope.user.uid}"/>
+<input id="uid" value="${sessionScope.user.uid}" hidden/>
             <%--尾部部--%>
         <%@include file="../common/footer.jsp"%>
     </div>
@@ -130,8 +130,12 @@
             }
             ,methods:{
                 neck(kid,tnum,isvip){
-                    getUserInfo();
                 if(isvip==1){
+                    getUserInfo();
+                    console.log(vue.user);
+                    if(this.user==null || this.user==undefined){
+                        return alert('请登录');
+                    }
                     if(this.user.isvip==1){
                         this.ticket.tnum=parseInt(tnum)-1;
                         this.ticket.kid = kid;
@@ -140,10 +144,10 @@
                                 return alert('领取成功');
                             }
                             return alert(response.data.message);
-                        },(error)=>{
                         });
+                    }else{
+                        return alert('您不是vip');
                     }
-                    return alert('您不是vip');
                 }
                 if(isvip==0){
                     this.ticket.tnum=parseInt(tnum)-1;
@@ -153,7 +157,6 @@
                             return alert('领取成功');
                         }
                         return alert(response.data.message);
-                    },(error)=>{
                     });
                     }
                 },
@@ -180,7 +183,8 @@
 
         function getUserInfo() {
             axios.get('/user/data/json/byiddync?id='+$("#uid").val()).then((response) => {
-                this.user = response.data.data;
+                vue.user = response.data.data;
+                console.log(vue.user);
             });
         }
 

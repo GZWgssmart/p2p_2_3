@@ -124,4 +124,8 @@
   <select id="selectByIsVip" parameterType="java.lang.Integer" resultType="com.animo.pojo.Ticket">
     select * from ticket where  isvip = #{isvip}
   </select>
+
+  <select id="list" resultType="com.animo.vo.TicketVo">
+    SELECT t.type,ut.ukid,ut.tktime,t.tktime AS ttime,t.isvip,t.tkmoney FROM ticket AS t,user_ticket AS ut WHERE t.kid=ut.kid and  ut.uid=#{uid}
+  </select>
 </mapper>

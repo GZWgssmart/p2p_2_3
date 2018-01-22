@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 0d
+ * 1x
+ */
+
 public class Ticket {
     private Integer kid;
 

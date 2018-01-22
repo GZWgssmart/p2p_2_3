@@ -215,6 +215,7 @@ public class TzbServiceImpl extends AbstractServiceImpl implements TzbService{
                         //每月利息金额
                         BigDecimal bigMonthNpro = BigDecimal.valueOf(monthNpro/100);
                         //先息后本还款表
+                        System.out.println(bAD.getWay().equals(1));
                         if(bAD.getWay().equals(WayEnum.XIAN_XI.getCode())) {
                             //每月利息等于总借款乘以月利率
                             hkb.setYlx(bAD.getMoney().multiply(bigMonthNpro));

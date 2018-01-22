@@ -4,6 +4,7 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.Ticket;
+import com.animo.pojo.User;
 import com.animo.service.TicketService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,12 @@ public class TicketController {
     @PostMapping("neck")
     public ServerResponse neck(Ticket ticket, HttpSession session){
         return ticketService.neck(ticket,session);
+    }
+
+    @GetMapping("list")
+    public ServerResponse list(HttpSession session){
+        User user = (User)session.getAttribute(Constant.SESSION_USER);
+        return ticketService.list(user.getUid());
     }
 
 

@@ -377,10 +377,10 @@
         },
         created () {
             axios.all([three(),Media(),notice(),dynamic(),friends(),home()]).then(axios.spread((threes,media,notice,dynamic,friends,home)=>{
-//                this.djb = threes.data.data['多金宝'].data;
-//                this.xsb = threes.data.data['新手标'].data;
-//                this.pjb = threes.data.data['普金保'].data;
-//                this.hjb = threes.data.data['恒金保'].data;
+                this.djb = threes.data.data['多金宝'].data;
+                this.xsb = threes.data.data['新手标'].data;
+                this.pjb = threes.data.data['普金保'].data;
+                this.hjb = threes.data.data['恒金保'].data;
                 this.media = media.data.rows;
                 this.notice = notice.data.rows;
                 this.dynamic = dynamic.data.rows;

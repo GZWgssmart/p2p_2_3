@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
     <link rel="stylesheet" href="<%=path%>/static/css/user/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/user/account.css">
-    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css"/>
     <style>
         .account .account-right {
             width: 900px;
@@ -60,7 +59,7 @@
                     <li><a href="#ipay">充值</a></li>
                     <li><a href="#cash">提现</a></li>
 
-                    <li><a id="myCoupon" href="#taste">我的赠券<i id="couponCount"></i></a></li>
+                    <li><a id="myCoupon" href="#taste" class="wodeticket">我的赠券<i id="couponCount"></i></a></li>
 
                     <li><a href="#fund" class="zjjl">资金记录</a></li>
                 </ul>
@@ -73,7 +72,7 @@
                 <ul class="sub-nav">
                     <li><a href="#bank" class="mybank">我的银行卡</a></li>
                     <li><a href="#safe">安全设置</a></li>
-                    <li><a href="#msg">消息中心</a></li>
+                    <li><a href="#msg" class="xiaoxizhongxin">消息中心</a></li>
                 </ul>
             </div>
             <a href="#tuijian" class="tuijian"><img src="<%=path%>/static/images/home/tuijian.png"/></a>
@@ -224,25 +223,6 @@
                                             <label class="long">提现金额：</label><input type="text" v-model="txmoney"
                                                                                     placeholder="请输入提现金额">
                                         </div>
-                                        <%--<div class="label cl">--%>
-                                        <%--<label class="long">提现手续费：</label><p class="text">2.00元</p>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="label cl">--%>
-                                        <%--<label class="long">提现服务费：</label><p class="text" id="refreew">0.00</p>--%>
-                                        <%--</div>--%>
-                                        <!-- <div class="label cl">
-                                            <label class="long">交易密码：</label><input type="password" maxlength="16" id="cash-password" autocomplete="new-password" placeholder="请输入交易密码"/>
-                                            <p class="text ml10"><a href="recoverpwd.html#deal">忘记密码</a></p>
-                                        </div> -->
-                                        <%--<div class="label cl">--%>
-                                        <%--<label class="long">手机号码：</label><p class="text " id="withdrawPhone">182****1307</p>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="label cl label-msg">--%>
-                                        <%--<label class="long">验证码：</label><input type="text" maxlength="6" id="cash-smsCode" placeholder="请输入短信验证码">--%>
-                                        <%--<div class="msg-btn">--%>
-                                        <%--<button type="button" id="getMsgCode">获取验证码</button>--%>
-                                        <%--</div>--%>
-                                        <%--</div>--%>
                                         <button type="button" class="btn" @click="tixian">立即提现</button>
                                     </div>
                                     <div id="returnHtml"></div>
@@ -271,141 +251,32 @@
                         <div class="daijj " id="daijj">
                             <div class="account-right-nav">
                                 <div class="sub-a-nav">
-                                    <a href="#daijj">代金券</a><a href="#jiaxj">加息券</a>
-                                    <a href="#xianjj">现金券</a><a href="#tyj">体验金</a>
+                                    <a href="#daijj">我的赠券</a>
                                 </div>
                                 <em class="em-line"></em>
                             </div>
                             <div class="account-content" id="dtaste" style="display: block;">
-                                <div class="sub-nav">
-                                    <a href="javascript:;" class="active" id="Dunused">未使用</a>
-                                    <a href="javascript:;" id="Dused">已使用</a>
-                                    <a href="javascript:;" id="Dexpired">已过期</a>
-                                </div>
-                                <div class="dtaste-listData dtaste-listData1">
-                                    <ul class="taste-list nouse cl">
-                                        <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
+                                <div class="account-list">
+                                    <ul class="fund-list-box list-box">
+                                        <li class="title">
+                                            <div class="children0">券类型</div>
+                                            <div class="children1">价值</div>
+                                            <div class="children2">领取时间</div>
+                                            <div class="children3">失效时间</div>
+                                        </li>
                                     </ul>
-                                    <ul class="paging"></ul>
+                                    <ul class="fund-list-box listData">
+                                        <li v-for="item in tickets" class="interval">
+                                            <div class="children0">{{item.type |type}}</div>
+                                            <div class="children1">{{item.tkmoney}}元</div>
+                                            <div class="children2">{{item.tktime}}</div>
+                                            <div class="children3">{{item.ttime}}</div>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <!-- <div class="dtaste-listData dtaste-listData3"> -->
-                                <!-- <ul class="taste-list overdue cl"> -->
-                                <!-- </ul> -->
-                                <!-- <ul class="paging">				 -->
-                                <!-- </ul> -->
-                                <!-- </div> -->
                             </div>
                         </div>
-
-                        <div class="jiaxj " id="jiaxj">
-                            <div class="account-right-nav">
-                                <div class="sub-a-nav">
-                                    <a href="#daijj">代金券</a><a href="#jiaxj">加息券</a>
-                                    <a href="#xianjj">现金券</a><a href="#tyj">体验金</a>
-                                </div>
-                                <em class="em-line" style="left: 120px;"></em>
-                            </div>
-                            <div class="account-content" id="dtaste" style="display: block;">
-                                <div class="sub-nav">
-                                    <a href="javascript:;" class="active" id="Dunused">未使用</a>
-                                    <a href="javascript:;" id="Dused">已使用</a>
-                                    <a href="javascript:;" id="Dexpired">已过期</a>
-                                </div>
-                                <div class="dtaste-listData dtaste-listData1">
-                                    <ul class="taste-list nouse cl">
-                                        <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                    </ul>
-                                    <ul class="paging"></ul>
-                                </div>
-                                <!-- <div class="dtaste-listData dtaste-listData3"> -->
-                                <!-- <ul class="taste-list overdue cl"> -->
-                                <!-- </ul> -->
-                                <!-- <ul class="paging">				 -->
-                                <!-- </ul> -->
-                                <!-- </div> -->
-                            </div>
-                        </div>
-                        <div class="xianjj " id="xianjj">
-                            <div class="account-right-nav">
-                                <div class="sub-a-nav">
-                                    <a href="#daijj">代金券</a><a href="#jiaxj">加息券</a>
-                                    <a href="#xianjj">现金券</a><a href="#tyj">体验金</a>
-                                </div>
-                                <em class="em-line" style="left: 240px;"></em>
-                            </div>
-                            <div class="account-content" id="dtaste" style="display: block;">
-                                <div class="sub-nav">
-                                    <a href="javascript:;" class="active" id="Dunused">未使用</a>
-                                    <a href="javascript:;" id="Dused">已使用</a>
-                                    <a href="javascript:;" id="Dexpired">已过期</a>
-                                </div>
-                                <div class="dtaste-listData dtaste-listData1">
-                                    <ul class="taste-list nouse cl">
-                                        <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                    </ul>
-                                    <ul class="paging"></ul>
-                                </div>
-                                <!-- <div class="dtaste-listData dtaste-listData3"> -->
-                                <!-- <ul class="taste-list overdue cl"> -->
-                                <!-- </ul> -->
-                                <!-- <ul class="paging">				 -->
-                                <!-- </ul> -->
-                                <!-- </div> -->
-                            </div>
-                        </div>
-                        <div class="tyj " id="tyj">
-                            <div class="account-right-nav">
-                                <div class="sub-a-nav">
-                                    <a href="#daijj">代金券</a><a href="#jiaxj">加息券</a>
-                                    <a href="#xianjj">现金券</a><a href="#tyj">体验金</a>
-                                </div>
-                                <em class="em-line" style="left: 360px;"></em>
-                            </div>
-                            <div class="account-content" id="dtaste" style="display: block;">
-                                <div class="sub-nav">
-                                    <a href="javascript:;" class="active" id="Dunused">未使用</a>
-                                    <a href="javascript:;" id="Dused">已使用</a>
-                                    <a href="javascript:;" id="Dexpired">已过期</a>
-                                </div>
-                                <div class="dtaste-listData dtaste-listData1">
-                                    <ul class="taste-list nouse cl">
-                                        <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                    </ul>
-                                    <ul class="paging"></ul>
-                                </div>
-                                <!-- <div class="dtaste-listData dtaste-listData3"> -->
-                                <!-- <ul class="taste-list overdue cl"> -->
-                                <!-- </ul> -->
-                                <!-- <ul class="paging">				 -->
-                                <!-- </ul> -->
-                                <!-- </div> -->
-                            </div>
-                        </div>
-
                     </div>
-                    <!-- <div class="account-content" id="dtaste" style="display: block;"> -->
-                    <!-- <div class="sub-nav"> -->
-                    <!-- <a href="javascript:;" class="active" id="Dunused">未使用</a> -->
-                    <!-- <a href="javascript:;" id="Dused">已使用</a> -->
-                    <!-- <a href="javascript:;" id="Dexpired">已过期</a> -->
-                    <!-- </div> -->
-                    <!-- <div class="dtaste-listData dtaste-listData1"> -->
-                    <!-- <ul class="taste-list nouse cl"><li class="none" style="line-height: 60px;">没有符合条件的内容！</li></ul> -->
-                    <!-- <ul class="paging"></ul> -->
-                    <!-- </div> -->
-                    <!-- <div class="dtaste-listData dtaste-listData2"> -->
-                    <!-- <ul class="taste-list use cl"> -->
-                    <!-- </ul> -->
-                    <!-- <ul class="paging">				 -->
-                    <!-- </ul>	 -->
-                    <!-- </div> -->
-                    <!-- <div class="dtaste-listData dtaste-listData3"> -->
-                    <!-- <ul class="taste-list overdue cl"> -->
-                    <!-- </ul> -->
-                    <!-- <ul class="paging">				 -->
-                    <!-- </ul> -->
-                    <!-- </div> -->
-                    <!-- </div> -->
                 </div>
 
                 <!--资金记录-->
@@ -610,30 +481,7 @@
                         <em class="em-line"></em>
                     </div>
                     <div class="account-content" style="margin-top: -40px;">
-                        <div class="sub-nav" style="margin-top: 15px;">
-                            <a href="javascript:;" onclick="deleteMsg();" id="delSys">删除</a>
-                            <a href="javascript:;" onclick="readedSys();" id="readedSys">标为已读</a>
-                            <a href="javascript:;" onclick="unReadSys();" id="unReadSys">标为未读</a>
-                        </div>
-
-                        <div class="msg-list">
-                            <div class="account-list">
-                                <ul class="cash-list-box listData">
-                                    <li class="title">
-                                        <div class="children0"><input type="checkbox" name="checkbox" id="checkbox"
-                                                                      onclick="checkAll_Sys(this);"><span>状态</span>
-                                        </div>
-                                        <div class="children1">来源</div>
-                                        <div class="children2">标题</div>
-                                        <div class="children3">日期</div>
-                                    </li>
-                                </ul>
-                                <ul class="msg-list listData">
-                                    <li class="none" style="line-height: 60px;">没有符合条件的内容！</li>
-                                </ul>
-                                <ul class="paging"></ul>
-                            </div>
-                        </div>
+                        <table class="layui-hide" id="xiaoxizhongxin" lay-filter="demo"></table>
                     </div>
                 </div>
 
@@ -786,7 +634,9 @@
             txmoney: '',
             uid:${sessionScope.user.uid},
             bankstatus:false,
-            emailstatus:false
+            emailstatus:false,
+            tickets:[],
+            letters:[]
         },
         filters: {
             phone (value) {
@@ -809,6 +659,13 @@
                     return '******';
                 }
             },
+            type(value){
+                if(value==0){
+                    return"代金券";
+                }else{
+                    return"现金券";
+                }
+            }
         },
         created() {
             this.getUserMoney();
@@ -821,9 +678,11 @@
             update () {
                 this.user.sex = $('input:radio[name="sex"]:checked').val();
                     axios.post('/user/data/json/updateInfo',Qs.stringify(this.user)).then((response) => {
-                        alert(response.data.message);
-                        var index = parent.layer.getFrameIndex(window.name);
-                        layer.close(index);
+                        if(response.data.code==0){
+                            alert('修改成功');
+                            var index = parent.layer.getFrameIndex(window.name);
+                            layer.close(index);
+                        }
                     })
             },
             getUserInfo(){
@@ -1097,9 +956,6 @@
                 , cols: [[
                     {field: 'uname', title: '用户名', width: 200}
                     , {field: 'resint1', title: '创建时间', width: 200}
-//                    ,{field: 'money', title: '提现金额', width:200,sort: true}
-//                    ,{field: 'createdTime', title: '提现时间', width:200,sort: true}
-//                    ,{field: 'status', title: '提现状态', width:200, templet:'<div>{{ statusGe(d.status)}}</div>'}
                 ]]
                 //表头
             });
@@ -1109,6 +965,40 @@
         //投资管理
         $(".investTable").on('click', function () {
            invest();
+        });
+    });
+
+    $(".wodeticket").on('click', function () {
+        axios.get('/ticket/data/json/list').then((response) => {
+            if(response.data.code==0){
+                vue.tickets = response.data.data;
+            }
+        })
+    });
+
+    $(".xiaoxizhongxin").on('click', function () {
+        table.render({
+            elem: '#xiaoxizhongxin'
+            , height: 332
+            , url: '/letter/data/json/pager' //数据接口
+            , page: true //开启分页
+            , limit: 10//每页显示多少个
+            //后台Pager响应对象 不要动
+            , response: {
+                statusName: 'status'
+                , statusCode: 0
+                , msgName: 'message'
+                , countName: 'total'
+                , dataName: 'rows'
+            }
+            //后台Pager响应对象 不要动
+            //表头
+            , cols: [[
+                {field: 'title', title: '标题', width: 200}
+                , {field: 'content', title: '内容', width: 200}
+                , {field: 'created_time', title: '时间', width: 200}
+            ]]
+            //表头
         });
     });
 
@@ -1128,6 +1018,7 @@
 
         });
     });
+
 
     function statusGe(value) {
         if (value == 0) {

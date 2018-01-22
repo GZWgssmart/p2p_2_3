@@ -91,6 +91,7 @@
         table.render({
             elem: '#user'
             , height: 465
+            ,id:'tixianshenhe'
             , url: '<%=path%>/LogTx/data/json/listAll' //数据接口接口地址。默认会自动传递两个参数：?page=1&limit=30（该参数可通过 request 自定义）page 代表当前页码、limit 代表每页数据量
             , page: true//开启分页
             , limit: 10
@@ -102,12 +103,12 @@
             }
             //后台Pager响应对象 不要动
             , cols: [[//表头
-                {field: 'bankcard', title: '卡号', width: 193}
-                , {field: 'banktype', title: '所属银行', width: 140}
+                {field: 'bankcard', title: '卡号', width: 220}
+                , {field: 'banktype', title: '所属银行', width: 170}
                 , {field: 'money', title: '金额', width: 120}
                 , {field: 'status', title: '状态', width: 120,templet:'<div>{{statusFormat(d.status)}}</div>'}
                 , {field: 'createdTime', title: '创建时间', width: 240,sort:true}
-                , {fixed: 'right', title: '操作', width: 155, align: 'center',toolbar: '#barDemo'}
+                , {fixed: 'right', title: '操作', width: 235, align: 'center',toolbar: '#barDemo'}
             ]]
         });
 
@@ -122,7 +123,6 @@
                     vue.txCheckData=data;
                     layer.open({
                         type: 1,
-                        id:'txsh',
                         title:'提现审核',
                         area: ['440px', '300px'],
                         fixed: false, //不固定
@@ -141,7 +141,7 @@
                             vue.txCheckVO.money=vue.txCheckData.money;
                             vue.txCheckVO.status=$('input:radio[name="status"]:checked').val();
                             axios.post('/txCheck/data/json/check', Qs.stringify(vue.txCheckVO)).then((response)=>{
-                                table.reload('txsh');
+                                table.reload('tixianshenhe');
                                 layer.msg(response.data.message);
                                 vue.txCheckVO.excuse='';
                             },(error)=>{

@@ -63,7 +63,7 @@
             </div>
             <div class="subject-s-r-c">
                 <p>可用余额：<span id="canUseSum">
-                <p v-if="${sessionScope.user!=null}" >{{money |money}}元</p>
+                <p v-if="${sessionScope.user!=null}">{{money |money}}元</p>
                 <p v-else>登录后查看余额</p>
                 </span></p>
             </div>
@@ -75,9 +75,10 @@
                 <button type="button" @click="touzi">投资</button>
             </div>
             <div class="quan">
-                <%--<select>--%>
-                    <%--<option v-for="item in tickets" value="item.kid">价值:{{item.tkmoney}}</option>--%>
-                <%--</select>--%>
+                <select v-model="tzb.resint3">
+                    <option value="0" selected>请选择优惠券</option>
+                    <option v-for="item in tickets" :value="item.ukid">{{item.type |type}} 价值:{{item.tkmoney}}</option>
+                </select>
                 <a href="calculator.html?repayWay=3&amp;showRate=9+1&amp;time=6" class="icon icon-cal" id="calculator">详细收益明细</a>
             </div>
             <button v-if="borrowapply.ckstatus==2" class="btn"  type="button">投标中</button>
@@ -172,14 +173,7 @@
         </ul>
         <ul class="listData">
             <li v-for="(item,index) in rows" :class="index%2==0?interval:''">
-                <div class="children0">{{index+1}}</div>
-                <div class="children1">{{item.ytime }}</div>
-                <div class="children2">{{item.rtime |StringAndNull}}</div>
-                <div class="children3">{{item.rbx |StringAndNull}}</div>
-                <div class="children4">{{item.ybx }}</div>
-                <div class="children5">{{item.rfx |StringAndNull}}</div>
-                <div class="children6">{{item.yfx |StringAndNull}}</div>
-                <div class="children7">{{item.status |State}}</div>
+                <div class="children0">{{index+1}}</div><div class="children1">{{item.ytime}}</div><div class="children2">{{item.rtime}}&nbsp;</div><div class="children3">{{item.ybx}}</div><div class="children4">{{item.rbx}}</div><div class="children5">{{item.yfc}}</div><div class="children6">{{item.rfc}}</div><div class="children7">{{item.status |State}}</div>
             </li>
         </ul>
         <div id="demo2"></div>
@@ -338,7 +332,8 @@
                 money:'',
                 baid:${requestScope.get("baid")},
                 resint1:'',
-                resint2:''
+                resint2:'',
+                resint3:'0'
             },
             tickets:[]
         },
@@ -372,14 +367,21 @@
             },
             money(value){
                 return formatMoney(value,2);
+            },
+            type(value){
+                if(value==0){
+                    return"代金券";
+                }else{
+                    return"现金券";
+                }
             }
         },
         created (){
-            axios.all([getinfo(this.tzb.baid,this.bdid),getmoney(),getTicket]).then(axios.spread((borrowapplyDetail,money,tickets)=>{
+            axios.all([getinfo(this.tzb.baid,this.bdid),getmoney(),getTicket()]).then(axios.spread((borrowapplyDetail,money,tickets)=>{
                  this.borrowapply = borrowapplyDetail.data.data.borrowapply;
                  this.borrowdetail = borrowapplyDetail.data.data.borrowdetail;
                  this.money = money.data.data.kymoney;
-//                this.tickets =tickets.data.data;
+                 this.tickets = tickets.data.data;
             }));
         },
         methods:{
@@ -389,20 +391,24 @@
                 }
                 if(this.borrowapply.money ==this.borrowdetail.money){
                     alert("已投满");
-                }else if(this.tzb.money<100){
-                    alert("最小投资100");
-                }else if(this.tzb.money>(this.borrowapply.money-this.borrowdetail.money)){
-                    alert("投资大于剩余投资");
                 }else if(this.tzb.money==0){
                     alert("请输入投资金额");
+                }else if(this.tzb.money>(this.borrowapply.money-this.borrowdetail.money)){
+                    alert("投资大于剩余投资");
+                }else if(this.tzb.money<100){
+                    alert("最小投资100");
                 }else{
                     this.tzb.resint1 = this.borrowapply.term;
                     this.tzb.resint2 = this.borrowdetail.way;
+                    console.log(Qs.stringify(this.tzb));
+                    if(this.tzb.resint3=='0'){
+                        this.tzb.resint3=null;
+                    }
                     axios.post('/tzb/data/json/save', Qs.stringify(this.tzb)).then((response) => {
                         if(response.data.code==0){
                             this.money =parseInt(this.money) - parseInt(this.tzb.money);
                             this.borrowdetail.money=parseInt(this.borrowdetail.money)+parseInt(this.tzb.money);
-                            console.log( this.borrowdetail.money+this.tzb.money);
+                            this.tzb.resint3="0";
                             return alert(response.data.message);
                         }
                         alert(response.data.message)
