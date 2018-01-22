@@ -101,7 +101,7 @@
                         </dl>
                     </li>
                 </shiro:hasPermission>
-                <shiro:hasPermission name="tz:mannager">
+                <shiro:hasPermission name="touzi:mannager">
                     <li class="layui-nav-item">
                         <a href="javascript:;">投资管理</a>
                         <dl class="layui-nav-child">

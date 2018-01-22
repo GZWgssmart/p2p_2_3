@@ -56,10 +56,12 @@
     function checkPhone(phone) {
         var phone = $("#phone").val();
         if(phone == ''){
-            showError('请输入手机号码',$("#phone"));
+            layer.msg('请输入手机号码',{icon: 5});
+//            showError('请输入手机号码',$("#phone"));
             return;
         }else if(phone.length != 11){
-            showError('请输入正确手机号',$("#phone"));
+            layer.msg('请输入正确手机号',{icon: 5});
+//            showError('请输入正确手机号',$("#phone"));
             return;
         };
         $.post( '/admin/data/json/getByPhone/'+phone,
@@ -67,7 +69,8 @@
                 if (data.message === 'success') {
 
                 } else {
-                    showError('该手机号已存在',$("#phone"));
+                    layer.msg('该手机号已存在',{icon: 5});
+//                    showError('该手机号已存在',$("#phone"));
                     return;
                 }
             },
@@ -81,17 +84,21 @@
         var phone = $("#phone").val();
         var pwd = $("#pwd").val();
         if(rname=='') {
-            showError('请输入昵称',$("#rname"));
+            layer.msg('请输入昵称',{icon: 5});
+//            showError('请输入昵称',$("#rname"));
             return;
         }else if(phone==''){
-            showError('请输入手机号',$("#phone"));
+            layer.msg('请输入手机号',{icon: 5});
+//            showError('请输入手机号',$("#phone"));
             return;
         }else if(phone.length != 11){
-            showError('请输入正确手机号',$("#phone"));
+            layer.msg('请输入正确手机号',{icon: 5});
+//            showError('请输入正确手机号',$("#phone"));
             return;
         };
         if(pwd==''){
-            showError('请输入登录密码',$("#pwd"));
+            layer.msg('请输入登录密码',{icon: 5});
+//            showError('请输入登录密码',$("#pwd"));
             return;
         };
         $.post('/admin/data/json/add',

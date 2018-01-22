@@ -28,21 +28,24 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <input type="text" v-model="rewardSetting.minmoney"  placeholder="请输入最小金额"
+                    <input type="text" v-model="rewardSetting.minmoney" lay-verify="required" placeholder="请输入最小金额"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <input type="text"  v-model="rewardSetting.maxmoney"  placeholder="请输入最大金额"
+                    <input type="text"  v-model="rewardSetting.maxmoney" lay-verify="required" placeholder="请输入最大金额"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <input type="text" v-model="rewardSetting.percent"  placeholder="请输入奖励百分比"
+                    <input type="text" v-model="rewardSetting.percent" lay-verify="required" placeholder="请输入奖励百分比"
                            autocomplete="off" class="layui-input">
                 </div>
+            </div>
+            <div class="layui-form-item">
+                <li><button class="layui-btn layui-btn-fluid" lay-submit lay-filter="update" @click="update">保存</button></li>
             </div>
         </form>
 </div>
@@ -55,6 +58,7 @@
 <script src="<%=path%>/static/js/vue.min.js"></script>
 <script src="<%=path%>/static/js/axios.min.js"></script>
 <script src="<%=path%>/static/js/qs.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/layui-formVerify.js"></script>
 <script>
 
     var vue = new Vue({
@@ -68,7 +72,20 @@
             }
         },
         methods:{
+            update:function () {
+                form.on('submit(update)', function(data){
+                    axios.post('/rewardset/data/json/update',Qs.stringify(vue.rewardSetting)).then((response)=>{
+                        if(response.data.code ==0){
+                            layer.msg('修改成功');
+                            layer.close(index);
+                            return table.reload("rewardSetting");
+                        }
+                        layer.alert('修改失败');
+                    },(error)=>{
 
+                    });
+                });
+            }
         }
     });
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function(){
@@ -117,20 +134,7 @@
                     area: ['350px', '250px'],
                     fixed: false, //不固定
                     skin: '',
-                    btn:['修改'],
-                    content: $("#app"),
-                    yes:function (index) {
-                        axios.post('/rewardset/data/json/update',Qs.stringify(vue.rewardSetting)).then((response)=>{
-                            if(response.data.code ==0){
-                               alert('修改成功');
-                               layer.close(index);
-                               return table.reload("rewardSetting");
-                            }
-                            alert('修改失败');
-                        },(error)=>{
-
-                        });
-                    }
+                    content: $("#app")
                 });
 
             }
