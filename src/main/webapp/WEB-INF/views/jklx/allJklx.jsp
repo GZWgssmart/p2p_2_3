@@ -6,8 +6,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/global.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/common.css" media="all">
 </head>
 
 <body>
@@ -121,9 +119,9 @@
             }
             , cols: [[ //表头
                 /*{field: 'lxid', title: 'ID', width: 80, sort: true, fixed: 'left'}*/
-                {field: 'lxname', title: '借款名称', width: 120}
-                , {field: 'status', title: '状态', width: 120, templet: "#status"}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                {field: 'lxname', title: '借款名称', width: 350}
+                , {field: 'status', title: '状态', width: 350, templet: "#status"}
+                , {fixed: 'right',title:'操作' , width: 430, align: 'center', toolbar: '#barDemo'}
             ]]
 
         });

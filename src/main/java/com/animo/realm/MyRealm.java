@@ -5,6 +5,7 @@ import com.animo.common.EncryptUtils;
 import com.animo.common.ServerResponse;
 import com.animo.constant.Constant;
 import com.animo.pojo.Huser;
+import com.animo.pojo.Jur;
 import com.animo.pojo.Roleuser;
 import com.animo.service.HuserService;
 import com.animo.service.JurService;
@@ -86,20 +87,27 @@ public class MyRealm extends AuthorizingRealm {
 //        List<Rolejur> rolejurList = new ArrayList<>();
         //查询用户角色对应的权限
         Set<String> permsSet = new HashSet<>();
-        List<String> jurList = new ArrayList<>();
+        List<String> jurlList = new ArrayList<>();
         List<RoleJurVO> roleJurVOList;
-        //根据用户id查询角色，根据角色查询权限
-        List<Roleuser> roleuserList = roleuserService.listByHuid(huser.getHuid());
-        for(int i = 1; i<= roleuserList.size(); i++){
-            roleJurVOList = new ArrayList<>();
-            roleJurVOList = jurService.listByRid(roleuserList.get(i-1).getRid());
-            if (roleJurVOList.size()>0){
-                for (int x = 1; x <= roleJurVOList.size(); x++){
-                    jurList.add(roleJurVOList.get(x-1).getJurl());
+        if (huser.getHuid()==0 && huser.getHuname().equalsIgnoreCase("root")){
+            List<Jur> jurList = jurService.listAll();
+            for (int y = 0; y <jurList.size(); y++){
+                jurlList.add(jurList.get(y).getJurl());
+            }
+        }else{
+            //根据用户id查询角色，根据角色查询权限
+            List<Roleuser> roleuserList = roleuserService.listByHuid(huser.getHuid());
+            for(int i = 1; i<= roleuserList.size(); i++){
+                roleJurVOList = new ArrayList<>();
+                roleJurVOList = jurService.listByRid(roleuserList.get(i-1).getRid());
+                if (roleJurVOList.size()>0){
+                    for (int x = 1; x <= roleJurVOList.size(); x++){
+                        jurlList.add(roleJurVOList.get(x-1).getJurl());
+                    }
                 }
             }
         }
-        for (String perms : jurList){
+        for (String perms : jurlList){
             permsSet.add(perms);
         }
         authorizationInfo.setStringPermissions(permsSet);

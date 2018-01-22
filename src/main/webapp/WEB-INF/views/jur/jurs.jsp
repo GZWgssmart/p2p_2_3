@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%
     String path = request.getContextPath();
 %>
@@ -16,16 +17,21 @@
 </head>
 <body>
 <div id="appJur">
-
-    <button class="layui-btn layui-btn-danger" onclick="showInitJur()">权限初始化</button>
+    <shiro:hasPermission name="jur:initJur">
+        <button class="layui-btn layui-btn-danger" onclick="showInitJur()">权限初始化</button>
+    </shiro:hasPermission>
 
     <!--layui表格-->
     <table class="layui-hide" id="jurs" lay-filter="jur"></table>
 
     <!--table工具栏-->
     <script type="text/html" id="barJur">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-xs" lay-event="distr">分配权限</a>
+        <shiro:hasPermission name="jur:updateJur">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        </shiro:hasPermission>
+        <shiro:hasPermission name="roleJur:saveRoleJur">
+            <a class="layui-btn layui-btn-xs" lay-event="distr">分配权限</a>
+        </shiro:hasPermission>
     </script>
 
     <!--编辑窗口-->
@@ -90,7 +96,9 @@
             </button>
         </div>
         <div class="layui-form-item">
-            <button type="button" class="layui-btn" @click="getExcelPath">开始初始化</button>
+            <shiro:hasPermission name="jur:initJur">
+                <button type="button" class="layui-btn" @click="getExcelPath">开始初始化</button>
+            </shiro:hasPermission>
         </div>
     </div>
 

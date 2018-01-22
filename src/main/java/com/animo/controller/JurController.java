@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,21 +37,34 @@ public class JurController {
     @Autowired
     private JurService jurService;
 
+    /**
+     * 初始化权限
+     * @param jur
+     * @return
+     */
     @RequestMapping("initJur")
+    @RequiresPermissions("jur:initJur")
     public ServerResponse initJur(Jur jur){
         return jurService.insertJurList(jur.getJurl());
     }
 
+    /**
+     * 根据角色id查看角色的权限
+     * @param rid
+     * @return
+     */
     @RequestMapping("listJurByRid")
+    @RequiresPermissions("jur:listJurByRid")
     public List<RoleJurVO> listByRid(Integer rid){
         return jurService.listByRid(rid);
     }
 
     /**
-     * 添加角色时，分配权限
+     * 添加角色时，列出所有权限
      * @return
      */
     @RequestMapping("all")
+    @RequiresPermissions("jur:all")
     public List<Jur> listAll(){
         return jurService.listAll();
     }
@@ -62,6 +76,7 @@ public class JurController {
      * @return
      */
     @RequestMapping("pager")
+    @RequiresPermissions("jur:pager")
     public Pager pagerJur(Integer page, Integer limit){
         return jurService.listPager(page, limit);
     }
@@ -72,6 +87,7 @@ public class JurController {
      * @return
      */
     @RequestMapping("updateJur")
+    @RequiresPermissions("jur:updateJur")
     public ServerResponse updateJur(Jur jur){
         ShiroAuthorizationUtil.clearAuthAndCache();
         return jurService.update(jur);

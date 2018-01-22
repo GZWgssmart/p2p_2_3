@@ -38,20 +38,28 @@
         <!-- 权限管理器 -->
         <property name="securityManager" ref="securityManager"/>
         <!-- 登录地址 -->
-        <property name="loginUrl" value="/admin/login"/>
+        <property name="loginUrl" value="/user/login"/>
         <!-- 错误页面 ,没有权限时跳转到该页面(没有效果，在springmvc.xml另外配置)-->
         <!--<property name="unauthorizedUrl" value="/shiro/Unauthorized"/>-->
         <!-- 权限配置 authc：必须认证后才能访问，anon：不需要认证也能访问-->
         <property name="filterChainDefinitions">
             <value>
                 <!--admin登录-->
-                <!--/admin/login = anon-->
+                /admin/login = anon
                 <!--admin退出-->
-                <!--/admin/logout = logout-->
+                /admin/data/json/logout = logout
+                <!--用户登录-->
+                /user/login = anon
+                <!--用户注册-->
+                /user/register = anon
+                <!--用户退出-->
+                user/data/json/logout = logout
                 <!--所有静态资源可匿名访问-->
-                <!--/static/** = anon-->
-                <!--所有后台页面必须登录-->
-                <!--/back/** = authc-->
+                /static/** = anon
+                <!--所有后台页面必须登录，且必须为管理员身份-->
+                /back/admin/home = authc,perms[admin:view]
+                <!--所有前台用户页面必须登录，且必须为用户身份-->
+                /user/** = authc
             </value>
         </property>
     </bean>

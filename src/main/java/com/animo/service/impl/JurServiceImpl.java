@@ -5,6 +5,7 @@ import com.animo.dao.JurMapper;
 import com.animo.dao.RolejurMapper;
 import com.animo.pojo.Jur;
 import com.animo.service.JurService;
+import com.animo.utils.ShiroAuthorizationUtil;
 import com.animo.vo.RoleJurVO;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -73,10 +74,6 @@ public class JurServiceImpl extends AbstractServiceImpl implements JurService {
                 continue;
             }
             Jur jur = new Jur();
-            if(row.getCell(0)!=null){
-                row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
-            }
-            jur.setJid(Integer.valueOf(row.getCell(0).getStringCellValue()));
             jur.setJurl(row.getCell(1).getStringCellValue());
             jur.setContent(row.getCell(2).getStringCellValue());
             jurList.add(jur);
@@ -91,6 +88,7 @@ public class JurServiceImpl extends AbstractServiceImpl implements JurService {
             rolejurMapper.deleteAll();
             jurMapper.deleteAll();
             jurMapper.saveJurList(jurList);
+            ShiroAuthorizationUtil.clearAuthAndCache();
             return ServerResponse.createByError("初始化成功");
         }catch (Exception e){
             return ServerResponse.createByError("初始化失败");

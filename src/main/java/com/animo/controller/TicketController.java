@@ -4,6 +4,7 @@ import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.Ticket;
 import com.animo.service.TicketService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -29,23 +30,48 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-
+    /**
+     * 后台
+     * 优惠券分页查看
+     * @param page
+     * @param limit
+     * @return
+     */
     @RequestMapping("pagerTicket")
+//    @RequiresPermissions("ticket:pagerTicket")
    public Pager listTicket(Integer page, Integer limit){
        return ticketService.listPager(page,limit);
    }
 
+    /**
+     * 修改券信息
+     * @param ticket
+     * @return
+     */
    @RequestMapping("updateTicket")
+//   @RequiresPermissions("ticket:updateTicket")
    public ServerResponse update(Ticket ticket){
        return ticketService.update(ticket);
    }
 
+    /**
+     * 添加券
+     * @param ticket
+     * @return
+     */
    @RequestMapping("saveTicket")
+//   @RequiresPermissions("ticket:saveTicket")
    public ServerResponse save(Ticket ticket){
        return ticketService.save(ticket);
    };
 
+    /**
+     * 删除券
+     * @param ticket
+     * @return
+     */
    @RequestMapping("deleteTicket")
+//   @RequiresPermissions("ticket:deleteTicket")
    public ServerResponse delete(Ticket ticket){
        return ticketService.removeById(ticket.getKid());
    }

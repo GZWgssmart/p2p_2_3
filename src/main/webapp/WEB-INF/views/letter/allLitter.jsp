@@ -6,8 +6,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/global.css" media="all">
-    <link rel="stylesheet" type="text/css" href="<%=path %>/static/layui/css/common.css" media="all">
 </head>
 
 <body>
@@ -164,7 +162,7 @@
                 , {field: 'content', title: '内容', width: 300}
                 , {field: 'createdTime', title: '创建时间', width: 200}
                 , {field: 'status', title: '状态', width: 206, templet: "#aa"}
-                , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
+                , {fixed: 'right', title:'操作', width: 190, align: 'center', toolbar: '#barDemo'}
             ]]
 
         });
