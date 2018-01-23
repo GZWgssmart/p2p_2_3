@@ -95,6 +95,10 @@
 
                                 <a href="javascript:;" data-url="<%=path%>/back/rewardset/list" data-id="10">投资奖励列表</a>
                             </dd>
+                            <dd>
+
+                                <a href="javascript:;" data-url="<%=path%>/back/rewardset/list1" data-id="10">奖励发放列表</a>
+                            </dd>
                         </dl>
                     </li>
                 </shiro:hasPermission>

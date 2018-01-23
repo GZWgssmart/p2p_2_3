@@ -1,5 +1,6 @@
 package com.animo.service.impl;
 
+import com.animo.common.Pager;
 import com.animo.dao.RewardMapper;
 import com.animo.pojo.Reward;
 import com.animo.service.RewardService;
@@ -31,5 +32,13 @@ public class RewardServiceImpl extends AbstractServiceImpl implements RewardServ
     @Override
     public Reward selectByUid(Integer uid) {
         return rewardMapper.selectByUid(uid);
+    }
+
+    @Override
+    public Pager listPager(int pageNo, int pageSize) {
+        Pager pager = new Pager(pageNo, pageSize);
+        pager.setRows(rewardMapper.listPager(pager));
+        pager.setTotal(rewardMapper.count());
+        return pager;
     }
 }

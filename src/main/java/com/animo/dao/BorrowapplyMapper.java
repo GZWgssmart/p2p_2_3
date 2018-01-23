@@ -22,7 +22,6 @@ public interface BorrowapplyMapper extends BaseMapper{
 
     Object getById(Integer baid);
 
-
    Object getByIdVo(Integer baid);
 
     int updateStatusAndTime(@Param("id") Integer id,@Param("status") Integer status, @Param("ckTime") Date ckTime);

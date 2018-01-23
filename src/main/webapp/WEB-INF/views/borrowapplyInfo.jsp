@@ -406,14 +406,14 @@
                     if(this.tzb.resint3=='0'){
                         this.tzb.resint3=null;
                     }
-                    if(this.tzb.resint3!=null && this.tzb.resint3!='0') {
-                        axios.get('/userTicket/data/json/getMoney?ukid=' + this.tzb.resint3).then((response) => {
-                            this.userTicket= response.data.data;
-                        });
-                    }
+//                    if(this.tzb.resint3!=null && this.tzb.resint3!='0') {
+//                        axios.get('/userTicket/data/json/getMoney?ukid=' + this.tzb.resint3).then((response) => {
+//                            this.userTicket= response.data.data;
+//                        });
+//                    }
                     axios.post('/tzb/data/json/save', Qs.stringify(this.tzb)).then((response) => {
                         if(response.data.code==0){
-                            this.money =parseInt(this.money) - parseInt(this.tzb.money)+this.userTicket.tkmoney;
+                            this.money =parseInt(this.money) - parseInt(this.tzb.money);
                             this.borrowdetail.money=parseInt(this.borrowdetail.money)+parseInt(this.tzb.money);
                             this.tzb.resint3="0";
                             return alert(response.data.message);

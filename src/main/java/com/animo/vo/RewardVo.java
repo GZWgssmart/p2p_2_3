@@ -1,38 +1,18 @@
-package com.animo.pojo;
+package com.animo.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Reward {
-    private Integer rwid;
-
-    private Integer uid;
+public class RewardVo {
 
     private BigDecimal tmoney;
-
     private BigDecimal money;
-
-    private String status;
-
+    private String  status;
     private Date rewardTime;
-
-    public Integer getRwid() {
-        return rwid;
-    }
-
-    public void setRwid(Integer rwid) {
-        this.rwid = rwid;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+    private String uname;
+    private String phone;
 
     public BigDecimal getTmoney() {
         return tmoney;
@@ -50,6 +30,14 @@ public class Reward {
         this.money = money;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getRewardTime() {
         return rewardTime;
@@ -59,11 +47,19 @@ public class Reward {
         this.rewardTime = rewardTime;
     }
 
-    public String getStatus() {
-        return status;
+    public String getUname() {
+        return uname;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

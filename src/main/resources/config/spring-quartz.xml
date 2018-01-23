@@ -40,7 +40,7 @@
         <property name="name" value="cronTriggerMonthData" />
         <property name="group" value="group1" />
         <property name="jobDetail" ref="cronJobMonthData" />
-        <property name="cronExpression" value="0 59 23 L * ?" />
+        <property name="cronExpression" value="0 0 23 L * ?" />
         <!--<property name="cronExpression" value="0 0 0 1 * ?" />-->
     </bean>
 
@@ -56,7 +56,7 @@
         <property name="name" value="cronTriggerFailure" />
         <property name="group" value="group1" />
         <property name="jobDetail" ref="cronJobFailure" />
-        <property name="cronExpression" value="0 0 23 L * ?" />
+        <property name="cronExpression" value="0 0 22 L * ?" />
         <!--测试阶段， 0 * 8-22 * * ? *每分钟发放一次-->
         <!--实际阶段，0 0 23 L * ?每月月末发放一次-->
     </bean>

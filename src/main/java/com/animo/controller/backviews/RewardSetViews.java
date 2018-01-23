@@ -22,4 +22,8 @@ public class RewardSetViews {
         return "rewardset/list";
     }
 
+    @GetMapping("list1")
+    public String list1(){
+        return "rewardset/list1";
+    }
 }

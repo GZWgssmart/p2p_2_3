@@ -112,12 +112,16 @@
   </select>
 
   <select id="selectByStatus" resultMap="BaseResultMap">
-
   <![CDATA[
       select * from reward where status = #{status}
    ]]>
+  </select>
+  <select id="listPager" resultType="com.animo.vo.RewardVo">
+    SELECT r.tmoney,r.money,r.status,r.reward_time,t.uname,t.phone FROM reward AS  r,t_user AS  t WHERE r.uid=t.uid
+  </select>
 
-
+  <select id="count" resultType="long">
+    SELECT count(r.rwid) FROM reward AS  r,t_user AS  t WHERE r.uid=t.uid
   </select>
 
 </mapper>

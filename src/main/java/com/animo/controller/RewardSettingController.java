@@ -3,6 +3,7 @@ package com.animo.controller;
 import com.animo.common.Pager;
 import com.animo.common.ServerResponse;
 import com.animo.pojo.RewardSetting;
+import com.animo.service.RewardService;
 import com.animo.service.RewardSettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class RewardSettingController {
     @Autowired
     private RewardSettingService rewardSettingService;
 
+    @Autowired
+    private RewardService rewardService;
+
     @GetMapping(value="list")
     public Pager list(int page, int limit) {
         return rewardSettingService.listPager(page-0, limit-1);
@@ -35,4 +39,8 @@ public class RewardSettingController {
         return rewardSettingService.update(rewardSetting);
     }
 
+    @RequestMapping("pager")
+    public Pager listPager(int page, int limit) {
+        return rewardService.listPager(page, limit);
+    }
 }

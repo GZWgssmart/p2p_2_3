@@ -1,5 +1,6 @@
 package com.animo.service;
 
+import com.animo.common.Pager;
 import com.animo.pojo.Reward;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface RewardService extends BaseService{
 
     Reward selectByUid(Integer uid);
 
+    Pager listPager(int pageNo, int pageSize);
 }

@@ -191,7 +191,12 @@
             add () {
                 console.log(this.borrowApplyDetail);
                 axios.post('/borrowapply/data/json/save', Qs.stringify(this.borrowApplyDetail)).then((response) => {
-                    alert(response.data.message);
+                    if(response.data.code==0){
+                        alert(response.data.message);
+                        return window.location.reload();
+                    }else {
+                        alert(response.data.message);
+                    }
                 });
             }
         }

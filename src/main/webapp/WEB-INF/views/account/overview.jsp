@@ -731,9 +731,13 @@
                     return;
                 }
                 axios.get('/LogTx/data/json/withdraw?money=' + this.txmoney).then((response) => {
-                    alert(response.data.message);
-                    this.dataRows.kymoney = parseInt(this.dataRows.kymoney)-parseInt(this.txmoney);
-                    this.txmoney=0;
+                    if(response.data.code==0){
+                        alert(response.data.message);
+                        this.dataRows.kymoney = parseInt(this.dataRows.kymoney)-parseInt(this.txmoney);
+                        this.txmoney=0;
+                    }else{
+                        alert(response.data.message);
+                    }
                 }, (error) => {
 
                 });
@@ -995,7 +999,7 @@
             , cols: [[
                 {field: 'title', title: '标题', width: 200}
                 , {field: 'content', title: '内容', width: 200}
-                , {field: 'created_time', title: '时间', width: 200}
+                , {field: 'createdTime', title: '时间', width: 200}
             ]]
             //表头
         });

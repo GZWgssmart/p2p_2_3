@@ -284,13 +284,13 @@
     SELECT
       <include refid="Base_column_list1" />
       from borrowapply ba, bz b, borrowdetail bd
-      where b.bzid = ba.bzid and bd.baid = ba.baid AND ba.ckstatus in (2,4,5)  limit #{beginIndex}, #{pageSize}
+      where b.bzid = ba.bzid and bd.baid = ba.baid  limit #{beginIndex}, #{pageSize}
   </select>
 
   
   <select id="count" resultType="long">
     <![CDATA[
-      SELECT count(baid) FROM borrowapply WHERE   ckstatus in (2,4,5)
+      SELECT count(baid) FROM borrowapply
     ]]>
   </select>
 
@@ -303,7 +303,7 @@
 
   <update id="updateStatus">
       <![CDATA[
-      UPDATE borrowapply SET ckstatus=#{status}
+      UPDATE borrowapply SET ckstatus=#{ckstatus}
       where baid=#{baid}
     ]]>
   </update>
