@@ -16,6 +16,7 @@ import java.util.List;
 @Service
 public class BzServiceImpl extends AbstractServiceImpl implements BzService {
 
+    @Autowired
     private BzMapper bzMapper;
 
     @Autowired
